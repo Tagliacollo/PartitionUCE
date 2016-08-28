@@ -30,7 +30,7 @@ for key in uce:
         i = i + 1
 
 ### calculate entropy from loci
-# I'm still trying to understand how this piece of code works. I copy it from http://stackoverflow.com/questions/37909873/how-to-calculate-the-entropy-of-a-dna-sequence-in-a-fasta-file
+# I'm still trying to understand how this piece of code works. I copied it from http://stackoverflow.com/questions/37909873/how-to-calculate-the-entropy-of-a-dna-sequence-in-a-fasta-file
 # It isn't working because 'SeqRecord' object (from SeqIO) has no attribute 'count'. What I've understood so far is that "*.count" is a built in function in python. Why doesn't it work in my code?
 from math import log  
 
