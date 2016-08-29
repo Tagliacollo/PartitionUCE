@@ -1,52 +1,66 @@
-# working directory 
 import os
 os.chdir("/Users/Tagliacollo/Desktop/ANU_Australia/scripts/")
 
-### packages
+######
 from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO
+from math import log
 
-### read alignmet
-# matrix.nex is a hypothetical dataset. 
-aln = Nexus.Nexus()
-aln.read("matrix.nex") 
+###### read and split partition
+def get_UCEs(matrix):
+    aln = Nexus.Nexus()
+    aln.read(matrix)
+    uce_loci = aln.write_nexus_data_partitions(charpartition = aln.charsets)
+    return uce_loci
 
-### isolate partitions
-uce = aln.write_nexus_data_partitions(charpartition = aln.charsets)
+x = get_UCEs('matrix.nex')
+print (x)
 
-### Get loci in fasta format
-# This part of the code works, but the output is been overwrited (i.e. I get only one output instead of two).  
-# There is certainly a easier way of doing this loop. Do you have any suggestion to help me out?
-# One more question: should we save outputs in fasta format to run later?
-for key in uce:
-    value = AlignIO.read(open(uce[key]), "nexus")
-    print (uce[key])
-    output = open("uce_loci.fasta", "w")
+###### loci in fasta format
+def get_UCE_locus(partition):
+    value = AlignIO.read(open(partition), "nexus")
     i = 0
+    out =[]
     while i < value.get_alignment_length():
         loci = value[:,i]
-        print ('>' + 'locus_' + str(i) + '\n' + loci.replace('-', '') + '\n')
-        output.write ('>' + 'locus_' + str(i) + '\n' + loci.replace('-', '') + '\n')
+        fas = '>' + 'locus_' + str(i) + '\n' + loci.replace('-', '') + '\n'
+        out.append(fas)
         i = i + 1
+    return out
 
-### calculate entropy from loci
-# I'm still trying to understand how this piece of code works. I copied it from http://stackoverflow.com/questions/37909873/how-to-calculate-the-entropy-of-a-dna-sequence-in-a-fasta-file
-# It isn't working because 'SeqRecord' object (from SeqIO) has no attribute 'count'. What I've understood so far is that "*.count" is a built in function in python. Why doesn't it work in my code?
-from math import log  
+y = get_UCE_locus('matrix_gen1.data')
+print (y)
 
-def logent(x):  
-    if x <= 0:     
-        return 0  
-    else:  
-        return - x*log(x)  
+###### base frequencies
+def get_bp_freqs(fasta):
+    out = ['A', 'C', 'G', 'T']
+    print (out)
+    for line in SeqIO.parse(fasta, "fasta"):
+        freqs = [line.seq.count(base)*1.0/len(line.seq) for base in ['A', 'C', 'G', 'T']]
+        print(freqs)
+        out.append(freqs)
+    return out
 
-def entropy(lis):   
-    return sum([logent(elem) for elem in lis])
+z = get_bp_freqs("uce_loci.fasta")
+print (z)
 
-for seq in SeqIO.parse("uce_loci.fasta", "fasta"):
-    lisfreq1 = [seq.count(base)*1.0/len(seq) for base in ["A", "C","G","T"]]
-    x = entropy(lisfreq1)
-    print (x)
+###### estimates of entropy per locus
+def logent(x):
+    if x <= 0:
+        return 0
+    else:
+        return -x*log(x)
 
+def UCE_entropy(fasta):
+    out = []
+    for line in SeqIO.parse(fasta, "fasta"):
+        freqs = [line.seq.count(base)*1.0/len(line.seq) for base in ['A', 'C', 'G', 'T']]
+        out.append(freqs)
+        res = sum([logent(elem) for elem in freqs])
+        out.append(res)
+    return out
+
+w = UCE_entropy("uce_loci.fasta")
+print (w)
 
 
