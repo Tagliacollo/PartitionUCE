@@ -3,14 +3,14 @@
 Partition: gen1
 ]
 begin data;
-	dimensions ntax=6 nchar=4;
+	dimensions ntax=6 nchar=12;
 	format datatype=nucleotide missing=? gap=-;
 matrix
-sp_1 TATT
-sp_2 TATT
-sp_3 TATT
-sp_4 TTTT
-sp_5 TTTT
-sp_6 TTTT
+sp_1 TTTAAACCCGGG
+sp_2 TTTAAACCCGGG
+sp_3 TTTAAACCCGGG
+sp_4 TTTAAACCCGGG
+sp_5 TTTAAACCCGGG
+sp_6 TTTAAACCCGGG
 ;
 end;
