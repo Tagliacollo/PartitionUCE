@@ -6,6 +6,12 @@ from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO
 from math import log
 
+def entropy_calc(p):
+    p = p[p!=0] # modify p to include only those elements that are not equal to 0
+    return np.dot(-p,np.log2(p)) # the function returns the entropy result
+
+
+
 ###### read and split partition
 def get_UCEs(matrix):
     aln = Nexus.Nexus()
