@@ -1,10 +1,10 @@
 from Bio.Nexus import Nexus
-from Bio import AlignIO
+from Bio import AlignIO, SeqIO
 import numpy as np
 
 def split_charsets_to_list(matrix):
     '''
-    INPUT: a nexus aligment with charsets
+    INPUT: a nexus alignment with charsets
     OUTPUT: biopython generic aligments, one per charset et
     '''
     dat = Nexus.Nexus()
@@ -21,14 +21,19 @@ def split_charsets_to_list(matrix):
     return aln_dict
 
 
-def bp_freqs_calc(matrix):
-     '''
-    INPUT: biopython generic aligment
-    OUTPUT: 1D array of base frequencies
+def bp_freqs_calc(alignment):
     '''
+    INPUT: biopython generic alignment
+    OUTPUT: 1-D array of base frequencies
+    '''
+    aln = ''
+    for line in alignment:
+        aln += str(line.seq)
+    
+    bp_freqs = np.array([aln.count(base)/len(aln) for base in ['A', 'C', 'G', 'T']])
+    
+    return bp_freqs
 
-
-#
 def entropy_calc(p):
     '''
     INPUT: 1D array of base frequencies
