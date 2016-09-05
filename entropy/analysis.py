@@ -1,6 +1,7 @@
 from functions import *
 from Bio import AlignIO, SeqIO
 import numpy as np
+import pandas as pd
 
 # open alignment
 alignment = AlignIO.read(open('matrix_gen1.data'), "nexus")
@@ -20,3 +21,22 @@ entropy_calc(p1)
 
 p2 = np.array([0.0, 0.0, 0.5, 0.5]) # should be an entropy of 1
 entropy_calc(p2)
+
+
+####### DATA FRAME OF ENTROPIES
+
+uce_dat = split_charsets_to_list('matrix.nex')
+
+aln = uce_dat['gen1'] # TODO loop through each key in the dictionary uce_dat / problem: how to get the index instead of a key name. 
+
+i = 0 
+site_list = []
+while i < aln.get_alignment_length():
+	site = aln[:,i]
+	bp_freqs = np.array([site.count(base)/len(site) for base in ['A', 'C', 'G', 'T']]) # my function bp_freqs_calc is giving me error messagens. I'll work on that. 
+	value = entropy_calc(bp_freqs)
+	site_list.append(value)
+	i = i + 1
+
+df = pd.DataFrame(site_list)
+df.to_csv('uce_dat.csv')
