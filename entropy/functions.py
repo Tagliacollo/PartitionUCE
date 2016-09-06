@@ -22,6 +22,7 @@ def split_charsets_to_list(matrix):
 
 
 def bp_freqs_calc(alignment):
+def bp_freqs_calc(aln):
     '''
     INPUT: biopython generic alignment
     OUTPUT: 1-D array of base frequencies
@@ -31,8 +32,23 @@ def bp_freqs_calc(alignment):
         aln += str(line.seq)
     
     bp_freqs = np.array([aln.count(base)/len(aln) for base in ['A', 'C', 'G', 'T']])
+    one_str = ""
+    for seq in aln:
+        one_str += seq
+
+    seq = one_str.upper()
+
+    A = seq.seq.count('A') 
+    T = seq.seq.count('T')
+    G = seq.seq.count('G')
+    C = seq.seq.count('C')
+
+    sum_count = A + T + G + C
+
+    bp_freqs = np.array([ A/sum_count, T/sum_count, G/sum_count, C/sum_count])
     
     return bp_freqs
+    return (bp_freqs)
 
 def entropy_calc(p):
     '''
