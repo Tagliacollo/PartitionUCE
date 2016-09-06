@@ -14,6 +14,12 @@ print(p)
 e = entropy_calc(p)
 print(e)
 
+# testing new bp_freqs_calc function
+
+p_new = bp_freqs_calc(alignment) # aligment should include 0.25 of each bases
+print (p_new) 
+e_new = entropy_calc(p_new)
+print(e_new)
 
 # test the entropy function
 p1 = np.array([0.25, 0.25, 0.25, 0.25]) # should be an entropy 2
