@@ -39,4 +39,25 @@ while i < aln.get_alignment_length():
 	i = i + 1
 
 df = pd.DataFrame(site_list)
-df.to_csv('uce_dat.csv')
+df.to_csv('uce_dat.csv')# test large datsets
+dat = split_charsets_to_list('Crawford_2012.nex')
+
+uce_dict = {}
+for key in dat:
+
+	aln = dat[key]
+	site_list =[]
+	uce_dict[key] = site_list
+	
+	i = 0 
+		while i < aln.get_alignment_length():
+		site = aln[:,i].replace('-','')
+		bp = np.array([site.count(base)/len(site) for base in ['A', 'C', 'G', 'T']]) # my function bp_freqs_calc isn't working. The problem is the concatenation of each sequence in a long string
+		val = entropy_calc(bp)
+		site_list.append(val)
+		i = i + 1
+
+print(uce_dict)
+
+#df = pd.DataFrame(uce_dict)
+#df.to_csv('uce_dat.csv')
