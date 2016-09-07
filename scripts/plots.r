@@ -20,10 +20,10 @@ g1 + geom_smooth()
 
 # the picture across all UCEs individually
 p2 = ggplot(ent, aes(x = site, y = entropy, group = name))
-p2 + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.5)
+p2 + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.3)
 
 g2 = ggplot(gc, aes(x = site, y = gc, group = name))
-g2 + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.1)
+g2 + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.3)
 
 
 # look at individual UCEs with point data (shows there's not much info on a site-by-site basis)
@@ -34,5 +34,5 @@ for(i in sample(1:length(levels(ent$name)), 10)){
   line <- readline()
 }
 
-  g3 = ggplot(subset(gc, name == "chrz_14545"), aes(x = site, y = gc))
-  g3 + geom_smooth() + geom_point()
+g3 = ggplot(subset(gc, name == "chrz_14545"), aes(x = site, y = gc))
+g3 + geom_smooth() + geom_point()
