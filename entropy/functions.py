@@ -2,6 +2,29 @@ from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO
 import numpy as np
 
+def alignment_entropy(aln):
+    '''
+    input: biopython generic alignment
+    output: entropy
+
+    '''
+    bp_freqs = bp_freqs_calc(aln)
+    entropy = entropy_calc(bp_freqs)
+    return (entropy)
+
+
+def sitewise_entropies(aln):
+
+    entropies = []
+    for i in range(aln.get_alignment_length()):
+
+        site_i = aln[:,i:i+1]
+        ent_i = alignment_entropy(site_i)
+        entropies.append(ent_i)
+
+    return (entropies)
+
+
 def split_charsets_to_list(matrix):
     '''
     INPUT: a nexus alignment with charsets
@@ -40,7 +63,7 @@ def bp_freqs_calc(aln):
 
     sum_count = A + T + G + C
 
-    bp_freqs = np.array([ A/sum_count, T/sum_count, G/sum_count, C/sum_count])
+    bp_freqs = np.array([ A, C, G, T])/float(sum_count)
     
     return (bp_freqs)
 
