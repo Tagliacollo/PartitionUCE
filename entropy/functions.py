@@ -11,6 +11,7 @@ def split_charsets_to_list(matrix):
     dat.read(matrix)
     aln = AlignIO.read(open(matrix), "nexus")
 
+
     # TODO: check that the name has 'UCE' or 'uce' in it.
 
     aln_dict = {}
@@ -21,17 +22,11 @@ def split_charsets_to_list(matrix):
     return aln_dict
 
 
-def bp_freqs_calc(alignment):
 def bp_freqs_calc(aln):
     '''
     INPUT: biopython generic alignment
     OUTPUT: 1-D array of base frequencies
     '''
-    aln = ''
-    for line in alignment:
-        aln += str(line.seq)
-    
-    bp_freqs = np.array([aln.count(base)/len(aln) for base in ['A', 'C', 'G', 'T']])
     one_str = ""
     for seq in aln:
         one_str += seq
@@ -47,8 +42,8 @@ def bp_freqs_calc(aln):
 
     bp_freqs = np.array([ A/sum_count, T/sum_count, G/sum_count, C/sum_count])
     
-    return bp_freqs
     return (bp_freqs)
+
 
 def entropy_calc(p):
     '''
