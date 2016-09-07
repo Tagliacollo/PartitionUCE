@@ -1,5 +1,5 @@
 from Bio.Nexus import Nexus
-from Bio import AlignIO, SeqIO
+from Bio import AlignIO, SeqIO, SeqUtils
 import numpy as np
 import os
 
@@ -74,6 +74,17 @@ def sitewise_entropies(aln):
 
     return (entropies)
 
+def sitewise_gc(aln):
+
+    gc = []
+    for i in range(aln.get_alignment_length()):
+        site_i = aln[:,i]
+        gc_i = SeqUtils.GC(site_i)
+        gc.append(gc_i)
+
+    return (gc)
+
+
 
 def split_charsets_to_list(matrix):
     '''
@@ -86,7 +97,6 @@ def split_charsets_to_list(matrix):
 
 
     # TODO: check that the name has 'UCE' or 'uce' in it.
-
     aln_dict = {}
     for name in dat.charsets:
         sites = dat.charsets[name]
