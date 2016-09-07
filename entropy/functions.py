@@ -1,6 +1,7 @@
 from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO
 import numpy as np
+import os
 
 def write_csv(uce_dict, outfilename, parameter_name):
     '''
@@ -35,6 +36,25 @@ def alignment_entropy(aln):
     bp_freqs = bp_freqs_calc(aln)
     entropy = entropy_calc(bp_freqs)
     return (entropy)
+
+
+def sitewise_TIGER(aln_path, tigger_path):
+    '''
+    input: full path to the alignment, and to tigger binary
+    output: list of tigger rates
+    '''
+
+    os.system("%s %s" %(tigger_path, aln_path))
+    tigger_output = ''.join(aln_path.rstrip("phy"), "tigger")
+
+    with open(tigger_output) as f:
+        lines = f.read().splitlines()
+
+    tiggers = [float(l) for l in lines]
+
+    os.remove(tigger_output)
+
+    return(tiggers)
 
 
 def sitewise_entropies(aln):
