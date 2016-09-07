@@ -38,11 +38,16 @@ def alignment_entropy(aln):
     return (entropy)
 
 
-def sitewise_TIGER(aln_path, tigger_path):
+def sitewise_TIGER(aln, tigger_path):
     '''
-    input: full path to the alignment, and to tigger binary
+    input: biopython generic alignment, and path to tigger binary
     output: list of tigger rates
     '''
+
+    # write alignment as phylip file
+
+    # get path of phylip file
+
 
     os.system("%s %s" %(tigger_path, aln_path))
     tigger_output = ''.join(aln_path.rstrip("phy"), "tigger")
@@ -53,6 +58,7 @@ def sitewise_TIGER(aln_path, tigger_path):
     tiggers = [float(l) for l in lines]
 
     os.remove(tigger_output)
+    os.remove(alignment_file)
 
     return(tiggers)
 

@@ -12,8 +12,6 @@ uce_entropies = {}
 for key in uce_alns:
 	uce_entropies[key] = sitewise_entropies(uce_alns[key])
 	
-
-
 # write csv
 write_csv(uce_entropies, 'Crawford_2012.csv', 'entropy')
 
