@@ -13,7 +13,21 @@ for key in uce_alns:
 	uce_entropies[key] = sitewise_entropies(uce_alns[key])
 	
 
-df = pd.DataFrame(uce_entropies['chr20_5193'], )
-df.to_csv('uce_dat.csv')
+# write csv
+outfile = open('Crawford_2012.csv', 'w')
+outfile.write("name,site,entropy\n")
+for key in uce_entropies:
+	ent = uce_entropies[key]
+	print(key)
+	# define middle site as zero
+	middle = int(float(len(ent)) / 2.0)
+	sites = np.array(range(len(ent))) - middle
 
+	names = [key] * len(ent)
+
+	# write file
+	for i in range(len(ent)):
+		outfile.write("%s,%d,%f\n" %(names[i], sites[i], ent[i])
+
+	outfile.close()
 
