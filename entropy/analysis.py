@@ -21,6 +21,8 @@ print (p_new)
 e_new = entropy_calc(p_new)
 print(e_new)
 
+
+
 # test the entropy function
 p1 = np.array([0.25, 0.25, 0.25, 0.25]) # should be an entropy 2
 entropy_calc(p1)
@@ -65,11 +67,7 @@ for key in dat:
 		site_list.append(val)
 		i = i + 1
 
-print(uce_dict)
-
-#df = pd.DataFrame(uce_dict)
-#df.to_csv('uce_dat.csv')
-
-
+df = pd.DataFrame(uce_dict['chr20_5193'], )
+df.to_csv('uce_dat.csv')
 
 
