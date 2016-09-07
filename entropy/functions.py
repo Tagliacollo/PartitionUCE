@@ -2,6 +2,30 @@ from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO
 import numpy as np
 
+def write_csv(uce_dict, outfilename, parameter_name):
+    '''
+    write a csv file of a uce dictionsary
+    where the keys are the names
+    and the values are lists of something like entropies
+    '''
+    outfile = open(outfilename, 'w')
+    outfile.write("name,site,%s\n" %(parameter_name))
+    for key in uce_dict:
+        ent = uce_dict[key]
+
+        # define middle site as zero
+        middle = int(float(len(ent)) / 2.0)
+        sites = np.array(range(len(ent))) - middle
+
+        names = [key] * len(ent)
+
+        # write that UCE to file
+        for i in range(len(ent)):
+            outfile.write("%s,%d,%f\n" %(names[i], sites[i], ent[i]))
+
+    outfile.close()
+
+
 def alignment_entropy(aln):
     '''
     input: biopython generic alignment
