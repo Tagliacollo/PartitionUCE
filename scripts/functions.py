@@ -2,6 +2,7 @@ from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO, SeqUtils
 import numpy as np
 import os
+from glob import glob
 
 def write_csv(uce_dict, outfilename, parameter_name):
     '''
@@ -137,3 +138,18 @@ def entropy_calc(p):
     '''
     p = p[p!=0] # modify p to include only those elements that are not equal to 0
     return np.dot(-p,np.log2(p)) # the function returns the entropy result
+
+
+def nexus_concat(dataset_path):
+    '''
+    INPUT: The path where all nexus files are allocated.
+    ex. os.chdir('/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Faircloth_2013')
+
+    OUTPUT: nexus supermatrix already including charsets 
+    '''
+
+    nexus_list = glob('*.nex')
+    mtx = [(nex, Nexus.Nexus(nex)) for nex in nexus_list]
+    supermtx = Nexus.combine(mtx)
+
+    return supermtx
