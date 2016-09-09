@@ -6,3 +6,5 @@ entropy/.DS_Store
 .DS_Store
 
 entropy/functions.pyc
+
+scripts/__pycache__/functions.cpython-35.pyc
