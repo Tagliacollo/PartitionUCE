@@ -4,11 +4,18 @@ import numpy as np
 from pathlib2 import Path
 import sys
 
+
 datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Crawford_2012.nex"]
+
+#			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Faircloth_2013.nex",
+#			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/McCormack_2013.nex",
+#			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Meiklejohn_2016.nex"]
+
 tigger_path = "/Users/roblanfear/Documents/github/PartitionUCE/programs/tigger"
 
 for dataset_path in datasets:
 
+	print ("\n")
 	print (dataset_path)
 
 	# 1. Split alignment into dict of charsets
