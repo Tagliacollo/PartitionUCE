@@ -1,7 +1,7 @@
 from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO, SeqUtils
 import numpy as np
-import os
+import os, subprocess
 from glob import glob
 
 def write_csv(uce_dict, outfilename, parameter_name):
@@ -63,7 +63,7 @@ def sitewise_TIGER(aln, tigger_path):
 
     write_phylip(aln, aln_path)    
 
-    os.system("%s %s" %(tigger_path, aln_path))
+    subprocess.call([tigger_path, aln_path], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
     tigger_output = ''.join([aln_path.rstrip("phy"), "tigger"])
 
     with open(tigger_output) as f:
