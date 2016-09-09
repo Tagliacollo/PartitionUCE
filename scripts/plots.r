@@ -9,9 +9,9 @@ load.dataset = function(dataset_name){
   tig = read.csv(paste(base_file, dataset_name, "_tiger.csv", sep = ""))
   gc  = read.csv(paste(base_file, dataset_name, "_gc.csv", sep = ""))
                                 
-  ent$type = "entropy"
-  gc$type = "gc"
-  tig$type = "tiger"
+  ent$type = "Entropy"
+  gc$type = "%GC"
+  tig$type = "TIGER"
   
   dataset = rbind(ent, gc, tig)
 
@@ -26,11 +26,13 @@ Meiklejohn = load.dataset("Meiklejohn_2016")
 Meiklejohn$dataset = "Meiklejohn_2016"
 Crawford = load.dataset("Crawford_2012")
 Crawford$dataset = "Crawford_2012"
+Moyle = load.dataset("Moyle_2016")
+Moyle$dataset = "Moyle_2016"
 
 
 
 # bind it all up and reorder the factor
-data = rbind(Faircloth, McCormack, Meiklejohn)
+data = rbind(Faircloth, McCormack, Meiklejohn, Crawford, Moyle)
 
 # the picture acros all UCEs together
 p1 = ggplot(data, aes(x = site, y = value))
