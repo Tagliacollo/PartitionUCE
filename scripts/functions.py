@@ -1,7 +1,7 @@
 from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO, SeqUtils
 import numpy as np
-import os
+import os, subprocess
 from glob import glob
 
 def write_csv(uce_dict, outfilename, parameter_name):
@@ -38,6 +38,18 @@ def alignment_entropy(aln):
     entropy = entropy_calc(bp_freqs)
     return (entropy)
 
+def write_phylip(aln, aln_path):
+    '''
+    I look forward to the day I don't have to write
+    custom alignment export functions
+    '''
+    aln_handle = open(aln_path, "w")
+    header = "%d\t%d\n" %(len(aln), aln.get_alignment_length())
+    aln_handle.write(header)
+
+    for s in aln:
+        aln_handle.write("%s    %s\n" %(s.name, str(s.seq.upper())))        
+    aln_handle.close()
 
 def sitewise_TIGER(aln, tigger_path):
     '''
@@ -45,21 +57,23 @@ def sitewise_TIGER(aln, tigger_path):
     output: list of tigger rates
     '''
 
-    # write alignment as phylip file
+    # we'll use this as the temp dir...
+    tigger_dir = os.path.dirname(tigger_path)
+    aln_path = os.path.join(tigger_dir, "aln.phy")
 
-    # get path of phylip file
+    write_phylip(aln, aln_path)    
 
-
-    os.system("%s %s" %(tigger_path, aln_path))
-    tigger_output = ''.join(aln_path.rstrip("phy"), "tigger")
+    subprocess.call([tigger_path, aln_path], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+    tigger_output = ''.join([aln_path.rstrip("phy"), "tigger"])
 
     with open(tigger_output) as f:
         lines = f.read().splitlines()
 
     tiggers = [float(l) for l in lines]
 
+    # clean up
     os.remove(tigger_output)
-    os.remove(alignment_file)
+    os.remove(aln_path)
 
     return(tiggers)
 
