@@ -42,15 +42,3 @@ p1 + geom_smooth() + facet_grid(type~dataset, scales = "free")
 p2 = ggplot(data, aes(x = site, y = value, group = name))
 p2 + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.2) + facet_grid(type~dataset, scales = 'free')
 
-
-
-# look at individual UCEs with point data (shows there's not much info on a site-by-site basis)
-for(i in sample(1:length(levels(ent$name)), 10)){
-  p3 = ggplot(subset(ent, name == levels(ent$name)[i]), aes(x = site, y = entropy))
-  plot(p3 + geom_smooth() + geom_point())
-  cat ("Press [enter] to continue")
-  line <- readline()
-}
-
-g3 = ggplot(subset(gc, name == "chrz_14545"), aes(x = site, y = gc))
-g3 + geom_smooth() + geom_point()
