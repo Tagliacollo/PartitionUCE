@@ -3,6 +3,8 @@ from Bio import AlignIO, SeqIO, SeqUtils
 import numpy as np
 import os, subprocess
 from glob import glob
+from itertools import combinations
+
 
 def write_csv(uce_dict, outfilename, parameter_name):
     '''
@@ -167,3 +169,34 @@ def nexus_concat(dataset_path):
     supermtx = Nexus.combine(mtx)
 
     return supermtx
+
+
+def get_sse(metric):
+    '''
+    input: list of values
+    output: sum of squared errors
+    '''
+    sse = np.sum((metric - np.mean(metric))**2)
+
+    return sse
+
+
+def get_all_wd(aln):
+    '''
+    Input: Bio.Align.MultipleSeqAlignment
+    Output: list of tuples [ (start : end) ]
+    '''
+    aln_size = aln.get_alignment_length()
+    res = list(combinations(range(aln_size), 2))
+
+    # exclude wd that gives only two partition
+    num = [ val for val in res if val[0] != 0 and val[1] != (aln_size) ]
+    
+    # set a minimum wd size (in this case 5)
+    out = [ i for i in num if i[1] - i[0] > 5]
+
+    return out
+
+
+
+
