@@ -176,24 +176,24 @@ def get_sse(metric):
     input: list of values
     output: sum of squared errors
     '''
-    sse = np.sum((metric - np.mean(metric))**2)
-
-    return sse
+    return np.sum((metric - np.mean(metric))**2)
 
 
-def get_all_wd(aln):
+def get_all_wd(aln, k):
     '''
-    Input: Bio.Align.MultipleSeqAlignment
+    Input: MultipleSeqAlignment
     Output: list of tuples [ (start : end) ]
+    k = minimum wd size 
     '''
+
     aln_size = aln.get_alignment_length()
     res = list(combinations(range(aln_size), 2))
 
     # exclude wd that gives only two partition
     num = [ val for val in res if val[0] != 0 and val[1] != (aln_size) ]
     
-    # set a minimum wd size (in this case 5)
-    out = [ i for i in num if i[1] - i[0] > 5]
+        # set a minimum wd size (k)
+    out = [ i for i in num if i[1] - i[0] > k ]
 
     return out
 
