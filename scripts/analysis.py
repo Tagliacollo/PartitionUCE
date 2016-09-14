@@ -14,6 +14,8 @@ datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Moyle_2016
 
 tigger_path = "/Users/roblanfear/Documents/github/PartitionUCE/programs/tigger"
 
+#### Calculate statistics on all datasets #####
+
 for dataset_path in datasets:
 
 	print ("\n")
@@ -47,3 +49,6 @@ for dataset_path in datasets:
 	write_csv(uce_gc, "%s_gc.csv" %(output_file_base), 'value')
 	write_csv(uce_tiger, "%s_tiger.csv" %(output_file_base), 'value')
 
+
+# find the best window position
+uce_entropy_windows = get_best_window(uce_entropies)

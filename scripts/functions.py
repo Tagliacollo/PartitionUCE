@@ -227,5 +227,14 @@ def get_sum_sse_uce_partition(tuple_list, metric):
 
     return wd_values
 
+def get_best_window(uce_dict):
+    '''
+    input: a dict of UCEs, where the keys are the names and the 
+           values are lists of some metric
+    output: a dict with UCE names as keys, and the best 
+            tuple as the value
+    '''
+
+    
 
 
