@@ -1,5 +1,6 @@
 from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO, SeqUtils
+import Bio
 import numpy as np
 import os, subprocess
 from glob import glob
@@ -176,7 +177,9 @@ def get_sse(metric):
     input: list of values
     output: sum of squared errors
     '''
-    return np.sum((metric - np.mean(metric))**2)
+    sse = np.sum((metric - np.mean(metric))**2)
+
+    return sse
 
 
 def get_all_wd(aln, k):
@@ -185,17 +188,25 @@ def get_all_wd(aln, k):
     Output: list of tuples [ (start : end) ]
     k = minimum wd size 
     '''
-
     aln_size = aln.get_alignment_length()
-    res = list(combinations(range(aln_size), 2))
+    
+    if type(aln) != Bio.Align.MultipleSeqAlignment:
+        print ('alignment has to be of the class Bio.Align.MultipleSeqAlignment')
 
-    # exclude wd that gives only two partition
-    num = [ val for val in res if val[0] != 0 and val[1] != (aln_size) ]
+    elif aln_size <= 1:
+        print ('alignment is too small: %i bp' %(aln_size))
+
+    else: 
+        res = list(combinations(range(aln_size), 2))
+
+        # exclude wd that gives only two partition
+        num = [ val for val in res if val[0] != 0 and val[1] != (aln_size) ]
     
         # set a minimum wd size (k)
-    out = [ i for i in num if i[1] - i[0] > k ]
+        out = [ i for i in num if i[1] - i[0] > k ]
+#       out = (i for i in num if i[1] - i[0] > k)   generator?
 
-    return out
+        return out
 
 
 
