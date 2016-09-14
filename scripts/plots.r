@@ -44,3 +44,11 @@ p1 + geom_smooth() + facet_grid(type~dataset, scales = "free")
 p2 = ggplot(data, aes(x = site, y = value, group = name))
 p2 + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.2) + facet_grid(type~dataset, scales = 'free')
 
+
+# we can look at individual UCEs like this:
+dataset = Meiklejohn
+names = levels(dataset$name)
+one_uce = subset(dataset, name == sample(names, 1))
+p3 = ggplot(one_uce, aes(x = site, y = value))
+p3 + geom_smooth() + geom_point() + facet_wrap(~type, ncol = 1, scales = "free")
+
