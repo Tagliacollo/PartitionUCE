@@ -28,11 +28,13 @@ Crawford = load.dataset("Crawford_2012")
 Crawford$dataset = "Crawford_2012"
 Moyle = load.dataset("Moyle_2016")
 Moyle$dataset = "Moyle_2016"
+Smith = load.dataset("Smith_2014")
+Smith$dataset = "Smith_2014"
 
 
 
 # bind it all up and reorder the factor
-data = rbind(Faircloth, McCormack, Meiklejohn, Crawford, Moyle)
+data = rbind(Faircloth, McCormack, Meiklejohn, Crawford, Moyle, Smith)
 
 # the picture acros all UCEs together
 p1 = ggplot(data, aes(x = site, y = value))
