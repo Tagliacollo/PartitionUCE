@@ -5,8 +5,9 @@ from pathlib2 import Path
 import sys
 
 
-datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Moyle_2016.nex"]
+datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Smith_2014.nex"]
 
+#			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Moyle_2016.nex"
 #			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Crawford_2012.nex",
 #			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Faircloth_2013.nex",
 #			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/McCormack_2013.nex",
