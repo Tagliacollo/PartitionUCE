@@ -218,8 +218,8 @@ def get_sum_sse_uce_partition(tuple_list, metric):
     for dat in tuple_list:
 
         wd_left = get_sse(metric[  : dat[0]])
-        wd_core = get_sse(metric [ dat[0] : dat[1] ])
-        wd_right = get_sse(metric [ dat[1] : ])
+        wd_core = get_sse(metric[ dat[0] : dat[1] ])
+        wd_right = get_sse(metric[ dat[1] : ])
 
         res = float(wd_left + wd_core + wd_right)
     
