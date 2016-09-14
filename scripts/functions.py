@@ -204,10 +204,28 @@ def get_all_wd(aln, k):
     
         # set a minimum wd size (k)
         out = [ i for i in num if i[1] - i[0] > k ]
-#       out = (i for i in num if i[1] - i[0] > k)   generator?
 
         return out
 
+def get_sum_sse_uce_partition(tuple_list, metric):
+    '''
+    input: 
+        1) a tuple list from get_all_wd
+        2) a list including values of a metric (eg. entropies) 
+    output: list of sse values for each partitioning scheme
+    '''
+    wd_values = []
+    for dat in tuple_list:
+
+        wd_left = get_sse(metric[  : dat[0]])
+        wd_core = get_sse(metric [ dat[0] : dat[1] ])
+        wd_right = get_sse(metric [ dat[1] : ])
+
+        res = float(wd_left + wd_core + wd_right)
+    
+        wd_values.append(res)
+
+    return wd_values
 
 
 
