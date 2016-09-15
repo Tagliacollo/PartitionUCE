@@ -5,6 +5,7 @@ import numpy as np
 import os, subprocess
 from glob import glob
 from itertools import combinations
+from itertools import islice
 
 
 def write_csv(uce_dict, outfilename, parameter_name):
@@ -198,30 +199,39 @@ def get_sse(metric):
     return sse
 
 
-def get_all_wd(aln, k):
+def get_all_wd(list_of_values):
     '''
     Input: MultipleSeqAlignment
     Output: list of tuples [ (start : end) ]
     k = minimum wd size 
     '''
-    aln_size = aln.get_alignment_length()
-    
-    if type(aln) != Bio.Align.MultipleSeqAlignment:
-        print ('alignment has to be of the class Bio.Align.MultipleSeqAlignment')
 
-    elif aln_size <= 1:
-        print ('alignment is too small: %i bp' %(aln_size))
+    minimum_window_size = 50
+    length = len(list_of_values)
 
-    else: 
-        res = list(combinations(range(aln_size), 2))
+    keep_windows = []
 
-        # exclude wd that gives only two partition
-        num = [ val for val in res if val[0] != 0 and val[1] != (aln_size) ]
-    
-        # set a minimum wd size (k)
-        out = [ i for i in num if i[1] - i[0] > k ]
+    # some lists of values are too small to split
+    if length < 2*minimum_window_size:
+        return ([(0, length)])
 
-        return out
+    for window in combinations(range(length), 2):
+        start = window[0]
+        stop = window[1]
+
+        # left flank size
+        if start < minimum_window_size/2:
+            continue
+        # right flank size
+        if (length - stop) < minimum_window_size/2:
+            continue
+        # central window
+        if (stop - start) < minimum_window_size:
+            continue
+
+        keep_windows.append(window)
+
+    return (keep_windows)
 
 def get_sum_sse_uce_partition(tuple_list, metric):
     '''
