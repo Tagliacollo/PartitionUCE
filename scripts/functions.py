@@ -243,7 +243,23 @@ def get_sum_sse_uce_partition(tuple_list, metric):
 
     return wd_values
 
-def get_best_window(uce_dict):
+def get_best_window(all_windows, values):
+
+    all_sses = get_sum_sse_uce_partition(all_windows, values)
+
+    min_sse = min(all_sses)
+    
+    # we could be smart and get all occurrences, then choose wisely
+    # like this
+    #min_indices = [i for i, x in enumerate(all_sses) if x == min_sse]
+
+    # This just gets the first occurrence of the minimum value.
+    best_window = all_windows[all_sses.index(min_sse)]
+
+    return best_window
+
+
+def get_best_windows(uce_dict):
     '''
     input: a dict of UCEs, where the keys are the names and the 
            values are lists of some metric
@@ -251,6 +267,20 @@ def get_best_window(uce_dict):
             tuple as the value
     '''
 
-    
+    best_windows = {}
+    for key in uce_dict:
+        values = uce_dict[key]
+        all_windows = get_all_wd(values)
+        best_window = get_best_window(all_windows, values)
+        best_windows[key] = best_window
+        print(key, len(values), best_window)
+
+    return(best_windows)
+
+
+def take(n, iterable):
+    # taken from: http://stackoverflow.com/questions/7971618/python-return-first-n-keyvalue-pairs-from-dict
+    "Return first n items of the iterable as a list"
+    return list(islice(iterable, n))
 
 
