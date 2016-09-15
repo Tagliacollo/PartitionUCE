@@ -31,6 +31,22 @@ def write_csv(uce_dict, outfilename, parameter_name):
     outfile.close()
 
 
+def write_csv_windows(uce_dict, outfilename):
+    '''
+    write a csv file of a uce dictionsary
+    where the keys are the names
+    and the values are lists of something like entropies
+    '''
+    outfile = open(outfilename, 'w')
+    outfile.write("name,start,stop\n")
+    for key in uce_dict:
+        window_tuple = uce_dict[key]
+
+        # write that UCE to file
+        outfile.write("%s,%d,%d\n" %(key, window_tuple[0], window_tuple[1]))
+
+    outfile.close()
+
 def alignment_entropy(aln):
     '''
     input: biopython generic alignment
