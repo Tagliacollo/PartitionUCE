@@ -5,8 +5,10 @@ from pathlib2 import Path
 import sys
 
 
-datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Smith_2014.nex"]
+datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Moyle_2016.nex"]
 
+
+#			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Smith_2014.nex"
 #			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Moyle_2016.nex"
 #			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Crawford_2012.nex",
 #			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Faircloth_2013.nex",
@@ -16,7 +18,6 @@ datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Smith_2014
 tigger_path = "/Users/roblanfear/Documents/github/PartitionUCE/programs/tigger"
 
 #### Calculate statistics on all datasets #####
-
 for dataset_path in datasets:
 
 	print ("\n")
@@ -41,6 +42,12 @@ for dataset_path in datasets:
 		uce_gc[key] 		= sitewise_gc(uce_alns[key])	
 		uce_tiger[key] 		= sitewise_TIGER(uce_alns[key], tigger_path)	
 
+
+	# now calculate windows
+	uce_entropy_windows = get_best_windows(uce_entropies)
+	uce_gc_windows = get_best_windows(uce_gc)
+
+
 	# write csv files
 	repo_directory = Path(dataset_path).parents[1]
 	processed_data_dir = os.path.join(str(repo_directory), "processed_data")
@@ -50,6 +57,5 @@ for dataset_path in datasets:
 	write_csv(uce_gc, "%s_gc.csv" %(output_file_base), 'value')
 	write_csv(uce_tiger, "%s_tiger.csv" %(output_file_base), 'value')
 
-
-# find the best window position
-uce_entropy_windows = get_best_window(uce_entropies)
+	write_csv_windows(uce_entropy_windows, "%s_entropy_windows.csv" %(output_file_base))
+	write_csv_windows(uce_gc_windows, "%s_gc_windows.csv" %(output_file_base))
