@@ -5,7 +5,7 @@ from pathlib2 import Path
 import sys
 
 
-datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Moyle_2016.nex"]
+datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Crawford_2012.nex"]
 
 
 #			"/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Smith_2014.nex"
@@ -30,7 +30,7 @@ for dataset_path in datasets:
 	# 2. Set up empty dicts for results
 	uce_entropies   = {}
 	uce_gc 			= {}
-	uce_tiger 		= {}
+	#uce_tiger 		= {}
 	for i, key in enumerate(uce_alns):
 
 		# progress
@@ -40,7 +40,7 @@ for dataset_path in datasets:
 
 		uce_entropies[key] 	= sitewise_entropies(uce_alns[key])	
 		uce_gc[key] 		= sitewise_gc(uce_alns[key])	
-		uce_tiger[key] 		= sitewise_TIGER(uce_alns[key], tigger_path)	
+		#uce_tiger[key] 		= sitewise_TIGER(uce_alns[key], tigger_path)	
 
 
 	# now calculate windows
@@ -55,7 +55,7 @@ for dataset_path in datasets:
 
 	write_csv(uce_entropies, "%s_entropy.csv" %(output_file_base), 'value')
 	write_csv(uce_gc, "%s_gc.csv" %(output_file_base), 'value')
-	write_csv(uce_tiger, "%s_tiger.csv" %(output_file_base), 'value')
+	#write_csv(uce_tiger, "%s_tiger.csv" %(output_file_base), 'value')
 
 	write_csv_windows(uce_entropy_windows, "%s_entropy_windows.csv" %(output_file_base))
 	write_csv_windows(uce_gc_windows, "%s_gc_windows.csv" %(output_file_base))
