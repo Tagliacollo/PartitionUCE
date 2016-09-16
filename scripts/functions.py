@@ -220,10 +220,10 @@ def get_all_wd(list_of_values):
         stop = window[1]
 
         # left flank size
-        if start < minimum_window_size/2:
+        if start < minimum_window_size:
             continue
         # right flank size
-        if (length - stop) < minimum_window_size/2:
+        if (length - stop) < minimum_window_size:
             continue
         # central window
         if (stop - start) < minimum_window_size:
