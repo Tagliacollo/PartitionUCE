@@ -119,6 +119,14 @@ def sitewise_gc(aln):
 
     return (gc)
 
+def sum_entropies_gc(list_entropies, list_gc):
+
+    norm_entropies = np.array([list_entropies])/max(list_entropies)
+    norm_gc = np.array([list_gc])/max(list_gc)
+
+    sum_norm = norm_entropies + norm_gc
+
+    return (sum_norm)
 
 
 def split_charsets_to_list(matrix):
