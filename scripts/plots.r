@@ -64,12 +64,17 @@ p2 +  geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.2) +
 
 
 # we can look at individual UCEs like this:
-dataset = Smith
+dataset = Crawford
 names = levels(dataset$name)
 one_uce = subset(dataset, name == sample(names, 1))
-p3 = ggplot(one_uce, aes(x = site, y = value))
+p3 = ggplot(one_uce, aes(x = site, y = value, color = region))
 p3 + geom_smooth() + geom_point() + facet_wrap(~type, ncol = 1, scales = "free")
 
 
+# we can look at the lengths of the windows like this
+data$length = data$stop - data$start
+lengths = ddply(data, .(name, dataset, type), summarise, length = max(length))
+p4 = ggplot(lengths, aes(x = length))
+p4 + geom_histogram() + facet_grid(type~dataset, scales = "free")
 
 
