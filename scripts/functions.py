@@ -119,11 +119,8 @@ def sitewise_gc(aln):
 
     return (gc)
 
-def sum_entropies_gc(list_entropies, list_gc):
 def sitewise_entropies_and_gc(aln):
 
-    norm_entropies = np.array([list_entropies])/max(list_entropies)
-    norm_gc = np.array([list_gc])/max(list_gc)
     entropies = np.array([sitewise_entropies(aln)])
     gc = np.array([sitewise_gc(aln)])
 
