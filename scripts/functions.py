@@ -90,24 +90,64 @@ def get_best_window(metrics, windows):
             each row is some metric appropriately normalised
     '''
 
-    #TODO
-
     #1. Mak an empty array:
     #   columns = number of things in windows
     #   rows = number of rows in metrics
+    all_sses = np.empty((metrics.shape[0], len(windows) ))
+    all_sses[:] = np.NAN # safety first
 
     # 2. Get SSE for each cell in array
+    for i, window in enumerate(windows):
+        # get SSE's for a given window
+        all_sses[:,i] = get_sses(metrics, window)
 
     # 3. Sum each column of array -> 1D array
+    all_sses = np.sum(all_sses, 0)
 
     # 4. get index of minimum value in 1D array
+    best_index = np.argmin(all_sses)
 
     # 5. best window is windows[index]
+    best_window = windows[i]
 
     return best_window
 
+def get_sses(metrics, window):
+    '''
+    input: metrics is an array where each row is a metric
+            and each column is a site
+           window gives slice instructions for the array
+    output: an array with one col and the same number of 
+            rows as metrics, where each entry is the SSE
+    '''
+
+    sses = np.apply_along_axis(get_sse, 1, metrics, window)
+
+    return(sses)
 
 
+def get_sse(metric, window):
+    '''
+    slice the 1D array metric, add up the SSES
+    '''
+
+    left  = sse(metric[ : window[0]])
+    core  = sse(metric[window[0] : window[1]])
+    right = sse(metric[window[1] : ])
+
+    res = np.sum(left + core + right)
+
+    return(res)
+
+
+def sse(metric):
+    '''
+    input: list of values
+    output: sum of squared errors
+    '''
+    sse = np.sum((metric - np.mean(metric))**2)
+
+    return sse
 
 
 ### OLD STUFF ###
@@ -343,14 +383,6 @@ def nexus_concat(dataset_path):
     return supermtx
 
 
-def get_sse(metric):
-    '''
-    input: list of values
-    output: sum of squared errors
-    '''
-    sse = np.sum((metric - np.mean(metric))**2)
-
-    return sse
 
 
 def get_all_wd(list_of_values):
