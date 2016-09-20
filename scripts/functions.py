@@ -119,6 +119,19 @@ def sitewise_gc(aln):
 
     return (gc)
 
+def ssewise_entropy_gc(aln):
+
+    entropy = np.array([sitewise_entropies(aln)])/2
+    gc      = np.array([sitewise_gc(aln)])/100
+
+    tuple_list = get_all_wd(entropy[0]) # It could be 'gc[0]' too. 
+
+    sse_entr = get_sum_sse_uce_partition(tuple_list, entropy[0])
+    sse_gc = get_sum_sse_uce_partition(tuple_list, gc[0])
+    sum_sse = np.array([sse_entr]) + np.array([sse_gc])
+
+    return sum_sse
+
 
 def split_charsets_to_list(matrix):
     '''
