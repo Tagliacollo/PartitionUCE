@@ -8,6 +8,183 @@ from itertools import combinations
 from itertools import islice
 
 
+def process_dataset(dataset_path, metrics, outfilename):
+    '''
+    input: dataset_path: path to a nexus alignment with UCE charsets
+           metrics: a list of 'gc', 'entropy' or both
+
+    output: csv files written to disk
+    '''
+    outfile = open(outfilename, 'w')
+    outfile.write("name,uce_site,aln_site,window_start,window_stop,%s\n" %(','.join(metrics)))
+    outfile.close()
+
+    dat = Nexus.Nexus()
+    dat.read(dataset_path)
+    aln = AlignIO.read(open(dataset_path), "nexus")
+
+    for name in dat.charsets:
+        sites = dat.charsets[name]
+        start = min(sites)
+        stop = max(sites) + 1
+        # slice the alignment to get the UCE
+        uce_aln = aln[:, start:stop]
+
+        best_window, metric_array = process_uce(uce_aln, metrics)
+
+        write_csvs(best_window, metric_array, sites, name, outfile)
+
+def write_csvs(best_window, metrics, aln_sites, name, outfile):
+
+    N = len(aln_sites)
+    middle = int(float(N) / 2.0)
+    uce_sites = np.array(range(N)) - middle
+
+    outfile = open(outfilename, 'a')
+
+    names = [name]*N
+    window_start = [best_window[0]]*N
+    window_stop = [best_window[1]]*N
+    metrics = metrics.tolist()
+
+    all_info = [names, uce_sites, aln_sites, window_start, window_stop]
+
+    for m in metrics:
+        all_info.append(m)
+
+    all_info = zip(*all_info)
+
+    for i in all_info:
+        line = [str(thing) for thing in i]
+        line = ','.join(line)
+        outfile.write(line)
+        outfile.write("\n")
+    outfile.close()
+
+
+def process_uce(aln, metrics):
+        
+    windows = get_all_windows(aln)
+    
+    entropy = sitewise_entropies(aln, weight = 1)
+    gc      = sitewise_gc(aln, weight = 1)
+
+    if metrics == ['entropy', 'gc']:
+        metrics = np.array([entropy, gc])
+    elif metrics == ['entropy']:
+        metrics = np.array([entropy])
+    elif metrics == ['gc']:
+        metrics = np.array([gc])
+    else:
+        print("Didn't understand your metrics")
+        raise ValueError
+
+    best_window = get_best_window(metrics, windows)
+
+    return(best_window, metrics)
+
+def get_best_window(metrics, windows):
+    '''
+    values: an a n-dimensional numpy array, 
+            each column is a site in the alignment
+            each row is some metric appropriately normalised
+    '''
+
+    #1. Mak an empty array:
+    #   columns = number of things in windows
+    #   rows = number of rows in metrics
+    all_sses = np.empty((metrics.shape[0], len(windows) ))
+    all_sses[:] = np.NAN # safety first
+
+    # 2. Get SSE for each cell in array
+    for i, window in enumerate(windows):
+        # get SSE's for a given window
+        all_sses[:,i] = get_sses(metrics, window)
+
+    # 3. Sum each column of array -> 1D array
+    all_sses = np.sum(all_sses, 0)
+
+    # 4. get index of minimum value in 1D array
+    best_index = np.argmin(all_sses)
+
+    # 5. best window is windows[index]
+    best_window = windows[i]
+
+    return best_window
+
+def get_sses(metrics, window):
+    '''
+    input: metrics is an array where each row is a metric
+            and each column is a site
+           window gives slice instructions for the array
+    output: an array with one col and the same number of 
+            rows as metrics, where each entry is the SSE
+    '''
+
+    sses = np.apply_along_axis(get_sse, 1, metrics, window)
+
+    return(sses)
+
+
+def get_sse(metric, window):
+    '''
+    slice the 1D array metric, add up the SSES
+    '''
+
+    left  = sse(metric[ : window[0]])
+    core  = sse(metric[window[0] : window[1]])
+    right = sse(metric[window[1] : ])
+
+    res = np.sum(left + core + right)
+
+    return(res)
+
+
+def sse(metric):
+    '''
+    input: list of values
+    output: sum of squared errors
+    '''
+    sse = np.sum((metric - np.mean(metric))**2)
+
+    return sse
+
+
+### OLD STUFF ###
+
+def get_all_windows(aln, minimum_window_size=50):
+    '''
+    Input: aln: multiple sequence alignment
+        minimum_window_size: smallest allowable window 
+    Output: list of tuples [ (start : end) ]
+    '''
+
+    minimum_window_size = 50
+    length = aln.get_alignment_length()
+
+    keep_windows = []
+
+    if length < 3*minimum_window_size:
+        # some things can't be split
+        return ([(0, length)])
+
+    for window in combinations(range(length), 2):
+        start = window[0]
+        stop = window[1]
+
+        if start < minimum_window_size:
+            continue
+        if (length - stop) < minimum_window_size:
+            continue
+        if (stop - start) < minimum_window_size:
+            continue
+
+        keep_windows.append(window)
+
+    return (keep_windows)
+
+
+
 def write_csv(uce_dict, outfilename, parameter_name):
     '''
     write a csv file of a uce dictionsary
@@ -98,7 +275,7 @@ def sitewise_TIGER(aln, tigger_path):
     return(tiggers)
 
 
-def sitewise_entropies(aln):
+def sitewise_entropies(aln, weight):
 
     entropies = []
     for i in range(aln.get_alignment_length()):
@@ -107,15 +284,20 @@ def sitewise_entropies(aln):
         ent_i = alignment_entropy(site_i)
         entropies.append(ent_i)
 
+    # normalise and weight
+    entropies = np.array(entropies)*weight/2.0
+
     return (entropies)
 
-def sitewise_gc(aln):
+def sitewise_gc(aln, weight):
 
     gc = []
     for i in range(aln.get_alignment_length()):
         site_i = aln[:,i]
         gc_i = SeqUtils.GC(site_i)
         gc.append(gc_i)
+
+    gc = np.array(gc)*weight/100.0
 
     return (gc)
 
@@ -201,14 +383,6 @@ def nexus_concat(dataset_path):
     return supermtx
 
 
-def get_sse(metric):
-    '''
-    input: list of values
-    output: sum of squared errors
-    '''
-    sse = np.sum((metric - np.mean(metric))**2)
-
-    return sse
 
 
 def get_all_wd(list_of_values):
