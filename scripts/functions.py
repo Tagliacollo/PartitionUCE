@@ -8,11 +8,11 @@ from itertools import combinations
 from itertools import islice
 
 
-def process_dataset(dataset_path, metrics, outfilename):
+def process_dataset(dataset_path, metrics, weights, outfilename):
     '''
     input: dataset_path: path to a nexus alignment with UCE charsets
            metrics: a list of 'gc', 'entropy' or both
-
+           weights: a 1D np.array with weights for entropy, gc, multi *in that order*
     output: csv files written to disk
     '''
     outfile = open(outfilename, 'w')
@@ -24,17 +24,18 @@ def process_dataset(dataset_path, metrics, outfilename):
     aln = AlignIO.read(open(dataset_path), "nexus")
 
     for name in dat.charsets:
+        print name
         sites = dat.charsets[name]
         start = min(sites)
         stop = max(sites) + 1
         # slice the alignment to get the UCE
         uce_aln = aln[:, start:stop]
 
-        best_window, metric_array = process_uce(uce_aln, metrics)
+        best_window, metric_array = process_uce(uce_aln, metrics, weights)
 
-        write_csvs(best_window, metric_array, sites, name, outfile)
+        write_csvs(best_window, metric_array, sites, name, outfilename)
 
-def write_csvs(best_window, metrics, aln_sites, name, outfile):
+def write_csvs(best_window, metrics, aln_sites, name, outfilename):
 
     N = len(aln_sites)
     middle = int(float(N) / 2.0)
@@ -66,18 +67,11 @@ def process_uce(aln, metrics):
         
     windows = get_all_windows(aln)
     
-    entropy = sitewise_entropies(aln, weight = 1)
-    gc      = sitewise_gc(aln, weight = 1)
+    entropy = sitewise_entropies(aln)
+    gc      = sitewise_gc(aln)
+    multi   = sitewise_multi(aln)
 
-    if metrics == ['entropy', 'gc']:
-        metrics = np.array([entropy, gc])
-    elif metrics == ['entropy']:
-        metrics = np.array([entropy])
-    elif metrics == ['gc']:
-        metrics = np.array([gc])
-    else:
-        print("Didn't understand your metrics")
-        raise ValueError
+    metrics = np.array([entropy, gc, multi])
 
     best_window = get_best_window(metrics, windows)
 
@@ -112,7 +106,7 @@ def get_best_window(metrics, windows):
 
     return best_window
 
-def get_sses(metrics, window):
+def get_sses(metrics, window, weights):
     '''
     input: metrics is an array where each row is a metric
             and each column is a site
@@ -122,6 +116,12 @@ def get_sses(metrics, window):
     '''
 
     sses = np.apply_along_axis(get_sse, 1, metrics, window)
+
+    # apply weights
+    mean_sses = np.apply_along_axis(np.mean, 1, sses)
+    scaling_factors = weights * means
+    sses = sses / scaling_factors[:,None]
+
 
     return(sses)
 
@@ -148,9 +148,6 @@ def sse(metric):
     sse = np.sum((metric - np.mean(metric))**2)
 
     return sse
-
-
-### OLD STUFF ###
 
 def get_all_windows(aln, minimum_window_size=50):
     '''
@@ -184,47 +181,6 @@ def get_all_windows(aln, minimum_window_size=50):
     return (keep_windows)
 
 
-
-def write_csv(uce_dict, outfilename, parameter_name):
-    '''
-    write a csv file of a uce dictionsary
-    where the keys are the names
-    and the values are lists of something like entropies
-    '''
-    outfile = open(outfilename, 'w')
-    outfile.write("name,site,%s\n" %(parameter_name))
-    for key in uce_dict:
-        ent = uce_dict[key]
-
-        # define middle site as zero
-        middle = int(float(len(ent)) / 2.0)
-        sites = np.array(range(len(ent))) - middle
-
-        names = [key] * len(ent)
-
-        # write that UCE to file
-        for i in range(len(ent)):
-            outfile.write("%s,%d,%f\n" %(names[i], sites[i], ent[i]))
-
-    outfile.close()
-
-
-def write_csv_windows(uce_dict, outfilename):
-    '''
-    write a csv file of a uce dictionsary
-    where the keys are the names
-    and the values are lists of something like entropies
-    '''
-    outfile = open(outfilename, 'w')
-    outfile.write("name,start,stop\n")
-    for key in uce_dict:
-        window_tuple = uce_dict[key]
-
-        # write that UCE to file
-        outfile.write("%s,%d,%d\n" %(key, window_tuple[0], window_tuple[1]))
-
-    outfile.close()
-
 def alignment_entropy(aln):
     '''
     input: biopython generic alignment
@@ -235,47 +191,7 @@ def alignment_entropy(aln):
     entropy = entropy_calc(bp_freqs)
     return (entropy)
 
-def write_phylip(aln, aln_path):
-    '''
-    I look forward to the day I don't have to write
-    custom alignment export functions
-    '''
-    aln_handle = open(aln_path, "w")
-    header = "%d\t%d\n" %(len(aln), aln.get_alignment_length())
-    aln_handle.write(header)
-
-    for s in aln:
-        aln_handle.write("%s    %s\n" %(s.name, str(s.seq.upper())))        
-    aln_handle.close()
-
-def sitewise_TIGER(aln, tigger_path):
-    '''
-    input: biopython generic alignment, and path to tigger binary
-    output: list of tigger rates
-    '''
-
-    # we'll use this as the temp dir...
-    tigger_dir = os.path.dirname(tigger_path)
-    aln_path = os.path.join(tigger_dir, "aln.phy")
-
-    write_phylip(aln, aln_path)    
-
-    subprocess.call([tigger_path, aln_path], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-    tigger_output = ''.join([aln_path.rstrip("phy"), "tigger"])
-
-    with open(tigger_output) as f:
-        lines = f.read().splitlines()
-
-    tiggers = [float(l) for l in lines]
-
-    # clean up
-    os.remove(tigger_output)
-    os.remove(aln_path)
-
-    return(tiggers)
-
-
-def sitewise_entropies(aln, weight):
+def sitewise_entropies(aln):
 
     entropies = []
     for i in range(aln.get_alignment_length()):
@@ -285,11 +201,11 @@ def sitewise_entropies(aln, weight):
         entropies.append(ent_i)
 
     # normalise and weight
-    entropies = np.array(entropies)*weight/2.0
+    entropies = np.array(entropies)
 
     return (entropies)
 
-def sitewise_gc(aln, weight):
+def sitewise_gc(aln):
 
     gc = []
     for i in range(aln.get_alignment_length()):
@@ -297,42 +213,9 @@ def sitewise_gc(aln, weight):
         gc_i = SeqUtils.GC(site_i)
         gc.append(gc_i)
 
-    gc = np.array(gc)*weight/100.0
+    gc = np.array(gc)
 
     return (gc)
-
-def ssewise_entropy_gc(aln):
-
-    entropy = np.array([sitewise_entropies(aln)])/2
-    gc      = np.array([sitewise_gc(aln)])/100
-
-    tuple_list = get_all_wd(entropy[0]) # It could be 'gc[0]' too. 
-
-    sse_entr = get_sum_sse_uce_partition(tuple_list, entropy[0])
-    sse_gc = get_sum_sse_uce_partition(tuple_list, gc[0])
-    sum_sse = np.array([sse_entr]) + np.array([sse_gc])
-
-    return sum_sse
-
-
-def split_charsets_to_list(matrix):
-    '''
-    INPUT: a nexus alignment with charsets
-    OUTPUT: biopython generic aligments, one per charset et
-    '''
-    dat = Nexus.Nexus()
-    dat.read(matrix)
-    aln = AlignIO.read(open(matrix), "nexus")
-
-
-    # TODO: check that the name has 'UCE' or 'uce' in it.
-    aln_dict = {}
-    for name in dat.charsets:
-        sites = dat.charsets[name]
-        aln_dict[name] = aln[:, min(sites):(max(sites) + 1)]
-
-    return aln_dict
-
 
 def bp_freqs_calc(aln):
     '''
@@ -366,117 +249,5 @@ def entropy_calc(p):
     '''
     p = p[p!=0] # modify p to include only those elements that are not equal to 0
     return np.dot(-p,np.log2(p)) # the function returns the entropy result
-
-
-def nexus_concat(dataset_path):
-    '''
-    INPUT: The path where all nexus files are allocated.
-    ex. os.chdir('/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Faircloth_2013')
-
-    OUTPUT: nexus supermatrix already including charsets 
-    '''
-
-    nexus_list = glob('*.nex')
-    mtx = [(nex, Nexus.Nexus(nex)) for nex in nexus_list]
-    supermtx = Nexus.combine(mtx)
-
-    return supermtx
-
-
-
-
-def get_all_wd(list_of_values):
-    '''
-    Input: MultipleSeqAlignment
-    Output: list of tuples [ (start : end) ]
-    k = minimum wd size 
-    '''
-
-    minimum_window_size = 50
-    length = len(list_of_values)
-
-    keep_windows = []
-
-    # some lists of values are too small to split
-    if length < 2*minimum_window_size:
-        return ([(0, length)])
-
-    for window in combinations(range(length), 2):
-        start = window[0]
-        stop = window[1]
-
-        # left flank size
-        if start < minimum_window_size:
-            continue
-        # right flank size
-        if (length - stop) < minimum_window_size:
-            continue
-        # central window
-        if (stop - start) < minimum_window_size:
-            continue
-
-        keep_windows.append(window)
-
-    return (keep_windows)
-
-def get_sum_sse_uce_partition(tuple_list, metric):
-    '''
-    input: 
-        1) a tuple list from get_all_wd
-        2) a list including values of a metric (eg. entropies) 
-    output: list of sse values for each partitioning scheme
-    '''
-    wd_values = []
-    for dat in tuple_list:
-
-        wd_left = get_sse(metric[  : dat[0]])
-        wd_core = get_sse(metric[ dat[0] : dat[1] ])
-        wd_right = get_sse(metric[ dat[1] : ])
-
-        res = float(wd_left + wd_core + wd_right)
-    
-        wd_values.append(res)
-
-    return wd_values
-
-def get_best_window(all_windows, values):
-
-    all_sses = get_sum_sse_uce_partition(all_windows, values)
-
-    min_sse = min(all_sses)
-    
-    # we could be smart and get all occurrences, then choose wisely
-    # like this
-    #min_indices = [i for i, x in enumerate(all_sses) if x == min_sse]
-
-    # This just gets the first occurrence of the minimum value.
-    best_window = all_windows[all_sses.index(min_sse)]
-
-    return best_window
-
-
-def get_best_windows(uce_dict):
-    '''
-    input: a dict of UCEs, where the keys are the names and the 
-           values are lists of some metric
-    output: a dict with UCE names as keys, and the best 
-            tuple as the value
-    '''
-
-    best_windows = {}
-    for key in uce_dict:
-        values = uce_dict[key]
-        all_windows = get_all_wd(values)
-        best_window = get_best_window(all_windows, values)
-        best_windows[key] = best_window
-        print(key, len(values), best_window)
-
-    return(best_windows)
-
-
-def take(n, iterable):
-    # taken from: http://stackoverflow.com/questions/7971618/python-return-first-n-keyvalue-pairs-from-dict
-    "Return first n items of the iterable as a list"
-    return list(islice(iterable, n))
 
 
