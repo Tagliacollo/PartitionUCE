@@ -2,7 +2,7 @@ from functions import *
 from Bio import AlignIO, SeqIO
 import numpy as np
 from pathlib2 import Path
-import sys
+import sys, os
 
 
 datasets = ["/Users/roblanfear/Documents/github/PartitionUCE/raw_data/test.nex"]
@@ -21,8 +21,17 @@ for dataset_path in datasets:
 	print ("\n")
 	print (dataset_path)
 
-	process_dataset(dataset_path, ['entropy'])
-	process_dataset(dataset_path, ['gc'])
-	process_dataset(dataset_path, ['entropy', 'gc'])
+	# the order of weights has to be 'entropy', 'gc', 'multi'
+	weights = np.array([1, 0, 0])
+#	weights = np.array([0, 1, 0])
+#	weights = np.array([0, 0, 1])
+#	weights = np.array([1, 1, 0])
+#	weights = np.array([1, 0, 1])
+#	weights = np.array([0, 1, 1])
+#	weights = np.array([1, 1, 1])
+
+	# TODO write stuff to generate an output filename
+
+	process_dataset(dataset_path, ['entropy', 'gc', 'multi'], weights = weights, outfilename)
 
 
