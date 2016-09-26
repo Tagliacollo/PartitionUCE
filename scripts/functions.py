@@ -6,6 +6,27 @@ import os, subprocess
 from glob import glob
 from itertools import combinations
 from itertools import islice
+from pathlib2 import Path
+
+
+def output_paths(dataset_path, weights):
+    '''
+    Input: dataset_path and np.array of weights
+    Ouput: creates a path with the dataset name and weight values 
+    '''
+    
+    dataset_name = os.path.basename(dataset_path).rstrip(".nex")
+    weights_name = dataset_name + '_weights_' + ''.join(map(str, weights))
+
+    repository_dir      = Path(dataset_path).parents[1]
+    processed_data_dir  = os.path.join(str(repository_dir), "processed_data")
+
+    output_path = os.path.join(processed_data_dir, dataset_name, weights_name)
+    
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+
+    return (output_path)
 
 
 def process_dataset(dataset_path, metrics, weights, outfilename):
@@ -24,7 +45,7 @@ def process_dataset(dataset_path, metrics, weights, outfilename):
     aln = AlignIO.read(open(dataset_path), "nexus")
 
     for name in dat.charsets:
-        print name
+        print (name)
         sites = dat.charsets[name]
         start = min(sites)
         stop = max(sites) + 1
