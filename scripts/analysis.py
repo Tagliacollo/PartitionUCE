@@ -34,8 +34,10 @@ for dataset_path in datasets:
 	                   [0, 1, 1],
 	                   [1, 1, 1]])
 	
+	for weight in weights:
 	# TODO write stuff to generate an output filename
+		outfilename = output_paths(dataset_path, weight)
 
-	process_dataset(dataset_path, ['entropy', 'gc', 'multi'], weights = weights, outfilename)
+		process_dataset(dataset_path, ['entropy', 'gc', 'multi'], weights = weights, outfilename)
 
 
