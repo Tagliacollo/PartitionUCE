@@ -25,15 +25,15 @@ for dataset_path in datasets:
 	print ("\n")
 	print (dataset_path)
 
-	# the order of weights has to be 'entropy', 'gc', 'multi'
-	weights = np.array([1, 0, 0])
-#	weights = np.array([0, 1, 0])
-#	weights = np.array([0, 0, 1])
-#	weights = np.array([1, 1, 0])
-#	weights = np.array([1, 0, 1])
-#	weights = np.array([0, 1, 1])
-#	weights = np.array([1, 1, 1])
-
+	# the order of weights has to be 'entropy', 'gc', 'multi' 
+	weights = np.array([[1, 0, 0],
+					   [0, 1, 0],
+	                   [0, 0, 1],
+	                   [1, 1, 0],
+	                   [1, 0, 1],
+	                   [0, 1, 1],
+	                   [1, 1, 1]])
+	
 	# TODO write stuff to generate an output filename
 
 	process_dataset(dataset_path, ['entropy', 'gc', 'multi'], weights = weights, outfilename)
