@@ -7,7 +7,7 @@ from glob import glob
 from itertools import combinations
 from itertools import islice
 from pathlib2 import Path
-
+from math import factorial
 
 def output_paths(dataset_path, weights):
     '''
@@ -237,6 +237,45 @@ def sitewise_gc(aln):
     gc = np.array(gc)
 
     return (gc)
+
+def sitewise_multi(aln):
+    '''
+    Input: Biopython generic aligment 
+    Output: 1D numpy array with multinomial values for each site
+    '''
+
+    number_ssp = len(aln)
+
+    multinomial_results = []
+    for i in range(aln.get_alignment_length()):
+        site = aln[:,i]
+    
+        count_A = site.count('A')
+        count_C = site.count('C')
+        count_G = site.count('G')
+        count_T = site.count('T')
+
+        sum_count = count_A + count_C + count_G + count_T
+
+        # If sum_count is 0 (eg. a site contain only gaps or ambiguous characters), the calculation obviously breaks
+        # Function bp_freqs_calc works on aligments, not on individual sites (AttributeError: 'str' object has no attribute 'seq').
+        # Below is my provisory(?) solution / another solution would be re-write the function bp_freqs_calc, which would make it slower. 
+        # TODO: an alternative to speed this calculations up if necessary! 
+        prop_A = count_A/float(sum_count) if sum_count !=0 else 0
+        prop_C = count_C/float(sum_count) if sum_count !=0 else 0
+        prop_G = count_G/float(sum_count) if sum_count !=0 else 0
+        prop_T = count_T/float(sum_count) if sum_count !=0 else 0
+
+        #Function to calculate multinomial - OBS: numpy has no function for factorial calculations
+        N = factorial(number_ssp)
+        K = factorial(count_A) * factorial(count_C) * factorial(count_G) * factorial(count_T)
+        J = (prop_A**count_A * prop_C**count_C * prop_G**count_G * prop_T**count_T)
+
+        multinomial_cal = (N/K)*J
+        
+        multinomial_results.append(multinomial_cal)
+
+    return (np.array(multinomial_results))  
 
 def bp_freqs_calc(aln):
     '''
