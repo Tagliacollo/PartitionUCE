@@ -84,7 +84,7 @@ def write_csvs(best_window, metrics, aln_sites, name, outfilename):
     outfile.close()
 
 
-def process_uce(aln, metrics):
+def process_uce(aln, metrics, weights):
         
     windows = get_all_windows(aln)
     
@@ -94,11 +94,11 @@ def process_uce(aln, metrics):
 
     metrics = np.array([entropy, gc, multi])
 
-    best_window = get_best_window(metrics, windows)
+    best_window = get_best_window(metrics, windows, weights)
 
     return(best_window, metrics)
 
-def get_best_window(metrics, windows):
+def get_best_window(metrics, windows, weights):
     '''
     values: an a n-dimensional numpy array, 
             each column is a site in the alignment
@@ -114,7 +114,7 @@ def get_best_window(metrics, windows):
     # 2. Get SSE for each cell in array
     for i, window in enumerate(windows):
         # get SSE's for a given window
-        all_sses[:,i] = get_sses(metrics, window)
+        all_sses[:,i] = get_sses(metrics, window, weights)
 
     # 3. Sum each column of array -> 1D array
     all_sses = np.sum(all_sses, 0)
