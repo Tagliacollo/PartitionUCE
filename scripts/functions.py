@@ -52,11 +52,11 @@ def process_dataset(dataset_path, metrics, weights, outfilename):
         # slice the alignment to get the UCE
         uce_aln = aln[:, start:stop]
 
-        best_window, metric_array = process_uce(uce_aln, metrics, weights)
+        best_windows, metric_array = process_uce(uce_aln, metrics, weights)
 
-        write_csvs(best_window, metric_array, sites, name, outfilename)
+        write_csvs(best_windows, metric_array, sites, name, outfilename)
 
-def write_csvs(best_window, metrics, aln_sites, name, outfilename):
+def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
 
     N = len(aln_sites)
     middle = int(float(N) / 2.0)
@@ -64,9 +64,16 @@ def write_csvs(best_window, metrics, aln_sites, name, outfilename):
 
     outfile = open(outfilename, 'a')
 
+    # TODO: account for different windows from different metrics
+
     names = [name]*N
-    window_start = [best_window[0]]*N
-    window_stop = [best_window[1]]*N
+    
+    window_start = []
+    window_stop = []
+    for w in best_windows:
+        window_start = window_start.append([w[0]]*N)
+        window_stop = window_stop.append([w[1]]*N)
+
     metrics = metrics.tolist()
 
     all_info = [names, uce_sites, aln_sites, window_start, window_stop]
@@ -94,15 +101,16 @@ def process_uce(aln, metrics, weights):
 
     metrics = np.array([entropy, gc, multi])
 
-    best_window = get_best_window(metrics, windows, weights)
+    best_window = get_best_windows(metrics, windows, weights)
 
-    return(best_window, metrics)
+    return(best_windows, metrics)
 
-def get_best_window(metrics, windows, weights):
+def get_best_windows(metrics, windows, weights):
     '''
     values: an a n-dimensional numpy array, 
             each column is a site in the alignment
             each row is some metric appropriately normalised
+    return: the best window for each metric
     '''
 
     #1. Mak an empty array:
@@ -116,16 +124,15 @@ def get_best_window(metrics, windows, weights):
         # get SSE's for a given window
         all_sses[:,i] = get_sses(metrics, window, weights)
 
-    # 3. Sum each column of array -> 1D array
-    all_sses = np.sum(all_sses, 0)
+    # 3. get index of minimum value in 1D array FOR each metric
+    best_indices = np.apply_along_axis(np.argmin, 1, all_sses)
 
-    # 4. get index of minimum value in 1D array
-    best_index = np.argmin(all_sses)
+    # 4. best window is windows[index]
+    # get the best window for each metric
+    # i.e. best_indices gives the index for each row
 
-    # 5. best window is windows[index]
-    best_window = windows[i]
 
-    return best_window
+    return best_windows
 
 def get_sses(metrics, window, weights):
     '''
@@ -137,11 +144,6 @@ def get_sses(metrics, window, weights):
     '''
 
     sses = np.apply_along_axis(get_sse, 1, metrics, window)
-
-    # apply weights
-    mean_sses = np.apply_along_axis(np.mean, 1, sses)
-    scaling_factors = weights * means
-    sses = sses / scaling_factors[:,None]
 
 
     return(sses)
