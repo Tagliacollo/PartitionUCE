@@ -57,7 +57,8 @@ def process_dataset(dataset_path, metrics, outfilename):
 
         best_windows, metric_array = process_uce(uce_aln, metrics)
 
-        write_csvs(best_windows, metric_array, sites, name, outfilename)
+        #write_csvs(best_windows, metric_array, sites, name, outfilename)
+        print(best_windows)
 
 def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
     '''
@@ -84,8 +85,8 @@ def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
     window_start = []
     window_stop = []
     for w in best_windows:
-        window_start = window_start.append([w[0]]*N)
-        window_stop = window_stop.append([w[1]]*N)
+        window_start.append([w[0]]*N)
+        window_stop.append([w[1]]*N)
 
     metrics = metrics.tolist()
 
@@ -110,7 +111,7 @@ def process_uce(aln, metrics):
         aln: biopython generic alignment
         metrics: a list with values of 'gc', 'entropy' or 'multi'
     Output:
-        best_windows: the best window for each metric
+        best_window: the best window for each metric
         metrics: a list with values of 'gc', 'entropy' or 'multi'
     '''
         
@@ -124,7 +125,7 @@ def process_uce(aln, metrics):
 
     best_window = get_best_windows(metrics, windows)
 
-    return (best_windows, metrics)
+    return (best_window, metrics)
 
 def get_best_windows(metrics, windows):
     '''
@@ -142,7 +143,7 @@ def get_best_windows(metrics, windows):
     all_sses = np.empty((metrics.shape[0], len(windows) ))
     all_sses[:] = np.NAN # safety first
 
-    print(metrics, windows)
+    #print(metrics, windows)
 
     # 2. Get SSE for each cell in array
     for i, window in enumerate(windows):
@@ -151,11 +152,16 @@ def get_best_windows(metrics, windows):
 
     # 3. get index of minimum value in 1D array FOR each metric
     best_indices = np.apply_along_axis(np.argmin, 1, all_sses)
-
+    
     # 4. best window is windows[index]
     # get the best window for each metric
     # i.e. best_indices gives the index for each row
 
+    entropy = windows[best_indices[0]]
+    gc      = windows[best_indices[1]]
+    multi   = windows[best_indices[2]]
+
+    best_windows = [entropy, gc, multi]
 
     return (best_windows)
 
@@ -169,8 +175,6 @@ def get_sses(metrics, window):
         an array with one col and the same number of 
         rows as metrics, where each entry is the SSE
     '''
-
-    print(metrics, window)
 
     sses = np.apply_along_axis(get_sse, 1, metrics, window)
 
@@ -246,6 +250,7 @@ def alignment_entropy(aln):
 
     bp_freqs = bp_freqs_calc(aln)
     entropy = entropy_calc(bp_freqs)
+    
     return (entropy)
 
 def sitewise_entropies(aln):
@@ -357,6 +362,7 @@ def entropy_calc(p):
     copied from: http://nbviewer.ipython.org/url/atwallab.cshl.edu/teaching/QBbootcamp3.ipynb
     '''
     p = p[p!=0] # modify p to include only those elements that are not equal to 0
+    
     return np.dot(-p,np.log2(p)) # the function returns the entropy result
 
 
