@@ -119,6 +119,8 @@ def get_best_windows(metrics, windows, weights):
     all_sses = np.empty((metrics.shape[0], len(windows) ))
     all_sses[:] = np.NAN # safety first
 
+    print(metrics, windows, weights)
+
     # 2. Get SSE for each cell in array
     for i, window in enumerate(windows):
         # get SSE's for a given window
@@ -143,8 +145,9 @@ def get_sses(metrics, window, weights):
             rows as metrics, where each entry is the SSE
     '''
 
-    sses = np.apply_along_axis(get_sse, 1, metrics, window)
+    print(metrics, window, weights)
 
+    sses = np.apply_along_axis(get_sse, 1, metrics, window)
 
     return(sses)
 
