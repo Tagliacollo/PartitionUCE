@@ -11,8 +11,10 @@ from math import factorial
 
 def output_paths(dataset_path):
     '''
-    Input: dataset_path and np.array of weights
-    Ouput: creates a path with the dataset name and weight values 
+    Input: 
+        dataset_path: path to a nexus alignment with UCE charsets 
+    Ouput: 
+        folder path with the name of the nexus UCE dataset  
     '''
     
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
@@ -28,12 +30,14 @@ def output_paths(dataset_path):
     return (output_path)
 
 
-def process_dataset(dataset_path, metrics, weights, outfilename):
+def process_dataset(dataset_path, metrics, outfilename):
     '''
-    input: dataset_path: path to a nexus alignment with UCE charsets
-           metrics: a list of 'gc', 'entropy' or both
-           weights: a 1D np.array with weights for entropy, gc, multi *in that order*
-    output: csv files written to disk
+    Input: 
+        dataset_path: path to a nexus alignment with UCE charsets
+        metrics: a list of 'gc', 'entropy' or 'multi'
+        outfilename: name for the csv file 
+    Output: 
+        csv files written to disk
     '''
     outfile = open(outfilename, 'w')
     outfile.write("name,uce_site,aln_site,window_start,window_stop,%s\n" %(','.join(metrics)))
@@ -51,11 +55,21 @@ def process_dataset(dataset_path, metrics, weights, outfilename):
         # slice the alignment to get the UCE
         uce_aln = aln[:, start:stop]
 
-        best_windows, metric_array = process_uce(uce_aln, metrics, weights)
+        best_windows, metric_array = process_uce(uce_aln, metrics)
 
         write_csvs(best_windows, metric_array, sites, name, outfilename)
 
 def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
+    '''
+    Input: 
+        best_windows: the best window for each metric
+        metrics: a list with values of 'gc', 'entropy' and 'multi'
+        aln_sites: site number in the alignment 
+        name: UCE name
+        outfilename: name for the csv file
+    Output: 
+        csv files written to disk
+    '''
 
     N = len(aln_sites)
     middle = int(float(N) / 2.0)
@@ -90,7 +104,15 @@ def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
     outfile.close()
 
 
-def process_uce(aln, metrics, weights):
+def process_uce(aln, metrics):
+    '''
+    Input:
+        aln: biopython generic alignment
+        metrics: a list with values of 'gc', 'entropy' or 'multi'
+    Output:
+        best_windows: the best window for each metric
+        metrics: a list with values of 'gc', 'entropy' or 'multi'
+    '''
         
     windows = get_all_windows(aln)
     
@@ -100,16 +122,18 @@ def process_uce(aln, metrics, weights):
 
     metrics = np.array([entropy, gc, multi])
 
-    best_window = get_best_windows(metrics, windows, weights)
+    best_window = get_best_windows(metrics, windows)
 
-    return(best_windows, metrics)
+    return (best_windows, metrics)
 
-def get_best_windows(metrics, windows, weights):
+def get_best_windows(metrics, windows):
     '''
-    values: an a n-dimensional numpy array, 
-            each column is a site in the alignment
-            each row is some metric appropriately normalised
-    return: the best window for each metric
+    Input: 
+        an a n-dimensional numpy array, 
+        each column is a site in the alignment
+        each row is some metric appropriately normalised
+    Output: 
+        the best window for each metric
     '''
 
     #1. Mak an empty array:
@@ -118,12 +142,12 @@ def get_best_windows(metrics, windows, weights):
     all_sses = np.empty((metrics.shape[0], len(windows) ))
     all_sses[:] = np.NAN # safety first
 
-    print(metrics, windows, weights)
+    print(metrics, windows)
 
     # 2. Get SSE for each cell in array
     for i, window in enumerate(windows):
         # get SSE's for a given window
-        all_sses[:,i] = get_sses(metrics, window, weights)
+        all_sses[:,i] = get_sses(metrics, window)
 
     # 3. get index of minimum value in 1D array FOR each metric
     best_indices = np.apply_along_axis(np.argmin, 1, all_sses)
@@ -133,23 +157,24 @@ def get_best_windows(metrics, windows, weights):
     # i.e. best_indices gives the index for each row
 
 
-    return best_windows
+    return (best_windows)
 
-def get_sses(metrics, window, weights):
+def get_sses(metrics, window):
     '''
-    input: metrics is an array where each row is a metric
-            and each column is a site
-           window gives slice instructions for the array
-    output: an array with one col and the same number of 
-            rows as metrics, where each entry is the SSE
+    Input: 
+        metrics is an array where each row is a metric
+        and each column is a site window gives slice 
+        instructions for the array
+    Output: 
+        an array with one col and the same number of 
+        rows as metrics, where each entry is the SSE
     '''
 
-    print(metrics, window, weights)
+    print(metrics, window)
 
     sses = np.apply_along_axis(get_sse, 1, metrics, window)
 
-
-    return(sses)
+    return (sses)
 
 
 def get_sse(metric, window):
@@ -163,23 +188,27 @@ def get_sse(metric, window):
 
     res = np.sum(left + core + right)
 
-    return(res)
+    return (res)
 
 
 def sse(metric):
     '''
-    input: list of values
-    output: sum of squared errors
+    input: 
+        list with values of 'gc', 'entropy' and 'multi'
+    output: 
+        sum of squared errors
     '''
     sse = np.sum((metric - np.mean(metric))**2)
 
-    return sse
+    return (sse)
 
 def get_all_windows(aln, minimum_window_size=50):
     '''
-    Input: aln: multiple sequence alignment
+    Input: 
+        aln: multiple sequence alignment
         minimum_window_size: smallest allowable window 
-    Output: list of tuples [ (start : end) ]
+    Output: 
+        list of all possible tuples [ (start : end) ]
     '''
 
     minimum_window_size = 50
@@ -209,15 +238,23 @@ def get_all_windows(aln, minimum_window_size=50):
 
 def alignment_entropy(aln):
     '''
-    input: biopython generic alignment
-    output: entropy
-
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        array with values of entropies
     '''
+
     bp_freqs = bp_freqs_calc(aln)
     entropy = entropy_calc(bp_freqs)
     return (entropy)
 
 def sitewise_entropies(aln):
+    '''
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        array with values of entropies per site
+    '''
 
     entropies = []
     for i in range(aln.get_alignment_length()):
@@ -226,12 +263,17 @@ def sitewise_entropies(aln):
         ent_i = alignment_entropy(site_i)
         entropies.append(ent_i)
 
-    # normalise and weight
     entropies = np.array(entropies)
 
     return (entropies)
 
 def sitewise_gc(aln):
+    '''
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        array with values of gc per site
+    '''
 
     gc = []
     for i in range(aln.get_alignment_length()):
@@ -245,8 +287,10 @@ def sitewise_gc(aln):
 
 def sitewise_multi(aln):
     '''
-    Input: Biopython generic aligment 
-    Output: 1D numpy array with multinomial values for each site
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        1D numpy array with multinomial values for each site
     '''
 
     number_ssp = len(aln)
@@ -280,8 +324,10 @@ def sitewise_multi(aln):
 
 def bp_freqs_calc(aln):
     '''
-    INPUT: biopython generic alignment
-    OUTPUT: 1-D array of base frequencies
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        1-D array of base frequencies
     '''
     one_str = ""
     for seq in aln:
@@ -303,8 +349,10 @@ def bp_freqs_calc(aln):
 
 def entropy_calc(p):
     '''
-    INPUT: 1D array of base frequencies
-    OUTPUT: estimates of entropies 
+    Input: 
+       p: 1D array of base frequencies
+    Output: 
+        estimates of entropies 
     
     copied from: http://nbviewer.ipython.org/url/atwallab.cshl.edu/teaching/QBbootcamp3.ipynb
     '''
