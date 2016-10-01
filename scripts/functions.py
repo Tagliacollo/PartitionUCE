@@ -291,11 +291,11 @@ def bp_freqs_calc(aln):
     seq = one_str.upper()
 
     A = seq.seq.count('A') 
-    T = seq.seq.count('T')
-    G = seq.seq.count('G')
     C = seq.seq.count('C')
+    G = seq.seq.count('G')
+    T = seq.seq.count('T')
 
-    sum_count = A + T + G + C
+    sum_count = A + C + G + T
 
     bp_freqs = np.array([ A, C, G, T])/float(sum_count)
     
