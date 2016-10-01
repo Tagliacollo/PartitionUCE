@@ -9,19 +9,18 @@ from itertools import islice
 from pathlib2 import Path
 from math import factorial
 
-def output_paths(dataset_path, weights):
+def output_paths(dataset_path):
     '''
     Input: dataset_path and np.array of weights
     Ouput: creates a path with the dataset name and weight values 
     '''
     
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
-    weights_name = dataset_name + '_weights_' + ''.join(map(str, weights))
 
     repository_dir      = Path(dataset_path).parents[1]
     processed_data_dir  = os.path.join(str(repository_dir), "processed_data")
 
-    output_path = os.path.join(processed_data_dir, dataset_name, weights_name)
+    output_path = os.path.join(processed_data_dir, dataset_name)
     
     if not os.path.exists(output_path):
         os.makedirs(output_path)
