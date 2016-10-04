@@ -9,6 +9,25 @@ from itertools import islice
 from pathlib2 import Path
 from math import factorial
 
+def blocks_pfinder_config(best_window, name, start, stop, outfinename):
+
+    # left UCE
+    left_start  = start
+    left_end = left_start + best_window[0]
+    left_UCE = '%s_left = %s-%s;\n' % (name, left_start, left_end)
+
+    # core UCE
+    core_start = left_end + 1
+    core_end = core_start + (best_window[1] - best_window[0] - 1)
+    core_UCE = '%s_core = %s-%s;\n' % (name, core_start, core_end)
+
+    #right UCE
+    right_start = core_end + 1
+    right_end = stop
+    right_UCE = '%s_right = %s-%s;\n' % (name, right_start, right_end)
+
+    return (left_UCE + core_UCE + right_UCE)
+
 def output_paths(dataset_path):
     '''
     Input: 
