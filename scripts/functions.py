@@ -48,6 +48,16 @@ def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all',
 
     return (begin_block)
 
+def p_finder_end_block(dataset_name, search = 'rcluster'):
+    end_block = str('\n' +
+                    '## SCHEMES, search: all | user | greedy | rcluster | hcluster | kmeans ##\n' +
+                    '[schemes]\n' +
+                    'search = %s;\n\n' % (search) +
+
+                    '#user schemes go here if search=user. See manual for how to define.#')
+
+    return (end_block)
+
 def output_paths(dataset_path):
     '''
     Input: 
