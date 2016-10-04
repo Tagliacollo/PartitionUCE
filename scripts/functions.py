@@ -88,9 +88,17 @@ def process_dataset(dataset_path, metrics, outfilename):
     Output: 
         csv files written to disk
     '''
+    dataset_name = os.path.basename(dataset_path).rstrip(".nex")
+
     outfile = open(outfilename, 'w')
     outfile.write("name,uce_site,aln_site,window_start,window_stop,%s\n" %(','.join(metrics)))
     outfile.close()
+
+    # write the start blocks of the partitionfinder files
+    for m in metrics:
+        pfinder_config_file = open('%s_%s_partition_finder.cfg' % (dataset_name, m), 'w')
+        pfinder_config_file.write(p_finder_start_block(dataset_name))
+        pfinder_config_file.close()
 
     dat = Nexus.Nexus()
     dat.read(dataset_path)
@@ -106,8 +114,20 @@ def process_dataset(dataset_path, metrics, outfilename):
 
         best_windows, metric_array = process_uce(uce_aln, metrics)
 
+        for i, best_window in enumerate(best_windows):
+            pfinder_config_file = open('%s_%s_partition_finder.cfg' % (dataset_name, metrics[i]), 'a')
+            pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, 
+                                           outfinename = pfinder_config_file))
+
+
         #write_csvs(best_windows, metric_array, sites, name, outfilename)
-        print(best_windows)
+
+    # write the end blocks of the partitionfinder files
+    for m in metrics:
+        pfinder_config_file = open('%s_%s_partition_finder.cfg' % (dataset_name, m), 'a')
+        pfinder_config_file.write(p_finder_end_block(dataset_name))
+        pfinder_config_file.close()
+
 
 def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
     '''
