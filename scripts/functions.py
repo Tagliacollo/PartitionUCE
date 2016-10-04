@@ -28,6 +28,26 @@ def blocks_pfinder_config(best_window, name, start, stop, outfinename):
 
     return (left_UCE + core_UCE + right_UCE)
 
+
+def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all', model_selection = 'aicc'):
+    begin_block = str('## ALIGNMENT FILE ##\n' + 
+                      'alignment = %s.phy;\n\n' % (dataset_name) +  
+
+
+                      '## BRANCHLENGTHS: linked | unlinked ##\n' +
+                      'branchlengths = %s;\n\n' % (branchlengths) +
+
+                       '## MODELS OF EVOLUTION: all | allx | mrbayes | beast | gamma | gammai <list> ##\n' +
+                       'models = %s;\n\n' % (models) + 
+
+                       '# MODEL SELECCTION: AIC | AICc | BIC #' +
+                       'model_selection = %s;\n\n' % (model_selection) +
+
+                       '## DATA BLOCKS: see manual for how to define ##\n' +
+                       '[data_blocks]\n')
+
+    return (begin_block)
+
 def output_paths(dataset_path):
     '''
     Input: 
