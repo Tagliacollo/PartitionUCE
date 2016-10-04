@@ -3,8 +3,8 @@ from Bio import AlignIO, SeqIO
 import numpy as np
 import sys, os
 
-datasets = ['/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/test.nex',
-			'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Crawford_2012.nex']
+datasets = ['/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/test.nex']
+			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Crawford_2012.nex']
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Faircloth_2013.nex',
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/McCormack_2013.nex',
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Meiklejohn_2016.nex',
