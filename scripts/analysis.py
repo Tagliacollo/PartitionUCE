@@ -26,6 +26,8 @@ for dataset_path in datasets:
 	print (dataset_path)
 
 	os.chdir(output_paths(dataset_path))
-	process_dataset(dataset_path, ['entropy', 'gc', 'multi'], outfilename = 'datatest')
+	csv_name = os.path.basename(dataset_path).rstrip(".nex")
+
+	process_dataset(dataset_path, ['entropy', 'gc', 'multi'], outfilename = '%s.csv' % (csv_name))
 
 
