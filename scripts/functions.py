@@ -406,6 +406,17 @@ def sitewise_multi(aln):
 
     return (np.array(multinomial_results))  
 
+def full_sitewise_likelihood_multi(aln, window):
+    # aln[species :, aln_start : aln_end]
+    uce_left  = sitewise_multi(aln[ :, : window[0][0]])
+    print(uce_left)
+    uce_core  = sitewise_multi(aln[ :, window[0][0] : window[0][1]])
+    uce_right = sitewise_multi(aln[ :, window[0][1] : ])
+    print(uce_right)
+
+    return (np.concatenate([uce_left,uce_core,uce_right]))
+
+
 def bp_freqs_calc(aln):
     '''
     Input: 
