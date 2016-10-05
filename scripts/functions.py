@@ -9,7 +9,7 @@ from itertools import islice
 from pathlib2 import Path
 from math import factorial
 
-def blocks_pfinder_config(best_window, name, start, stop, outfinename):
+def blocks_pfinder_config(best_window, name, start, stop, outfilename):
 
     # left UCE
     left_start  = start
@@ -26,7 +26,12 @@ def blocks_pfinder_config(best_window, name, start, stop, outfinename):
     right_end = stop
     right_UCE = '%s_right = %s-%s;\n' % (name, right_start, right_end)
 
-    return (left_UCE + core_UCE + right_UCE)
+    # sometimes we couldn't split the window so it's all core
+    if(best_window[1]-best_window[0] == stop-start):
+        return (core_UCE)
+    else:
+        return (left_UCE + core_UCE + right_UCE)
+
 
 
 def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all', model_selection = 'aicc'):
@@ -117,7 +122,7 @@ def process_dataset(dataset_path, metrics, outfilename):
         for i, best_window in enumerate(best_windows):
             pfinder_config_file = open('%s_%s_partition_finder.cfg' % (dataset_name, metrics[i]), 'a')
             pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, 
-                                           outfinename = pfinder_config_file))
+                                           outfilename = pfinder_config_file))
 
 
         write_csvs(best_windows, metric_array, sites, name, outfilename)
@@ -199,11 +204,14 @@ def process_uce(aln, metrics):
     entropy = sitewise_entropies(aln)
     gc      = sitewise_gc(aln)
     multi   = sitewise_multi(aln)
-
     metrics = np.array([entropy, gc, multi])
 
-    best_window = get_best_windows(metrics, windows)
-
+    # sometimes we can't split a UCE, in which case there's one
+    # window and it's the whole UCE
+    if(len(windows)>1):
+        best_window = get_best_windows(metrics, windows)
+    else:
+        best_window = [windows[0], windows[0], windows[0]]
     return (best_window, metrics)
 
 def get_best_windows(metrics, windows):
@@ -294,7 +302,6 @@ def get_all_windows(aln, minimum_window_size=50):
         list of all possible tuples [ (start : end) ]
     '''
 
-    minimum_window_size = 50
     length = aln.get_alignment_length()
 
     keep_windows = []

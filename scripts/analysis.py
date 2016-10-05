@@ -3,7 +3,7 @@ from Bio import AlignIO, SeqIO
 import numpy as np
 import sys, os
 
-datasets = ['/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/test.nex']
+datasets = ['/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Crawford_2012_bugtest.nex']
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Crawford_2012.nex']
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Faircloth_2013.nex',
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/McCormack_2013.nex',
