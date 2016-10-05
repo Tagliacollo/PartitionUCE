@@ -91,7 +91,7 @@ def process_dataset(dataset_path, metrics, outfilename):
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
     outfile = open(outfilename, 'w')
-    outfile.write("name,uce_site,aln_site,window_start,window_stop,%s\n" %(','.join(metrics)))
+    outfile.write("name,uce_site,aln_site,entropy_wd_start,entropy_wd_stop,gc_wd_start,gc_wd_stop,multi_wd_start,multi_wd_stop,%s\n" %(','.join(metrics)))
     outfile.close()
 
     # write the start blocks of the partitionfinder files
@@ -120,7 +120,7 @@ def process_dataset(dataset_path, metrics, outfilename):
                                            outfinename = pfinder_config_file))
 
 
-        #write_csvs(best_windows, metric_array, sites, name, outfilename)
+        write_csvs(best_windows, metric_array, sites, name, outfilename)
 
     # write the end blocks of the partitionfinder files
     for m in metrics:
@@ -147,19 +147,29 @@ def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
 
     outfile = open(outfilename, 'a')
 
-    # TODO: account for different windows from different metrics
-
     names = [name]*N
     
+
+    # have to separate this in three lists
     window_start = []
     window_stop = []
     for w in best_windows:
         window_start.append([w[0]]*N)
         window_stop.append([w[1]]*N)
 
+    window_start_entropy = window_start[0]
+    window_start_gc      = window_start[1]
+    window_start_multi   = window_start[2]
+
+    window_stop_entropy = window_stop[0]
+    window_stop_gc      = window_stop[1]
+    window_stop_multi   = window_stop[2]
+
+
     metrics = metrics.tolist()
 
-    all_info = [names, uce_sites, aln_sites, window_start, window_stop]
+    all_info = [names, uce_sites, aln_sites, window_start_entropy, window_stop_entropy, 
+                window_start_gc, window_stop_gc, window_start_multi, window_stop_multi]
 
     for m in metrics:
         all_info.append(m)
