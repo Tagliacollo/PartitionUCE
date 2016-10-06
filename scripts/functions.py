@@ -8,6 +8,7 @@ from itertools import combinations
 from itertools import islice
 from pathlib2 import Path
 from math import factorial
+from tqdm import tqdm
 
 def blocks_pfinder_config(best_window, name, start, stop, outfilename):
 
@@ -109,8 +110,7 @@ def process_dataset(dataset_path, metrics, outfilename):
     dat.read(dataset_path)
     aln = AlignIO.read(open(dataset_path), "nexus")
 
-    for name in dat.charsets:
-        print (name)
+    for name in tqdm(dat.charsets):
         sites = dat.charsets[name]
         start = min(sites)
         stop = max(sites) + 1
