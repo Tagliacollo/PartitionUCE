@@ -425,6 +425,21 @@ def sitewise_full_multi(aln, window):
 
     return (np.concatenate([uce_left,uce_core,uce_right]))
 
+def best_window_full_log_multi(aln, windows):
+    
+    size_aln = aln.get_alignment_length()
+    
+    all_lik_multi    = np.empty((size_aln, len(windows)))
+    all_lik_multi[:] = np.NAN
+
+    for i, window in enumerate(windows):
+        all_lik_multi[:,i] = np.log(sitewise_full_multi(aln, window))
+
+    sum_log = np.sum(all_lik_multi, 1).tolist()
+    best_index = sum_log.index(max(sum_log)) # should it be max or min?
+
+    return(all_lik_multi[best_index], windows[best_index])
+
 
 def bp_freqs_calc(aln):
     '''
