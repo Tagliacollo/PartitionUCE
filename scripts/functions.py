@@ -12,7 +12,7 @@ from math import factorial
 def blocks_pfinder_config(best_window, name, start, stop, outfilename):
 
     # left UCE
-    left_start  = start
+    left_start  = start + 1
     left_end = left_start + best_window[0]
     left_UCE = '%s_left = %s-%s;\n' % (name, left_start, left_end)
 
