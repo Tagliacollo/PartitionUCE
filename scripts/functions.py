@@ -204,14 +204,18 @@ def process_uce(aln, metrics):
     entropy = sitewise_entropies(aln)
     gc      = sitewise_gc(aln)
     multi   = sitewise_multi(aln)
+
+
     metrics = np.array([entropy, gc, multi])
 
     # sometimes we can't split a UCE, in which case there's one
     # window and it's the whole UCE
+    
     if(len(windows)>1):
         best_window = get_best_windows(metrics, windows)
     else:
         best_window = [windows[0], windows[0], windows[0]]
+    
     return (best_window, metrics)
 
 def get_best_windows(metrics, windows):
@@ -413,13 +417,11 @@ def sitewise_multi(aln):
 
     return (np.array(multinomial_results))  
 
-def full_sitewise_likelihood_multi(aln, window):
+def sitewise_full_multi(aln, window):
     # aln[species :, aln_start : aln_end]
-    uce_left  = sitewise_multi(aln[ :, : window[0][0]])
-    print(uce_left)
-    uce_core  = sitewise_multi(aln[ :, window[0][0] : window[0][1]])
-    uce_right = sitewise_multi(aln[ :, window[0][1] : ])
-    print(uce_right)
+    uce_left  = sitewise_multi(aln[ :, : window[0]])
+    uce_core  = sitewise_multi(aln[ :, window[0] : window[1]])
+    uce_right = sitewise_multi(aln[ :, window[1] : ])
 
     return (np.concatenate([uce_left,uce_core,uce_right]))
 
