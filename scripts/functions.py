@@ -45,7 +45,7 @@ def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all',
                        '## MODELS OF EVOLUTION: all | allx | mrbayes | beast | gamma | gammai <list> ##\n' +
                        'models = %s;\n\n' % (models) + 
 
-                       '# MODEL SELECCTION: AIC | AICc | BIC #' +
+                       '# MODEL SELECCTION: AIC | AICc | BIC #\n' +
                        'model_selection = %s;\n\n' % (model_selection) +
 
                        '## DATA BLOCKS: see manual for how to define ##\n' +
