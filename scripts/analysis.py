@@ -29,5 +29,3 @@ for dataset_path in datasets:
 	csv_name = os.path.basename(dataset_path).rstrip(".nex")
 
 	process_dataset(dataset_path, ['entropy', 'gc', 'multi'], outfilename = '%s.csv' % (csv_name))
-
-
