@@ -269,7 +269,6 @@ def get_sses(metrics, window, weights):
 
     return (sses)
 
-
 def get_sse(metric, window):
     '''
     slice the 1D array metric, add up the SSES
@@ -367,7 +366,7 @@ def sitewise_gc(aln):
     Output: 
         array with values of gc per site
     '''
-
+    
     gc = []
     for i in range(aln.get_alignment_length()):
         site_i = aln[:,i]
