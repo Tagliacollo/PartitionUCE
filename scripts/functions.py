@@ -33,8 +33,6 @@ def blocks_pfinder_config(best_window, name, start, stop, outfilename):
     else:
         return (left_UCE + core_UCE + right_UCE)
 
-
-
 def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all', model_selection = 'aicc'):
     begin_block = str('## ALIGNMENT FILE ##\n' + 
                       'alignment = %s.phy;\n\n' % (dataset_name) +  
@@ -55,6 +53,7 @@ def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all',
     return (begin_block)
 
 def p_finder_end_block(dataset_name, search = 'rcluster'):
+    
     end_block = str('\n' +
                     '## SCHEMES, search: all | user | greedy | rcluster | hcluster | kmeans ##\n' +
                     '[schemes]\n' +
@@ -205,7 +204,6 @@ def process_uce(aln, metrics):
     gc      = sitewise_gc(aln)
     multi   = sitewise_multi(aln)
 
-
     metrics = np.array([entropy, gc, multi])
 
     # sometimes we can't split a UCE, in which case there's one
@@ -256,7 +254,7 @@ def get_best_windows(metrics, windows):
 
     return (best_windows)
 
-def get_sses(metrics, window):
+def get_sses(metrics, window, weights):
     '''
     Input: 
         metrics is an array where each row is a metric
@@ -440,7 +438,6 @@ def best_window_full_log_multi(aln, windows):
 
     return(all_lik_multi[best_index], windows[best_index])
 
-
 def bp_freqs_calc(aln):
     '''
     Input: 
@@ -476,7 +473,7 @@ def entropy_calc(p):
     copied from: http://nbviewer.ipython.org/url/atwallab.cshl.edu/teaching/QBbootcamp3.ipynb
     '''
     p = p[p!=0] # modify p to include only those elements that are not equal to 0
-    
+
     return np.dot(-p,np.log2(p)) # the function returns the entropy result
 
 
