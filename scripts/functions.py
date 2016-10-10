@@ -254,7 +254,7 @@ def get_best_windows(metrics, windows):
 
     return (best_windows)
 
-def get_sses(metrics, window, weights):
+def get_sses(metrics, window):
     '''
     Input: 
         metrics is an array where each row is a metric
