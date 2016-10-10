@@ -34,3 +34,13 @@ def dict_uce_sites(aln):
         sites[site_num[i]] = (aln[: , site : site+1])
 
     return(sites)
+
+def conc_dicts_by_key(tuple_dicts):
+# inspired by http://stackoverflow.com/questions/5946236/how-to-merge-multiple-dicts-with-same-key
+    dd = defaultdict(list)
+
+    for dicts in tuple_dicts:
+        for key, value in dicts.items():
+            dd[key].append(value)
+
+    return(dd)
