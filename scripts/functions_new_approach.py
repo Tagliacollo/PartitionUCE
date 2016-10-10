@@ -23,3 +23,14 @@ def charset_uce_aln(aln):
         uce_aln.append(aln[:, start : stop])
 
     return(uce_aln)
+
+def dict_uce_sites(aln):
+    N        = aln.get_alignment_length()
+    middle   = int(float(N) / 2.0)
+    site_num = np.array(range(N)) - middle
+
+    sites = {}
+    for i, site in enumerate(range(aln.get_alignment_length())):
+        sites[site_num[i]] = (aln[: , site : site+1])
+
+    return(sites)
