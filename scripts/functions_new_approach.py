@@ -1,5 +1,5 @@
 from Bio.Nexus import Nexus
-from Bio import AlignIO
+from Bio import AlignIO, SeqIO
 from Bio.Align import MultipleSeqAlignment
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq, UnknownSeq
@@ -7,8 +7,22 @@ import numpy as np
 from tqdm import tqdm
 from collections import defaultdict
 
-dataset_path = '/Users/Tagliacollo/Desktop/scripts_UCE_test/matrix.nex'
-#dataset_path = '/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/test.nex'
+
+def process_data(aln, outfilename):
+    read_aln = charset_uce_aln(aln)
+
+    uce_dicts = []
+    for uce in read_aln:
+        uce_dicts.append(dict_uce_sites(uce))
+
+    conc_dicts = conc_dicts_by_key(uce_dicts)
+
+
+    for key, value in sorted(conc_dicts.items()):
+        key_name = key
+        group_sites = conc_site_in_aln(value)
+
+        SeqIO.write(group_sites, '%s_%s.phy' % (outfilename, key_name), 'phylip')
 
 def charset_uce_aln(aln):
 
@@ -91,9 +105,9 @@ def conc_site_in_aln(list_aln):
             
     # Stitch all the substrings together using join (most efficient way),
     # and build the Biopython data structures Seq, SeqRecord and MultipleSeqAlignment
+
     return MultipleSeqAlignment(SeqRecord(Seq(''.join(v), alphabet=alphabet), id=k) 
                for (k,v) in tmp.items())
-
 
 
 
