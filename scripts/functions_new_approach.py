@@ -6,9 +6,10 @@ from Bio.Seq import Seq, UnknownSeq
 import numpy as np
 from tqdm import tqdm
 from collections import defaultdict
+import sys, os
+from pathlib2 import Path
 
-
-def process_data(aln, outfilename):
+def process_dataset(aln, outfilename):
     read_aln = charset_uce_aln(aln)
 
     uce_dicts = []
@@ -22,7 +23,9 @@ def process_data(aln, outfilename):
         key_name = key
         group_sites = conc_site_in_aln(value)
 
-        SeqIO.write(group_sites, '%s_%s.phy' % (outfilename, key_name), 'phylip')
+        output_handle = open('%s_site_%s.phy' % (outfilename, key_name), "w")
+        SeqIO.write(group_sites, output_handle, 'phylip')
+        output_handle.close()
 
 def output_paths(dataset_path):
     '''
