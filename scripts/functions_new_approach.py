@@ -24,6 +24,26 @@ def process_data(aln, outfilename):
 
         SeqIO.write(group_sites, '%s_%s.phy' % (outfilename, key_name), 'phylip')
 
+def output_paths(dataset_path):
+    '''
+    Input: 
+        dataset_path: path to a nexus alignment with UCE charsets 
+    Ouput: 
+        folder path with the name of the nexus UCE dataset  
+    '''
+    
+    dataset_name = os.path.basename(dataset_path).rstrip(".nex")
+
+    repository_dir      = Path(dataset_path).parents[1]
+    processed_data_dir  = os.path.join(str(repository_dir), "processed_data")
+
+    output_path = os.path.join(processed_data_dir, dataset_name)
+    
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+
+    return (output_path)
+
 def charset_uce_aln(aln):
 
     dat = Nexus.Nexus()
