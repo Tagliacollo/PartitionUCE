@@ -18,14 +18,24 @@ def process_dataset(aln, outfilename):
 
     conc_dicts = conc_dicts_by_key(uce_dicts)
 
-
+    conc_small_aln = defaultdict(list)
     for key, value in sorted(conc_dicts.items()):
         key_name = key
         group_sites = conc_site_in_aln(value)
 
-        output_handle = open('%s_site_%s.phy' % (outfilename, key_name), "w")
-        SeqIO.write(group_sites, output_handle, 'phylip')
-        output_handle.close()
+        if group_sites.get_alignment_length() < 4:
+            print('aln %s contains %s sites, it will be concatenated' % (key, group_sites.get_alignment_length()))
+            conc_small_aln[key].append(group_sites)
+
+        else:
+            output_handle = open('%s_site_%s.phy' % (outfilename, key_name), "w")
+            SeqIO.write(group_sites, output_handle, 'phylip')
+            output_handle.close()
+
+    # write a function to deal with small aln. 
+    return(conc_small_aln) # this return is only to help me to work on small datasets
+
+        
 
 def output_paths(dataset_path):
     '''
