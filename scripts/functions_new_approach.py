@@ -5,7 +5,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq, UnknownSeq
 import numpy as np
 from tqdm import tqdm
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 import sys, os
 from pathlib2 import Path
 
@@ -13,30 +13,16 @@ def process_dataset(aln, outfilename):
     read_aln = charset_uce_aln(aln)
 
     uce_dicts = []
-    for uce in read_aln:
+    for uce in tqdm(read_aln):
         uce_dicts.append(dict_uce_sites(uce))
 
-    conc_dicts = conc_dicts_by_key(uce_dicts)
+    conc_dicts = OrderedDict(conc_dicts_by_key(uce_dicts))
 
-    conc_small_aln = defaultdict(list)
-    for key, value in sorted(conc_dicts.items()):
-        key_name = key
-        group_sites = conc_site_in_aln(value)
+    merge_small_aln = conc_end_flanks(conc_dicts, min_aln_size = 100)
 
-        if group_sites.get_alignment_length() < 4:
-            print('aln %s contains %s sites, it will be concatenated' % (key, group_sites.get_alignment_length()))
-            conc_small_aln[key].append(group_sites)
+    return (merge_small_aln)
 
-        else:
-            output_handle = open('%s_site_%s.phy' % (outfilename, key_name), "w")
-            SeqIO.write(group_sites, output_handle, 'phylip')
-            output_handle.close()
-
-    # write a function to deal with small aln. 
-    return(conc_small_aln) # this return is only to help me to work on small datasets
-
-        
-
+    
 def output_paths(dataset_path):
     '''
     Input: 
@@ -65,7 +51,7 @@ def charset_uce_aln(aln):
 
     uce_aln  = []
 
-    for name in tqdm(dat.charsets):
+    for name in dat.charsets:
         sites = dat.charsets[name]
         start = min(sites)
         stop = max(sites) + 1
@@ -87,13 +73,50 @@ def dict_uce_sites(aln):
 
 def conc_dicts_by_key(tuple_dicts):
 # inspired by http://stackoverflow.com/questions/5946236/how-to-merge-multiple-dicts-with-same-key
-    dd = defaultdict(list)
+    uce_dicts = defaultdict(list)
 
     for dicts in tuple_dicts:
         for key, value in dicts.items():
-            dd[key].append(value)
+            uce_dicts[key].append(value)
 
-    return(dd)
+    return(uce_dicts)
+
+def conc_end_flanks(conc_dicts, min_aln_size):
+    for i in range(min(conc_dicts),0):
+        key = i
+        if len(conc_dicts[key]) < min_aln_size:
+            conc_dicts[key + 1] = conc_dicts[key] + conc_dicts[key + 1]
+            del conc_dicts[key]
+
+    for i in range(0, max(conc_dicts)):
+        key = i
+        if len(conc_dicts[key]) < min_aln_size:
+            conc_dicts[key + 1] = conc_dicts[key] + conc_dicts[key + 1]
+            del conc_dicts[key]
+
+    if len(conc_dicts[max(conc_dicts)]) < min_aln_size:
+
+        index_max = list(conc_dicts.keys()).index(max(conc_dicts))
+        key_max   = list(conc_dicts.keys())[index_max]
+    
+        index_bef_max = index_max - 1
+        key_bef_max   = list(conc_dicts.keys())[index_bef_max]
+
+        conc_dicts[key_bef_max] = conc_dicts[key_bef_max] + conc_dicts[key_max]
+        del conc_dicts[key_max]
+
+    if len(conc_dicts[min(conc_dicts)]) < min_aln_size:
+
+        index_min = list(conc_dicts.keys()).index(min(conc_dicts))
+        key_min  = list(conc_dicts.keys())[index_min]
+    
+        index_bef_min = index_min + 1
+        key_bef_min   = list(conc_dicts.keys())[index_bef_min]
+
+        conc_dicts[key_bef_min] = conc_dicts[key_bef_min] + conc_dicts[key_min]
+        del conc_dicts[key_min]
+
+    return(conc_dicts)
 
 def conc_site_in_aln(list_aln):
     # from https://gist.github.com/kgori/f0532cff6500e839cb29
