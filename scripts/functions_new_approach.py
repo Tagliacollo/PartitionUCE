@@ -7,6 +7,13 @@ from pathlib2 import Path
 from tqdm import tqdm
 
 def process_dataset(dataset_path, min_aln_size, outfilename):
+    '''
+    args: dataset_path: path to a nexus alignment
+          min_ln_size: minimum size for a charaset nex data block
+          outfilename: name of files
+    return
+         pFinder config files
+    '''
     
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
@@ -22,7 +29,12 @@ def process_dataset(dataset_path, min_aln_size, outfilename):
     export_charset(dataset_name, merge_small_aln, outfilename)
 
 def charset_uce_aln(aln):
-
+    '''
+    args:
+        aln: nexus aln with charasets
+    return:
+        a list of generic biopython alns, each representing an uce
+    '''
     dat = Nexus.Nexus()
     dat.read(aln)
     aln = AlignIO.read(open(aln), "nexus")
@@ -33,19 +45,35 @@ def charset_uce_aln(aln):
 
     return(uce_pos)
 
-def dict_uce_sites(uce_pos):
-    N        = len(uce_pos)
+def dict_uce_sites(uce_aln):
+    '''
+    uce_aln
+        args: generic biopython aln
+    return:
+        dict with keys corresponding to sites (where middle site is set to zero)
+            and values to actual position of a site in the aln
+    '''
+
+    N        = len(uce_aln)
     middle   = int(float(N) / 2.0)
     site_num = np.array(range(N)) - middle
 
     sites = {}
-    for i, site in enumerate(range(len(uce_pos))):
-        sites[site_num[i]] = uce_pos[i]
+    for i, site in enumerate(range(len(uce_aln))):
+        sites[site_num[i]] = uce_aln[i]
 
     return(sites)
 
 def conc_dicts_by_key(tuple_dicts):
 # inspired by http://stackoverflow.com/questions/5946236/how-to-merge-multiple-dicts-with-same-key
+    '''
+    args:
+        tuple_dicts: dictionary of tuples
+    return: 
+        defautdict type of dicts, with keys (merged across all uce) as sites and 
+            values as lists of conc site positions (acutal site in the aln) 
+    '''
+
     uce_dicts = defaultdict(list)
 
     for dicts in tuple_dicts:
@@ -55,8 +83,9 @@ def conc_dicts_by_key(tuple_dicts):
     return(uce_dicts)
 
 def conc_end_flanks(conc_dicts, min_aln_size):
-    # There is a bug in the built-it function range. It doesn't work with decreasing numbers
-    # below my way around
+    # There is a bug in the built-it function 'range'. 
+    # It doesn't work with decreasing numbers (e.g. range(max(x), 0))
+    # below my way around this problem
     key_list  = list(conc_dicts.keys())
     num_list  = [num for num in key_list if num >= 0]
     key_range = num_list[::-1]
@@ -77,9 +106,9 @@ def conc_end_flanks(conc_dicts, min_aln_size):
 
 def output_paths(dataset_path):
     '''
-    Input: 
+    args: 
         dataset_path: path to a nexus alignment with UCE charsets 
-    Ouput: 
+    return: 
         folder path with the name of the nexus UCE dataset  
     '''
     
@@ -96,6 +125,13 @@ def output_paths(dataset_path):
     return (output_path)
 
 def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all', model_selection = 'aicc'):
+    '''
+    args: 
+        dataset_name: name of the dataset
+        branchlengths, models, model_selection: pFinder input arguments
+    return:
+        str with information about the begin block pFinder config block
+    '''
     begin_block = str('## ALIGNMENT FILE ##\n' + 
                       'alignment = %s.phy;\n\n' % (dataset_name) +  
 
@@ -115,6 +151,13 @@ def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all',
     return (begin_block)
 
 def p_finder_end_block(dataset_name, search = 'rcluster'):
+    '''
+    args: 
+        dataset_name: name of the dataset
+        search: pFinder input arguments
+    return:
+        str with information about the end block pFinder config block
+    '''
     
     end_block = str('\n' +
                     '## SCHEMES, search: all | user | greedy | rcluster | hcluster | kmeans ##\n' +
@@ -126,6 +169,14 @@ def p_finder_end_block(dataset_name, search = 'rcluster'):
     return (end_block)
 
 def export_charset(dataset_name, uce_dics, outfilename):
+    '''
+    args:
+        dataset_name: name of the dataset
+        uce_dicts: defautdict type of dicts with keys as uce site and values
+            acutal position in the full aln
+    return:
+
+    '''
     outfile = open('%s_new_approach_partition_finder.cfg' % (outfilename), 'w')
 
     outfile.write(p_finder_start_block(dataset_name))
