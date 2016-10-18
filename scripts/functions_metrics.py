@@ -1,3 +1,4 @@
+from utilities import *
 from Bio.Nexus import Nexus
 from Bio import AlignIO, SeqIO, SeqUtils
 import Bio
@@ -5,10 +6,9 @@ import numpy as np
 import os, subprocess
 from math import factorial
 from tqdm import tqdm
-from utilities import *
 
 
-def process_dataset_metrics(dataset_path, metrics, outfilename):
+def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilename):
     '''
     Input: 
         dataset_path: path to a nexus alignment with UCE charsets
@@ -44,7 +44,7 @@ def process_dataset_metrics(dataset_path, metrics, outfilename):
         # slice the alignment to get the UCE
         uce_aln = aln[:, start:stop]
 
-        best_windows, metric_array = process_uce(uce_aln, metrics)
+        best_windows, metric_array = process_uce(uce_aln, metrics, minimum_window_size)
 
         for i, best_window in enumerate(best_windows):
             pfinder_config_file = open('%s_%s_partition_finder.cfg' % (dataset_name, metrics[i]), 'a')
@@ -115,7 +115,7 @@ def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
     outfile.close()
 
 
-def process_uce(aln, metrics):
+def process_uce(aln, metrics, minimum_window_size):
     '''
     Input:
         aln: biopython generic alignment
@@ -125,7 +125,7 @@ def process_uce(aln, metrics):
         metrics: a list with values of 'gc', 'entropy' or 'multi'
     '''
         
-    windows = get_all_windows(aln)
+    windows = get_all_windows(aln, minimum_window_size)
     
     entropy = sitewise_entropies(aln)
     gc      = sitewise_gc(aln)
@@ -310,29 +310,6 @@ def sitewise_multi(aln):
     return (np.array(multinomial_results))  
 
 
-def bp_freqs_calc(aln):
-    '''
-    Input: 
-        aln: biopython generic alignment
-    Output: 
-        1-D array of base frequencies
-    '''
-    one_str = ""
-    for seq in aln:
-        one_str += seq
-
-    seq = one_str.upper()
-
-    A = seq.seq.count('A') 
-    C = seq.seq.count('C')
-    G = seq.seq.count('G')
-    T = seq.seq.count('T')
-
-    sum_count = A + C + G + T
-
-    bp_freqs = np.array([ A, C, G, T])/float(sum_count)
-    
-    return (bp_freqs)
 
 
 def entropy_calc(p):
