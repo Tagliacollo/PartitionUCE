@@ -33,7 +33,7 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
     
         lik_windows = defaultdict(list)
         for window in windows:
-            lik_windows[window] = best_window_full_log_multi(uce_aln, window)
+            lik_windows[window] = multinomial_likelihood(uce_aln, window)
 
         best_window = max(lik_windows.items(), key=lambda a: a[1]) # should we take max or min? 
         pfinder_config_file = open('%s_full_multi_partition_finder.cfg' % (dataset_name), 'a')
@@ -46,11 +46,13 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
     return (best_window)
 
-def best_window_full_log_multi(aln, window):
+def multinomial_likelihood(aln, window):
 
-   all_lik_multi = np.sum(np.log(sitewise_full_multi(aln, window)))
+    sitewise_likelihoods = sitewise_full_multi(aln, window)
+    sitewise_log_likelihoods = np.log(sitewise_likelihoods)
+    log_likelihood = np.sum(sitewise_log_likelihoods)
 
-   return(all_lik_multi)
+    return(log_likelihood)
     
 def sitewise_full_multi(aln, window):
     # aln[species :, aln_start : aln_end]
