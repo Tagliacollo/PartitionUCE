@@ -1,8 +1,8 @@
 import os
 from pathlib2 import Path
-from Bio import AlignIO
+from Bio import AlignIO, SeqIO, SeqUtils
 from itertools import combinations
-from functions_metrics import bp_freqs_calc
+import numpy as np
 
 def blocks_pfinder_config(best_window, name, start, stop, uce_aln):
 
@@ -53,7 +53,7 @@ def any_undetermined_blocks(best_window, uce_aln):
     else:
         return(False)
 
-def get_all_windows(aln, minimum_window_size=50):
+def get_all_windows(aln, minimum_window_size):
     '''
     Input: 
         aln: multiple sequence alignment
@@ -106,7 +106,7 @@ def output_paths(dataset_path):
 
     return (output_path)
 
-def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all', model_selection = 'aicc'):
+def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'GTR+G', model_selection = 'aicc'):
     begin_block = str('## ALIGNMENT FILE ##\n' + 
                       'alignment = %s.phy;\n\n' % (dataset_name) +  
 
@@ -138,8 +138,31 @@ def p_finder_end_block(dataset_name, search = 'rcluster'):
     end_block = str('\n' +
                     '## SCHEMES, search: all | user | greedy | rcluster | hcluster | kmeans ##\n' +
                     '[schemes]\n' +
-                    'search = %s;\n\n' % (search) +
-
-                    '#user schemes go here if search=user. See manual for how to define.#')
+                    'search = %s;\n\n' % (search)
+                    )
 
     return (end_block)
+
+def bp_freqs_calc(aln):
+    '''
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        1-D array of base frequencies
+    '''
+    one_str = ""
+    for seq in aln:
+        one_str += seq
+
+    seq = one_str.upper()
+
+    A = seq.seq.count('A') 
+    C = seq.seq.count('C')
+    G = seq.seq.count('G')
+    T = seq.seq.count('T')
+
+    sum_count = A + C + G + T
+
+    bp_freqs = np.array([ A, C, G, T])/float(sum_count)
+    
+    return (bp_freqs)
