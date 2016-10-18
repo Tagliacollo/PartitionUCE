@@ -1,4 +1,4 @@
-from functions_metrics import sitewise_multi, get_all_windows
+from functions_metrics import *
 import numpy as np
 from Bio import AlignIO
 from Bio.Nexus import Nexus
@@ -23,7 +23,6 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
     lik_windows = defaultdict(list)
     for name in tqdm(dat.charsets):
-        print(name)
         sites = dat.charsets[name]
         start = min(sites)
         stop = max(sites) + 1
