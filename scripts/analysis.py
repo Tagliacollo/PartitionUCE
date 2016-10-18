@@ -1,6 +1,6 @@
 from utilities import *
 from functions_metrics import *
-from functions_new_approach import *
+from functions_site_position import *
 from functions_full_multi import *
 import os
 
@@ -36,7 +36,7 @@ for dataset_path in datasets:
 	
 	process_dataset_metrics(dataset_path, ['entropy', 'gc', 'multi'], minimum_window_size = 100, outfilename = '%s.csv' % (name))
 	process_dataset_full_multi(dataset_path, minimum_window_size = 100, outfilename = name)
-	process_dataset_new_approach(dataset_path, minimum_window_size = 100, outfilename = name)
+	process_dataset_site_position(dataset_path, minimum_window_size = 100, outfilename = name)
 
 
 

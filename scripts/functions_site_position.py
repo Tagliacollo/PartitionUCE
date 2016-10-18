@@ -6,7 +6,7 @@ import os
 from tqdm import tqdm
 from utilities import *
 
-def process_dataset_new_approach(dataset_path, minimum_window_size, outfilename):
+def process_dataset_site_position(dataset_path, minimum_window_size, outfilename):
     '''
     args: dataset_path: path to a nexus alignment
           min_ln_size: minimum size for a charaset nex data block
@@ -114,7 +114,7 @@ def export_charset(dataset_name, uce_dics, outfilename):
     return:
 
     '''
-    outfile = open('%s_new_approach_partition_finder.cfg' % (outfilename), 'w')
+    outfile = open('%s_site_position_partition_finder.cfg' % (outfilename), 'w')
 
     outfile.write(p_finder_start_block(dataset_name))
 
