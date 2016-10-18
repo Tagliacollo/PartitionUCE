@@ -4,6 +4,38 @@ from Bio import AlignIO
 from itertools import combinations
 from functions_metrics import bp_freqs_calc
 
+def blocks_pfinder_config(best_window, name, start, stop, uce_aln):
+
+    # sometimes we couldn't split the window so it's all together
+    if(best_window[1]-best_window[0] == stop-start):
+        whole_UCE = '%s_all = %s-%s;\n' % (name, start+1, stop)
+        return (whole_UCE)
+
+    else:
+        # left UCE
+        left_start = start + 1
+        left_end = left_start + best_window[0]
+
+        # core UCE
+        core_start = left_end + 1
+        core_end = start + best_window[1]
+
+        #right UCE
+        right_start = core_end + 1
+        right_end = stop
+
+    # do not output any undetermined blocks - if this happens, just output the whole UCE
+    if(any_undetermined_blocks(best_window, uce_aln)==True):
+        whole_UCE = '%s_all = %s-%s;\n' % (name, start+1, stop)
+        return (whole_UCE)
+    else:
+        core_UCE = '%s_core = %s-%s;\n' % (name, core_start, core_end)
+        left_UCE = '%s_left = %s-%s;\n' % (name, left_start, left_end)
+        right_UCE = '%s_right = %s-%s;\n' % (name, right_start, right_end)
+
+        return (left_UCE + core_UCE + right_UCE)
+
+
 def any_undetermined_blocks(best_window, uce_aln):
     # Return TRUE if there are any blocks with only undeteremined characters
     # Defined as anything other than ACGT
