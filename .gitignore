@@ -12,3 +12,5 @@ scripts/__pycache__/functions.cpython-35.pyc
 processed_data/.Rhistory
 
 scripts/functions.pyc
+
+*.pyc
