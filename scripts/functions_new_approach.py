@@ -113,7 +113,7 @@ def export_charset(dataset_name, uce_dics, outfilename):
     return:
 
     '''
-    outfile = open('%s_full_multi_partition_finder.cfg' % (outfilename), 'w')
+    outfile = open('%s_new_approach_partition_finder.cfg' % (outfilename), 'w')
 
     outfile.write(p_finder_start_block(dataset_name))
 
