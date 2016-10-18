@@ -1,0 +1,22 @@
+#NEXUS
+begin DATA;
+	dimensions ntax=6 nchar=8;
+	format datatype=nucleotide missing=? gap=-;
+	matrix
+	sp_1	TTTTAAAA
+	sp_2	TTTTAAAA
+	sp_3	TTTTAAAA
+	sp_4	TTTTAAAA
+	sp_5	TTTTAAAA
+	sp_6	TTTTAAAA
+
+;
+end;
+
+begin SETS;
+
+    [loci]
+    CHARSET chr1 = 1-3;
+    CHARSET chr2 = 4-8;
+    
+end;
