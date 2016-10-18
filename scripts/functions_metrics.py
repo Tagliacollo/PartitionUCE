@@ -17,6 +17,10 @@ def process_dataset_metrics(dataset_path, metrics, outfilename):
     Output: 
         csv files written to disk
     '''
+
+    print("Sitewise metrics analysis")
+
+    
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
     outfile = open(outfilename, 'w')

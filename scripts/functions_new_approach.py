@@ -14,6 +14,7 @@ def process_dataset_new_approach(dataset_path, minimum_window_size, outfilename)
     return
          pFinder config files
     '''
+    print("Position-splitting analysis")
     
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
