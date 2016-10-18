@@ -1,12 +1,12 @@
 from Bio.Nexus import Nexus
 from Bio import AlignIO
-from collections import defaultdict, OrderedDict
+from collections import defaultdict
 import numpy as np
-import sys, os
-from pathlib2 import Path
+import os
 from tqdm import tqdm
+from utilities import p_finder_start_block, p_finder_end_block
 
-def process_dataset(dataset_path, min_aln_size, outfilename):
+def process_dataset_new_approach(dataset_path, minimum_window_size, outfilename):
     '''
     args: dataset_path: path to a nexus alignment
           min_ln_size: minimum size for a charaset nex data block
@@ -24,7 +24,7 @@ def process_dataset(dataset_path, min_aln_size, outfilename):
         uce_dicts.append(dict_uce_sites(uce))
 
     conc_dicts = conc_dicts_by_key(uce_dicts)
-    merge_small_aln = conc_end_flanks(conc_dicts, min_aln_size)
+    merge_small_aln = conc_end_flanks(conc_dicts, minimum_window_size)
 
     export_charset(dataset_name, merge_small_aln, outfilename)
 
@@ -104,70 +104,6 @@ def conc_end_flanks(conc_dicts, min_aln_size):
 
     return(conc_dicts)
 
-def output_paths(dataset_path):
-    '''
-    args: 
-        dataset_path: path to a nexus alignment with UCE charsets 
-    return: 
-        folder path with the name of the nexus UCE dataset  
-    '''
-    
-    dataset_name = os.path.basename(dataset_path).rstrip(".nex")
-
-    repository_dir      = Path(dataset_path).parents[1]
-    processed_data_dir  = os.path.join(str(repository_dir), "processed_data")
-
-    output_path = os.path.join(processed_data_dir, dataset_name)
-    
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
-
-    return (output_path)
-
-def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all', model_selection = 'aicc'):
-    '''
-    args: 
-        dataset_name: name of the dataset
-        branchlengths, models, model_selection: pFinder input arguments
-    return:
-        str with information about the begin block pFinder config block
-    '''
-    begin_block = str('## ALIGNMENT FILE ##\n' + 
-                      'alignment = %s.phy;\n\n' % (dataset_name) +  
-
-
-                      '## BRANCHLENGTHS: linked | unlinked ##\n' +
-                      'branchlengths = %s;\n\n' % (branchlengths) +
-
-                       '## MODELS OF EVOLUTION: all | allx | mrbayes | beast | gamma | gammai <list> ##\n' +
-                       'models = %s;\n\n' % (models) + 
-
-                       '# MODEL SELECCTION: AIC | AICc | BIC #\n' +
-                       'model_selection = %s;\n\n' % (model_selection) +
-
-                       '## DATA BLOCKS: see manual for how to define ##\n' +
-                       '[data_blocks]\n')
-
-    return (begin_block)
-
-def p_finder_end_block(dataset_name, search = 'rcluster'):
-    '''
-    args: 
-        dataset_name: name of the dataset
-        search: pFinder input arguments
-    return:
-        str with information about the end block pFinder config block
-    '''
-    
-    end_block = str('\n' +
-                    '## SCHEMES, search: all | user | greedy | rcluster | hcluster | kmeans ##\n' +
-                    '[schemes]\n' +
-                    'search = %s;\n\n' % (search) +
-
-                    '#user schemes go here if search=user. See manual for how to define.#')
-
-    return (end_block)
-
 def export_charset(dataset_name, uce_dics, outfilename):
     '''
     args:
@@ -177,7 +113,7 @@ def export_charset(dataset_name, uce_dics, outfilename):
     return:
 
     '''
-    outfile = open('%s_new_approach_partition_finder.cfg' % (outfilename), 'w')
+    outfile = open('%s_full_multi_partition_finder.cfg' % (outfilename), 'w')
 
     outfile.write(p_finder_start_block(dataset_name))
 
