@@ -9,6 +9,7 @@ import os
 
 def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
+    print("Full multinomial likelihood analysis")
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
     dat = Nexus.Nexus()
@@ -21,7 +22,7 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
     pfinder_config_file.close()
 
     lik_windows = defaultdict(list)
-    for name in dat.charsets:
+    for name in tqdm(dat.charsets):
         print(name)
         sites = dat.charsets[name]
         start = min(sites)
@@ -32,7 +33,7 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
         windows = get_all_windows(uce_aln, minimum_window_size)
     
         lik_windows = defaultdict(list)
-        for window in tqdm(windows):
+        for window in windows:
             lik_windows[window] = best_window_full_log_multi(uce_aln, window)
 
         best_window = max(lik_windows.items(), key=lambda a: a[1]) # should we take max or min? 
