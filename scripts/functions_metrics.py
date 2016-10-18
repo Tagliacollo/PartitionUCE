@@ -3,88 +3,12 @@ from Bio import AlignIO, SeqIO, SeqUtils
 import Bio
 import numpy as np
 import os, subprocess
-from glob import glob
-from itertools import combinations
-from itertools import islice
-from pathlib2 import Path
 from math import factorial
 from tqdm import tqdm
-
-def blocks_pfinder_config(best_window, name, start, stop, outfilename):
-
-    # left UCE
-    left_start  = start + 1
-    left_end = left_start + best_window[0]
-    left_UCE = '%s_left = %s-%s;\n' % (name, left_start, left_end)
-
-    # core UCE
-    core_start = left_end + 1
-    core_end = core_start + (best_window[1] - best_window[0] - 1)
-    core_UCE = '%s_core = %s-%s;\n' % (name, core_start, core_end)
-
-    #right UCE
-    right_start = core_end + 1
-    right_end = stop
-    right_UCE = '%s_right = %s-%s;\n' % (name, right_start, right_end)
-
-    # sometimes we couldn't split the window so it's all core
-    if(best_window[1]-best_window[0] == stop-start):
-        return (core_UCE)
-    else:
-        return (left_UCE + core_UCE + right_UCE)
-
-def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'all', model_selection = 'aicc'):
-    begin_block = str('## ALIGNMENT FILE ##\n' + 
-                      'alignment = %s.phy;\n\n' % (dataset_name) +  
+from utilities import p_finder_start_block, p_finder_end_block, get_all_windows
 
 
-                      '## BRANCHLENGTHS: linked | unlinked ##\n' +
-                      'branchlengths = %s;\n\n' % (branchlengths) +
-
-                       '## MODELS OF EVOLUTION: all | allx | mrbayes | beast | gamma | gammai <list> ##\n' +
-                       'models = %s;\n\n' % (models) + 
-
-                       '# MODEL SELECCTION: AIC | AICc | BIC #\n' +
-                       'model_selection = %s;\n\n' % (model_selection) +
-
-                       '## DATA BLOCKS: see manual for how to define ##\n' +
-                       '[data_blocks]\n')
-
-    return (begin_block)
-
-def p_finder_end_block(dataset_name, search = 'rcluster'):
-    
-    end_block = str('\n' +
-                    '## SCHEMES, search: all | user | greedy | rcluster | hcluster | kmeans ##\n' +
-                    '[schemes]\n' +
-                    'search = %s;\n\n' % (search) +
-
-                    '#user schemes go here if search=user. See manual for how to define.#')
-
-    return (end_block)
-
-def output_paths(dataset_path):
-    '''
-    Input: 
-        dataset_path: path to a nexus alignment with UCE charsets 
-    Ouput: 
-        folder path with the name of the nexus UCE dataset  
-    '''
-    
-    dataset_name = os.path.basename(dataset_path).rstrip(".nex")
-
-    repository_dir      = Path(dataset_path).parents[1]
-    processed_data_dir  = os.path.join(str(repository_dir), "processed_data")
-
-    output_path = os.path.join(processed_data_dir, dataset_name)
-    
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
-
-    return (output_path)
-
-
-def process_dataset(dataset_path, metrics, outfilename):
+def process_dataset_metrics(dataset_path, metrics, outfilename):
     '''
     Input: 
         dataset_path: path to a nexus alignment with UCE charsets
@@ -294,38 +218,6 @@ def sse(metric):
 
     return (sse)
 
-def get_all_windows(aln, minimum_window_size=50):
-    '''
-    Input: 
-        aln: multiple sequence alignment
-        minimum_window_size: smallest allowable window 
-    Output: 
-        list of all possible tuples [ (start : end) ]
-    '''
-
-    length = aln.get_alignment_length()
-
-    keep_windows = []
-
-    if length < 3*minimum_window_size:
-        # some things can't be split
-        return ([(0, length)])
-
-    for window in combinations(range(length), 2):
-        start = window[0]
-        stop = window[1]
-
-        if start < minimum_window_size:
-            continue
-        if (length - stop) < minimum_window_size:
-            continue
-        if (stop - start) < minimum_window_size:
-            continue
-
-        keep_windows.append(window)
-
-    return (keep_windows)
-
 
 def alignment_entropy(aln):
     '''
@@ -414,28 +306,6 @@ def sitewise_multi(aln):
 
     return (np.array(multinomial_results))  
 
-def sitewise_full_multi(aln, window):
-    # aln[species :, aln_start : aln_end]
-    uce_left  = sitewise_multi(aln[ :, : window[0]])
-    uce_core  = sitewise_multi(aln[ :, window[0] : window[1]])
-    uce_right = sitewise_multi(aln[ :, window[1] : ])
-
-    return (np.concatenate([uce_left,uce_core,uce_right]))
-
-def best_window_full_log_multi(aln, windows):
-    
-    size_aln = aln.get_alignment_length()
-    
-    all_lik_multi    = np.empty((size_aln, len(windows)))
-    all_lik_multi[:] = np.NAN
-
-    for i, window in enumerate(windows):
-        all_lik_multi[:,i] = np.log(sitewise_full_multi(aln, window))
-
-    sum_log = np.sum(all_lik_multi, 1).tolist()
-    best_index = sum_log.index(max(sum_log)) # should it be max or min?
-
-    return(all_lik_multi[best_index], windows[best_index])
 
 def bp_freqs_calc(aln):
     '''
@@ -475,4 +345,27 @@ def entropy_calc(p):
 
     return np.dot(-p,np.log2(p)) # the function returns the entropy result
 
+
+def blocks_pfinder_config(best_window, name, start, stop, outfilename):
+
+    # left UCE
+    left_start  = start + 1
+    left_end = left_start + best_window[0]
+    left_UCE = '%s_left = %s-%s;\n' % (name, left_start, left_end)
+
+    # core UCE
+    core_start = left_end + 1
+    core_end = core_start + (best_window[1] - best_window[0] - 1)
+    core_UCE = '%s_core = %s-%s;\n' % (name, core_start, core_end)
+
+    #right UCE
+    right_start = core_end + 1
+    right_end = stop
+    right_UCE = '%s_right = %s-%s;\n' % (name, right_start, right_end)
+
+    # sometimes we couldn't split the window so it's all core
+    if(best_window[1]-best_window[0] == stop-start):
+        return (core_UCE)
+    else:
+        return (left_UCE + core_UCE + right_UCE)
 
