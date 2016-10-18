@@ -4,7 +4,7 @@ from collections import defaultdict
 import numpy as np
 import os
 from tqdm import tqdm
-from utilities import p_finder_start_block, p_finder_end_block
+from utilities import *
 
 def process_dataset_new_approach(dataset_path, minimum_window_size, outfilename):
     '''
