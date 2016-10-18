@@ -44,8 +44,7 @@ def process_dataset_metrics(dataset_path, metrics, outfilename):
 
         for i, best_window in enumerate(best_windows):
             pfinder_config_file = open('%s_%s_partition_finder.cfg' % (dataset_name, metrics[i]), 'a')
-            pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, 
-                                           outfilename = pfinder_config_file))
+            pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, uce_aln)) 
 
 
         write_csvs(best_windows, metric_array, sites, name, outfilename)
@@ -345,27 +344,35 @@ def entropy_calc(p):
 
     return np.dot(-p,np.log2(p)) # the function returns the entropy result
 
+def blocks_pfinder_config(best_window, name, start, stop, uce_aln):
 
-def blocks_pfinder_config(best_window, name, start, stop, outfilename):
-
-    # left UCE
-    left_start  = start + 1
-    left_end = left_start + best_window[0]
-    left_UCE = '%s_left = %s-%s;\n' % (name, left_start, left_end)
-
-    # core UCE
-    core_start = left_end + 1
-    core_end = core_start + (best_window[1] - best_window[0] - 1)
-    core_UCE = '%s_core = %s-%s;\n' % (name, core_start, core_end)
-
-    #right UCE
-    right_start = core_end + 1
-    right_end = stop
-    right_UCE = '%s_right = %s-%s;\n' % (name, right_start, right_end)
-
-    # sometimes we couldn't split the window so it's all core
+    # sometimes we couldn't split the window so it's all together
     if(best_window[1]-best_window[0] == stop-start):
-        return (core_UCE)
+        whole_UCE = '%s_all = %s-%s;\n' % (name, start+1, stop)
+        return (whole_UCE)
+
     else:
+        # left UCE
+        left_start = start + 1
+        left_end = left_start + best_window[0]
+
+        # core UCE
+        core_start = left_end + 1
+        core_end = start + best_window[1]
+
+        #right UCE
+        right_start = core_end + 1
+        right_end = stop
+
+    # do not output any undetermined blocks - if this happens, just output the whole UCE
+    if(any_undetermined_blocks(best_window, uce_aln)==True):
+        whole_UCE = '%s_all = %s-%s;\n' % (name, start+1, stop)
+        return (whole_UCE)
+    else:
+        core_UCE = '%s_core = %s-%s;\n' % (name, core_start, core_end)
+        left_UCE = '%s_left = %s-%s;\n' % (name, left_start, left_end)
+        right_UCE = '%s_right = %s-%s;\n' % (name, right_start, right_end)
+
         return (left_UCE + core_UCE + right_UCE)
+
 

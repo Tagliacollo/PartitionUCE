@@ -2,6 +2,24 @@ import os
 from pathlib2 import Path
 from Bio import AlignIO
 from itertools import combinations
+from functions_metrics import bp_freqs_calc
+
+def any_undetermined_blocks(best_window, uce_aln):
+    # Return TRUE if there are any blocks with only undeteremined characters
+    # Defined as anything other than ACGT
+
+    left_aln = uce_aln[:, 0 : best_window[0]]
+    core_aln = uce_aln[:, best_window[0] : best_window[1]]
+    right_aln = uce_aln[:, best_window[1] : uce_aln.get_alignment_length()]
+
+    l_freq = bp_freqs_calc(left_aln)
+    c_freq = bp_freqs_calc(core_aln)
+    r_freq = bp_freqs_calc(right_aln)
+
+    if(np.isnan(l_freq.max()) or np.isnan(c_freq.max()) or np.isnan(r_freq.max())):
+        return(True)
+    else:
+        return(False)
 
 def get_all_windows(aln, minimum_window_size=50):
     '''

@@ -4,7 +4,7 @@ from Bio import AlignIO
 from Bio.Nexus import Nexus
 from collections import defaultdict
 from tqdm import tqdm
-from utilities import p_finder_start_block, p_finder_end_block
+from utilities import *
 import os
 
 def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
