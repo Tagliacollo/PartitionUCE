@@ -288,7 +288,7 @@ def sitewise_multi(aln):
     prop_G = bp_freqs[2]
     prop_T = bp_freqs[3]
 
-    multinomial_results = []
+    multinomial_likelihoods = []
     for i in range(aln.get_alignment_length()):
         site = aln[:,i]
     
@@ -305,9 +305,9 @@ def sitewise_multi(aln):
 
         multinomial_cal = (N/K)*J
         
-        multinomial_results.append(multinomial_cal)
+        multinomial_likelihoods.append(multinomial_cal)
 
-    return (np.array(multinomial_results))  
+    return (np.array(multinomial_likelihoods))  
 
 
 
