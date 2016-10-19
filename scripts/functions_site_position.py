@@ -14,7 +14,7 @@ def process_dataset_site_position(dataset_path, minimum_window_size, outfilename
     return
          pFinder config files
     '''
-    print("Position-splitting analysis")
+    print("Site-position analysis")
     
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
