@@ -3,6 +3,7 @@ from pathlib2 import Path
 from Bio import AlignIO, SeqIO, SeqUtils
 from itertools import combinations
 import numpy as np
+from math import factorial
 
 def blocks_pfinder_config(best_window, name, start, stop, uce_aln):
 
@@ -74,11 +75,11 @@ def get_all_windows(aln, minimum_window_size):
         start = window[0]
         stop = window[1]
 
-        if start < minimum_window_size:
+        if start <= minimum_window_size:
             continue
-        if (length - stop) < minimum_window_size:
+        if (length - stop) <= minimum_window_size:
             continue
-        if (stop - start) < minimum_window_size:
+        if (stop - start) <= minimum_window_size:
             continue
 
         keep_windows.append(window)
@@ -126,7 +127,7 @@ def p_finder_start_block(dataset_name, branchlengths = 'linked', models = 'GTR+G
     return (begin_block)
 
 
-def p_finder_end_block(dataset_name, search = 'rcluster'):
+def p_finder_end_block(dataset_name, search = 'rclusterf'):
     '''
     args: 
         dataset_name: name of the dataset
@@ -142,6 +143,63 @@ def p_finder_end_block(dataset_name, search = 'rcluster'):
                     )
 
     return (end_block)
+
+def sitewise_base_counts(aln):
+    '''
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        4xN array of base counts (A,C,G,T) by site
+    '''
+    n_sites = aln.get_alignment_length()
+
+    base_counts = np.zeros((4, n_sites))
+
+    for i in range(n_sites):
+
+        site_i = aln[:,i:i+1]
+        counts_i = count_bases(site_i)
+        base_counts[:,i] = counts_i
+
+    return(base_counts)
+
+def factorial_matrix(counts):
+    '''
+    input an array of integers
+    output an array of the colum-wise products of the factorials of those integers
+    '''
+    # NB: I used to do this like this, which seemed more sensible and almost certainly quicker,
+    #fv = np.vectorize(factorial)
+    #factorials = fv(counts)
+    #f_product = factorials.prod(axis = 0)
+    # however, I kept getting overflow errors that I couldn't figure out, so I gave up.
+
+    f_product = []
+
+    for c in counts.T:
+        cf = []
+        for i in c:
+            cf.append(factorial(i))
+        f_product.append(np.product(cf))
+
+
+    return(f_product)
+
+
+def count_bases(aln):
+
+    one_str = ""
+    for seq in aln:
+        one_str += seq
+
+    seq = one_str.upper()
+
+    A = seq.seq.count('A') 
+    C = seq.seq.count('C')
+    G = seq.seq.count('G')
+    T = seq.seq.count('T')
+
+    return(np.array([A, C, G, T]))
 
 def bp_freqs_calc(aln):
     '''

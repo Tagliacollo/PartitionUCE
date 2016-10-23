@@ -6,6 +6,7 @@ from collections import defaultdict
 from tqdm import tqdm
 from utilities import *
 import os
+fv = np.vectorize(factorial)
 
 def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
@@ -29,59 +30,75 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
         # slice the alignment to get the UCE
         uce_aln = aln[:, start:stop]
 
+        # preprocess stuff we need a lot
+        uce_counts  = sitewise_base_counts(uce_aln)
+        uce_n_obs_factorial = fv(uce_counts.sum(axis = 0))
+        uce_factorials = factorial_matrix(uce_counts)
+
         windows = get_all_windows(uce_aln, minimum_window_size)
-    
-        lik_windows = defaultdict(list)
+ 
+        best_likelihood = np.inf * -1  # start at the bottom
+
         for window in windows:
-            lik_windows[window] = multinomial_likelihood(uce_aln, window)
+            log_likelihood = multinomial_likelihood(uce_counts, uce_factorials, uce_n_obs_factorial, window)
 
-        best_window = max(lik_windows.items(), key=lambda a: a[1]) # should we take max or min? 
+            if(log_likelihood > best_likelihood):
+                best_window = window
+                best_likelihood = log_likelihood
+
         pfinder_config_file = open('%s_full_multi_partition_finder.cfg' % (dataset_name), 'a')
-        pfinder_config_file.write(export_charset_full_multi(name, best_window, start, stop, 
-                                                            outfilename = pfinder_config_file))
-
+        pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, uce_aln))
     pfinder_config_file = open('%s_full_multi_partition_finder.cfg' % (dataset_name), 'a')
     pfinder_config_file.write(p_finder_end_block(dataset_name))
     pfinder_config_file.close()
 
     return (best_window)
 
-def multinomial_likelihood(aln, window):
+def multinomial_likelihood(counts, factorials, Ns, window):
 
-    sitewise_likelihoods = sitewise_full_multi(aln, window)
-    sitewise_log_likelihoods = np.log(sitewise_likelihoods)
-    log_likelihood = np.sum(sitewise_log_likelihoods)
+    sitewise_likelihoods = sitewise_full_multi(counts, factorials, Ns, window)
+    log_likelihoods = np.log(sitewise_likelihoods)
+    log_likelihood = np.sum(log_likelihoods)
 
     return(log_likelihood)
     
-def sitewise_full_multi(aln, window):
+def sitewise_full_multi(counts, factorials, Ns, window):
     # aln[species :, aln_start : aln_end]
-    uce_left  = sitewise_multi(aln[ :, : window[0]])
-    uce_core  = sitewise_multi(aln[ :, window[0] : window[1]])
-    uce_right = sitewise_multi(aln[ :, window[1] : ])
+    uce_left  = sitewise_multi_count(counts[ :, : window[0]], factorials[ : window[0]], Ns[ : window[0]])
+    uce_core  = sitewise_multi_count(counts[ :, window[0] : window[1]], factorials[window[0] : window[1]], Ns[window[0] : window[1]])
+    uce_right = sitewise_multi_count(counts[ :, window[1] : ], factorials[window[1] : ], Ns[window[1] : ])
 
     return (np.concatenate([uce_left,uce_core,uce_right]))
 
-def export_charset_full_multi(charset_name, best_window, start, stop, outfilename):
- 
-        # left UCE
-        left_start  = start + 1
-        left_end = left_start + best_window[0][0]
-        left_UCE = '%s_left = %s-%s;\n' % (charset_name, left_start, left_end)
-    
-        # core UCE
-        core_start = left_end + 1
-        core_end = core_start + (best_window[0][1] - best_window[0][0] - 1)
-        core_UCE = '%s_core = %s-%s;\n' % (charset_name, core_start, core_end)
 
-        #right UCE
-        right_start = core_end + 1
-        right_end = stop
-        right_UCE = '%s_right = %s-%s;\n' % (charset_name, right_start, right_end)
+def sitewise_multi_count(counts, factorials, Ns):
+    '''
+    Input: 
+        counts: counts of A,C,G,T, in 4xN matrix, where N is number of sites
+        factorials: products of the factorials of the counts (i.e. 1xN array)
+        Ns: factorials of the sums of the counts (i.e. 1xN array)
+    Output: 
+        1D numpy array with multinomial values for each site
+    '''
 
-        # sometimes we couldn't split the window so it's all core
-        if(best_window[0][1]-best_window[0][0] == stop-start):
-            return(core_UCE)
-        else:
-            return(left_UCE + core_UCE + right_UCE)
-    
+    n_sites = counts.shape[1]
+
+    background_base_counts = counts.sum(axis = 1)
+    background_base_freqs = background_base_counts/sum(background_base_counts)
+
+    multinomial_likelihoods = np.zeros(counts.shape[1])
+
+    for i in range(n_sites):
+
+        K = factorials[i]
+        N = Ns[i]
+        counts_i = counts[:,i]
+        J = np.product(background_base_freqs**counts_i)
+        
+        L = (N/K)*J
+        
+        multinomial_likelihoods[i] = L
+
+    return (multinomial_likelihoods)  
+
+

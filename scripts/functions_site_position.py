@@ -121,7 +121,7 @@ def export_charset(dataset_name, uce_dics, outfilename):
     for key, value in uce_dics.items():
         keyi   = key
         valuei = (np.sort((np.array(value) + 1))).tolist()
-        valuei = str(valuei).lstrip(' [').rstrip(']') # .replace(', ', ',') <- to exclude spaces too
+        valuei = ' '.join(str(x) for x in valuei)
         
         charset = 'uce_sites_%s = %s;\n' % (keyi, valuei)
         
