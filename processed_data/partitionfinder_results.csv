@@ -1,0 +1,9 @@
+dataset,method,AICc,Subsets,Parameters
+Crawford_2012,one,2480286,1,26
+Crawford_2012,all_UCEs,2466694.9,1145,11466
+Crawford_2012,UCE,2455156.68,226,2276
+Crawford_2012,site,2457752.4,77,786
+Crawford_2012,full multi,2410375.7,435,4366
+Crawford_2012,entropy,2395984.7,415,4166
+Crawford_2012,GC,2413048.4,423,4246
+Crawford_2012,multi,2410041.3,421,4226

@@ -5,10 +5,10 @@ begin DATA;
 	matrix
 	sp_1	TTTTAAAA
 	sp_2	TTTTAAAA
-	sp_3	TTTTAAAA
-	sp_4	TTTTAAAA
-	sp_5	TTTTAAAA
-	sp_6	TTTTAAAA
+	sp_3	TTTTAAAC
+	sp_4	TTTTAAAC
+	sp_5	TTTTAAAG
+	sp_6	TTTTAAAT
 
 ;
 end;
