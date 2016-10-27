@@ -78,3 +78,21 @@ p4 = ggplot(lengths, aes(x = length))
 p4 + geom_histogram() + facet_grid(type~dataset, scales = "free")
 
 
+# plot UCEs partitions
+library('reshape2')
+
+df = read.csv(file.choose())
+
+metrics = levels(df$type)
+
+mtx = NULL
+for (i in 1:length(metrics)){
+  sub.df   = subset(df, type == metrics[i]) 
+  make.mtx = dcast(sub.df, name ~ uce_site, value.var = 'color')
+  rownames(make.mtx) = make.mtx[,1] ; make.mtx = make.mtx[,-1]
+  
+  mtx[[paste0(metrics[i])]] = data.matrix(make.mtx)
+}
+
+m = mtx[[1]]
+
