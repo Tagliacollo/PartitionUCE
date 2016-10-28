@@ -136,14 +136,16 @@ def process_uce(aln, metrics, minimum_window_size):
     # sometimes we can't split a UCE, in which case there's one
     # window and it's the whole UCE
     
+
+
     if(len(windows)>1):
-        best_window = get_best_windows(metrics, windows)
+        best_window = get_best_windows(metrics, windows, aln.get_alignment_length())
     else:
         best_window = [windows[0], windows[0], windows[0]]
     
     return (best_window, metrics)
 
-def get_best_windows(metrics, windows):
+def get_best_windows(metrics, windows, aln_length):
     '''
     Input: 
         an a n-dimensional numpy array, 
@@ -166,20 +168,51 @@ def get_best_windows(metrics, windows):
         # get SSE's for a given window
         all_sses[:,i] = get_sses(metrics, window)
 
-    # 3. get index of minimum value in 1D array FOR each metric
-    best_indices = np.apply_along_axis(np.argmin, 1, all_sses)
-    
-    # 4. best window is windows[index]
-    # get the best window for each metric
-    # i.e. best_indices gives the index for each row
+    # 3. get index of minimum value for each metric
+    entropy_sses = all_sses[0]
+    gc_sses = all_sses[1]
+    multi_sses = all_sses[2]
 
-    entropy = windows[best_indices[0]]
-    gc      = windows[best_indices[1]]
-    multi   = windows[best_indices[2]]
+    entropy_mins = np.where(entropy_sses == entropy_sses.min())[0]  
+    gc_mins = np.where(gc_sses == gc_sses.min())[0]
+    multi_mins = np.where(multi_sses == multi_sses.min())[0]    
+
+    # choose the windows with the minimum variance in length of
+    #l-flank, core, r-flank
+    entropy_wins = [windows[i] for i in entropy_mins]
+    gc_wins = [windows[i] for i in gc_mins]
+    multi_wins = [windows[i] for i in multi_mins]
+
+    entropy = get_min_var_window(entropy_wins, aln_length)
+    gc = get_min_var_window(gc_wins, aln_length)
+    multi = get_min_var_window(multi_wins, aln_length)
 
     best_windows = [entropy, gc, multi]
 
     return (best_windows)
+
+def get_min_var_window(windows, aln_length):
+    '''
+    input: a set of windows e.g. [(50, 100), (200, 400)]
+            the length of the UCE alignment
+    output: the window with the smallest variance in fragemeng length
+
+    '''
+
+    best_var = np.inf
+
+    for w in windows:
+        l1 = w[0]
+        l2 = w[1] - w[0]
+        l3 = aln_length - w[1]
+        var = np.var([l1, l2, l3])
+
+        if var < best_var:
+            best_var = var
+            best_window = w
+
+    return(best_window)
+
 
 def get_sses(metrics, window):
     '''
