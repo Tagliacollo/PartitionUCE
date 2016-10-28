@@ -6,7 +6,6 @@ from collections import defaultdict
 from tqdm import tqdm
 from utilities import *
 import os
-fv = np.vectorize(factorial)
 
 def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
@@ -32,19 +31,41 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
         # preprocess stuff we need a lot
         uce_counts  = sitewise_base_counts(uce_aln)
-        uce_n_obs_factorial = fv(uce_counts.sum(axis = 0))
+        uce_sums = uce_counts.sum(axis = 0)
+
+        uce_n_obs_factorial = []
+        for s in uce_sums:
+            f = factorial(s)
+            uce_n_obs_factorial.append(f)
+
+
         uce_factorials = factorial_matrix(uce_counts)
+
+        # sanity checks
+        m1 = np.min(uce_factorials)
+        m2 = np.min(uce_n_obs_factorial)
+        m3 = min([m1, m2])
+        if(m3<0):
+            raise ValueError('One of your factorials is <0, this is bad, quitting)')
 
         windows = get_all_windows(uce_aln, minimum_window_size)
  
         best_likelihood = np.inf * -1  # start at the bottom
 
+        log_likelihoods = []
         for window in windows:
-            log_likelihood = multinomial_likelihood(uce_counts, uce_factorials, uce_n_obs_factorial, window)
+            lnL = multinomial_likelihood(uce_counts, uce_factorials, uce_n_obs_factorial, window)
+            log_likelihoods.append(lnL)
 
-            if(log_likelihood > best_likelihood):
-                best_window = window
-                best_likelihood = log_likelihood
+        log_likelihoods = np.array(log_likelihoods)
+
+        # indices of ML solutions
+        ML_indices = np.where(log_likelihoods == log_likelihoods.max())[0]  
+
+        ML_wins = [windows[i] for i in ML_indices]
+
+        # if >1 alignment with equal likelihod, choose the one with minimum variance in lenghts
+        best_window = get_min_var_window(ML_wins, aln.get_alignment_length())
 
         pfinder_config_file = open('%s_full_multi_partition_finder.cfg' % (dataset_name), 'a')
         pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, uce_aln))
@@ -96,7 +117,7 @@ def sitewise_multi_count(counts, factorials, Ns):
         J = np.product(background_base_freqs**counts_i)
         
         L = (N/K)*J
-        
+
         multinomial_likelihoods[i] = L
 
     return (multinomial_likelihoods)  
