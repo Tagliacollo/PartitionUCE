@@ -13,9 +13,9 @@ def blocks_pfinder_config(best_window, name, start, stop, uce_aln):
         return (whole_UCE)
 
     else:
-        # left UCE
+        # left flank
         left_start = start + 1
-        left_end = left_start + best_window[0]
+        left_end = start + best_window[0]
 
         # core UCE
         core_start = left_end + 1
@@ -67,7 +67,7 @@ def get_all_windows(aln, minimum_window_size):
 
     keep_windows = []
 
-    if length < 3*minimum_window_size:
+    if length < 3 * minimum_window_size:
         # some things can't be split
         return ([(0, length)])
 
@@ -75,11 +75,11 @@ def get_all_windows(aln, minimum_window_size):
         start = window[0]
         stop = window[1]
 
-        if start <= minimum_window_size:
+        if start < minimum_window_size:
             continue
-        if (length - stop) <= minimum_window_size:
+        if (length - stop) < minimum_window_size:
             continue
-        if (stop - start) <= minimum_window_size:
+        if (stop - start) < minimum_window_size:
             continue
 
         keep_windows.append(window)
@@ -180,7 +180,12 @@ def factorial_matrix(counts):
         cf = []
         for i in c:
             cf.append(factorial(i))
-        f_product.append(np.product(cf))
+        p = cf[0]*cf[1]*cf[2]*cf[3] #np has trouble with big numbers...
+        f_product.append(p)
+
+        # sanity check: numpy was occasionally returning negative products of factorials...
+        if(p<0):
+            raise ValueError('This is bad: you have a negative factorial, which should be impossible here')
 
 
     return(f_product)
