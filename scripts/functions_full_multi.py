@@ -67,6 +67,13 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
         # if >1 alignment with equal likelihod, choose the one with minimum variance in lenghts
         best_window = get_min_var_window(ML_wins, aln.get_alignment_length())
 
+        ## At this point, we need to go and re-calculate the likelihoods of
+        # the best window, so we can output them to the csv file
+        best_sitewise_likelihoods = sitewise_full_multi(uce_counts, uce_factorials, uce_n_obs_factorial, best_window)
+        log_likelihoods = np.log(best_sitewise_likelihoods)
+
+        #TODO: now save those log_likeilhoods to the csv file
+
         pfinder_config_file = open('%s_full_multi_partition_finder.cfg' % (dataset_name), 'a')
         pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, uce_aln))
     pfinder_config_file = open('%s_full_multi_partition_finder.cfg' % (dataset_name), 'a')

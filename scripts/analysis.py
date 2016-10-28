@@ -33,12 +33,14 @@ for dataset_path in datasets:
 
 	name = os.path.basename(dataset_path).rstrip(".nex")
 
+	# WARNING: metrics must ALWAYS be ['entropy', 'gc', 'multi'] IN THAT ORDER!!!
+
 	print(asctime())
-	process_dataset_metrics(dataset_path, ['entropy', 'gc', 'multi'], minimum_window_size = 50, outfilename = '%s.csv' % (name))
+	process_dataset_metrics(dataset_path, ['entropy', 'gc', 'multi'], minimum_window_size = 2, outfilename = '%s.csv' % (name))
 	print(asctime())
-	process_dataset_site_position(dataset_path, minimum_window_size = 50, outfilename = name)
+	process_dataset_site_position(dataset_path, minimum_window_size = 2, outfilename = name)
 	print(asctime())
-	process_dataset_full_multi(dataset_path, minimum_window_size = 50, outfilename = name)
+	process_dataset_full_multi(dataset_path, minimum_window_size = 2, outfilename = name)
 	print(asctime())
 
 

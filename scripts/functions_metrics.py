@@ -24,7 +24,7 @@ def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilen
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
     outfile = open(outfilename, 'w')
-    outfile.write("name,uce_site,aln_site,entropy_wd_start,entropy_wd_stop,gc_wd_start,gc_wd_stop,multi_wd_start,multi_wd_stop,%s\n" %(','.join(metrics)))
+    outfile.write("name,uce_site,aln_site,window_start,window_stop,type,value\n")
     outfile.close()
 
     # write the start blocks of the partitionfinder files
@@ -60,7 +60,7 @@ def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilen
         pfinder_config_file.close()
 
 
-def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
+def write_csvs(best_windows, metric_array, aln_sites, name, outfilename):
     '''
     Input: 
         best_windows: the best window for each metric
@@ -76,10 +76,11 @@ def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
     middle = int(float(N) / 2.0)
     uce_sites = np.array(range(N)) - middle
 
+    # make our long lists of things common to all metrics
+    uce_sites = uce_sites.repeat(3)
     outfile = open(outfilename, 'a')
-
-    names = [name]*N
-    
+    names = [name] * N * 3
+    aln_sites = np.array(aln_sites).repeat(3)    
 
     # have to separate this in three lists
     window_start = []
@@ -96,14 +97,19 @@ def write_csvs(best_windows, metrics, aln_sites, name, outfilename):
     window_stop_gc      = window_stop[1]
     window_stop_multi   = window_stop[2]
 
+    window_starts = np.concatenate([window_start_entropy, window_start_gc, window_start_multi])
+    window_stops = np.concatenate([window_stop_entropy, window_stop_gc, window_stop_multi])
 
-    metrics = metrics.tolist()
+    # build our types
+    entropy_type = ['entropy'] * N
+    gc_type = ['gc'] * N
+    multi_type = ['multi'] * N
 
-    all_info = [names, uce_sites, aln_sites, window_start_entropy, window_stop_entropy, 
-                window_start_gc, window_stop_gc, window_start_multi, window_stop_multi]
+    metric_type = np.concatenate([entropy_type, gc_type, multi_type])
 
-    for m in metrics:
-        all_info.append(m)
+    metric_value = np.concatenate([metric_array[0], metric_array[1], metric_array[2]])
+
+    all_info = [names, uce_sites, aln_sites, window_starts, window_stops, metric_type, metric_value]
 
     all_info = zip(*all_info)
 
