@@ -1,14 +1,14 @@
 #NEXUS
 begin DATA;
-	dimensions ntax=6 nchar=8;
+	dimensions ntax=6 nchar=9;
 	format datatype=nucleotide missing=? gap=-;
 	matrix
-	sp_1	TTTTAAAA
-	sp_2	TTTTAAAA
-	sp_3	TTTTAAAC
-	sp_4	TTTTAAAC
-	sp_5	TTTTAAAG
-	sp_6	TTTTAAAT
+	sp_1	TTTTCAAAA
+	sp_2	TTTTCAAAA
+	sp_3	TTTTCAAAA
+	sp_4	TTTTCAAAA
+	sp_5	TTTTCAAAA
+	sp_6	TTTTCAAAA
 
 ;
 end;
@@ -16,7 +16,6 @@ end;
 begin SETS;
 
     [loci]
-    CHARSET chr1 = 1-3;
-    CHARSET chr2 = 4-8;
-    
+    CHARSET chr1 = 1-9;
+
 end;
