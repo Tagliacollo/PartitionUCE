@@ -5,6 +5,7 @@ import Bio
 import numpy as np
 import os, subprocess
 from math import factorial
+import itertools
 from tqdm import tqdm
 
 
@@ -24,7 +25,7 @@ def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilen
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
     outfile = open(outfilename, 'w')
-    outfile.write("name,uce_site,aln_site,window_start,window_stop,type,value\n")
+    outfile.write("name,uce_site,aln_site,window_start,window_stop,type,value,plot_mtx\n")
     outfile.close()
 
     # write the start blocks of the partitionfinder files
@@ -49,7 +50,7 @@ def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilen
         for i, best_window in enumerate(best_windows):
             pfinder_config_file = open('%s_%s_partition_finder.cfg' % (dataset_name, metrics[i]), 'a')
             pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, uce_aln)) 
-
+            break
 
         write_csvs(best_windows, metric_array, sites, name, outfilename)
 
@@ -77,17 +78,23 @@ def write_csvs(best_windows, metric_array, aln_sites, name, outfilename):
     uce_sites = np.array(range(N)) - middle
 
     # make our long lists of things common to all metrics
-    uce_sites = uce_sites.repeat(3)
+    uce_sites = [uce_sites] * 3
+    uce_sites_single_matrix = list(itertools.chain.from_iterable(uce_sites))
     outfile = open(outfilename, 'a')
     names = [name] * N * 3
-    aln_sites = np.array(aln_sites).repeat(3)    
+    aln_sites = [np.array(aln_sites)] * 3 
+    aln_sites_single_matrix = list(itertools.chain.from_iterable(aln_sites))
 
     # have to separate this in three lists
     window_start = []
     window_stop = []
+    matrix_value = []
+    
     for w in best_windows:
         window_start.append([w[0]]*N)
         window_stop.append([w[1]]*N)
+        
+        matrix_value.append(csv_col_to_plot_matrix(w, N))
 
     window_start_entropy = window_start[0]
     window_start_gc      = window_start[1]
@@ -96,6 +103,8 @@ def write_csvs(best_windows, metric_array, aln_sites, name, outfilename):
     window_stop_entropy = window_stop[0]
     window_stop_gc      = window_stop[1]
     window_stop_multi   = window_stop[2]
+
+    matrix_value_single_matrix = list(itertools.chain.from_iterable(matrix_value))
 
     window_starts = np.concatenate([window_start_entropy, window_start_gc, window_start_multi])
     window_stops = np.concatenate([window_stop_entropy, window_stop_gc, window_stop_multi])
@@ -109,7 +118,9 @@ def write_csvs(best_windows, metric_array, aln_sites, name, outfilename):
 
     metric_value = np.concatenate([metric_array[0], metric_array[1], metric_array[2]])
 
-    all_info = [names, uce_sites, aln_sites, window_starts, window_stops, metric_type, metric_value]
+    all_info = [names, uce_sites_single_matrix, aln_sites_single_matrix, 
+                window_starts, window_stops, metric_type, metric_value, 
+                matrix_value_single_matrix]
 
     all_info = zip(*all_info)
 
@@ -347,8 +358,6 @@ def sitewise_multi(aln):
         multinomial_likelihoods.append(multinomial_cal)
 
     return (np.array(multinomial_likelihoods))  
-
-
 
 
 def entropy_calc(p):
