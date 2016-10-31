@@ -12,6 +12,10 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
     print("Full multinomial likelihood analysis")
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
+    outfile = open(outfilename, 'w')
+    outfile.write("name, uce_site, aln_site, window_start, window_stop, type, value\n")
+    outfile.close()
+
     dat = Nexus.Nexus()
     dat.read(dataset_path)
     aln = AlignIO.read(open(dataset_path), "nexus")
@@ -73,7 +77,9 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
         log_likelihoods = np.log(best_sitewise_likelihoods)
 
         #TODO: now save those log_likeilhoods to the csv file
+        write_csvs_full(best_window, log_likelihoods, sites, name, outfilename)
 
+        
         pfinder_config_file = open('%s_full_multi_partition_finder.cfg' % (dataset_name), 'a')
         pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, uce_aln))
     pfinder_config_file = open('%s_full_multi_partition_finder.cfg' % (dataset_name), 'a')
@@ -129,4 +135,41 @@ def sitewise_multi_count(counts, factorials, Ns):
 
     return (multinomial_likelihoods)  
 
+
+
+def write_csvs_full(best_window, metric_full, aln_sites, name, outfilename):
+    '''
+    Input: 
+        best_windows: the best window for full_multi
+        metric: a list with values of log likelihoods
+        aln_sites: site number in the alignment 
+        name: UCE name
+        outfilename: name for the csv file
+    Output: 
+        csv files written to disk
+    '''
+
+    N = len(aln_sites)
+    middle = int(float(N) / 2.0)
+    uce_sites = np.array(range(N)) - middle
+
+    wd_start = [best_window[0]]*N
+    wd_stop  = [best_window[1]]*N 
+
+    name = [name]*N
+    metric_type = ['full_multi']*N
+    
+    all_info = [name, uce_sites, aln_sites, wd_start, wd_stop,
+                metric_type, metric_full]
+
+    all_info = zip(*all_info)
+
+    outfile = open(outfilename, 'a')
+    
+    for i in all_info:
+        line = [str(thing) for thing in i]
+        line = ','.join(line)
+        outfile.write(line)
+        outfile.write("\n")
+    outfile.close()
 
