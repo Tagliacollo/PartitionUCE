@@ -13,7 +13,7 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
     outfile = open(outfilename, 'w')
-    outfile.write("name, uce_site, aln_site, window_start, window_stop, type, value\n")
+    outfile.write("name, uce_site,aln_site,window_start,window_stop,type,value,plot_mtx\n")
     outfile.close()
 
     dat = Nexus.Nexus()
@@ -159,8 +159,10 @@ def write_csvs_full(best_window, metric_full, aln_sites, name, outfilename):
     name = [name]*N
     metric_type = ['full_multi']*N
     
+    plot_mtx = csv_col_to_plot_matrix(best_window, N)
+
     all_info = [name, uce_sites, aln_sites, wd_start, wd_stop,
-                metric_type, metric_full]
+                metric_type, metric_full, plot_mtx]
 
     all_info = zip(*all_info)
 
