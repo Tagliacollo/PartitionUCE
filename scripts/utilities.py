@@ -289,3 +289,17 @@ def bp_freqs_calc(aln):
     bp_freqs = np.array([ A, C, G, T])/float(sum_count)
     
     return (bp_freqs)
+
+def csv_col_to_plot_matrix(best_window, N):
+    
+    start = 0
+    stop  = N
+
+    wd_left  = np.repeat(-1, [start + best_window[0]])
+    wd_core  = np.repeat(0, [best_window[1] - best_window[0]])
+    wd_right = np.repeat(1, [stop - best_window[1]])
+
+    concat = np.concatenate([wd_left,wd_core,wd_right])
+
+    return(concat.tolist())
+
