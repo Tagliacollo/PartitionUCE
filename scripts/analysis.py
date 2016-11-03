@@ -40,7 +40,7 @@ for dataset_path in datasets:
 	print(asctime())
 	process_dataset_site_position(dataset_path, minimum_window_size = 100, outfilename = name)
 	print(asctime())
-	process_dataset_full_multi(dataset_path, minimum_window_size = 100, outfilename = '%s_multi.csv' % name)
+	process_dataset_full_multi(dataset_path, minimum_window_size = 100, outfilename = '%s.csv' % name)
 	print(asctime())
 
 
