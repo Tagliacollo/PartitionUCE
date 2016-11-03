@@ -1,4 +1,5 @@
-library(ggplot2)
+library('reshape2')
+library(plotly)
 
 
 load.dataset = function(dataset_name){
@@ -78,21 +79,35 @@ p4 = ggplot(lengths, aes(x = length))
 p4 + geom_histogram() + facet_grid(type~dataset, scales = "free")
 
 
-# plot UCEs partitions
-library('reshape2')
+################### VICTOR
+library(ggplot2)
 
-df = read.csv(file.choose())
-
-metrics = levels(df$type)
-
-mtx = NULL
-for (i in 1:length(metrics)){
-  sub.df   = subset(df, type == metrics[i]) 
-  make.mtx = dcast(sub.df, name ~ uce_site, value.var = 'color')
-  rownames(make.mtx) = make.mtx[,1] ; make.mtx = make.mtx[,-1]
+load.data = function(dataset_name){
   
-  mtx[[paste0(metrics[i])]] = data.matrix(make.mtx)
+  base_path = '/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/'
+  data_path = paste0(base_path, dataset_name, '/', dataset_name)
+  
+  df    = read.csv(paste0(data_path, ".csv", sep = ""))
+  
+  return(df)
+  
 }
 
-m = mtx[[1]]
+df = load.data('test')
+
+p = ggplot(df, aes(uce_site, name)) + 
+  geom_tile(aes(fill = plot_mtx), colour = "white") + 
+  scale_fill_gradient(low = "black", high = "steelblue") + 
+  facet_grid(type ~ .) +   # add ncol=2 if we decide two split in two col
+
+  
+base_size = 9
+p + theme_grey(base_size = base_size) + labs(x = "", y = "") + 
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0)) +
+  theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+        legend.position = "none")
+
+
+
 
