@@ -12,6 +12,10 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
     print("Full multinomial likelihood analysis")
     dataset_name = os.path.basename(dataset_path).rstrip(".nex")
 
+    #outfile = open(outfilename, 'a')
+    #outfile.write("name, uce_site,aln_site,window_start,window_stop,type,value,plot_mtx\n")
+    #outfile.close()
+
     dat = Nexus.Nexus()
     dat.read(dataset_path)
     aln = AlignIO.read(open(dataset_path), "nexus")
