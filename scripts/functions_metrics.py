@@ -190,15 +190,19 @@ def get_best_windows(metrics, windows, aln_length):
     gc_sses = all_sses[1]
     multi_sses = all_sses[2]
 
+
+
     entropy_mins = np.where(entropy_sses == entropy_sses.min())[0]  
     gc_mins = np.where(gc_sses == gc_sses.min())[0]
     multi_mins = np.where(multi_sses == multi_sses.min())[0]    
+
 
     # choose the windows with the minimum variance in length of
     #l-flank, core, r-flank
     entropy_wins = [windows[i] for i in entropy_mins]
     gc_wins = [windows[i] for i in gc_mins]
     multi_wins = [windows[i] for i in multi_mins]
+
 
     entropy = get_min_var_window(entropy_wins, aln_length)
     gc = get_min_var_window(gc_wins, aln_length)

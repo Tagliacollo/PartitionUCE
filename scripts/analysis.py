@@ -6,7 +6,7 @@ import os
 from time import asctime
 
 
-datasets = ['/Volumes/VATagliacollo/GitHub/PartitionUCE/raw_data/test.nex']
+datasets = ['/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Crawford_2012.nex']
 			#'/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Meiklejohn_2016.nex']
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Crawford_2012.nex',
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Faircloth_2013.nex',
@@ -40,7 +40,7 @@ for dataset_path in datasets:
 	print(asctime())
 	process_dataset_site_position(dataset_path, minimum_window_size = 100, outfilename = name)
 	print(asctime())
-	process_dataset_full_multi(dataset_path, minimum_window_size = 100, outfilename = '%s_multi.csv' % name)
+	process_dataset_full_multi(dataset_path, minimum_window_size = 100, outfilename = '%s.csv' % name)
 	print(asctime())
 
 
