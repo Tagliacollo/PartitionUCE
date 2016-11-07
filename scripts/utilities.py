@@ -299,3 +299,25 @@ def csv_col_to_plot_matrix(best_window, N):
 
     return(concat.tolist())
 
+def get_min_var_window(windows, aln_length):
+    '''
+    input: a set of windows e.g. [(50, 100), (200, 400)]
+            the length of the UCE alignment
+    output: the window with the smallest variance in fragemeng length
+
+    '''
+
+    best_var = np.inf
+
+    for w in windows:
+        l1 = w[0]
+        l2 = w[1] - w[0]
+        l3 = aln_length - w[1]
+        var = np.var([l1, l2, l3])
+
+        if var < best_var:
+            best_var = var
+            best_window = w
+
+    return(best_window)
+
