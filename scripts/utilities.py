@@ -273,20 +273,16 @@ def bp_freqs_calc(aln):
     Output: 
         1-D array of base frequencies
     '''
-    one_str = ""
-    for seq in aln:
-        one_str += seq
 
-    seq = one_str.upper()
+    base_counts = count_bases(aln)
 
-    A = seq.seq.count('A') 
-    C = seq.seq.count('C')
-    G = seq.seq.count('G')
-    T = seq.seq.count('T')
+    sum_count = np.sum(base_counts)
 
-    sum_count = A + C + G + T
+    # fix so we get frequencies of zero when we don't count
+    # any A, C, T or G
+    if(sum_count == 0): sum_count = 1
 
-    bp_freqs = np.array([ A, C, G, T])/float(sum_count)
+    bp_freqs = base_counts/float(sum_count)
     
     return (bp_freqs)
 
