@@ -7,6 +7,7 @@ import os, subprocess
 from math import factorial
 import itertools
 from tqdm import tqdm
+from functions_full_multi import *
 
 
 def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilename):
@@ -39,6 +40,7 @@ def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilen
     aln = AlignIO.read(open(dataset_path), "nexus")
 
     for name in tqdm(dat.charsets):
+
         sites = dat.charsets[name]
         start = min(sites)
         stop = max(sites) + 1
@@ -190,8 +192,6 @@ def get_best_windows(metrics, windows, aln_length):
     gc_sses = all_sses[1]
     multi_sses = all_sses[2]
 
-
-
     entropy_mins = np.where(entropy_sses == entropy_sses.min())[0]  
     gc_mins = np.where(gc_sses == gc_sses.min())[0]
     multi_mins = np.where(multi_sses == multi_sses.min())[0]    
@@ -246,6 +246,7 @@ def get_sses(metrics, window):
         rows as metrics, where each entry is the SSE
     '''
 
+
     sses = np.apply_along_axis(get_sse, 1, metrics, window)
 
     return (sses)
@@ -260,6 +261,7 @@ def get_sse(metric, window):
     right = sse(metric[window[1] : ])
 
     res = np.sum(left + core + right)
+
 
     return (res)
 
@@ -326,7 +328,7 @@ def sitewise_gc(aln):
 
     return (gc)
 
-def sitewise_multi(aln):
+def sitewise_multi(uce_aln):
     '''
     Input: 
         aln: biopython generic alignment
@@ -334,34 +336,33 @@ def sitewise_multi(aln):
         1D numpy array with multinomial values for each site
     '''
 
-    number_ssp = len(aln)
-    bp_freqs = bp_freqs_calc(aln)
+    # preprocess stuff we need a lot
+    uce_counts  = sitewise_base_counts(uce_aln)
+    uce_sums = uce_counts.sum(axis = 0)
 
-    prop_A = bp_freqs[0]
-    prop_C = bp_freqs[1]
-    prop_G = bp_freqs[2]
-    prop_T = bp_freqs[3]
+    uce_n_obs_factorial = []
+    for s in uce_sums:
+        f = factorial(s)
+        uce_n_obs_factorial.append(f)
 
-    multinomial_likelihoods = []
-    for i in range(aln.get_alignment_length()):
-        site = aln[:,i]
-    
-        count_A = site.count('A')
-        count_C = site.count('C')
-        count_G = site.count('G')
-        count_T = site.count('T')
 
-        # Function to calculate multinomial - OBS: numpy has no function for factorial calculations
-        # for factorial calculations: from math import factorial
-        N = factorial(number_ssp)
-        K = factorial(count_A) * factorial(count_C) * factorial(count_G) * factorial(count_T)
-        J = (prop_A**count_A * prop_C**count_C * prop_G**count_G * prop_T**count_T)
+    uce_factorials = factorial_matrix(uce_counts)
 
-        multinomial_cal = (N/K)*J
-        
-        multinomial_likelihoods.append(multinomial_cal)
+    # sanity checks
+    m1 = np.min(uce_factorials)
+    m2 = np.min(uce_n_obs_factorial)
+    m3 = min([m1, m2])
+    if(m3<0):
+        raise ValueError('One of your factorials is <0, this is bad, quitting)')
 
-    return (np.array(multinomial_likelihoods))  
+    sitewise_likelihoods = sitewise_multi_count(uce_counts, uce_factorials, uce_n_obs_factorial)
+
+    log_likelihoods = np.log(sitewise_likelihoods)
+
+    print(sitewise_likelihoods)
+    print(log_likelihoods)
+
+    return(log_likelihoods)
 
 
 def entropy_calc(p):
@@ -374,6 +375,7 @@ def entropy_calc(p):
     copied from: http://nbviewer.ipython.org/url/atwallab.cshl.edu/teaching/QBbootcamp3.ipynb
     '''
     p = p[p!=0] # modify p to include only those elements that are not equal to 0
+
 
     return np.dot(-p,np.log2(p)) # the function returns the entropy result
 
