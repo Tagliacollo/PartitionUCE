@@ -99,8 +99,8 @@ df = load.data('test')
 p = ggplot(df, aes(uce_site, name)) + 
   geom_tile(aes(fill = plot_mtx), colour = "white") + 
   scale_fill_gradient(low = "black", high = "steelblue") + 
-  #facet_grid(type ~ .)   # add ncol=2 if we decide two split in two col
-  facet_wrap(~ type, ncol = 2)
+  #facet_grid(type ~ .) # version 1  
+  facet_wrap(~ type, ncol = 2) # vesion 2
   
 base_size = 9
 p + theme_grey(base_size = base_size) + labs(x = "", y = "") + 
