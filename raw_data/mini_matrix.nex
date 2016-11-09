@@ -1,15 +1,16 @@
 #NEXUS
 begin DATA;
-	dimensions ntax=6 nchar=9;
+	dimensions ntax=8 nchar=9;
 	format datatype=nucleotide missing=? gap=-;
 	matrix
-	sp_1	TTTTCAAAA
-	sp_2	TTTTCAAAA
-	sp_3	TTTTCAAAA
-	sp_4	TTTTCAAAA
-	sp_5	TTTTCAAAA
-	sp_6	TTTTCAAAA
-
+	sp_1	AAAAAAAAA
+	sp_2	CCCCCCCCC
+	sp_3	GGGGGGGGG
+	sp_4	TTTTTTTTT
+	sp_5	AAAAAAAAA
+	sp_6	CCCCCCCCC
+	sp_7	GGGGGGGGG
+	sp_8	TTTTTTTTT
 ;
 end;
 
