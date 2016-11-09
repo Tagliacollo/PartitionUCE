@@ -155,8 +155,8 @@ bp_counts3 = c(0, 0, 2, 2)
 background_probs  = c(0, 0, 0.5, 0.5)
 ssp = 4
 
-mtx4A = dmultinom(bp_counts1, ssp, prob = background_probs, log = TRUE)
-mtx4B = dmultinom(bp_counts3, ssp, prob = background_probs, log = TRUE)
+mtx5A = dmultinom(bp_counts1, ssp, prob = background_probs, log = TRUE)
+mtx5B = dmultinom(bp_counts3, ssp, prob = background_probs, log = TRUE)
 
 # Expected multi loglik for this matrix is -7.506836
 
