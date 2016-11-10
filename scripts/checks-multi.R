@@ -216,3 +216,86 @@ mtx7 = dmultinom(bp_counts, ssp, prob = background_probs, log = TRUE)
 
 # Expected multi loglik for each site is -2.854233
 
+########## TEST 8 - FULL MULTI
+# For this test, our nexus matrix would look like this:
+#
+#         sp1 ACGT     # Following the same logic described above, we can say that:   
+#         sp2 CGTA     #    -  bp_counts (per site): 1, 1, 1, 1 (all column with same value)  
+#         sp3 GTAC     #    -  background_probs: 0.25, 025, 0.25, 0.25   
+#         sp4 TACG     #    -  size = 4 (or default = sum of the elements per site (bp_counts))
+#        
+#         OBS: this is the "matrix_TEST1"
+#
+#         For this matrix my prediction would be: 
+#             - Full multinomial likelihood is 4*mxt8
+#                   - The multinomial lik from site 1 to 4 should be all identical
+#                        obs: because background freqs and base counts are all identical 
+#                          minimum window size doesn't really matter here
+
+bp_counts = c(1, 1, 1, 1)
+background_probs  = c(0.25, 0.25, 0.25, 0.25)
+ssp = 4
+
+mxt8 = dmultinom(bp_counts, ssp, prob = background_probs, log = TRUE)
+
+########## TEST 9 - FULL MULTI
+# For this test, our nexus matrix would look like this:
+#         sp1 ACGT        Our size is 4 (see more above).
+#         sp2 ACTG        
+#         sp3 ACGT        
+#         sp4 ACTG
+#
+#          1  2  3  4
+#       A [4, 0, 0, 0]    
+#       C [0, 4, 0, 0]      - base counts (per site): 1) A=4, C=0, G=0, T=0 / 2) A=0, C=4, G=0, T=0, etc)
+#       G [0, 0, 2, 2]      - background freqs (row/sum(row)): (ex. A = 4/16: 0.25 / C = 4/16: 0.25, etc)
+#       T [0, 0, 2, 2]
+#
+#       OBS: this is the "matrix_TEST2"
+#
+#             For this matrix my prediction would be: 
+#                 - best window would include:
+#                       left: site 1 & 2                          
+#                       core: site 3  
+#                       right: site 4
+#                 OBS: note that site 3 and 4 would belong to a single partition if 
+#                      two partitions (not three) were allowed. Anyway, lik of sites  
+#                       sites 3 and 4 should be identical (given that the base counts and 
+#                       bakground sequences are identical here)                       
+#               
+#
+bp_counts1 = c(4, 0, 0, 0)         # see np.array for column 1 (just above) / column 2 follows the same idea
+bp_counts2 = c(0, 4, 0, 0)         # see np.array for column 3 & 4 (just above)
+bp_counts3 = c(0, 0, 2, 2)
+bp_counts4 = c(0, 0, 2, 2)
+# 
+#     The expected base counts of our program, given the best window above:
+#           
+#
+background_probs_left  = c(0.5, 0.5, 0.0, 0.0)
+background_probs_core  = c(0.0, 0.0, 0.5, 0.5)
+background_probs_right = c(0.0, 0.0, 0.5, 0.5)
+ssp = 4
+#
+#     Site 1 & 2 must have same lik                
+#     Site 3 & 4 must have same lik
+#
+mtx2A = dmultinom(bp_counts1, ssp, prob = background_probs_left, log = TRUE)
+mtx2B = dmultinom(bp_counts3, ssp, prob = background_probs_core, log = TRUE)
+
+########## TEST 10 - FULL MULTI
+
+#             For this matrix my prediction would be: 
+#               - multinomial likelihood is: 0
+#                     - any number to zero power = 1 (see how multi is calculated)
+#                     - log(1) = 0 
+#
+# OBS: R can not calculate this matrix, because argument 'size' of dmultinom can not be zero (error)
+#       how have we fixed that in our script? We fixed few days ago, correct?
+#
+# Expected multi loglik for this matrix is: 0
+# selection of best window size is random
+
+########## TEST 11 - FULL MULTI
+
+# Same logic as the TEST 9 - FULL MULTI, same results as well
