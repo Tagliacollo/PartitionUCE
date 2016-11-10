@@ -52,7 +52,6 @@ def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilen
         for i, best_window in enumerate(best_windows):
             pfinder_config_file = open('%s_%s_partition_finder.cfg' % (dataset_name, metrics[i]), 'a')
             pfinder_config_file.write(blocks_pfinder_config(best_window, name, start, stop, uce_aln)) 
-            break
 
         write_csvs(best_windows, metric_array, sites, name, outfilename)
 
