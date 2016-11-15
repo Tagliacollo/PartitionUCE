@@ -87,6 +87,10 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
 def multinomial_likelihood(counts, factorials, Ns, window):
 
+    # TODO call the function to check for invariant blocks here
+    # if(contains_invariant_block(aln, window)):
+    #     return np.inf * -1
+
     sitewise_likelihoods = sitewise_full_multi(counts, factorials, Ns, window)
     log_likelihoods = np.log(sitewise_likelihoods)
     log_likelihood = np.sum(log_likelihoods)

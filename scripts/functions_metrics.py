@@ -234,6 +234,12 @@ def get_sse(metric, window):
     slice the 1D array metric, add up the SSES
     '''
 
+    #TODO check for invariant sites
+    # we have to pass the aln to this function
+    # then: 
+    # if(contains_invariant_block(aln, window)):
+    #     return np.inf
+
     left  = sse(metric[ : window[0]])
     core  = sse(metric[window[0] : window[1]])
     right = sse(metric[window[1] : ])
