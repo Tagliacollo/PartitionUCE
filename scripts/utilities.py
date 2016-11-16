@@ -354,9 +354,9 @@ def all_invariant_sites(aln):
     # return TRUE if aln has all invariant sites
     # return FALSE otherwise
 
-    entropies = alignment_entropy(aln)
+    base_counts = count_bases(aln)
 
-    if(np.sum(entropies)==0):
+    if(np.count_nonzero(base_counts)==1):
         return True
     else:
         return False
