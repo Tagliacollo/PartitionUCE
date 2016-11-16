@@ -55,7 +55,7 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
         log_likelihoods = []
         for window in windows:
-            lnL = multinomial_likelihood(uce_counts, uce_factorials, uce_n_obs_factorial, window)
+            lnL = multinomial_likelihood(uce_counts, uce_factorials, uce_n_obs_factorial, window, uce_aln)
             log_likelihoods.append(lnL)
 
         log_likelihoods = np.array(log_likelihoods)
@@ -67,6 +67,16 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
         # if >1 alignment with equal likelihod, choose the one with minimum variance in lenghts
         best_window = get_min_var_window(ML_wins, aln.get_alignment_length())
+
+        # this is a catch for a corner case in which all windows
+        # contained at least one block of invariant sites
+        # in this case, all the lnLs are returned as -inf, and 
+        # we therefore can't split the UCE. To flag this, we 
+        # return the window as [0, aln_length], and this is 
+        # picked up later as a non-splittable UCE
+        if log_likelihoods.min() == np.inf * -1:
+            best_window = (0, uce_aln.get_alignment_length())
+
 
         ## At this point, we need to go and re-calculate the likelihoods of
         # the best window, so we can output them to the csv file
@@ -85,11 +95,17 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
     return (best_window)
 
-def multinomial_likelihood(counts, factorials, Ns, window):
+def multinomial_likelihood(counts, factorials, Ns, window, aln):
 
     # TODO call the function to check for invariant blocks here
     # if(contains_invariant_block(aln, window)):
     #     return np.inf * -1
+    aln_l = all_invariant_sites(aln[:, :window[0]])
+    aln_c = all_invariant_sites(aln[:, window[0]:window[1]])
+    aln_r = all_invariant_sites(aln[:, window[1]:])
+
+    if(aln_l == True or aln_c == True or aln_r == True):
+        return np.inf * -1
 
     sitewise_likelihoods = sitewise_full_multi(counts, factorials, Ns, window)
     log_likelihoods = np.log(sitewise_likelihoods)

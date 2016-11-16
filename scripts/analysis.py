@@ -6,7 +6,7 @@ import os
 from time import asctime
 
 
-datasets = ['/home/rlanfear/github/PartitionUCE/raw_data/Crawford_2012.nex']
+datasets = ['/Users/robertlanfear/Documents/github/PartitionUCE/raw_data/mini_matrix.nex']
 			#'/Users/roblanfear/Documents/github/PartitionUCE/raw_data/Meiklejohn_2016.nex']
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Crawford_2012.nex',
 			#'/Users/Tagliacollo/Desktop/ANU_Australia/PartitionUCE/raw_data/Faircloth_2013.nex',
@@ -36,11 +36,11 @@ for dataset_path in datasets:
 	# WARNING: metrics must ALWAYS be ['entropy', 'gc', 'multi'] IN THAT ORDER!!!
 
 	print(asctime())
-	process_dataset_metrics(dataset_path, ['entropy', 'gc', 'multi'], minimum_window_size = 50, outfilename = '%s.csv' % (name))
+	process_dataset_metrics(dataset_path, ['entropy', 'gc', 'multi'], minimum_window_size = 5, outfilename = '%s.csv' % (name))
 	print(asctime())
-	process_dataset_site_position(dataset_path, minimum_window_size = 50, outfilename = name)
+	process_dataset_site_position(dataset_path, minimum_window_size = 5, outfilename = name)
 	print(asctime())
-	process_dataset_full_multi(dataset_path, minimum_window_size = 50, outfilename = '%s.csv' % name)
+	process_dataset_full_multi(dataset_path, minimum_window_size = 5, outfilename = '%s.csv' % name)
 	print(asctime())
 
 

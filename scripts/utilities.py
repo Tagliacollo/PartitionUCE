@@ -321,3 +321,43 @@ def get_min_var_window(windows, aln_length):
 
     return(best_window)
 
+def alignment_entropy(aln):
+    '''
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        array with values of entropies
+    '''
+
+    bp_freqs = bp_freqs_calc(aln)
+    entropy = entropy_calc(bp_freqs)
+    
+    return (entropy)
+
+
+def entropy_calc(p):
+    '''
+    Input: 
+       p: 1D array of base frequencies
+    Output: 
+        estimates of entropies 
+    
+    copied from: http://nbviewer.ipython.org/url/atwallab.cshl.edu/teaching/QBbootcamp3.ipynb
+    '''
+    p = p[p!=0] # modify p to include only those elements that are not equal to 0
+
+
+    return np.dot(-p,np.log2(p)) # the function returns the entropy result
+
+
+def all_invariant_sites(aln):
+    # return TRUE if aln has all invariant sites
+    # return FALSE otherwise
+
+    entropies = alignment_entropy(aln)
+
+    if(np.sum(entropies)==0):
+        return True
+    else:
+        return False
+

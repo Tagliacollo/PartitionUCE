@@ -153,17 +153,15 @@ def process_uce(aln, metrics, minimum_window_size):
 
     # sometimes we can't split a UCE, in which case there's one
     # window and it's the whole UCE
-    
-
 
     if(len(windows)>1):
-        best_window = get_best_windows(metrics, windows, aln.get_alignment_length())
+        best_window = get_best_windows(metrics, windows, aln.get_alignment_length(), aln)
     else:
         best_window = [windows[0], windows[0], windows[0]]
     
     return (best_window, metrics)
 
-def get_best_windows(metrics, windows, aln_length):
+def get_best_windows(metrics, windows, aln_length, aln):
     '''
     Input: 
         an a n-dimensional numpy array, 
@@ -184,7 +182,7 @@ def get_best_windows(metrics, windows, aln_length):
     # 2. Get SSE for each cell in array
     for i, window in enumerate(windows):
         # get SSE's for a given window
-        all_sses[:,i] = get_sses(metrics, window)
+        all_sses[:,i] = get_sses(metrics, window, aln)
 
     # 3. get index of minimum value for each metric
     entropy_sses = all_sses[0]
@@ -194,7 +192,6 @@ def get_best_windows(metrics, windows, aln_length):
     entropy_mins = np.where(entropy_sses == entropy_sses.min())[0]  
     gc_mins = np.where(gc_sses == gc_sses.min())[0]
     multi_mins = np.where(multi_sses == multi_sses.min())[0]    
-
 
     # choose the windows with the minimum variance in length of
     #l-flank, core, r-flank
@@ -207,13 +204,26 @@ def get_best_windows(metrics, windows, aln_length):
     gc = get_min_var_window(gc_wins, aln_length)
     multi = get_min_var_window(multi_wins, aln_length)
 
+    # this is a catch for a corner case in which all windows
+    # contained at least one block of invariant sites
+    # in this case, all the SSEs are returned as inf, and 
+    # we therefore can't split the UCE. To flag this, we 
+    # return the window as [0, aln_length], and this is 
+    # picked up later as a non-splittable UCE
+    if entropy_sses.min() == np.inf:
+        entropy = (0, aln_length)
+    if gc_sses.min() == np.inf:
+        gc = (0, aln_length)
+    if multi_sses.min() == np.inf:
+        multi = (0, aln_length)
+
     best_windows = [entropy, gc, multi]
 
     return (best_windows)
 
 
 
-def get_sses(metrics, window):
+def get_sses(metrics, window, aln):
     '''
     Input: 
         metrics is an array where each row is a metric
@@ -225,11 +235,11 @@ def get_sses(metrics, window):
     '''
 
 
-    sses = np.apply_along_axis(get_sse, 1, metrics, window)
+    sses = np.apply_along_axis(get_sse, 1, metrics, window, aln)
 
     return (sses)
 
-def get_sse(metric, window):
+def get_sse(metric, window, aln):
     '''
     slice the 1D array metric, add up the SSES
     '''
@@ -239,6 +249,13 @@ def get_sse(metric, window):
     # then: 
     # if(contains_invariant_block(aln, window)):
     #     return np.inf
+
+    aln_l = all_invariant_sites(aln[:, :window[0]])
+    aln_c = all_invariant_sites(aln[:, window[0]:window[1]])
+    aln_r = all_invariant_sites(aln[:, window[1]:])
+
+    if(aln_l == True or aln_c == True or aln_r == True):
+        return np.inf
 
     left  = sse(metric[ : window[0]])
     core  = sse(metric[window[0] : window[1]])
@@ -262,18 +279,6 @@ def sse(metric):
     return (sse)
 
 
-def alignment_entropy(aln):
-    '''
-    Input: 
-        aln: biopython generic alignment
-    Output: 
-        array with values of entropies
-    '''
-
-    bp_freqs = bp_freqs_calc(aln)
-    entropy = entropy_calc(bp_freqs)
-    
-    return (entropy)
 
 def sitewise_entropies(aln):
     '''
@@ -344,21 +349,5 @@ def sitewise_multi(uce_aln):
     log_likelihoods = np.log(sitewise_likelihoods)
 
     return(log_likelihoods)
-
-
-def entropy_calc(p):
-    '''
-    Input: 
-       p: 1D array of base frequencies
-    Output: 
-        estimates of entropies 
-    
-    copied from: http://nbviewer.ipython.org/url/atwallab.cshl.edu/teaching/QBbootcamp3.ipynb
-    '''
-    p = p[p!=0] # modify p to include only those elements that are not equal to 0
-
-
-    return np.dot(-p,np.log2(p)) # the function returns the entropy result
-
 
 
