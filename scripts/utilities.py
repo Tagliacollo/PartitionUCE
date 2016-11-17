@@ -349,15 +349,41 @@ def entropy_calc(p):
 
     return np.dot(-p,np.log2(p)) # the function returns the entropy result
 
+def sitewise_entropies(aln):
+    '''
+    Input: 
+        aln: biopython generic alignment
+    Output: 
+        array with values of entropies per site
+    '''
 
-def all_invariant_sites(aln):
+    entropies = []
+    for i in range(aln.get_alignment_length()):
+
+        site_i = aln[:,i:i+1]
+        ent_i = alignment_entropy(site_i)
+        entropies.append(ent_i)
+
+    entropies = np.array(entropies)
+
+    return (entropies)
+
+def all_invariant_sites(sitevar):
     # return TRUE if aln has all invariant sites
     # return FALSE otherwise
 
-    base_counts = count_bases(aln)
+    var = np.sum(sitevar)
 
-    if(np.count_nonzero(base_counts)<=1):
+    if(var==0):
         return True
     else:
         return False
 
+def invariant_sites(aln):
+    # output a list of whether or not sites are invariant
+    # variable = 1
+    # invariant = 0
+
+    entropies = sitewise_entropies(aln)
+    entropies[entropies > 0] = 1
+    return(entropies)

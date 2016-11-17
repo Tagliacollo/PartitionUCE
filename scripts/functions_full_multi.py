@@ -41,6 +41,8 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
 
         uce_factorials = factorial_matrix(uce_counts)
+        # get a list of variant/invariant sites for this uce
+        sitevar = invariant_sites(aln)
 
         # sanity checks
         m1 = np.min(uce_factorials)
@@ -55,7 +57,7 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
         log_likelihoods = []
         for window in windows:
-            lnL = multinomial_likelihood(uce_counts, uce_factorials, uce_n_obs_factorial, window, uce_aln)
+            lnL = multinomial_likelihood(uce_counts, uce_factorials, uce_n_obs_factorial, window, sitevar)
             log_likelihoods.append(lnL)
 
         log_likelihoods = np.array(log_likelihoods)
@@ -95,14 +97,14 @@ def process_dataset_full_multi(dataset_path, minimum_window_size, outfilename):
 
     return (best_window)
 
-def multinomial_likelihood(counts, factorials, Ns, window, aln):
+def multinomial_likelihood(counts, factorials, Ns, window, sitevar):
 
     # TODO call the function to check for invariant blocks here
     # if(contains_invariant_block(aln, window)):
     #     return np.inf * -1
-    aln_l = all_invariant_sites(aln[:, :window[0]])
-    aln_c = all_invariant_sites(aln[:, window[0]:window[1]])
-    aln_r = all_invariant_sites(aln[:, window[1]:])
+    aln_l = all_invariant_sites(sitevar[:window[0]])
+    aln_c = all_invariant_sites(sitevar[window[0]:window[1]])
+    aln_r = all_invariant_sites(sitevar[window[1]:])
 
     if(aln_l == True or aln_c == True or aln_r == True):
         return np.inf * -1

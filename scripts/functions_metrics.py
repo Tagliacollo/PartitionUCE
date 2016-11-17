@@ -151,17 +151,19 @@ def process_uce(aln, metrics, minimum_window_size):
 
     metrics = np.array([entropy, gc, multi])
 
+    # get a list of variant/invariant sites for this uce
+    sitevar = invariant_sites(aln)
+
     # sometimes we can't split a UCE, in which case there's one
     # window and it's the whole UCE
-
     if(len(windows)>1):
-        best_window = get_best_windows(metrics, windows, aln.get_alignment_length(), aln)
+        best_window = get_best_windows(metrics, windows, aln.get_alignment_length(), sitevar)
     else:
         best_window = [windows[0], windows[0], windows[0]]
     
     return (best_window, metrics)
 
-def get_best_windows(metrics, windows, aln_length, aln):
+def get_best_windows(metrics, windows, aln_length, sitevar):
     '''
     Input: 
         an a n-dimensional numpy array, 
@@ -182,7 +184,7 @@ def get_best_windows(metrics, windows, aln_length, aln):
     # 2. Get SSE for each cell in array
     for i, window in enumerate(windows):
         # get SSE's for a given window
-        all_sses[:,i] = get_sses(metrics, window, aln)
+        all_sses[:,i] = get_sses(metrics, window, sitevar)
 
     # 3. get index of minimum value for each metric
     entropy_sses = all_sses[0]
@@ -223,7 +225,7 @@ def get_best_windows(metrics, windows, aln_length, aln):
 
 
 
-def get_sses(metrics, window, aln):
+def get_sses(metrics, window, sitevar):
     '''
     Input: 
         metrics is an array where each row is a metric
@@ -235,11 +237,11 @@ def get_sses(metrics, window, aln):
     '''
 
 
-    sses = np.apply_along_axis(get_sse, 1, metrics, window, aln)
+    sses = np.apply_along_axis(get_sse, 1, metrics, window, sitevar)
 
     return (sses)
 
-def get_sse(metric, window, aln):
+def get_sse(metric, window, sitevar):
     '''
     slice the 1D array metric, add up the SSES
     '''
@@ -250,9 +252,9 @@ def get_sse(metric, window, aln):
     # if(contains_invariant_block(aln, window)):
     #     return np.inf
 
-    aln_l = all_invariant_sites(aln[:, :window[0]])
-    aln_c = all_invariant_sites(aln[:, window[0]:window[1]])
-    aln_r = all_invariant_sites(aln[:, window[1]:])
+    aln_l = all_invariant_sites(sitevar[:window[0]])
+    aln_c = all_invariant_sites(sitevar[window[0]:window[1]])
+    aln_r = all_invariant_sites(sitevar[window[1]:])
 
     if(aln_l == True or aln_c == True or aln_r == True):
         return np.inf
@@ -280,24 +282,7 @@ def sse(metric):
 
 
 
-def sitewise_entropies(aln):
-    '''
-    Input: 
-        aln: biopython generic alignment
-    Output: 
-        array with values of entropies per site
-    '''
 
-    entropies = []
-    for i in range(aln.get_alignment_length()):
-
-        site_i = aln[:,i:i+1]
-        ent_i = alignment_entropy(site_i)
-        entropies.append(ent_i)
-
-    entropies = np.array(entropies)
-
-    return (entropies)
 
 def sitewise_gc(aln):
     '''
