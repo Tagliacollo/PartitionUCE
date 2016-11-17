@@ -356,7 +356,7 @@ def all_invariant_sites(aln):
 
     base_counts = count_bases(aln)
 
-    if(np.count_nonzero(base_counts)==1):
+    if(np.count_nonzero(base_counts)<=1):
         return True
     else:
         return False
