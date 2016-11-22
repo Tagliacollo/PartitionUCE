@@ -80,34 +80,48 @@ p4 + geom_histogram() + facet_grid(type~dataset, scales = "free")
 
 
 ################### VICTOR
-library(ggplot2)
+#### load library
+library(dplyr)
 
-load.data = function(dataset_name){
+#### Functions
+load.data = function(base_path, dataset_name, name.col = 1)
+{
+  data_path = paste(base_path, dataset_name, '/', dataset_name, sep = "")
+  df        = read.csv(paste(data_path, ".csv", sep = ""))
   
-  base_path = '/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/'
-  data_path = paste0(base_path, dataset_name, '/', dataset_name)
+  name      = df[ ,name.col]
+  uce.size  = as.data.frame(table(name))
+  new.df    = full_join(df, uce.size) 
   
-  df    = read.csv(paste0(data_path, ".csv", sep = ""))
   
-  return(df)
+  new.df$name = with(new.df, reorder(name, desc(Freq)))
+  new.df$plot_mtx = as.factor(new.df$plot_mtx)
   
+  return(new.df)
 }
 
-df = load.data('test')
+base_path = '/Volumes/VATagliacollo/GitHub/PartitionUCE/unzip/'
 
 
-p = ggplot(df, aes(uce_site, name)) + 
-  geom_tile(aes(fill = plot_mtx), colour = "white") + 
-  scale_fill_gradient(low = "black", high = "steelblue") + 
-  #facet_grid(type ~ .) # version 1  
-  facet_wrap(~ type, ncol = 2) # vesion 2
-  
-base_size = 9
-p + theme_grey(base_size = base_size) + labs(x = "", y = "") + 
-  scale_x_discrete(expand = c(0, 0)) +
-  scale_y_discrete(expand = c(0, 0)) +
-  theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
-        legend.position = "none")
+Harrington = load.data(base_path, "Harrington_2016", name.col = 1)
+#McCormack = load.dataset(base_path, "McCormack_2013", name.col = 1)
+#Meiklejohn = load.dataset(base_path, "Meiklejohn_2016", name.col = 1)
+#Crawford = load.dataset(base_path, "Crawford_2012", name.col = 1)
+#Moyle = load.dataset(base_path, "Moyle_2016", name.col = 1)
+#Smith = load.dataset(base_path, "Smith_2014", name.col = 1)
+
+df = rbind(Harrington)
+
+p.ggplot = ggplot(df, aes(x = uce_site, y = name, fill = plot_mtx))
+p.ggplot + geom_tile(alpha = 0.9) + 
+  scale_fill_manual(values=c("royalblue", "black", "orange")) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.y  = element_blank(), axis.ticks.y = element_blank(),
+        axis.title.y = element_blank(), axis.title.x = element_blank(),
+        legend.position = "none") + 
+  facet_grid(type ~ .) 
+
+
 
 
 
