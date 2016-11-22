@@ -1,6 +1,11 @@
-dataset,method,models,AICc,Subsets,Parameters
-Harrington_2016,entropy,GTR+G,3682710.169,484,4946
-Harrington_2016,full_multi,GTR+G,3725313.12,540,5506
-Harrington_2016,gc,GTR+G,3731848.393,511,5216
-Harrington_2016,multi,GTR+G,3689974.576,508,5186
-Harrington_2016,site_position,GTR+G,3795945.743,110,1206
+dataset,method,models,AICc,Subsets,Parameters,
+Harrington_2016,entropy,GTR+G,3682710.169,484,4946,before constant sites fix
+Harrington_2016,full_multi,GTR+G,3725313.12,540,5506,before constant sites fix
+Harrington_2016,gc,GTR+G,3731848.393,511,5216,before constant sites fix
+Harrington_2016,multi,GTR+G,3689974.576,508,5186,before constant sites fix
+Harrington_2016,site_position,GTR+G,3795945.743,110,1206,before constant sites fix
+Harrington_2016,entropy,GTR+G,3682752.405,484,4946,after constant sites fix
+Harrington_2016,full_multi,GTR+G,3784954.9,292,3026,after constant sites fix
+Harrington_2016,gc,GTR+G,3731703.596,509,5196,after constant sites fix
+Harrington_2016,multi,GTR+G,3689974.576,508,5186,after constant sites fix
+Harrington_2016,site_position,GTR+G,3795945.743,110,1206,after constant sites fix
