@@ -407,3 +407,12 @@ def split_nexus_by_charsets(aln, charset_name):
 
     return(charset_list)
 
+def export_nexus(aln, charset_name):
+    nexus_list_names = split_nexus_by_charsets(aln, charset_name)
+
+    nexus_tuples = []
+    for name in nexus_list_names:
+        nexus_tuples.append((name, Nexus.Nexus(name)))
+
+    concat = Nexus.combine(nexus_tuples)
+    concat.write_nexus_data('%s_concat.nex' % (aln.rstrip(".nex")))
