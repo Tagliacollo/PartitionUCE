@@ -387,3 +387,23 @@ def invariant_sites(aln):
     entropies = sitewise_entropies(aln)
     entropies[entropies > 0] = 1
     return(entropies)
+
+
+
+def split_nexus_by_charsets(aln, charset_name):
+
+    dat = Nexus.Nexus()
+    dat.read(aln)
+    aln_name = aln.rstrip(".nex")
+
+    for name in charset_name:
+        del dat.charsets[name]
+
+    charset_list = []
+    for name in tqdm(dat.charsets):
+        charset_list.append('%s_%s.data' %  (aln_name, name))
+
+    dat.write_nexus_data_partitions(charpartition = dat.charsets) # tried to use StringIO (doesn't work)
+
+    return(charset_list)
+
