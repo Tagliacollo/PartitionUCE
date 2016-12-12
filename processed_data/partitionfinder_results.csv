@@ -1,11 +1,51 @@
-dataset,method,models,AICc,Subsets,Parameters,
-Harrington_2016,entropy,GTR+G,3682710.169,484,4946,before constant sites fix
-Harrington_2016,full_multi,GTR+G,3725313.12,540,5506,before constant sites fix
-Harrington_2016,gc,GTR+G,3731848.393,511,5216,before constant sites fix
-Harrington_2016,multi,GTR+G,3689974.576,508,5186,before constant sites fix
-Harrington_2016,site_position,GTR+G,3795945.743,110,1206,before constant sites fix
-Harrington_2016,entropy,GTR+G,3682752.405,484,4946,after constant sites fix
-Harrington_2016,full_multi,GTR+G,3784954.9,292,3026,after constant sites fix
-Harrington_2016,gc,GTR+G,3731703.596,509,5196,after constant sites fix
-Harrington_2016,multi,GTR+G,3689974.576,508,5186,after constant sites fix
-Harrington_2016,site_position,GTR+G,3795945.743,110,1206,after constant sites fix
+dataset,method,tree,models,AICc,Subsets,Parameters,notes,,tmux,,,,pf_setup
+Crawford_2012,entropy,ML,,,,,done,,Pfa,x,entropy,ML,1
+Crawford_2012,full_multi,ML,,,,,done,,PFb,x,gc,ML,2
+Crawford_2012,gc,ML,,,,,done,,PFc,x,multi,ML,3
+Crawford_2012,multi,ML,,,,,done,,PFd,x,full-multi,ML,4
+Crawford_2012,site_position,ML,,,,,done,,Pfe,x,site-position,ML,5
+Crawford_2012,entropy,MP,,,,,,,PFf,x,random,,6
+Crawford_2012,full_multi,MP,,,,,,,PFg,x,random,,7
+Crawford_2012,gc,MP,,,,,,,PFh,x,random,,8
+Crawford_2012,multi,MP,,,,,,,Pfi,x,entropy,MP,9
+Crawford_2012,site_position,MP,,,,,,,PFj,x,gc,MP,10
+Harrington_2016,entropy,ML,,,,,done,,PFk,x,multi,MP,11
+Harrington_2016,full_multi,ML,,,,,done,,PFl,x,full-multi,MP,12
+Harrington_2016,gc,ML,,,,,running PFf,,Pfm,,site-position,MP,13
+Harrington_2016,multi,ML,,,,,done,,,,,,
+Harrington_2016,site_position,ML,,,,,done,,,,,,
+Harrington_2016,entropy,MP,,,,,,,,,,,
+Harrington_2016,full_multi,MP,,,,,,,,,,,
+Harrington_2016,gc,MP,,,,,,,,,,,
+Harrington_2016,multi,MP,,,,,,,,,,,
+Harrington_2016,site_position,MP,,,,,,,,,,,
+McCormack_2013,entropy,ML,,,,,running PFg,,,,,,
+McCormack_2013,full_multi,ML,,,,,done,,,,,,
+McCormack_2013,gc,ML,,,,,done,,,,,,
+McCormack_2013,multi,ML,,,,,done,,,,,,
+McCormack_2013,site_position,ML,,,,,done,,,,,,
+McCormack_2013,entropy,MP,,,,,,,,,,,
+McCormack_2013,full_multi,MP,,,,,,,,,,,
+McCormack_2013,gc,MP,,,,,,,,,,,
+McCormack_2013,multi,MP,,,,,,,,,,,
+McCormack_2013,site_position,MP,,,,,,,,,,,
+Meiklejohn_2016,entropy,ML,,,,,running Pfa,,,,,,
+Meiklejohn_2016,full_multi,ML,,,,,running PFd,,,,,,
+Meiklejohn_2016,gc,ML,,,,,running PFb,,,,,,
+Meiklejohn_2016,multi,ML,,,,,running PFc,,,,,,
+Meiklejohn_2016,site_position,ML,,,,,failed: error in raxml fast tree search,,,,,,
+Meiklejohn_2016,entropy,MP,,,,,running Pfi,,,,,,
+Meiklejohn_2016,full_multi,MP,,,,,running PFj,,,,,,
+Meiklejohn_2016,gc,MP,,,,,running PFk,,,,,,
+Meiklejohn_2016,multi,MP,,,,,running PFl,,,,,,
+Meiklejohn_2016,site_position,MP,,,,,runnning PFh,,,,,,
+Moyle_2016,entropy,ML,,,,,,,,,,,
+Moyle_2016,full_multi,ML,,,,,,,,,,,
+Moyle_2016,gc,ML,,,,,,,,,,,
+Moyle_2016,multi,ML,,,,,,,,,,,
+Moyle_2016,site_position,ML,,,,,,,,,,,
+Moyle_2016,entropy,MP,,,,,,,,,,,
+Moyle_2016,full_multi,MP,,,,,,,,,,,
+Moyle_2016,gc,MP,,,,,,,,,,,
+Moyle_2016,multi,MP,,,,,,,,,,,
+Moyle_2016,site_position,MP,,,,,,,,,,,
