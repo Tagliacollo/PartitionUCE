@@ -86,7 +86,7 @@ def blocks_pfinder_config(best_window, name, start, stop, uce_aln):
         right_end = stop
 
     # do not output any undetermined blocks - if this happens, just output the whole UCE
-    if(any_undetermined_blocks(best_window, uce_aln)==True):
+    if(any_undetermined_blocks(best_window, uce_aln)==True or any_blocks_without_all_sites(best_window, uce_aln)==True):
         whole_UCE = '%s_all = %s-%s;\n' % (name, start+1, stop)
         return (whole_UCE)
     else:
@@ -113,6 +113,25 @@ def any_undetermined_blocks(best_window, uce_aln):
         return(True)
     else:
         return(False)
+
+
+def any_blocks_without_all_sites(best_window, uce_aln):
+    # Return TRUE if there are any blocks with only undeteremined characters
+    # Defined as anything other than ACGT
+
+    left_aln = uce_aln[:, 0 : best_window[0]]
+    core_aln = uce_aln[:, best_window[0] : best_window[1]]
+    right_aln = uce_aln[:, best_window[1] : uce_aln.get_alignment_length()]
+
+    l_counts = count_bases(left_aln)
+    c_counts = count_bases(core_aln)
+    r_counts = count_bases(right_aln)
+
+    if(np.min(l_counts)==0 or np.min(c_counts)==0 or np.min(c_counts)==0):
+        return(True)
+    else:
+        return(False)
+
 
 def get_all_windows(aln, minimum_window_size):
     '''
