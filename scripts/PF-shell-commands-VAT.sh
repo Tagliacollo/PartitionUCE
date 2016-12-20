@@ -1,5 +1,21 @@
-#unix shell / PF commands
+#fi="Crawford_2012"
+#fi="Harrington_2016"
+#fi="McCormack_2013"
+#fi="Meiklejohn_2016"
+fi="Moyle_2016"
 
+#word="subset_uce"
+word="subset_aln"
 
-Victor-A-Tagliacollo-MacBook-Pro:~ Tagliacollo$ python2 /Applications/partitionfinder-2.1.1/PartitionFinder.py /Users/Tagliacollo/Desktop/Test --raxml --no-ml-tree --rcluster-percent 10 --weights '1, 0, 0, 0' 
+ty="PF-mp-"$word
+pf="*"$word"_partition_finder.cfg"
+pd="/home/vtagliacollo/GitHub/PartitionUCE/"
+rd="/home/vtagliacollo/GitHub/PartitionUCE/raw_data/"
+hm=$pd$fi"/"
 
+ad=$hm$ty
+mkdir $ad
+cp $hm$pf  $ad"/partition_finder.cfg"
+cp $rd$fi".phy" $ad"/"$fi".phy"
+
+python /disks/dacelo/data/programs/github/partitionfinder/PartitionFinder.py $ad --raxml -n -p 10
