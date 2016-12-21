@@ -1,0 +1,54 @@
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.9 released by Alexandros Stamatakis on July 20 2016.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 110989 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 5.85%
+
+RAxML rapid hill-climbing mode
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+Executing 1 inferences on the original alignment using 1 distinct randomized MP trees
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heteorgeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 1.0000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 110989
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+/disks/dacelo/data/programs/github/partitionfinder/programs/raxml.linux -y -s ./analysis/start_tree/filtered_source.phy -m GTRGAMMA -n MPTREE -p 123456789 -e 1.0 -O -w /home/vtagliacollo/GitHub/PartitionUCE/Harrington_2016/PF-mp-subset_aln/analysis/start_tree 
+
+
+Partition: 0 with name: No Name Provided
+Base frequencies: 0.278 0.223 0.223 0.276 
+

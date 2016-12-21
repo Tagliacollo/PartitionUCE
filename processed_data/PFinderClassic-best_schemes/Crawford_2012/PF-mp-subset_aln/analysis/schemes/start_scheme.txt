@@ -1,0 +1,50 @@
+Scheme Name       : start_scheme
+Scheme lnL        : -1240602.625
+Scheme AICc       : 2481257.25302
+Number of params  : 26
+Number of sites   : 465241
+Number of subsets : 1
+
+Subset | Best Model | # sites    | subset id                        | Partition names                                                                                     
+1      | GTR+G      | 465241     | b02e89fc1f34b9f7986d1e43a2345efb | one_subset_aln                                                                                      
+
+
+Scheme Description in PartitionFinder format
+Scheme_start_scheme = (one_subset_aln);
+
+Nexus formatted character sets
+begin sets;
+	charset Subset1 = 1-465241;
+	charpartition PartitionFinder = Group1:Subset1;
+end;
+
+
+Nexus formatted character sets for IQtree
+Warning: the models written in the charpartition are just the best model found in this analysis. Not all models are available in IQtree, so you may need to set up specific model lists for your analysis
+
+#nexus
+begin sets;
+	charset Subset1 = 1-465241;
+	charpartition PartitionFinder = GTR+G:Subset1;
+end;
+
+
+RaxML-style partition definitions
+Warning: RAxML allows for only a single model of rate heterogeneity in partitioned analyses. I.e. all partitions must be assigned one of three types of model: No heterogeneity (e.g. GTR); +G (e.g. GTR+G); or +I+G (e.g. GTR+I+G). If the best models for your datasetcontain different types of model for different subsets you will need to decide on the best rate heterogeneity model before you run RAxML. If you prefer to do things more rigorously, you can run separate PartitionFinder analyses for each type of rate heterogenetity Then choose the scheme with the lowest AIC/AICc/BIC score. Note that these re-runs will be quick!
+
+DNA, Subset1 = 1-465241
+
+
+MrBayes block for partition definitions
+Warning: MrBayes only allows a relatively small collection of models. If any model in your analysis is not one that is included in MrBayes (e.g. by setting nst = 1, 2, or 6 for DNA sequences; or is not in the available list of protein models for MrBayes)then this MrBayes block will just set that model to nst = 6 for DNA, or 'wag' for Protein. Similarly, the only additional parameters that this MrBayes block will include are +I and +G. Other  parameters, such as +F and +X, are ignored. If you want to use this MrBayes block for your analysis, please make sure to check it carefully before you use it we've done our best to make it accurate, but there may be errors that remain!
+
+begin mrbayes;
+
+	charset Subset1 = 1-465241;
+
+	partition PartitionFinder = 1:Subset1;
+	set partition=PartitionFinder;
+
+	lset applyto=(1) nst=6 rates=gamma;
+
+end;

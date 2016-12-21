@@ -1,0 +1,7 @@
+Model selection results for subset: ca15fab229640d693e1e3fc18a2a0188
+This subset contains the following data_blocks: uce_167
+Number of columns in subset: 339
+Models are organised according to their AICc scores
+
+Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
+GTR+G           | 9               | -3348.56        | 6715.67          | 6715.13         | 6749.56        

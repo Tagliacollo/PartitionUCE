@@ -1,0 +1,8 @@
+Model selection results for subset: 64bee113b4ce477b5ee1748c70cf00e9
+Subset alignment stored here: ./analysis/phylofiles/64bee113b4ce477b5ee1748c70cf00e9.phy
+This subset contains the following data_blocks: chr4_2456, chr8_4260, chr11_1962, chr1_5333, chr1_5322, chr3_17832, chr6_10013, chr5_3213, chrz_8179, chrz_14313
+Number of columns in subset: 4159
+Models are organised according to their AICc scores
+
+Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
+GTR+G           | 9               | -10986.7        | 21991.4          | 21991.3         | 22048.3        

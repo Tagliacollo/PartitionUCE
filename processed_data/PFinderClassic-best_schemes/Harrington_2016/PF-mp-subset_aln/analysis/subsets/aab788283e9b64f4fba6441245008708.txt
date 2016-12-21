@@ -1,0 +1,8 @@
+Model selection results for subset: aab788283e9b64f4fba6441245008708
+Subset alignment stored here: ./analysis/phylofiles/aab788283e9b64f4fba6441245008708.phy
+This subset contains the following data_blocks: one_subset_aln
+Number of columns in subset: 235232
+Models are organised according to their AICc scores
+
+Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
+GTR+G           | 9               | -1.91648e+06    | 3.83297e+06      | 3.83297e+06     | 3.83306e+06    

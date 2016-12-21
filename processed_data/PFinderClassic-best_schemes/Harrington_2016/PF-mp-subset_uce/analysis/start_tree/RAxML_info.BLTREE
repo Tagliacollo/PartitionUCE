@@ -1,0 +1,77 @@
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.9 released by Alexandros Stamatakis on July 20 2016.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 110989 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 5.85%
+
+RAxML Model Optimization up to an accuracy of 1.000000 log likelihood units
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heteorgeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 1.0000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 110989
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+/disks/dacelo/data/programs/github/partitionfinder/programs/raxml.linux -f e -s ./analysis/start_tree/filtered_source.phy -t ./analysis/start_tree/topology_tree.phy -m GTRGAMMA -n BLTREE -w /home/vtagliacollo/GitHub/PartitionUCE/Harrington_2016/PF-mp-subset_uce/analysis/start_tree -e 1.0 -O 
+
+
+
+Model parameters (binary file format) written to: /home/vtagliacollo/GitHub/PartitionUCE/Harrington_2016/PF-mp-subset_uce/analysis/start_tree/RAxML_binaryModelParameters.BLTREE
+
+
+Overall Time for Tree Evaluation 173.354376
+Final GAMMA  likelihood: -1916475.676372
+
+Number of free parameters for AIC-TEST(BR-LEN): 116
+Number of free parameters for AIC-TEST(NO-BR-LEN): 9
+
+
+Model Parameters of Partition 0, Name: No Name Provided, Type of Data: DNA
+alpha: 0.328593
+Tree-Length: 2.498846
+rate A <-> C: 0.975035
+rate A <-> G: 3.473199
+rate A <-> T: 0.738731
+rate C <-> G: 1.726246
+rate C <-> T: 3.533830
+rate G <-> T: 1.000000
+
+freq pi(A): 0.278221
+freq pi(C): 0.223100
+freq pi(G): 0.222906
+freq pi(T): 0.275773
+
+Final tree written to:                 /home/vtagliacollo/GitHub/PartitionUCE/Harrington_2016/PF-mp-subset_uce/analysis/start_tree/RAxML_result.BLTREE
+Execution Log File written to:         /home/vtagliacollo/GitHub/PartitionUCE/Harrington_2016/PF-mp-subset_uce/analysis/start_tree/RAxML_log.BLTREE
