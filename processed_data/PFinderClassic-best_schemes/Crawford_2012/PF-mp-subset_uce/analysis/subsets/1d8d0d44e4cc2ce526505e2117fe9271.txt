@@ -1,7 +1,0 @@
-Model selection results for subset: 1d8d0d44e4cc2ce526505e2117fe9271
-This subset contains the following data_blocks: chr2_24798
-Number of columns in subset: 504
-Models are organised according to their AICc scores
-
-Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
-GTR+G           | 9               | -1177.3         | 2372.97          | 2372.6          | 2410.61        

@@ -1,8 +1,0 @@
-Model selection results for subset: 6dc06f3d122d759180a7b8d0c6b3510a
-Subset alignment stored here: ./analysis/phylofiles/6dc06f3d122d759180a7b8d0c6b3510a.phy
-This subset contains the following data_blocks: chr8_7440, chr5_11219, chr12_1169
-Number of columns in subset: 1495
-Models are organised according to their AICc scores
-
-Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
-GTR+G           | 9               | -4871.21        | 9760.55          | 9760.42         | 9808.21        

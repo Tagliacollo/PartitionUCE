@@ -1,7 +1,0 @@
-Model selection results for subset: e08ac066e054e1fd66bf92e14c800f08
-This subset contains the following data_blocks: chr10_4790
-Number of columns in subset: 448
-Models are organised according to their AICc scores
-
-Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
-GTR+G           | 9               | -1291.23        | 2600.87          | 2600.46         | 2637.4         

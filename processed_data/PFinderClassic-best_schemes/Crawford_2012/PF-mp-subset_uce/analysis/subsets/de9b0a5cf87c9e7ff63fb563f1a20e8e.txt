@@ -1,8 +1,0 @@
-Model selection results for subset: de9b0a5cf87c9e7ff63fb563f1a20e8e
-Subset alignment stored here: ./analysis/phylofiles/de9b0a5cf87c9e7ff63fb563f1a20e8e.phy
-This subset contains the following data_blocks: chr4_10574, chr4_7006, chr8_8897, chr9_5246, chr7_10530, chr7_6238
-Number of columns in subset: 2375
-Models are organised according to their AICc scores
-
-Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
-GTR+G           | 9               | -5116.95        | 10252.0          | 10251.9         | 10303.9        

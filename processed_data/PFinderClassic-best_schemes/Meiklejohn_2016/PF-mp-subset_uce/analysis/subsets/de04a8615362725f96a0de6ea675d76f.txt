@@ -1,8 +1,0 @@
-Model selection results for subset: de04a8615362725f96a0de6ea675d76f
-Subset alignment stored here: ./analysis/phylofiles/de04a8615362725f96a0de6ea675d76f.phy
-This subset contains the following data_blocks: uce_6071, uce_7946
-Number of columns in subset: 1087
-Models are organised according to their AICc scores
-
-Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
-GTR+G           | 9               | -2358.35        | 4734.86          | 4734.69         | 4779.61        

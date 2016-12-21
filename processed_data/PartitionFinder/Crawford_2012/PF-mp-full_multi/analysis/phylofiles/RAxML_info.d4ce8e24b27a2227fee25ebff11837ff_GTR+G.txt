@@ -1,0 +1,80 @@
+
+
+IMPORTANT WARNING: Sequences anolis_carolinensis and zebra_finch are exactly identical
+
+
+IMPORTANT WARNING: Sequences anolis_carolinensis and gallus_gallus are exactly identical
+
+
+IMPORTANT WARNING: Sequences anolis_carolinensis and alligator_mississippiensis are exactly identical
+
+
+IMPORTANT WARNING: Sequences anolis_carolinensis and crocodylus_porosus are exactly identical
+
+
+IMPORTANT WARNING: Sequences anolis_carolinensis and chrysemys_picta are exactly identical
+
+
+IMPORTANT WARNING: Sequences anolis_carolinensis and pelomedusa_subrufa are exactly identical
+
+
+IMPORTANT WARNING: Sequences anolis_carolinensis and sphenodon_tuatara are exactly identical
+
+IMPORTANT WARNING
+Found 7 sequences that are exactly identical to other sequences in the alignment.
+Normally they should be excluded from the analysis.
+
+Just in case you might need it, an alignment file with 
+sequence duplicates removed is printed to file ./analysis/phylofiles/d4ce8e24b27a2227fee25ebff11837ff.phy.reduced
+
+
+Using BFGS method to optimize GTR rate parameters, to disable this specify "--no-bfgs" 
+
+
+
+This is RAxML version 8.2.9 released by Alexandros Stamatakis on July 20 2016.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 5 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 0.00%
+
+RAxML Branch length scaler and other model parameter optimization up to an accuracy of 1.000000 log likelihood units
+
+Using 1 distinct models/data partitions with individual per partition branch length optimization
+
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heteorgeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 1.0000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 5
+Name: No Name Provided
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+/home/rlanfear/github/partitionfinder/programs/raxml.linux -f B -s ./analysis/phylofiles/d4ce8e24b27a2227fee25ebff11837ff.phy -t ./analysis/start_tree/RAxML_result.BLTREE -m GTRGAMMA -n d4ce8e24b27a2227fee25ebff11837ff_GTR+G.txt -w /home/rlanfear/github/PartitionUCE/processed_data/Crawford_2012/PFmpfull_multi/analysis/phylofiles -e 1.0 -O 
+
+
+Empirical base frequency for state number 1 is equal to zero in DNA data partition No Name Provided
+Since this is probably not what you want to do, RAxML will soon exit.
+

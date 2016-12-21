@@ -1,7 +1,0 @@
-Model selection results for subset: d6a56b07af875b4fd94098fdca99751d
-This subset contains the following data_blocks: uce_1243
-Number of columns in subset: 539
-Models are organised according to their AICc scores
-
-Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
-GTR+G           | 9               | -3708.81        | 7435.97          | 7435.63         | 7474.24        

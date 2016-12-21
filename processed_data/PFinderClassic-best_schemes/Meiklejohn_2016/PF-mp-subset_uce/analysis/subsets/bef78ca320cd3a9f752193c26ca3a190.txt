@@ -1,7 +1,0 @@
-Model selection results for subset: bef78ca320cd3a9f752193c26ca3a190
-This subset contains the following data_blocks: uce_5893
-Number of columns in subset: 254
-Models are organised according to their AICc scores
-
-Model           | Parameters      | lnL             | AICc             | AIC             | BIC            
-GTR+G           | 9               | -479.243        | 977.223          | 976.485         | 1008.32        
