@@ -9,16 +9,20 @@ Crawford_2012,full_multi,MP,,,,,failed: error in one subset not having all bases
 Crawford_2012,gc,MP,,,,,done,,PFh,,random,,8,,
 Crawford_2012,multi,MP,,,,,done,,Pfi,,entropy,MP,9,,
 Crawford_2012,site_position,MP,,,,,done,,PFj,,gc,MP,10,,
-Harrington_2016,entropy,ML,,,,,done,,PFk,,multi,MP,11,,
-Harrington_2016,full_multi,ML,,,,,done,,PFl,,full-multi,MP,12,,
-Harrington_2016,gc,ML,,,,,done,,Pfm,,random,MP,13,,
-Harrington_2016,multi,ML,,,,,done,,Pfn,x,entropy,MP,14,Crawford_2012,entropy
-Harrington_2016,site_position,ML,,,,,done,,Pfo,x,gc,MP,15,Crawford_2012,full_multi
-Harrington_2016,entropy,MP,GTR+G,3687954.464,493,5036,done,,Pfp,x,multi,MP,16,Crawford_2012,gc
-Harrington_2016,full_multi,MP,GTR+G,3730254.622,543,5536,done,,Pfq,x,full-multi,MP,17,Crawford_2012,multi
-Harrington_2016,gc,MP,GTR+G,3736560.327,513,5236,done,,Pfr,,site-position,MP,18,Crawford_2012,site_position
+Crawford_2012,per_aln,MP,GTR+G,2481257.253,1,26,done,,PFk,,multi,MP,11,,
+Crawford_2012,per_uce,MP,GTR+G,2467719.028,1145,11466,done,,PFl,,full-multi,MP,12,,
+Harrington_2016,entropy,ML,,,,,done,,Pfm,,random,MP,13,,
+Harrington_2016,full_multi,ML,,,,,done,,Pfn,x,entropy,MP,14,Crawford_2012,entropy
+Harrington_2016,gc,ML,,,,,done,,Pfo,x,gc,MP,15,Crawford_2012,full_multi
+Harrington_2016,multi,ML,,,,,done,,Pfp,x,multi,MP,16,Crawford_2012,gc
+Harrington_2016,site_position,ML,,,,,done,,Pfq,x,full-multi,MP,17,Crawford_2012,multi
+Harrington_2016,entropy,MP,GTR+G,3687954.464,493,5036,done,,Pfr,,site-position,MP,18,Crawford_2012,site_position
+Harrington_2016,full_multi,MP,GTR+G,3730254.622,543,5536,done,,,,,,,,
+Harrington_2016,gc,MP,GTR+G,3736560.327,513,5236,done,,,,,,,,
 Harrington_2016,multi,MP,GTR+G,3695066.865,493,5036,done,,,,,,,,
 Harrington_2016,site_position,MP,GTR+G,3800797.49,114,1246,done,,,,,,,,
+Harrington_2016,per_aln,MP,GTR+G,3833182.365,1,116,done,,,,,,,,
+Harrington_2016,per_uce,MP,GTR+G,3796629.277,596,6066,done,,,,,,,,
 McCormack_2013,entropy,ML,,,,,done,,,,,,,,
 McCormack_2013,full_multi,ML,,,,,done,,,,,,,,
 McCormack_2013,gc,ML,,,,,done,,,,,,,,
@@ -29,6 +33,8 @@ McCormack_2013,full_multi,MP,GTR+G,3094082.231,638,6442,done,,,,,,,,
 McCormack_2013,gc,MP,GTR+G,3088673.338,615,6212,done,,,,,,,,
 McCormack_2013,multi,MP,GTR+G,3094082.231,638,6442,done,,,,,,,,
 McCormack_2013,site_position,MP,GTR+G,3166285.986,101,1072,done,,,,,,,,
+McCormack_2013,per_aln,MP,GTR+G,3192533.019,1,72,done,,,,,,,,
+McCormack_2013,per_uce,MP,GTR+G,3162976.03,1541,15472,done,,,,,,,,
 Meiklejohn_2016,entropy,ML,,,,,done,,,,,,,,
 Meiklejohn_2016,full_multi,ML,,,,,done,,,,,,,,
 Meiklejohn_2016,gc,ML,,,,,done,,,,,,,,
@@ -39,6 +45,8 @@ Meiklejohn_2016,full_multi,MP,,,,,done,,,,,,,,
 Meiklejohn_2016,gc,MP,,,,,done,,,,,,,,
 Meiklejohn_2016,multi,MP,,,,,done,,,,,,,,
 Meiklejohn_2016,site_position,MP,,,,,done,,,,,,,,
+Meiklejohn_2016,per_aln,MP,GTR+G,2339168.006,1,42,done,,,,,,,,
+Meiklejohn_2016,per_uce,MP,GTR+G,2316403.812,1479,14822,done,,,,,,,,
 Moyle_2016,entropy,ML,,,,,done,,,,,,,,
 Moyle_2016,full_multi,ML,,,,,failed: error in one subset not having all bases (RAxML error),,,,,,,,
 Moyle_2016,gc,ML,,,,,done,,,,,,,,
@@ -49,3 +57,5 @@ Moyle_2016,full_multi,MP,,,,,failed: error in one subset not having all bases (R
 Moyle_2016,gc,MP,,,,,done,,,,,,,,
 Moyle_2016,multi,MP,,,,,done,,,,,,,,
 Moyle_2016,site_position,MP,,,,,done,,,,,,,,
+Moyle_2016,per_aln,MP,GTR+G,6005671.755,1,218,done,,,,,,,,
+Moyle_2016,per_uce,MP,GTR+G,5937376.82,515,5358,done,,,,,,,,
