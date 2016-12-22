@@ -23,21 +23,22 @@ python /disks/dacelo/data/programs/github/partitionfinder/PartitionFinder.py $ad
 
 ##### IQ-Tree
 #name="Crawford_2012"
-name="Harrington_2016"
+#name="Harrington_2016"
 #name="McCormack_2013"
 #name="Meiklejohn_2016"
-#name="Moyle_2016"
+name="Moyle_2016"
 
 phy=$name".phy"
 nex=$name".nex"
 
-cwd="/home/vtagliacollo/GitHub/PartitionUCE/processed_data/IQ-Trees/"
+cwd="/home/vtagliacollo/GitHub/PartitionUCE/processed_data/IQ-Tree/"
 swd=$cwd$name
 cd $swd
 
-$swd"/bin/"iqtree-omp -s $phy -spp $nex -bb 1000 -nt 10
+$swd"/bin/"iqtree-omp -s $phy -spp $nex -b 100 -nt 10 -wba
 
-
+# https://groups.google.com/forum/#!searchin/iqtree/bootstraps/iqtree/EokGXmxYB1M/323etcJiBwAJ
+# https://groups.google.com/forum/#!topic/iqtree/4MqPgFnSIDQ
 
 
 
