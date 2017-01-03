@@ -82,6 +82,7 @@ p4 + geom_histogram() + facet_grid(type~dataset, scales = "free")
 ################### VICTOR
 #### load library
 library(dplyr)
+library(ggplot2)
 
 #### Functions
 load.data = function(base_path, dataset_name, name.col = 1)
@@ -100,29 +101,94 @@ load.data = function(base_path, dataset_name, name.col = 1)
   return(new.df)
 }
 
-base_path = '/Volumes/VATagliacollo/GitHub/PartitionUCE/unzip/'
+base_path = '/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/'
 
 
-Harrington = load.data(base_path, "Harrington_2016", name.col = 1)
-#McCormack = load.dataset(base_path, "McCormack_2013", name.col = 1)
-#Meiklejohn = load.dataset(base_path, "Meiklejohn_2016", name.col = 1)
+#Harrington = load.data(base_path, "Harrington_2016", name.col = 1)
+#McCormack = load.data(base_path, "McCormack_2013", name.col = 1)
+Meiklejohn = load.data(base_path, "Meiklejohn_2016", name.col = 1)
 #Crawford = load.dataset(base_path, "Crawford_2012", name.col = 1)
-#Moyle = load.dataset(base_path, "Moyle_2016", name.col = 1)
+#Moyle = load.data(base_path, "Moyle_2016", name.col = 1)
 #Smith = load.dataset(base_path, "Smith_2014", name.col = 1)
 
-df = rbind(Harrington)
+df = rbind(Meiklejohn)
 
 p.ggplot = ggplot(df, aes(x = uce_site, y = name, fill = plot_mtx))
-p.ggplot + geom_tile(alpha = 0.9) + 
-  scale_fill_manual(values=c("royalblue", "black", "orange")) +
+p.ggplot + geom_tile(alpha = 0.5) + 
+  scale_fill_manual(values=c("blue", "red", "blue")) +
+  theme_bw() +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.y  = element_blank(), axis.ticks.y = element_blank(),
         axis.title.y = element_blank(), axis.title.x = element_blank(),
         legend.position = "none") + 
   facet_grid(type ~ .) 
 
+####
+library(dplyr)
+library(ggplot2)
+
+dataset.paths = c("/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Harrington_2016/Harrington_2016.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Crawford_2012/Crawford_2012.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/McCormack_2013/McCormack_2013.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Moyle_2016/Moyle_2016.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/McCormack_2013/McCormack_2013-permut-17/McCormack_2013-permut-17.csv",      
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016-permut-16/Meiklejohn_2016-permut-16.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016-permut-5/Meiklejohn_2016-permut-5.csv", 
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Moyle_2016/Moyle_2016-permut-9/Moyle_2016-permut-9.csv", 
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Moyle_2016/Moyle_2016-permut-2/Moyle_2016-permut-2.csv")
+
+concat.dataset = list()
+for (path in dataset.paths)
+{ 
+  df = read.csv(path)
+  
+  df.subset = df %>% 
+    filter(df[ , 6] == 'entropy')
+  
+  child = strsplit(basename(path), "\\.")[[1]][1]  
+  df.subset$subset.name = rep(child, nrow(df.subset))
+  
+  concat.dataset[[child]] = df.subset
+}
+
+df = do.call(rbind, concat.dataset)
+
+#### Plot - Freddy! 
+
+p = ggplot(df, aes(x = uce_site, y = value, group = name))
+p + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.2) +
+  theme_bw() +
+  labs(x = "uce sites", y = "values of entropies") +
+  facet_wrap( ~ subset.name, scales = 'free', ncol = 2)
 
 
 
+#####
+library(ggplot2)
 
+dataset.paths = c("/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Harrington_2016/Harrington_2016.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Crawford_2012/Crawford_2012.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/McCormack_2013/McCormack_2013.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016.csv",
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Moyle_2016/Moyle_2016.csv")
+
+concat.dataset = list()
+for (path in dataset.paths)
+{ 
+  df = read.csv(path)
+  
+  child = strsplit(basename(path), "\\.")[[1]][1]  
+  df$subset.name = rep(child, nrow(df))
+  
+  concat.dataset[[child]] = df
+}
+
+df = do.call(rbind, concat.dataset)
+
+
+p = ggplot(df, aes(x = uce_site, y = value, group = name))
+p + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.2) +
+  theme_bw() +
+  facet_grid(type ~ subset.name, scales = 'free')
 
