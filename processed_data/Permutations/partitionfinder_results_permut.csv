@@ -13,7 +13,7 @@ Crawford_2012-permut-9,entropy,MP,GTR+G,2442335.782,352,3536,done,done,simulated
 Crawford_2012-permut-10,entropy,MP,GTR+G,2442270.963,370,3716,done,done,simulated
 Crawford_2012-permut-11,entropy,MP,GTR+G,2442329.469,355,3566,done,done,simulated
 Crawford_2012-permut-12,entropy,MP,GTR+G,2442607,362,3636,done,done,simulated
-Crawford_2012-permut-13,entropy,MP,GTR+G,,,,,running,simulated
+Crawford_2012-permut-13,entropy,MP,GTR+G,2442424.734,359,3606,done,done,simulated
 Crawford_2012-permut-14,entropy,MP,GTR+G,2442332.123,368,3696,done,done,simulated
 Crawford_2012-permut-15,entropy,MP,GTR+G,2442578.964,368,3696,done,done,simulated
 Crawford_2012-permut-16,entropy,MP,GTR+G,2442268.114,361,3626,done,done,simulated
@@ -62,7 +62,7 @@ McCormack_2013-permut-6,entropy,MP,GTR+G,3122142.328,523,5292,done,done,simulate
 McCormack_2013-permut-7,entropy,MP,GTR+G,3121679.767,540,5462,done,done,simulated
 McCormack_2013-permut-8,entropy,MP,GTR+G,3122056.206,531,5372,done,done,simulated
 McCormack_2013-permut-9,entropy,MP,GTR+G,3121800.375,531,5372,done,done,simulated
-McCormack_2013-permut-10,entropy,MP,GTR+G,,,,done,running,simulated
+McCormack_2013-permut-10,entropy,MP,GTR+G,3122632.177,531,5372,done,done,simulated
 McCormack_2013-permut-11,entropy,MP,GTR+G,3122394.74,523,5292,done,done,simulated
 McCormack_2013-permut-12,entropy,MP,GTR+G,3122215.319,522,5282,done,done,simulated
 McCormack_2013-permut-13,entropy,MP,GTR+G,3121763.634,520,5262,done,done,simulated
@@ -89,7 +89,7 @@ Meiklejohn_2016-permut-7,entropy,MP,GTR+G,2283894.477,396,3992,done,done,simulat
 Meiklejohn_2016-permut-8,entropy,MP,GTR+G,2283940.829,383,3862,done,done,simulated
 Meiklejohn_2016-permut-9,entropy,MP,GTR+G,2283789.283,384,3872,done,done,simulated
 Meiklejohn_2016-permut-10,entropy,MP,GTR+G,2284433.06,386,3892,done,done,simulated
-Meiklejohn_2016-permut-11,entropy,MP,GTR+G,,,,done,running,simulated
+Meiklejohn_2016-permut-11,entropy,MP,GTR+G,2284138.753,391,3942,done,done,simulated
 Meiklejohn_2016-permut-12,entropy,MP,GTR+G,2283599.041,373,3762,done,done,simulated
 Meiklejohn_2016-permut-13,entropy,MP,GTR+G,2284010.783,388,3912,done,done,simulated
 Meiklejohn_2016-permut-14,entropy,MP,GTR+G,2283572.078,395,3982,done,done,simulated
