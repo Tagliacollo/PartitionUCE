@@ -192,3 +192,65 @@ p + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.2) +
   theme_bw() +
   facet_grid(type ~ subset.name, scales = 'free')
 
+#### PF results
+library(ggplot2)
+
+dat.csv    <- read.csv(file.choose())
+dat.col    <- dat.csv[ , 1:12]
+dat.subset <- subset(dat.col, tree == "MP")
+
+p <- ggplot(dat.subset, 
+            aes(x=dataset, y=AICc, colour=method, 
+                group=method))
+## way 1
+p + theme_bw() +
+    geom_line() + geom_point() +
+    labs(x = "", y = "AICc scores") 
+
+## way 2
+p2 <- ggplot(dat.subset,
+             aes(x=method, y=AICc, group=dataset))
+
+p2 + theme_bw() +
+     geom_line() + geom_point(size=2.0) +
+     labs(x = "", y = "AICc scores") +
+     facet_wrap( ~ dataset, scales = 'free', ncol = 1)
+
+## PF results permutations
+
+# way 1
+p3 <- ggplot(dat.subset,
+             aes(x=dataset, y=AICc, colour=perm))
+
+p3 + theme_bw() +
+     geom_point() +
+     labs(x = "", y = "AICc scores")
+
+# way 2
+
+p3 <- ggplot(dat.subset,
+             aes(x=dataset, y=AICc, colour=perm))
+
+p3 + theme_bw() +
+  geom_point() +
+  labs(x = "", y = "AICc scores") +
+  facet_wrap( ~ dataset, scales = 'free', ncol = 1)
+ 
+# way 3
+p4 <- ggplot(dat.subset,
+             aes(x=dataset, y=AICc, colour=perm))
+
+p4 + theme_bw() +
+     geom_boxplot() + 
+     geom_jitter() +
+     labs(x = "", y = "AICc scores")
+
+# way 4
+p5 <- ggplot(dat.subset,
+             aes(x=dataset, y=AICc))
+
+p5 + theme_bw() +
+  geom_jitter(aes(colour = perm)) +
+  labs(x = "", y = "AICc scores") +
+  scale_color_manual(values=c("empirical"="red", "permut"="black")) +
+  facet_wrap( ~ dataset, scales = 'free', ncol = 1)
