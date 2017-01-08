@@ -14,3 +14,5 @@ processed_data/.Rhistory
 scripts/functions.pyc
 
 *.pyc
+
+scripts/.Rhistory
