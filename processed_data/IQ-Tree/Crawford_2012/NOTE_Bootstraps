@@ -1,0 +1,22 @@
+#NOTE - Bootstraps
+
+There is a problem with Crawford dataset. See error msg below:
+
+....
+Current log-likelihood at step 27: -1184068.445
+Current log-likelihood at step 28: -1184068.379
+Current log-likelihood at step 29: -1184068.307
+Current log-likelihood at step 30: -1184068.240
+Current log-likelihood at step 31: -1184068.174
+Current log-likelihood at step 32: -1184068.105
+Current log-likelihood at step 33: -1184068.038
+Current log-likelihood at step 34: -1184067.970
+Current log-likelihood at step 35: -1184067.899
+Current log-likelihood at step 36: -1184067.832
+Current log-likelihood at step 37: -1184067.766
+Current log-likelihood at step 38: -1184067.695
+Current log-likelihood at step 39: -1184067.628
+
+ERROR: Too high (saturated) partition rates of the proportion partition model!
+Please switch to the edge-equal partition model via -q option instead of -spp
+
