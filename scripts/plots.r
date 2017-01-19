@@ -103,25 +103,29 @@ load.data = function(base_path, dataset_name, name.col = 1)
 
 base_path = '/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/'
 
-
-#Harrington = load.data(base_path, "Harrington_2016", name.col = 1)
-#McCormack = load.data(base_path, "McCormack_2013", name.col = 1)
+Harrington = load.data(base_path, "Harrington_2016", name.col = 1)
+McCormack = load.data(base_path, "McCormack_2013", name.col = 1)
 Meiklejohn = load.data(base_path, "Meiklejohn_2016", name.col = 1)
-#Crawford = load.dataset(base_path, "Crawford_2012", name.col = 1)
-#Moyle = load.data(base_path, "Moyle_2016", name.col = 1)
-#Smith = load.dataset(base_path, "Smith_2014", name.col = 1)
+Crawford = load.data(base_path, "Crawford_2012", name.col = 1)
+Moyle = load.data(base_path, "Moyle_2016", name.col = 1)
 
-df = rbind(Meiklejohn)
+df = rbind(Crawford, McCormack, Harrington, Meiklejohn, Moyle)
+
+df = df %>% 
+     filter(df[ , 6] != 'full_multi')
+
 
 p.ggplot = ggplot(df, aes(x = uce_site, y = name, fill = plot_mtx))
 p.ggplot + geom_tile(alpha = 0.5) + 
-  scale_fill_manual(values=c("blue", "red", "blue")) +
+  scale_fill_manual(values=c("grey50", "black", "grey50")) +
   theme_bw() +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.y  = element_blank(), axis.ticks.y = element_blank(),
         axis.title.y = element_blank(), axis.title.x = element_blank(),
         legend.position = "none") + 
   facet_grid(type ~ .) 
+
+
 
 ####
 library(dplyr)
@@ -131,12 +135,12 @@ dataset.paths = c("/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE
                   "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Crawford_2012/Crawford_2012.csv",
                   "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/McCormack_2013/McCormack_2013.csv",
                   "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016.csv",
-                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Moyle_2016/Moyle_2016.csv",
-                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/McCormack_2013/McCormack_2013-permut-17/McCormack_2013-permut-17.csv",      
-                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016-permut-16/Meiklejohn_2016-permut-16.csv",
-                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016-permut-5/Meiklejohn_2016-permut-5.csv", 
-                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Moyle_2016/Moyle_2016-permut-9/Moyle_2016-permut-9.csv", 
-                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Moyle_2016/Moyle_2016-permut-2/Moyle_2016-permut-2.csv")
+                  "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/UCE-subsets/Moyle_2016/Moyle_2016.csv")
+                  #"/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/McCormack_2013/McCormack_2013-permut-17/McCormack_2013-permut-17.csv",      
+                  #"/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016-permut-16/Meiklejohn_2016-permut-16.csv",
+                  #"/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Meiklejohn_2016/Meiklejohn_2016-permut-5/Meiklejohn_2016-permut-5.csv", 
+                  #"/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Moyle_2016/Moyle_2016-permut-9/Moyle_2016-permut-9.csv", 
+                  #"/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/Permutations/UCE-subsets/Moyle_2016/Moyle_2016-permut-2/Moyle_2016-permut-2.csv")
 
 concat.dataset = list()
 for (path in dataset.paths)
@@ -144,7 +148,7 @@ for (path in dataset.paths)
   df = read.csv(path)
   
   df.subset = df %>% 
-    filter(df[ , 6] == 'entropy')
+    filter(df[ , 6] != 'full_multi')
   
   child = strsplit(basename(path), "\\.")[[1]][1]  
   df.subset$subset.name = rep(child, nrow(df.subset))
@@ -156,13 +160,10 @@ df = do.call(rbind, concat.dataset)
 
 #### Plot - Freddy! 
 
-p = ggplot(df, aes(x = uce_site, y = value, group = name))
-p + geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.2) +
-  theme_bw() +
-  labs(x = "uce sites", y = "values of entropies") +
-  facet_wrap( ~ subset.name, scales = 'free', ncol = 2)
-
-
+p1 = ggplot(df, aes(x = uce_site, y = value, group = name))
+p1 +  geom_line(stat="smooth", method = "loess", size = 0.1, alpha = 0.2) + 
+      theme_bw() +
+      facet_wrap(type ~ subset.name, scales = "free", ncol = 5)
 
 #####
 library(ggplot2)
@@ -213,7 +214,7 @@ p2 <- ggplot(dat.subset,
 
 p2 + theme_bw() +
      geom_line() + geom_point(size=2.0) +
-     labs(x = "", y = "AICc scores") +
+     labs(x = "", y = "") +
      facet_wrap( ~ dataset, scales = 'free', ncol = 1)
 
 ## PF results permutations
@@ -250,7 +251,31 @@ p5 <- ggplot(dat.subset,
              aes(x=dataset, y=AICc))
 
 p5 + theme_bw() +
-  geom_jitter(aes(colour = perm)) +
+  geom_jitter(aes(colour = perm, shape = perm, size=0.5)) + 
   labs(x = "", y = "AICc scores") +
   scale_color_manual(values=c("empirical"="red", "permut"="black")) +
   facet_wrap( ~ dataset, scales = 'free', ncol = 1)
+
+
+### plot trees
+library(ape)
+
+wd <- "/Volumes/VATagliacollo/GitHub/PartitionUCE/processed_data/IQ-Tree/"
+
+crawford   <- paste(wd,"Crawford_2012/Crawford_2012.nex.treefile-rooted", sep = "")
+mccormack  <- paste(wd,"McCormack_2013/McCormack_2013.nex.treefile-rerooted", sep = "")
+harrington <- paste(wd,"Harrington_2016/Harrington_2016.nex.treefile-rerooted", sep = "")
+meiklejohn <- paste(wd,"Meiklejohn_2016/Meiklejohn_2016.nex.treefile-rerooted", sep = "")
+moyle      <- paste(wd,"Moyle_2016/Moyle_2016.nex.treefile-rerooted", sep = "")
+
+phy.list <- c(crawford, mccormack, harrington, meiklejohn, moyle)
+
+
+for (phy in phy.list) {
+  tree <- read.tree(phy)
+  ladd <- ladderize(tree)
+  plot(ladd, cex = 0.7)
+  add.scale.bar (cex = 0.7, font = 2)
+}
+
+
