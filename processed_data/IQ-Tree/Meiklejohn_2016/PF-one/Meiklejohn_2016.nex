@@ -1,5 +1,0 @@
-#nexus
-begin sets;
-	charset Subset1 = 1-599627;
-	charpartition PartitionFinder = GTR+G:Subset1;
-end;
