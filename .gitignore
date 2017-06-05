@@ -16,3 +16,5 @@ scripts/functions.pyc
 *.pyc
 
 scripts/.Rhistory
+
+processed_data/IQ-Tree/.Rhistory

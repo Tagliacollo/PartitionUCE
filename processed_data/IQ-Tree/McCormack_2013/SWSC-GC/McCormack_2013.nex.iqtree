@@ -1,0 +1,1450 @@
+IQ-TREE 1.5.4 built Apr  2 2017
+
+Partition file name: McCormack_2013.nex
+Input file name: McCormack_2013.phy
+Type of analysis: ModelFinder + tree reconstruction + non-parametric bootstrap (100 replicates)
+Random seed number: 223723
+
+REFERENCES
+----------
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, in press.
+
+To cite IQ-TREE please use:
+
+Lam-Tung Nguyen, Heiko A. Schmidt, Arndt von Haeseler, and Bui Quang Minh
+(2015) IQ-TREE: A fast and effective stochastic algorithm for estimating
+maximum likelihood phylogenies. Mol Biol Evol, 32:268-274.
+http://dx.doi.org/10.1093/molbev/msu300
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst Biol, 65:997-1008.
+http://dx.doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 33 taxa with 615 partitions and 539526 total sites (0.423441% missing data)
+
+  ID  Name       Type  #Seqs  #Sites  #Patterns  #Const_Sites
+   1  Subset1    DNA      33     937     482      69%
+   2  Subset2    DNA      33     591     127      92%
+   3  Subset3    DNA      29     187      67      75%
+   4  Subset4    DNA      33     827     325      76%
+   5  Subset5    DNA      33    1543     225      98%
+   6  Subset6    DNA      33    2452     356      95%
+   7  Subset7    DNA      33     436     200      70%
+   8  Subset8    DNA      33    2523     738      86%
+   9  Subset9    DNA      33     612     169      87%
+  10  Subset10   DNA      33     258     121      71%
+  11  Subset11   DNA      33    2044     866      70%
+  12  Subset12   DNA      33    2890     925      79%
+  13  Subset13   DNA      33     601     187      87%
+  14  Subset14   DNA      33    1865     441      85%
+  15  Subset15   DNA      33    1877     324      93%
+  16  Subset16   DNA      33     792     279      80%
+  17  Subset17   DNA      33    1019     338      80%
+  18  Subset18   DNA      33     493     247      67%
+  19  Subset19   DNA      29      81      21      88%
+  20  Subset20   DNA      33    1779     171      99%
+  21  Subset21   DNA      32     195      94      71%
+  22  Subset22   DNA      33    1237     347      80%
+  23  Subset23   DNA      33     429      61      98%
+  24  Subset24   DNA      33    1337     296      89%
+  25  Subset25   DNA      33     707     182      86%
+  26  Subset26   DNA      32     217      83      78%
+  27  Subset27   DNA      33    1073     500      70%
+  28  Subset28   DNA      33     871     381      69%
+  29  Subset29   DNA      33    2451     485      89%
+  30  Subset30   DNA      33     983     362      74%
+  31  Subset31   DNA      33     482     298      60%
+  32  Subset32   DNA      32     274     171      54%
+  33  Subset33   DNA      32     697     280      73%
+  34  Subset34   DNA      31     116      45      83%
+  35  Subset35   DNA      33    2346     454      96%
+  36  Subset36   DNA      33     871     188      91%
+  37  Subset37   DNA      33     900     322      78%
+  38  Subset38   DNA      33     478     130      82%
+  39  Subset39   DNA      33    1030     288      86%
+  40  Subset40   DNA      33    1347     808      54%
+  41  Subset41   DNA      33    1518     831      60%
+  42  Subset42   DNA      33    1351     538      74%
+  43  Subset43   DNA      33    1207     492      69%
+  44  Subset44   DNA      33     678     328      66%
+  45  Subset45   DNA      33     473     226      63%
+  46  Subset46   DNA      33    1766     658      78%
+  47  Subset47   DNA      33     673     454      52%
+  48  Subset48   DNA      33     295     131      81%
+  49  Subset49   DNA      33    1836     216      99%
+  50  Subset50   DNA      33     253     101      78%
+  51  Subset51   DNA      33     756     241      79%
+  52  Subset52   DNA      33     905     193      95%
+  53  Subset53   DNA      33     289     121      74%
+  54  Subset54   DNA      33     153      80      61%
+  55  Subset55   DNA      33    2503     365      95%
+  56  Subset56   DNA      33    1230     505      70%
+  57  Subset57   DNA      33     982     339      81%
+  58  Subset58   DNA      33    1146     191      93%
+  59  Subset59   DNA      33    1045     596      61%
+  60  Subset60   DNA      33    1007     297      80%
+  61  Subset61   DNA      33    1040     292      86%
+  62  Subset62   DNA      33     531     133      89%
+  63  Subset63   DNA      33     570     219      76%
+  64  Subset64   DNA      33    2180     366      95%
+  65  Subset65   DNA      33    2654    1092      70%
+  66  Subset66   DNA      33    1773     191      99%
+  67  Subset67   DNA      33     441     163      75%
+  68  Subset68   DNA      33    1219     172      96%
+  69  Subset69   DNA      30     221     157      49%
+  70  Subset70   DNA      33    2714     526      89%
+  71  Subset71   DNA      33    1137     338      89%
+  72  Subset72   DNA      33    1245     432      76%
+  73  Subset73   DNA      33    1514     515      77%
+  74  Subset74   DNA      33    1295     247      92%
+  75  Subset75   DNA      33     829     227      83%
+  76  Subset76   DNA      33     614     144      95%
+  77  Subset77   DNA      33     817     302      78%
+  78  Subset78   DNA      33     865     328      72%
+  79  Subset79   DNA      33    1192     525      68%
+  80  Subset80   DNA      33    1660     491      82%
+  81  Subset81   DNA      33     530     179      79%
+  82  Subset82   DNA      33     840     454      61%
+  83  Subset83   DNA      33     739     246      75%
+  84  Subset84   DNA      33    1150     222      94%
+  85  Subset85   DNA      33     472     137      89%
+  86  Subset86   DNA      33    1723     426      88%
+  87  Subset87   DNA      33    1738     722      72%
+  88  Subset88   DNA      33    2651     502      89%
+  89  Subset89   DNA      33    2000     404      94%
+  90  Subset90   DNA      33    1122     293      84%
+  91  Subset91   DNA      33     515     351      52%
+  92  Subset92   DNA      33    1634     506      84%
+  93  Subset93   DNA      33     841     267      84%
+  94  Subset94   DNA      33     849     431      62%
+  95  Subset95   DNA      33     983     169      92%
+  96  Subset96   DNA      33     882     362      76%
+  97  Subset97   DNA      33    1228     241      89%
+  98  Subset98   DNA      33     820     325      77%
+  99  Subset99   DNA      33     590     211      76%
+ 100  Subset100  DNA      33     883     244      87%
+ 101  Subset101  DNA      33    1398     199      98%
+ 102  Subset102  DNA      33    1938     291      98%
+ 103  Subset103  DNA      33     193      74      72%
+ 104  Subset104  DNA      33    1450     555      80%
+ 105  Subset105  DNA      33    1236     254      96%
+ 106  Subset106  DNA      33    1480     272      94%
+ 107  Subset107  DNA      33     221     138      62%
+ 108  Subset108  DNA      33    2470     278      96%
+ 109  Subset109  DNA      33    1334     240      94%
+ 110  Subset110  DNA      33     965     473      69%
+ 111  Subset111  DNA      33    1726     376      98%
+ 112  Subset112  DNA      33    1449     478      83%
+ 113  Subset113  DNA      33    1245     300      87%
+ 114  Subset114  DNA      33    1308     330      90%
+ 115  Subset115  DNA      33    3585     636      92%
+ 116  Subset116  DNA      33     226     140      55%
+ 117  Subset117  DNA      33     672     225      84%
+ 118  Subset118  DNA      27      54      17      89%
+ 119  Subset119  DNA      33    1265     728      59%
+ 120  Subset120  DNA      33    1430     479      79%
+ 121  Subset121  DNA      33    3070     668      88%
+ 122  Subset122  DNA      33    2159     530      85%
+ 123  Subset123  DNA      33    1881     521      85%
+ 124  Subset124  DNA      33     713     196      81%
+ 125  Subset125  DNA      33    1162     568      63%
+ 126  Subset126  DNA      33     562     113      97%
+ 127  Subset127  DNA      33    3048     505      97%
+ 128  Subset128  DNA      33    3874    1266      76%
+ 129  Subset129  DNA      33     504     381      42%
+ 130  Subset130  DNA      33     635     281      76%
+ 131  Subset131  DNA      33    1943     375      94%
+ 132  Subset132  DNA      33    1847     616      79%
+ 133  Subset133  DNA      33    1179     426      77%
+ 134  Subset134  DNA      33     270     121      75%
+ 135  Subset135  DNA      33     563     181      84%
+ 136  Subset136  DNA      32     257     124      68%
+ 137  Subset137  DNA      33    1266     295      93%
+ 138  Subset138  DNA      33    1605     484      82%
+ 139  Subset139  DNA      33     590     228      79%
+ 140  Subset140  DNA      33    1489     311      90%
+ 141  Subset141  DNA      33     449     111      90%
+ 142  Subset142  DNA      33     524     211      76%
+ 143  Subset143  DNA      33     294      98      81%
+ 144  Subset144  DNA      33     195      62      92%
+ 145  Subset145  DNA      33    3121     671      87%
+ 146  Subset146  DNA      33     381     217      61%
+ 147  Subset147  DNA      33     438     194      70%
+ 148  Subset148  DNA      33     906     441      72%
+ 149  Subset149  DNA      33     363     209      57%
+ 150  Subset150  DNA      33    3767     578      95%
+ 151  Subset151  DNA      33    1457     233      97%
+ 152  Subset152  DNA      33    1586     481      79%
+ 153  Subset153  DNA      33     599     337      62%
+ 154  Subset154  DNA      33    1828     553      83%
+ 155  Subset155  DNA      33     660     267      74%
+ 156  Subset156  DNA      33    1688     591      78%
+ 157  Subset157  DNA      33     545      84      98%
+ 158  Subset158  DNA      33     818     261      76%
+ 159  Subset159  DNA      33    1754     434      87%
+ 160  Subset160  DNA      33    1291     478      75%
+ 161  Subset161  DNA      33     518     251      72%
+ 162  Subset162  DNA      33    3402     670      89%
+ 163  Subset163  DNA      33     438     214      73%
+ 164  Subset164  DNA      33    1845     351      92%
+ 165  Subset165  DNA      32     571     176      89%
+ 166  Subset166  DNA      33     452     230      65%
+ 167  Subset167  DNA      33    1671     384      89%
+ 168  Subset168  DNA      33    2450     634      86%
+ 169  Subset169  DNA      33     930     359      74%
+ 170  Subset170  DNA      33     676      78      96%
+ 171  Subset171  DNA      33    1417     426      81%
+ 172  Subset172  DNA      33    1591     457      84%
+ 173  Subset173  DNA      33    1236     242      94%
+ 174  Subset174  DNA      33    4884    1387      82%
+ 175  Subset175  DNA      33    1607     855      64%
+ 176  Subset176  DNA      33    1730     538      81%
+ 177  Subset177  DNA      32     751     342      71%
+ 178  Subset178  DNA      33    1161     582      67%
+ 179  Subset179  DNA      33    1590     182      95%
+ 180  Subset180  DNA      33    2392     536      90%
+ 181  Subset181  DNA      33    2032     670      84%
+ 182  Subset182  DNA      33    1071     611      61%
+ 183  Subset183  DNA      32     148      96      61%
+ 184  Subset184  DNA      33    4143    1041      85%
+ 185  Subset185  DNA      31     477     109      85%
+ 186  Subset186  DNA      33    2045     385      94%
+ 187  Subset187  DNA      33     439     330      45%
+ 188  Subset188  DNA      33     772     491      58%
+ 189  Subset189  DNA      33    1517     461      82%
+ 190  Subset190  DNA      33    1352     314      97%
+ 191  Subset191  DNA      33     601     224      81%
+ 192  Subset192  DNA      32     121      58      79%
+ 193  Subset193  DNA      32     481     136      82%
+ 194  Subset194  DNA      32     103      33      96%
+ 195  Subset195  DNA      33    2054     418      91%
+ 196  Subset196  DNA      33     203     110      61%
+ 197  Subset197  DNA      32     162      78      84%
+ 198  Subset198  DNA      33     905     187      93%
+ 199  Subset199  DNA      33    1924     771      76%
+ 200  Subset200  DNA      33     677     446      54%
+ 201  Subset201  DNA      33    1830     288      96%
+ 202  Subset202  DNA      33    2243     499      88%
+ 203  Subset203  DNA      33     997     620      52%
+ 204  Subset204  DNA      33    2347     807      77%
+ 205  Subset205  DNA      33     758     154      97%
+ 206  Subset206  DNA      33    1234     507      75%
+ 207  Subset207  DNA      32    1003     206      88%
+ 208  Subset208  DNA      33     295     119      74%
+ 209  Subset209  DNA      33     783     313      72%
+ 210  Subset210  DNA      33     283      66      86%
+ 211  Subset211  DNA      33     362     173      72%
+ 212  Subset212  DNA      33    1467     852      56%
+ 213  Subset213  DNA      33    3034    1094      76%
+ 214  Subset214  DNA      33    1112     578      65%
+ 215  Subset215  DNA      33     803     355      69%
+ 216  Subset216  DNA      33    1263     397      77%
+ 217  Subset217  DNA      33    2366     597      84%
+ 218  Subset218  DNA      33    1312     646      63%
+ 219  Subset219  DNA      32     182      64      87%
+ 220  Subset220  DNA      33     202      70      84%
+ 221  Subset221  DNA      33    2181     780      77%
+ 222  Subset222  DNA      29     205      86      76%
+ 223  Subset223  DNA      33     335     235      47%
+ 224  Subset224  DNA      33    1779     512      85%
+ 225  Subset225  DNA      18      81      58      37%
+ 226  Subset226  DNA      33     749      91      97%
+ 227  Subset227  DNA      32     363      96      90%
+ 228  Subset228  DNA      33     832     564      54%
+ 229  Subset229  DNA      33    1371     327      91%
+ 230  Subset230  DNA      27     101      19      88%
+ 231  Subset231  DNA      33    1108     594      62%
+ 232  Subset232  DNA      32     451     130      87%
+ 233  Subset233  DNA      33    1272     645      66%
+ 234  Subset234  DNA      33    1497     361      84%
+ 235  Subset235  DNA      33     910     357      78%
+ 236  Subset236  DNA      33    1482     608      70%
+ 237  Subset237  DNA      30     123      22      95%
+ 238  Subset238  DNA      33     218     103      76%
+ 239  Subset239  DNA      29     179      86      65%
+ 240  Subset240  DNA      33    2643     739      82%
+ 241  Subset241  DNA      32     482     124      93%
+ 242  Subset242  DNA      33    1415     375      84%
+ 243  Subset243  DNA      33    3646     652      91%
+ 244  Subset244  DNA      33     213      92      67%
+ 245  Subset245  DNA      33     727     222      88%
+ 246  Subset246  DNA      33     261     155      57%
+ 247  Subset247  DNA      33     540     374      47%
+ 248  Subset248  DNA      32     233     114      71%
+ 249  Subset249  DNA      33    3419     623      97%
+ 250  Subset250  DNA      33    2772     622      94%
+ 251  Subset251  DNA      33    1139     221      96%
+ 252  Subset252  DNA      33    1606     335      90%
+ 253  Subset253  DNA      33    1127     356      80%
+ 254  Subset254  DNA      33    1181     430      80%
+ 255  Subset255  DNA      33    1242     580      70%
+ 256  Subset256  DNA      33    2245     745      78%
+ 257  Subset257  DNA      31     217      94      78%
+ 258  Subset258  DNA      33    1870     438      89%
+ 259  Subset259  DNA      33    2798     582      91%
+ 260  Subset260  DNA      33     592     373      53%
+ 261  Subset261  DNA      33    2049     704      78%
+ 262  Subset262  DNA      33    1094     445      72%
+ 263  Subset263  DNA      32     144      60      82%
+ 264  Subset264  DNA      33     195     104      68%
+ 265  Subset265  DNA      33     570     180      77%
+ 266  Subset266  DNA      33    1637     468      84%
+ 267  Subset267  DNA      33     611     175      77%
+ 268  Subset268  DNA      33     239     166      43%
+ 269  Subset269  DNA      33     879     361      70%
+ 270  Subset270  DNA      33     558     309      59%
+ 271  Subset271  DNA      29     105      72      54%
+ 272  Subset272  DNA      32     233      41      89%
+ 273  Subset273  DNA      33     535     109      94%
+ 274  Subset274  DNA      29      50      37      56%
+ 275  Subset275  DNA      33     715     340      65%
+ 276  Subset276  DNA      33     739     177      90%
+ 277  Subset277  DNA      33    1102     397      81%
+ 278  Subset278  DNA      33     825     396      70%
+ 279  Subset279  DNA      33     454     240      70%
+ 280  Subset280  DNA      33    1044     203      91%
+ 281  Subset281  DNA      33    2250     602      83%
+ 282  Subset282  DNA      33     947     205      88%
+ 283  Subset283  DNA      33     644     195      86%
+ 284  Subset284  DNA      33    1017     563      63%
+ 285  Subset285  DNA      33    2487     988      72%
+ 286  Subset286  DNA      33    1437     293      91%
+ 287  Subset287  DNA      33     374     238      59%
+ 288  Subset288  DNA      33    1391     332      95%
+ 289  Subset289  DNA      33    2769     357      95%
+ 290  Subset290  DNA      33     298     102      79%
+ 291  Subset291  DNA      33    1348     331      90%
+ 292  Subset292  DNA      33    1280     377      79%
+ 293  Subset293  DNA      30      68      47      49%
+ 294  Subset294  DNA      33    2069     350      91%
+ 295  Subset295  DNA      32     205     125      64%
+ 296  Subset296  DNA      33    1754     449      84%
+ 297  Subset297  DNA      33    1417     686      62%
+ 298  Subset298  DNA      33     983     239      89%
+ 299  Subset299  DNA      33     402     131      82%
+ 300  Subset300  DNA      32     505     218      73%
+ 301  Subset301  DNA      33     995     207      89%
+ 302  Subset302  DNA      26     126     104      37%
+ 303  Subset303  DNA      33    3140     705      89%
+ 304  Subset304  DNA      32      50      18      72%
+ 305  Subset305  DNA      33    2053     420      85%
+ 306  Subset306  DNA      33    1197     768      52%
+ 307  Subset307  DNA      33     380     140      78%
+ 308  Subset308  DNA      33    1099     324      86%
+ 309  Subset309  DNA      30      85      65      42%
+ 310  Subset310  DNA      32     153     106      46%
+ 311  Subset311  DNA      33     245     139      59%
+ 312  Subset312  DNA      33     702     213      80%
+ 313  Subset313  DNA      33     796     244      80%
+ 314  Subset314  DNA      33    2529     396      97%
+ 315  Subset315  DNA      33    1411     291      91%
+ 316  Subset316  DNA      33     983     349      79%
+ 317  Subset317  DNA      31      85      55      48%
+ 318  Subset318  DNA      32     355     113      84%
+ 319  Subset319  DNA      33    1526     338      88%
+ 320  Subset320  DNA      33     519     112      89%
+ 321  Subset321  DNA      33    1098     210      93%
+ 322  Subset322  DNA      33    1772     549      80%
+ 323  Subset323  DNA      33     339     139      74%
+ 324  Subset324  DNA      33    1449     691      66%
+ 325  Subset325  DNA      31     154     130      43%
+ 326  Subset326  DNA      32     280      43      95%
+ 327  Subset327  DNA      33     447     269      53%
+ 328  Subset328  DNA      32     136      62      68%
+ 329  Subset329  DNA      33     613     156      85%
+ 330  Subset330  DNA      33    1311     562      71%
+ 331  Subset331  DNA      33     435     168      73%
+ 332  Subset332  DNA      33    1211     136      98%
+ 333  Subset333  DNA      33     997     466      65%
+ 334  Subset334  DNA      29     160      73      71%
+ 335  Subset335  DNA      33     728     192      83%
+ 336  Subset336  DNA      22     141      73      60%
+ 337  Subset337  DNA      33     623     245      76%
+ 338  Subset338  DNA      33    1001     282      82%
+ 339  Subset339  DNA      33     449     255      61%
+ 340  Subset340  DNA      33    1845     427      88%
+ 341  Subset341  DNA      32     721     102      94%
+ 342  Subset342  DNA      30     130      82      55%
+ 343  Subset343  DNA      33     745     122      94%
+ 344  Subset344  DNA      33     777     271      79%
+ 345  Subset345  DNA      33     214      95      71%
+ 346  Subset346  DNA      33    2397     402      94%
+ 347  Subset347  DNA      31     468     224      63%
+ 348  Subset348  DNA      33     285     185      55%
+ 349  Subset349  DNA      33    1601     598      75%
+ 350  Subset350  DNA      33     384     257      52%
+ 351  Subset351  DNA      33    1436     274      90%
+ 352  Subset352  DNA      33    2326     666      85%
+ 353  Subset353  DNA      32     328     210      54%
+ 354  Subset354  DNA      33     723     376      64%
+ 355  Subset355  DNA      33    1767     382      87%
+ 356  Subset356  DNA      33     403     172      73%
+ 357  Subset357  DNA      32     308     139      69%
+ 358  Subset358  DNA      33    1012     209      96%
+ 359  Subset359  DNA      33     823     263      83%
+ 360  Subset360  DNA      33     348     176      63%
+ 361  Subset361  DNA      33     883     130      98%
+ 362  Subset362  DNA      33     331     173      73%
+ 363  Subset363  DNA      33    2860     533      96%
+ 364  Subset364  DNA      33    1828     314      92%
+ 365  Subset365  DNA      33     875     610      50%
+ 366  Subset366  DNA      32     569     200      75%
+ 367  Subset367  DNA      30     502     232      66%
+ 368  Subset368  DNA      33     671     198      86%
+ 369  Subset369  DNA      33     252     128      69%
+ 370  Subset370  DNA      33     205     106      66%
+ 371  Subset371  DNA      33     497     214      80%
+ 372  Subset372  DNA      30     119      40      82%
+ 373  Subset373  DNA      33     919     238      90%
+ 374  Subset374  DNA      33     915     384      74%
+ 375  Subset375  DNA      33    1288     295      87%
+ 376  Subset376  DNA      33    1028     238      90%
+ 377  Subset377  DNA      33    2354     516      90%
+ 378  Subset378  DNA      33     302     179      67%
+ 379  Subset379  DNA      33     377     162      71%
+ 380  Subset380  DNA      33    2318     321      98%
+ 381  Subset381  DNA      33     585     146      89%
+ 382  Subset382  DNA      33     945     209      90%
+ 383  Subset383  DNA      33     317     153      64%
+ 384  Subset384  DNA      33     172      79      70%
+ 385  Subset385  DNA      33    1203     335      88%
+ 386  Subset386  DNA      33    1187     462      75%
+ 387  Subset387  DNA      33     342     257      48%
+ 388  Subset388  DNA      31     208      64      88%
+ 389  Subset389  DNA      31     183      87      70%
+ 390  Subset390  DNA      30      93      41      76%
+ 391  Subset391  DNA      33     714     160      92%
+ 392  Subset392  DNA      33    1807     436      93%
+ 393  Subset393  DNA      33     299     126      77%
+ 394  Subset394  DNA      30     108      63      69%
+ 395  Subset395  DNA      33     308     198      60%
+ 396  Subset396  DNA      28     165      98      59%
+ 397  Subset397  DNA      32     217     144      49%
+ 398  Subset398  DNA      33    1585     313      93%
+ 399  Subset399  DNA      33    1568     221      97%
+ 400  Subset400  DNA      33    1050     236      94%
+ 401  Subset401  DNA      33    2780     565      89%
+ 402  Subset402  DNA      33     734     217      81%
+ 403  Subset403  DNA      31     204      29      90%
+ 404  Subset404  DNA      32     756     164      88%
+ 405  Subset405  DNA      33     273     173      57%
+ 406  Subset406  DNA      33    1426     340      90%
+ 407  Subset407  DNA      33    1237     525      71%
+ 408  Subset408  DNA      33    1072     325      81%
+ 409  Subset409  DNA      33     443     133      82%
+ 410  Subset410  DNA      33     915     208      95%
+ 411  Subset411  DNA      33     690     180      88%
+ 412  Subset412  DNA      33     955     104      99%
+ 413  Subset413  DNA      33     954     132      96%
+ 414  Subset414  DNA      33     568     275      70%
+ 415  Subset415  DNA      33    2425     334      98%
+ 416  Subset416  DNA      33    1205     120      99%
+ 417  Subset417  DNA      31     387     118      83%
+ 418  Subset418  DNA      33     823     171      94%
+ 419  Subset419  DNA      33    1584     162      98%
+ 420  Subset420  DNA      29     118      60      76%
+ 421  Subset421  DNA      25      51      23      80%
+ 422  Subset422  DNA      33     622      85      96%
+ 423  Subset423  DNA      33     535     300      64%
+ 424  Subset424  DNA      33    1905     424      92%
+ 425  Subset425  DNA      33    3090     334      99%
+ 426  Subset426  DNA      33     886     235      88%
+ 427  Subset427  DNA      25      52      34      63%
+ 428  Subset428  DNA      30     372      95      79%
+ 429  Subset429  DNA      33    1056     179      95%
+ 430  Subset430  DNA      33     277     160      61%
+ 431  Subset431  DNA      31     499     298      55%
+ 432  Subset432  DNA      33     881     239      86%
+ 433  Subset433  DNA      33     505     163      76%
+ 434  Subset434  DNA      33    1204     303      87%
+ 435  Subset435  DNA      33     378     119      86%
+ 436  Subset436  DNA      33    1803     488      82%
+ 437  Subset437  DNA      33     330     135      76%
+ 438  Subset438  DNA      33     446     275      60%
+ 439  Subset439  DNA      33     442     208      71%
+ 440  Subset440  DNA      33     366     173      72%
+ 441  Subset441  DNA      31     278     150      60%
+ 442  Subset442  DNA      33     462     127      86%
+ 443  Subset443  DNA      33    1379     258      94%
+ 444  Subset444  DNA      25      55      39      47%
+ 445  Subset445  DNA      23      55      36      56%
+ 446  Subset446  DNA      33     185      78      78%
+ 447  Subset447  DNA      33    1098     322      85%
+ 448  Subset448  DNA      33    1990     218      97%
+ 449  Subset449  DNA      32     396      78      89%
+ 450  Subset450  DNA      33     840     460      63%
+ 451  Subset451  DNA      19      86      38      86%
+ 452  Subset452  DNA      33     744     204      88%
+ 453  Subset453  DNA      33    1867     477      86%
+ 454  Subset454  DNA      33    1226     207      95%
+ 455  Subset455  DNA      33    1341     263      95%
+ 456  Subset456  DNA      33     760     149      91%
+ 457  Subset457  DNA      33     603     181      86%
+ 458  Subset458  DNA      33    1290     154      99%
+ 459  Subset459  DNA      33    3120     373      99%
+ 460  Subset460  DNA      33    2264     457      94%
+ 461  Subset461  DNA      33     329     116      79%
+ 462  Subset462  DNA      33     422     115      89%
+ 463  Subset463  DNA      33     962     269      84%
+ 464  Subset464  DNA      33     256      57      84%
+ 465  Subset465  DNA      33     409      58      95%
+ 466  Subset466  DNA      33     646     145      94%
+ 467  Subset467  DNA      33     830     133      98%
+ 468  Subset468  DNA      33     376     116      73%
+ 469  Subset469  DNA      33    1251     275      92%
+ 470  Subset470  DNA      32     278      82      80%
+ 471  Subset471  DNA      33     616      75      98%
+ 472  Subset472  DNA      32     162      64      80%
+ 473  Subset473  DNA      33     575      97      99%
+ 474  Subset474  DNA      33    1653     333      99%
+ 475  Subset475  DNA      32      82      11      91%
+ 476  Subset476  DNA      33    1099     266      92%
+ 477  Subset477  DNA      32     467     160      88%
+ 478  Subset478  DNA      33     584     176      90%
+ 479  Subset479  DNA      33    2656     407      98%
+ 480  Subset480  DNA      33     441     129      95%
+ 481  Subset481  DNA      33     197     126      53%
+ 482  Subset482  DNA      33     136      60      80%
+ 483  Subset483  DNA      32     321     125      78%
+ 484  Subset484  DNA      32     257     146      65%
+ 485  Subset485  DNA      31     206     116      69%
+ 486  Subset486  DNA      33     932     123      98%
+ 487  Subset487  DNA      33     325      82      89%
+ 488  Subset488  DNA      30     128      57      82%
+ 489  Subset489  DNA      21      51      37      53%
+ 490  Subset490  DNA      33     237     104      78%
+ 491  Subset491  DNA      33    1680     212      96%
+ 492  Subset492  DNA      30     209      58      93%
+ 493  Subset493  DNA      33     327     123      87%
+ 494  Subset494  DNA      28     210      84      76%
+ 495  Subset495  DNA      33     943     381      79%
+ 496  Subset496  DNA      32     100      52      89%
+ 497  Subset497  DNA      33     651     225      78%
+ 498  Subset498  DNA      29     139      44      86%
+ 499  Subset499  DNA      33     721     380      63%
+ 500  Subset500  DNA      33     666     147      97%
+ 501  Subset501  DNA      30      67      22      82%
+ 502  Subset502  DNA      33    1184     231      90%
+ 503  Subset503  DNA      32     621      90      98%
+ 504  Subset504  DNA      33     478     189      75%
+ 505  Subset505  DNA      33    1466     221      98%
+ 506  Subset506  DNA      31     299     160      64%
+ 507  Subset507  DNA      33    1243     422      79%
+ 508  Subset508  DNA      33    1020     169      98%
+ 509  Subset509  DNA      20      53      21      77%
+ 510  Subset510  DNA      33     596     221      83%
+ 511  Subset511  DNA      33     820     267      87%
+ 512  Subset512  DNA      30      53       8      98%
+ 513  Subset513  DNA      33    1889     293      96%
+ 514  Subset514  DNA      33     855     195      93%
+ 515  Subset515  DNA      33     720     239      81%
+ 516  Subset516  DNA      32      60      17      82%
+ 517  Subset517  DNA      33     739     102      95%
+ 518  Subset518  DNA      33     279     153      67%
+ 519  Subset519  DNA      32     207      70      82%
+ 520  Subset520  DNA      33     383     229      65%
+ 521  Subset521  DNA      32     119      82      51%
+ 522  Subset522  DNA      33     608     157      88%
+ 523  Subset523  DNA      33     940     214      87%
+ 524  Subset524  DNA      33     365      80      90%
+ 525  Subset525  DNA      33     820     203      84%
+ 526  Subset526  DNA      33     231      49      86%
+ 527  Subset527  DNA      33     840     200      98%
+ 528  Subset528  DNA      33     554     185      84%
+ 529  Subset529  DNA      33     473     237      66%
+ 530  Subset530  DNA      32     381     228      54%
+ 531  Subset531  DNA      33     323     115      84%
+ 532  Subset532  DNA      33    1008     268      82%
+ 533  Subset533  DNA      33     203      64      90%
+ 534  Subset534  DNA      28      84      59      52%
+ 535  Subset535  DNA      20      71      28      83%
+ 536  Subset536  DNA      33     421     247      55%
+ 537  Subset537  DNA      32     118      62      72%
+ 538  Subset538  DNA      33    1414     310      88%
+ 539  Subset539  DNA      27      56      43      55%
+ 540  Subset540  DNA      23      78      49      62%
+ 541  Subset541  DNA      33     184      31      95%
+ 542  Subset542  DNA      33     529     215      79%
+ 543  Subset543  DNA      31     212      77      71%
+ 544  Subset544  DNA      33     327     179      63%
+ 545  Subset545  DNA      31      61      53      36%
+ 546  Subset546  DNA      30     137      82      54%
+ 547  Subset547  DNA      30     267      72      88%
+ 548  Subset548  DNA      32     199     118      69%
+ 549  Subset549  DNA      20      61      42      57%
+ 550  Subset550  DNA      33     715     184      87%
+ 551  Subset551  DNA      24      53      13      87%
+ 552  Subset552  DNA      31      52      28      50%
+ 553  Subset553  DNA      33     639     187      81%
+ 554  Subset554  DNA      32     211     109      62%
+ 555  Subset555  DNA      20     194      94      59%
+ 556  Subset556  DNA      31     311     123      73%
+ 557  Subset557  DNA      33     385     272      49%
+ 558  Subset558  DNA      24     116      20      87%
+ 559  Subset559  DNA      33     223      81      77%
+ 560  Subset560  DNA      30      83      46      66%
+ 561  Subset561  DNA      22      97       8      96%
+ 562  Subset562  DNA      33     388     104      90%
+ 563  Subset563  DNA      33     526     126      87%
+ 564  Subset564  DNA      32     116      76      59%
+ 565  Subset565  DNA      28      50      31      52%
+ 566  Subset566  DNA      30      60      34      58%
+ 567  Subset567  DNA      29     119      71      66%
+ 568  Subset568  DNA      27     207      88      70%
+ 569  Subset569  DNA      31      82      36      71%
+ 570  Subset570  DNA      32      67      34      85%
+ 571  Subset571  DNA      33     102      50      72%
+ 572  Subset572  DNA      32     197      67      72%
+ 573  Subset573  DNA      32      68      21      87%
+ 574  Subset574  DNA      22      70      25      77%
+ 575  Subset575  DNA      26      68      15      90%
+ 576  Subset576  DNA      29     167      43      85%
+ 577  Subset577  DNA      29      52      20      81%
+ 578  Subset578  DNA      29      51      21      78%
+ 579  Subset579  DNA      24      50      35      40%
+ 580  Subset580  DNA      32     253     136      68%
+ 581  Subset581  DNA      33     343     157      71%
+ 582  Subset582  DNA      22     127      52      77%
+ 583  Subset583  DNA      30     141      57      77%
+ 584  Subset584  DNA      25     136      58      82%
+ 585  Subset585  DNA      27      53      13      83%
+ 586  Subset586  DNA      33     230      43      89%
+ 587  Subset587  DNA      32      59       9      97%
+ 588  Subset588  DNA      29      50      29      76%
+ 589  Subset589  DNA      23      75      18      88%
+ 590  Subset590  DNA      33     114      68      67%
+ 591  Subset591  DNA      33     207      87      76%
+ 592  Subset592  DNA      33     128      20      90%
+ 593  Subset593  DNA      27     201      46      92%
+ 594  Subset594  DNA      31      50       8      92%
+ 595  Subset595  DNA      20      62      18      90%
+ 596  Subset596  DNA      16      56      27      68%
+ 597  Subset597  DNA      30      89      44      71%
+ 598  Subset598  DNA      29     112      25      93%
+ 599  Subset599  DNA      32      90      22      94%
+ 600  Subset600  DNA      29      53      17      85%
+ 601  Subset601  DNA      31      64      19      95%
+ 602  Subset602  DNA      32      97      17      94%
+ 603  Subset603  DNA      27      61      34      77%
+ 604  Subset604  DNA      33     111      43      78%
+ 605  Subset605  DNA      28      60      28      80%
+ 606  Subset606  DNA      24      75      34      71%
+ 607  Subset607  DNA      27      50      34      64%
+ 608  Subset608  DNA      28     160      59      86%
+ 609  Subset609  DNA      33     304      89      81%
+ 610  Subset610  DNA      27      60      38      53%
+ 611  Subset611  DNA      31     182     123      51%
+ 612  Subset612  DNA      31      80      35      75%
+ 613  Subset613  DNA      27      82      34      85%
+ 614  Subset614  DNA      30      50      22      82%
+ 615  Subset615  DNA      28      61      36      70%
+
+SUBSTITUTION PROCESS
+--------------------
+
+Full partition model with separate branch lengths and models between partitions
+
+  ID  Model         TreeLen  Parameters
+   1  GTR+F+G4       1.0592  GTR{2.75457,3.55295,0.443046,2.15096,7.22153}+F{0.383141,0.130094,0.178826,0.307939}+G4{0.332681}
+   2  GTR+F+G4       0.1333  GTR{0.0001,28.2378,0.0001,9.30539,8.03402}+F{0.26404,0.174472,0.231579,0.329908}+G4{0.21325}
+   3  GTR+F+G4       0.9323  GTR{0.647885,11.8912,0.0001,1.68115,3.03648}+F{0.21401,0.208638,0.269016,0.308336}+G4{0.207829}
+   4  GTR+F+G4       0.5150  GTR{0.190275,2.99075,0.153339,0.938329,3.65682}+F{0.385291,0.148672,0.249795,0.216241}+G4{0.414825}
+   5  GTR+F+G4       0.0306  GTR{3.04436,31.0114,0.0001,20.0488,31.9243}+F{0.379176,0.178813,0.146488,0.295523}+G4{0.0200238}
+   6  GTR+F+G4       0.0697  GTR{7.80261,100,0.843011,9.84359,46.0798}+F{0.283627,0.24674,0.199914,0.269718}+G4{0.0200224}
+   7  GTR+F+G4       0.5337  GTR{1.02307,6.58862,1.24822,1.13216,2.02971}+F{0.204304,0.325418,0.200409,0.269869}+G4{0.945943}
+   8  GTR+F+G4       0.2361  GTR{5.40566,8.47719,1.40567,3.02338,9.297}+F{0.323455,0.163776,0.165459,0.347309}+G4{0.474133}
+   9  GTR+F+G4       0.3942  GTR{0.0595686,8.46477,0.851401,2.31979,6.15738}+F{0.198038,0.294333,0.230368,0.277262}+G4{0.0200305}
+  10  GTR+F+G4       0.7837  GTR{3.21522,4.08091,0.431043,3.7909,18.1304}+F{0.346794,0.090789,0.239057,0.32336}+G4{0.434913}
+  11  GTR+F+G4       0.8467  GTR{1.24026,6.62875,0.339071,1.92707,4.3742}+F{0.31349,0.183458,0.148287,0.354764}+G4{0.346657}
+  12  GTR+F+G4       0.6186  GTR{0.527053,4.15615,0.200679,1.65091,4.79985}+F{0.319696,0.170713,0.179522,0.330069}+G4{0.182899}
+  13  GTR+F+G4       0.3293  GTR{0.862322,5.59586,1.0255,0.54534,2.28938}+F{0.209433,0.288542,0.214921,0.287105}+G4{0.0200352}
+  14  GTR+F+G4       0.2830  GTR{1.10545,7.58074,0.571116,3.47246,6.32825}+F{0.280803,0.191612,0.146362,0.381222}+G4{0.211841}
+  15  GTR+F+G4       0.1362  GTR{12.3856,44.1863,0.608277,14.4037,100}+F{0.276027,0.219846,0.228968,0.275159}+G4{0.0200281}
+  16  GTR+F+G4       0.5749  GTR{14.9097,99.9822,11.2668,12.137,63.0629}+F{0.220995,0.243323,0.237372,0.29831}+G4{0.142644}
+  17  GTR+F+G4       0.6342  GTR{0.719898,5.43672,0.329396,1.88794,6.40281}+F{0.397524,0.115544,0.140487,0.346445}+G4{0.194557}
+  18  GTR+F+G4       0.8015  GTR{0.676211,6.99703,0.0371493,0.714595,2.05828}+F{0.205121,0.283325,0.16932,0.342235}+G4{0.41104}
+  19  GTR+F+G4       3.4236  GTR{1.09757,100,0.0001,0.0001,1.74382}+F{0.301265,0.206865,0.3514,0.14047}+G4{0.087879}
+  20  GTR+F+G4       0.0156  GTR{11.4285,7.1361,8.60686,100,48.4655}+F{0.314783,0.152721,0.123352,0.409144}+G4{998.448}
+  21  GTR+F+G4       0.7330  GTR{0.11174,1.18273,0.123985,0.22747,1.23955}+F{0.182696,0.385258,0.194764,0.237282}+G4{0.281929}
+  22  GTR+F+G4       0.3586  GTR{3.26872,6.7915,0.884188,2.80804,7.42616}+F{0.314353,0.21218,0.209759,0.263708}+G4{0.288261}
+  23  GTR+F+G4       0.0231  GTR{0.0001,0.0001,0.0001,0.16826,0.406534}+F{0.298539,0.247134,0.246302,0.208026}+G4{998.448}
+  24  GTR+F+G4       0.2397  GTR{29.2027,100,8.02386,99.6079,57.3319}+F{0.338907,0.147846,0.177438,0.335808}+G4{0.0200337}
+  25  GTR+F+G4       0.6437  GTR{1.77743,3.33069,0.0820817,2.32406,1.79922}+F{0.291427,0.176251,0.179766,0.352556}+G4{0.0200362}
+  26  GTR+F+G4       1.9244  GTR{5.07531,98.8967,1.40938,1.67313,6.47078}+F{0.259949,0.289845,0.15939,0.290816}+G4{0.156151}
+  27  GTR+F+G4       0.5366  GTR{0.384171,2.79169,0.266882,1.09773,2.87924}+F{0.29537,0.252055,0.213087,0.239488}+G4{0.693042}
+  28  GTR+F+G4       0.9159  GTR{0.851344,4.80403,0.326846,1.77174,4.47669}+F{0.260391,0.22389,0.168378,0.347341}+G4{0.36385}
+  29  GTR+F+G4       0.1961  GTR{1.13915,2.36847,0.137389,0.725088,3.4049}+F{0.274841,0.250551,0.192623,0.281984}+G4{0.0200375}
+  30  GTR+F+G4       0.5432  GTR{1.57384,3.53269,0.337907,2.4551,4.67257}+F{0.31244,0.191258,0.133607,0.362695}+G4{0.333649}
+  31  GTR+F+G4       1.0976  GTR{0.87275,5.298,0.448031,1.52989,2.47631}+F{0.294842,0.285385,0.176985,0.242788}+G4{0.54947}
+  32  GTR+F+G4       8.2770  GTR{0.8998,4.23148,0.454602,0.760788,7.53146}+F{0.317465,0.157899,0.239198,0.285438}+G4{0.75362}
+  33  GTR+F+G4       0.8855  GTR{0.979368,4.33557,0.474506,0.866326,6.43768}+F{0.30035,0.175502,0.229427,0.294722}+G4{0.274437}
+  34  GTR+F+G4       0.7644  GTR{0.0254981,0.615476,0.443906,0.0001,4.30205}+F{0.328525,0.203474,0.346209,0.121791}+G4{0.02003}
+  35  GTR+F+G4       0.0683  GTR{0.356963,3.00075,0.134677,9.82468,9.15382}+F{0.313711,0.143722,0.176849,0.365718}+G4{0.020026}
+  36  GTR+F+G4       0.1670  GTR{1.41037,100,26.1818,19.879,57.8076}+F{0.240154,0.273364,0.23765,0.248832}+G4{0.0200309}
+  37  GTR+F+G4       0.9071  GTR{1.06028,3.27907,0.0744961,3.09223,4.39437}+F{0.332796,0.180292,0.174372,0.31254}+G4{0.154319}
+  38  GTR+F+G4       0.7856  GTR{1.36943,6.38232,0.318563,3.19887,5.84774}+F{0.21461,0.290672,0.256632,0.238086}+G4{0.291339}
+  39  GTR+F+G4       0.4119  GTR{0.444875,7.11145,0.253562,0.499033,3.13302}+F{0.256669,0.276937,0.17772,0.288673}+G4{0.0200359}
+  40  GTR+F+G4       1.3196  GTR{0.779002,4.15669,0.364072,1.28874,3.96713}+F{0.299764,0.241431,0.182695,0.276109}+G4{0.647856}
+  41  GTR+F+G4       1.2842  GTR{0.997013,4.54146,0.371368,2.24397,6.92139}+F{0.342899,0.182747,0.197842,0.276512}+G4{0.5585}
+  42  GTR+F+G4       0.7567  GTR{1.9932,4.25626,0.10424,1.8492,3.15092}+F{0.315713,0.156627,0.175503,0.352156}+G4{0.274467}
+  43  GTR+F+G4       0.6750  GTR{1.08332,5.55715,0.211919,1.33214,5.91538}+F{0.260542,0.247484,0.186529,0.305444}+G4{0.434324}
+  44  GTR+F+G4       0.8237  GTR{2.59767,13.454,1.15649,8.18341,23.6074}+F{0.38411,0.145705,0.194765,0.27542}+G4{0.49885}
+  45  GTR+F+G4       1.1269  GTR{2.89505,11.9179,0.744744,2.15194,5.5502}+F{0.317048,0.166601,0.147835,0.368517}+G4{0.454135}
+  46  GTR+F+G4       0.4884  GTR{0.551176,3.04338,0.439173,1.4844,4.21987}+F{0.258457,0.196141,0.188593,0.356809}+G4{0.365124}
+  47  GTR+F+G4       1.3533  GTR{1.42136,9.40289,0.599273,1.84718,9.0088}+F{0.235128,0.231513,0.251449,0.28191}+G4{0.646345}
+  48  GTR+F+G4       0.4002  GTR{0.324433,1.62055,0.122641,0.329068,0.850495}+F{0.35809,0.252116,0.235695,0.154099}+G4{0.256726}
+  49  GTR+F+G4       0.0067  GTR{21.3018,0.0001,0.0001,0.0001,94.8243}+F{0.328225,0.177842,0.185248,0.308685}+G4{998.448}
+  50  GTR+F+G4       0.8106  GTR{1.46364,15.4477,0.118808,0.730722,4.13948}+F{0.194182,0.336727,0.254982,0.214109}+G4{0.174395}
+  51  GTR+F+G4       0.4114  GTR{0.331126,2.32252,0.0579974,0.553475,2.65038}+F{0.299891,0.20672,0.213564,0.279826}+G4{0.40481}
+  52  GTR+F+G4       0.0707  GTR{0.0001,3.75906,0.0001,1.14829,3.57677}+F{0.264146,0.184508,0.208206,0.34314}+G4{0.0200279}
+  53  GTR+F+G4       1.4726  GTR{0.512164,3.77343,0.0962647,0.292486,6.79374}+F{0.252562,0.269302,0.231347,0.246789}+G4{0.192052}
+  54  GTR+F+G4       2.1650  GTR{0.33723,4.70416,0.0001,0.554004,1.19159}+F{0.296477,0.222995,0.19796,0.282568}+G4{0.283321}
+  55  GTR+F+G4       0.0763  GTR{0.432749,4.61523,0.361004,0.183402,6.00808}+F{0.266325,0.212859,0.233634,0.287183}+G4{0.0200256}
+  56  GTR+F+G4       0.5222  GTR{1.5205,3.3789,0.575955,1.24794,3.1823}+F{0.350889,0.152037,0.187639,0.309435}+G4{1.41845}
+  57  GTR+F+G4       0.4510  GTR{1.07108,6.67443,0.275177,0.381823,5.18173}+F{0.317859,0.233828,0.173009,0.275304}+G4{0.175054}
+  58  GTR+F+G4       0.0920  GTR{0.741524,19.1083,4.82437,7.14026,8.40864}+F{0.230282,0.288968,0.199364,0.281386}+G4{0.020032}
+  59  GTR+F+G4       0.7937  GTR{0.812792,4.24446,0.847189,1.44177,4.46768}+F{0.319755,0.189804,0.181819,0.308622}+G4{1.62595}
+  60  GTR+F+G4       0.4127  GTR{1.36846,5.62845,0.153026,2.41801,2.63782}+F{0.197777,0.211303,0.219972,0.370949}+G4{0.278205}
+  61  GTR+F+G4       0.2791  GTR{0.306573,9.51407,1.37524,3.06139,16.0956}+F{0.27999,0.247738,0.240907,0.231365}+G4{0.0748923}
+  62  GTR+F+G4       0.2383  GTR{13.6587,100,3.3432,25.7864,16.549}+F{0.245788,0.244277,0.154667,0.355269}+G4{0.108028}
+  63  GTR+F+G4       0.9933  GTR{2.76762,9.89931,0.446719,3.67899,11.2132}+F{0.341818,0.162692,0.156144,0.339346}+G4{0.20076}
+  64  GTR+F+G4       0.0700  GTR{2.06981,15.2158,0.107882,1.99141,9.07648}+F{0.282056,0.221613,0.155033,0.341299}+G4{0.0200364}
+  65  GTR+F+G4       0.6945  GTR{1.20935,3.54192,0.235985,2.47445,3.23453}+F{0.326782,0.161109,0.160087,0.352021}+G4{0.457136}
+  66  GTR+F+G4       0.0163  GTR{3.6092,100,0.0001,0.0001,9.09226}+F{0.304192,0.180299,0.138322,0.377187}+G4{0.0200215}
+  67  GTR+F+G4       0.7364  GTR{0.539386,3.85678,0.127737,0.956859,1.02986}+F{0.244238,0.259423,0.203562,0.292777}+G4{0.280962}
+  68  GTR+F+G4       0.0508  GTR{1.40241,4.51452,0.261922,0.849093,4.13322}+F{0.267397,0.310067,0.217344,0.205191}+G4{0.250055}
+  69  GTR+F+G4       1.6475  GTR{1.91129,10.9415,0.954148,4.5801,4.83768}+F{0.259469,0.147114,0.169966,0.423451}+G4{0.903438}
+  70  GTR+F+G4       0.1664  GTR{0.375758,4.99598,0.364368,1.16143,3.49893}+F{0.277479,0.19206,0.198573,0.331889}+G4{0.179301}
+  71  GTR+F+G4       0.5049  GTR{1.31761,4.70206,0.40526,1.34655,24.3056}+F{0.258031,0.240431,0.229734,0.271804}+G4{0.0200302}
+  72  GTR+F+G4       0.5133  GTR{0.793749,7.61373,0.443454,1.2915,3.46018}+F{0.282905,0.215503,0.191368,0.310224}+G4{0.271364}
+  73  GTR+F+G4       0.5757  GTR{0.916201,3.29118,0.222587,1.61969,4.92731}+F{0.385175,0.139175,0.173103,0.302547}+G4{0.236957}
+  74  GTR+F+G4       0.1280  GTR{1.42887,2.11261,0.566395,1.7619,2.03588}+F{0.244545,0.314435,0.175222,0.265798}+G4{0.0200301}
+  75  GTR+F+G4       0.4766  GTR{5.14972,23.7234,0.450822,3.21934,10.9749}+F{0.218354,0.250633,0.204084,0.326928}+G4{0.143313}
+  76  GTR+F+G4       0.0653  GTR{13.2163,6.53057,0.0001,14.4578,23.6264}+F{0.230478,0.320147,0.162997,0.286378}+G4{0.0200234}
+  77  GTR+F+G4       0.4655  GTR{1.87592,3.27306,1.04938,1.18795,4.35103}+F{0.309423,0.172989,0.158936,0.358652}+G4{0.213502}
+  78  GTR+F+G4       0.5889  GTR{0.469668,4.19844,0.489404,1.59359,6.54027}+F{0.270289,0.170812,0.211349,0.34755}+G4{0.457425}
+  79  GTR+F+G4       0.8138  GTR{1.19338,4.54374,0.191848,2.3635,5.3442}+F{0.338621,0.22037,0.154166,0.286843}+G4{0.370658}
+  80  GTR+F+G4       0.4369  GTR{1.84286,11.9471,0.998407,2.82017,16.5008}+F{0.32348,0.195449,0.192402,0.288668}+G4{0.164743}
+  81  GTR+F+G4       0.6742  GTR{0.30875,11.3036,0.2019,1.61345,2.05343}+F{0.322285,0.19928,0.124975,0.353461}+G4{0.196433}
+  82  GTR+F+G4       0.8405  GTR{1.22539,4.17855,0.905772,0.685886,2.96603}+F{0.243781,0.247681,0.187462,0.321076}+G4{1.26713}
+  83  GTR+F+G4       0.4433  GTR{0.799675,3.61142,0.54665,2.82987,4.57421}+F{0.350263,0.170457,0.123238,0.356042}+G4{0.53982}
+  84  GTR+F+G4       0.1217  GTR{3.9828,34.1829,1.70864,5.53297,7.07752}+F{0.266891,0.238757,0.182594,0.311758}+G4{0.0200299}
+  85  GTR+F+G4       0.1611  GTR{0.533425,4.71332,0.671721,1.32706,8.7218}+F{0.242108,0.229154,0.329139,0.199598}+G4{0.341165}
+  86  GTR+F+G4       0.2597  GTR{1.36153,9.35679,0.269569,1.26362,5.15858}+F{0.353822,0.155254,0.190146,0.300778}+G4{0.0200226}
+  87  GTR+F+G4       0.5645  GTR{1.11117,5.34504,0.309884,2.70954,3.25437}+F{0.311666,0.180384,0.149031,0.358919}+G4{0.678303}
+  88  GTR+F+G4       0.1873  GTR{0.506209,5.8941,0.278885,0.470349,4.12389}+F{0.288364,0.223248,0.186146,0.302242}+G4{0.0761831}
+  89  GTR+F+G4       0.1054  GTR{0.154534,8.22471,0.0823759,6.05325,15.4634}+F{0.351539,0.16141,0.185592,0.301458}+G4{0.0200263}
+  90  GTR+F+G4       0.3029  GTR{2.6281,9.65546,1.22656,3.70155,9.08504}+F{0.219928,0.270421,0.215329,0.294322}+G4{0.117688}
+  91  GTR+F+G4       1.4280  GTR{1.18503,3.66038,0.295271,2.48901,4.4133}+F{0.393786,0.125728,0.130861,0.349626}+G4{1.07089}
+  92  GTR+F+G4       0.3197  GTR{0.738437,4.0984,0.175535,1.02945,4.56477}+F{0.278837,0.212866,0.275132,0.233165}+G4{0.187057}
+  93  GTR+F+G4       0.2926  GTR{4.08683,3.60695,0.684469,2.35872,2.59367}+F{0.293417,0.161251,0.170991,0.374341}+G4{0.256454}
+  94  GTR+F+G4       0.8467  GTR{0.807705,2.97087,0.401573,1.40867,5.22168}+F{0.34945,0.211571,0.1967,0.242279}+G4{0.782118}
+  95  GTR+F+G4       0.0948  GTR{1.66123,2.04918,0.210478,0.908167,5.26988}+F{0.297426,0.209808,0.226686,0.266081}+G4{998.445}
+  96  GTR+F+G4       0.7566  GTR{0.56491,8.86652,0.504474,3.70074,9.31571}+F{0.28755,0.223108,0.190722,0.29862}+G4{0.226343}
+  97  GTR+F+G4       0.1995  GTR{0.44556,11.243,0.195429,0.0001,3.48909}+F{0.3166,0.18118,0.149108,0.353111}+G4{0.0671471}
+  98  GTR+F+G4       0.4498  GTR{0.710238,3.09063,0.673975,0.231159,3.55439}+F{0.278672,0.261795,0.248184,0.211349}+G4{0.337286}
+  99  GTR+F+G4       0.7615  GTR{0.908221,3.71277,0.0235574,1.61094,3.65195}+F{0.281172,0.238563,0.177876,0.302389}+G4{0.213926}
+ 100  GTR+F+G4       0.1967  GTR{1.1954,4.26493,0.955394,1.21979,1.94833}+F{0.145871,0.315238,0.17915,0.359741}+G4{0.411035}
+ 101  GTR+F+G4       0.0244  GTR{2.15972,45.4351,0.0001,0.0001,7.37963}+F{0.279315,0.236779,0.253664,0.230243}+G4{0.24534}
+ 102  GTR+F+G4       0.0230  GTR{0.0001,17.068,0.0001,0.0001,2.56834}+F{0.319555,0.223529,0.176396,0.28052}+G4{0.0200389}
+ 103  GTR+F+G4       0.4899  GTR{0.4175,1.893,0.436319,1.25235,4.51067}+F{0.241448,0.136238,0.12331,0.499005}+G4{1.93916}
+ 104  GTR+F+G4       0.5578  GTR{4.88156,20.1278,2.25673,4.62445,18.1292}+F{0.317989,0.168443,0.207564,0.306003}+G4{0.183793}
+ 105  GTR+F+G4       0.0799  GTR{1.07484,6.00239,0.0001,2.76336,74.7646}+F{0.29884,0.189484,0.232086,0.27959}+G4{0.0200218}
+ 106  GTR+F+G4       0.0868  GTR{0.93639,6.47991,0.78674,4.98996,7.29852}+F{0.375755,0.145503,0.178318,0.300423}+G4{0.0200275}
+ 107  GTR+F+G4       1.5791  GTR{2.1895,3.68756,0.246625,0.413086,10.6006}+F{0.286574,0.137077,0.297118,0.279231}+G4{0.359308}
+ 108  GTR+F+G4       0.0576  GTR{6.19894,9.52101,0.139829,9.96881,7.0986}+F{0.274533,0.197704,0.185482,0.342281}+G4{0.0200251}
+ 109  GTR+F+G4       0.1161  GTR{0.201866,3.63006,0.155686,0.0001,6.07971}+F{0.336804,0.167612,0.21973,0.275854}+G4{0.0200251}
+ 110  GTR+F+G4       0.8466  GTR{0.53272,3.8738,0.495518,0.867646,3.16319}+F{0.346887,0.159524,0.178899,0.31469}+G4{0.388886}
+ 111  GTR+F+G4       0.0333  GTR{0.0001,19.067,0.0001,6.6941,0.0001}+F{0.341983,0.17723,0.187493,0.293293}+G4{0.200129}
+ 112  GTR+F+G4       0.2713  GTR{0.678294,1.49827,0.335746,1.16812,3.08527}+F{0.338184,0.212949,0.226538,0.222329}+G4{0.426502}
+ 113  GTR+F+G4       0.2820  GTR{0.31313,1.96028,0.148676,0.450176,4.45923}+F{0.306801,0.211583,0.2142,0.267416}+G4{0.0200258}
+ 114  GTR+F+G4       0.1807  GTR{0.660667,3.6923,0.366145,0.723066,0.631879}+F{0.240367,0.244493,0.243147,0.271993}+G4{0.0200232}
+ 115  GTR+F+G4       0.1384  GTR{5.19243,12.3022,0.586837,1.55834,17.818}+F{0.295753,0.178499,0.202414,0.323334}+G4{0.0200284}
+ 116  GTR+F+G4       1.6518  GTR{0.8885,3.78787,0.097638,1.28574,5.08533}+F{0.290468,0.212278,0.270113,0.227141}+G4{0.426676}
+ 117  GTR+F+G4       0.4218  GTR{0.210637,2.9326,0.583527,0.701853,1.97408}+F{0.310278,0.19013,0.145205,0.354387}+G4{0.0883586}
+ 118  GTR+F+G4       6.5671  GTR{0.0439571,0.0001,0.0001,5.78964,0.0001}+F{0.168974,0.406408,0.233795,0.190823}+G4{0.0565506}
+ 119  GTR+F+G4       0.9738  GTR{0.781304,2.50955,0.326972,1.28556,3.31357}+F{0.341508,0.165305,0.161155,0.332032}+G4{0.831957}
+ 120  GTR+F+G4       0.7331  GTR{1.23153,7.50198,0.568408,0.536289,4.45082}+F{0.26322,0.248588,0.202564,0.285628}+G4{0.146895}
+ 121  GTR+F+G4       0.2021  GTR{1.67782,4.20356,0.319258,2.24391,4.22179}+F{0.326449,0.200099,0.167182,0.30627}+G4{0.0629919}
+ 122  GTR+F+G4       0.3550  GTR{1.22252,5.64995,0.605031,1.52938,4.99357}+F{0.307928,0.203596,0.185921,0.302555}+G4{0.0789887}
+ 123  GTR+F+G4       0.2901  GTR{1.09672,4.54169,0.683668,1.99787,5.46554}+F{0.348567,0.166939,0.138342,0.346151}+G4{0.145082}
+ 124  GTR+F+G4       0.3799  GTR{1.29596,4.97188,0.306157,3.27209,2.87776}+F{0.335641,0.247357,0.144469,0.272533}+G4{0.191146}
+ 125  GTR+F+G4       0.8484  GTR{0.39094,3.50203,0.264236,0.539409,2.55059}+F{0.29024,0.25163,0.192108,0.266022}+G4{0.550835}
+ 126  GTR+F+G4       0.0606  GTR{0.0001,4.80325,0.394853,1.73672,0.0001}+F{0.222222,0.200494,0.32529,0.251993}+G4{0.0200388}
+ 127  GTR+F+G4       0.0382  GTR{0.213683,0.976566,0.221062,0.383603,0.903242}+F{0.298109,0.229566,0.144219,0.328106}+G4{0.0200358}
+ 128  GTR+F+G4       0.4904  GTR{1.04077,4.7168,0.488568,2.12323,3.69063}+F{0.345789,0.181743,0.157559,0.314909}+G4{0.357636}
+ 129  GTR+F+G4       1.5933  GTR{0.855793,3.11041,0.550254,2.21157,3.61686}+F{0.376576,0.135332,0.173266,0.314826}+G4{2.27148}
+ 130  GTR+F+G4       0.6341  GTR{0.305375,2.36302,0.165546,0.677777,2.43064}+F{0.29345,0.167157,0.230774,0.308619}+G4{0.217453}
+ 131  GTR+F+G4       0.1105  GTR{0.810941,56.0674,6.01169,13.1045,100}+F{0.26288,0.247048,0.20022,0.289851}+G4{0.0200262}
+ 132  GTR+F+G4       0.4236  GTR{2.04672,11.4837,0.660357,2.82603,10.3202}+F{0.313336,0.179194,0.199058,0.308412}+G4{0.35481}
+ 133  GTR+F+G4       0.5091  GTR{1.95844,4.10056,0.612471,1.00857,3.29756}+F{0.289162,0.181075,0.196261,0.333502}+G4{0.245717}
+ 134  GTR+F+G4       0.6432  GTR{4.33631,16.0117,1.87761,1.1607,18.4339}+F{0.277049,0.192555,0.367568,0.162828}+G4{0.285152}
+ 135  GTR+F+G4       0.7519  GTR{0.676507,10.1277,0.0001,5.16747,3.543}+F{0.312725,0.190586,0.187111,0.309578}+G4{0.0866887}
+ 136  GTR+F+G4       0.7465  GTR{0.994432,1.95576,0.219978,0.806239,2.25501}+F{0.26771,0.252372,0.248577,0.231341}+G4{0.372077}
+ 137  GTR+F+G4       0.1166  GTR{0.337816,3.05645,0.47779,2.2841,0.86547}+F{0.288307,0.167399,0.198313,0.34598}+G4{0.16364}
+ 138  GTR+F+G4       0.2714  GTR{0.642515,4.06311,0.276045,0.492092,2.82192}+F{0.32687,0.177988,0.173302,0.32184}+G4{0.60205}
+ 139  GTR+F+G4       0.3728  GTR{14.9909,100,12.5282,21.5189,76.2516}+F{0.243763,0.237796,0.217038,0.301403}+G4{0.411787}
+ 140  GTR+F+G4       0.2529  GTR{13.4693,11.4333,0.922377,6.98845,58.7449}+F{0.305702,0.195844,0.217491,0.280963}+G4{0.0200256}
+ 141  GTR+F+G4       0.2972  GTR{2.87282,2.93664,0.127702,0.0823428,5.16323}+F{0.233538,0.282168,0.236377,0.247917}+G4{0.0200223}
+ 142  GTR+F+G4       0.6791  GTR{0.47138,12.6349,0.712103,0.763887,4.46957}+F{0.230558,0.216194,0.161346,0.391902}+G4{0.219509}
+ 143  GTR+F+G4       1.9225  GTR{0.430017,21.1924,0.411184,0.579917,2.04691}+F{0.218894,0.285074,0.236303,0.259729}+G4{0.119637}
+ 144  GTR+F+G4       0.4638  GTR{0.0124379,0.0946689,0.0001,0.0001,0.298543}+F{0.263455,0.300335,0.22234,0.21387}+G4{0.020025}
+ 145  GTR+F+G4       0.3272  GTR{0.745157,5.42317,0.0532527,2.38232,2.87507}+F{0.305403,0.200724,0.185402,0.30847}+G4{0.0200285}
+ 146  GTR+F+G4       1.5717  GTR{1.24878,2.61848,0.140092,0.981507,4.08252}+F{0.27328,0.147235,0.234229,0.345255}+G4{0.389668}
+ 147  GTR+F+G4       0.7997  GTR{0.328205,1.63431,0.0944431,1.28227,1.01829}+F{0.349811,0.174738,0.172724,0.302728}+G4{0.327301}
+ 148  GTR+F+G4       0.6314  GTR{1.54124,4.33809,1.0852,2.81285,7.76881}+F{0.28665,0.232935,0.160677,0.319738}+G4{0.40092}
+ 149  GTR+F+G4       1.0482  GTR{3.45269,3.11983,0.312755,4.94892,10.3427}+F{0.364207,0.13635,0.198299,0.301144}+G4{0.652757}
+ 150  GTR+F+G4       0.0655  GTR{1.85538,9.78593,1.25443,8.0141,6.90521}+F{0.334585,0.171626,0.156819,0.33697}+G4{0.214478}
+ 151  GTR+F+G4       0.0384  GTR{9.32258,5.52127,12.4477,28.1724,100}+F{0.196542,0.272453,0.228431,0.302574}+G4{0.0200227}
+ 152  GTR+F+G4       0.3357  GTR{1.25723,9.77653,1.01206,1.62466,6.77887}+F{0.307392,0.223922,0.178895,0.289791}+G4{0.428607}
+ 153  GTR+F+G4       1.2360  GTR{2.433,6.5251,0.412807,2.91407,8.24469}+F{0.294251,0.143739,0.195616,0.366394}+G4{0.459226}
+ 154  GTR+F+G4       0.4111  GTR{1.04323,2.34544,0.146068,2.30378,2.20058}+F{0.361366,0.156186,0.15534,0.327107}+G4{0.137178}
+ 155  GTR+F+G4       0.7835  GTR{0.896946,2.96039,0.412128,0.948843,7.85325}+F{0.317733,0.167292,0.182822,0.332154}+G4{0.233519}
+ 156  GTR+F+G4       0.5349  GTR{0.752449,1.85048,0.329478,0.920116,3.64101}+F{0.300341,0.19504,0.206594,0.298025}+G4{0.195459}
+ 157  GTR+F+G4       0.0282  GTR{0.0001,0.0001,0.0001,3.49315,6.35139}+F{0.323973,0.158335,0.0841135,0.433579}+G4{0.0200377}
+ 158  GTR+F+G4       0.5349  GTR{1.21419,5.94103,0.180256,2.57809,6.18631}+F{0.298474,0.225379,0.188591,0.287556}+G4{0.324514}
+ 159  GTR+F+G4       0.2095  GTR{0.634481,2.58638,0.194663,2.52532,2.02073}+F{0.297115,0.195124,0.11871,0.389051}+G4{0.273177}
+ 160  GTR+F+G4       0.5987  GTR{2.50557,4.81697,0.404153,2.99205,8.22149}+F{0.338572,0.162386,0.17458,0.324462}+G4{0.27068}
+ 161  GTR+F+G4       0.9432  GTR{1.1133,4.76074,0.39322,4.59857,7.78623}+F{0.381407,0.134883,0.120461,0.363249}+G4{0.293337}
+ 162  GTR+F+G4       0.1944  GTR{1.10167,8.3139,0.527101,1.16074,7.68451}+F{0.329341,0.164557,0.177972,0.328131}+G4{0.0200338}
+ 163  GTR+F+G4       0.6663  GTR{3.36309,3.91991,0.0207173,2.0185,5.03551}+F{0.355852,0.139695,0.136017,0.368436}+G4{0.479417}
+ 164  GTR+F+G4       0.1195  GTR{0.287944,3.46023,0.517882,0.233573,5.05229}+F{0.279615,0.294509,0.198409,0.227466}+G4{0.0200323}
+ 165  GTR+F+G4       0.1762  GTR{0.0001,1.71026,0.0603557,0.205656,3.41927}+F{0.358638,0.189909,0.237967,0.213486}+G4{0.348568}
+ 166  GTR+F+G4       0.7873  GTR{0.514906,1.96783,0.175152,2.61311,2.03185}+F{0.407041,0.133016,0.0957652,0.364177}+G4{0.755496}
+ 167  GTR+F+G4       0.3218  GTR{1.42475,19.5092,0.516093,6.58511,6.56542}+F{0.309238,0.211889,0.150504,0.328369}+G4{0.0200216}
+ 168  GTR+F+G4       0.2281  GTR{0.57504,2.3488,0.233789,1.94992,2.85593}+F{0.339404,0.148792,0.163152,0.348652}+G4{0.230907}
+ 169  GTR+F+G4       0.7399  GTR{1.01136,6.42767,0.292141,3.35577,5.40226}+F{0.307821,0.161003,0.123994,0.407183}+G4{0.259863}
+ 170  GTR+F+G4       0.0663  GTR{0.0001,0.630016,0.0001,0.883752,0.961952}+F{0.295448,0.248478,0.183688,0.272387}+G4{0.0200205}
+ 171  GTR+F+G4       0.3888  GTR{1.71463,6.63947,0.698144,6.78641,7.76523}+F{0.324099,0.140082,0.19716,0.338659}+G4{0.223555}
+ 172  GTR+F+G4       0.2511  GTR{0.965904,3.28979,0.807456,1.28223,3.70363}+F{0.297264,0.184534,0.209029,0.309173}+G4{0.699329}
+ 173  GTR+F+G4       0.1189  GTR{0.571588,0.929036,0.154274,0.0944259,0.530888}+F{0.252342,0.248129,0.2248,0.274728}+G4{0.0200257}
+ 174  GTR+F+G4       0.4276  GTR{0.727791,4.49009,0.343709,1.51921,4.60277}+F{0.321774,0.182243,0.152906,0.343077}+G4{0.167081}
+ 175  GTR+F+G4       0.7343  GTR{1.09771,6.17809,0.520511,1.93407,5.76502}+F{0.340208,0.147092,0.148204,0.364496}+G4{1.005}
+ 176  GTR+F+G4       0.3775  GTR{0.835208,6.2643,1.03717,2.00755,6.63038}+F{0.300805,0.178808,0.22376,0.296627}+G4{0.243066}
+ 177  GTR+F+G4       0.6661  GTR{0.563811,4.81497,0.338647,0.680338,2.76297}+F{0.259057,0.196142,0.183191,0.36161}+G4{0.413182}
+ 178  GTR+F+G4       1.0034  GTR{1.91334,6.8716,0.250067,2.78181,7.51878}+F{0.320221,0.2007,0.209081,0.269997}+G4{0.345167}
+ 179  GTR+F+G4       0.0730  GTR{0.0879764,2.20979,0.279452,1.35182,5.06023}+F{0.334423,0.173783,0.150254,0.34154}+G4{0.0200272}
+ 180  GTR+F+G4       0.1645  GTR{0.684345,2.6609,0.166573,0.598379,2.58819}+F{0.36056,0.191963,0.0998837,0.347593}+G4{0.0200382}
+ 181  GTR+F+G4       0.3509  GTR{2.3089,10.2138,0.964082,2.12907,14.2453}+F{0.382175,0.150936,0.17792,0.288969}+G4{0.149477}
+ 182  GTR+F+G4       1.1055  GTR{0.740857,4.05612,0.325825,1.83591,3.56815}+F{0.397546,0.141482,0.151707,0.309265}+G4{0.522893}
+ 183  GTR+F+G4       1.9575  GTR{0.241906,1.1212,0.0810364,0.936331,0.57691}+F{0.343203,0.142432,0.179747,0.334618}+G4{0.433239}
+ 184  GTR+F+G4       0.2973  GTR{0.440692,2.55381,0.237897,1.36325,3.66801}+F{0.276853,0.200499,0.184571,0.338077}+G4{0.17424}
+ 185  GTR+F+G4       0.2816  GTR{1.38826,2.72656,0.926761,7.71747,5.66004}+F{0.324661,0.192074,0.170517,0.312748}+G4{0.162709}
+ 186  GTR+F+G4       0.1055  GTR{0.307791,1.87014,0.0409383,0.854959,2.25445}+F{0.318057,0.198765,0.133844,0.349333}+G4{0.0200285}
+ 187  GTR+F+G4       1.7222  GTR{0.843416,4.00077,0.503648,0.886919,4.32265}+F{0.288305,0.229221,0.231786,0.250689}+G4{1.18884}
+ 188  GTR+F+G4       1.4037  GTR{1.17262,3.19331,0.300957,2.71211,3.85834}+F{0.316583,0.146069,0.153997,0.38335}+G4{0.687949}
+ 189  GTR+F+G4       0.5128  GTR{1.51825,6.85598,0.224093,2.03931,15.7733}+F{0.352302,0.147188,0.176559,0.32395}+G4{0.151876}
+ 190  GTR+F+G4       0.0448  GTR{1.27752,11.1855,0.0001,3.55482,17.4564}+F{0.390941,0.14828,0.210175,0.250605}+G4{0.0200246}
+ 191  GTR+F+G4       0.3033  GTR{8.36999,21.057,1.39652,10.7346,18.948}+F{0.285508,0.239359,0.140333,0.3348}+G4{0.761422}
+ 192  GTR+F+G4       224.4663  GTR{0.451868,99.9994,0.0247885,0.0001,0.470891}+F{0.241191,0.13293,0.0139453,0.611934}+G4{0.090473}
+ 193  GTR+F+G4       0.6210  GTR{0.833194,3.33123,0.0832437,0.748163,0.476541}+F{0.331268,0.157315,0.168209,0.343207}+G4{0.16474}
+ 194  GTR+F+G4       0.3852  GTR{4.77436,0.0001,0.0001,0.0001,0.690508}+F{0.259865,0.161434,0.32593,0.252771}+G4{0.0200367}
+ 195  GTR+F+G4       0.1308  GTR{0.433449,5.38726,0.143295,1.11479,3.53416}+F{0.234376,0.237257,0.204627,0.323741}+G4{0.0200271}
+ 196  GTR+F+G4       3.3854  GTR{3.88482,1.55421,0.127191,4.19823,4.98499}+F{0.267044,0.112533,0.0930993,0.527324}+G4{0.478873}
+ 197  GTR+F+G4       0.4038  GTR{0.0001,2.95813,0.0001,0.384169,3.24694}+F{0.132946,0.362866,0.0916096,0.412578}+G4{0.150257}
+ 198  GTR+F+G4       0.1119  GTR{19.2189,48.4941,1.21709,2.36432,29.94}+F{0.241422,0.23923,0.266688,0.25266}+G4{0.0200268}
+ 199  GTR+F+G4       0.4861  GTR{0.428986,1.8032,0.325912,1.46677,2.62147}+F{0.338166,0.148422,0.178114,0.335298}+G4{1.12328}
+ 200  GTR+F+G4       1.0435  GTR{1.78344,5.96907,0.3845,2.20285,4.54939}+F{0.287949,0.191859,0.21007,0.310123}+G4{1.02223}
+ 201  GTR+F+G4       0.0546  GTR{11.2038,20.2899,1.54207,19.9624,36.6422}+F{0.360065,0.137925,0.11904,0.38297}+G4{0.0200283}
+ 202  GTR+F+G4       0.2240  GTR{0.654854,6.20577,0.224819,1.72979,2.84259}+F{0.219472,0.282358,0.170604,0.327566}+G4{0.0200305}
+ 203  GTR+F+G4       1.1235  GTR{1.00356,3.57099,0.655797,1.95,3.8552}+F{0.340096,0.148975,0.153133,0.357796}+G4{3.74424}
+ 204  GTR+F+G4       0.4774  GTR{0.562954,3.48487,0.218496,1.99798,4.00286}+F{0.347554,0.149664,0.162987,0.339795}+G4{0.338683}
+ 205  GTR+F+G4       0.0542  GTR{17.4598,64.5455,1.96593,100,4.44019}+F{0.396132,0.0980974,0.110347,0.395424}+G4{0.0200247}
+ 206  GTR+F+G4       0.4986  GTR{0.435021,4.91676,0.667955,3.85331,5.53427}+F{0.343469,0.122399,0.165712,0.368421}+G4{0.707438}
+ 207  GTR+F+G4       0.2077  GTR{0.221092,4.5087,0.479525,3.32245,3.37449}+F{0.331137,0.216294,0.174353,0.278216}+G4{0.15302}
+ 208  GTR+F+G4       0.7750  GTR{1.73576,6.14865,0.808916,2.14889,4.19317}+F{0.315361,0.135138,0.252495,0.297006}+G4{0.225891}
+ 209  GTR+F+G4       0.9171  GTR{1.76231,7.9388,0.216126,4.96323,8.31479}+F{0.33742,0.17916,0.146089,0.337331}+G4{0.261269}
+ 210  GTR+F+G4       0.2617  GTR{0.637722,2.62049,0.0422635,0.168723,0.39071}+F{0.357571,0.218981,0.11654,0.306908}+G4{0.456456}
+ 211  GTR+F+G4       1.7385  GTR{1.08698,2.87241,0.210809,0.609193,2.94537}+F{0.450843,0.0932101,0.134868,0.321079}+G4{0.239658}
+ 212  GTR+F+G4       1.0314  GTR{1.37444,6.94182,0.857825,2.18291,6.21545}+F{0.296589,0.192821,0.164784,0.345806}+G4{1.01971}
+ 213  GTR+F+G4       0.4780  GTR{1.8554,4.47861,0.810559,3.42799,8.57481}+F{0.324284,0.165901,0.193802,0.316014}+G4{0.403906}
+ 214  GTR+F+G4       0.8203  GTR{1.56539,4.69331,0.490467,1.66479,3.94797}+F{0.333122,0.153726,0.161421,0.351731}+G4{0.791491}
+ 215  GTR+F+G4       0.4942  GTR{1.29856,9.13005,0.549781,3.48526,6.84464}+F{0.325486,0.171316,0.143777,0.359421}+G4{7.02256}
+ 216  GTR+F+G4       0.4051  GTR{1.14386,5.72843,0.861148,2.78919,3.55038}+F{0.285789,0.193173,0.189967,0.331071}+G4{0.49459}
+ 217  GTR+F+G4       0.3114  GTR{0.605622,3.76886,0.472321,1.55196,6.02911}+F{0.285737,0.244329,0.161659,0.308274}+G4{0.124524}
+ 218  GTR+F+G4       0.6531  GTR{1.09542,2.40481,0.411407,1.61696,3.51603}+F{0.360965,0.178741,0.157899,0.302396}+G4{1.02784}
+ 219  GTR+F+G4       0.3034  GTR{9.69264,100,26.9135,0.0001,52.0753}+F{0.272994,0.213108,0.0616993,0.452199}+G4{0.0200216}
+ 220  GTR+F+G4       0.8492  GTR{3.72907,3.16196,0.625759,9.90315,16.2722}+F{0.265272,0.0607381,0.149773,0.524216}+G4{0.417594}
+ 221  GTR+F+G4       0.4463  GTR{1.68662,10.1971,0.687392,4.05309,5.78587}+F{0.281281,0.242877,0.146228,0.329613}+G4{0.335362}
+ 222  GTR+F+G4       1.1390  GTR{19.4586,100,0.0001,5.15344,36.5437}+F{0.190305,0.338357,0.197302,0.274036}+G4{0.159339}
+ 223  GTR+F+G4       1.5347  GTR{2.19544,8.42845,0.884262,5.33959,9.19844}+F{0.358002,0.166418,0.128529,0.347051}+G4{1.45422}
+ 224  GTR+F+G4       0.2695  GTR{0.687267,4.3651,0.634597,5.45877,9.61145}+F{0.372408,0.141981,0.175673,0.309937}+G4{0.191089}
+ 225  GTR+F+G4       30.6257  GTR{0.185716,2.69211,0.308218,0.0001,0.344085}+F{0.119285,0.147701,0.149975,0.583039}+G4{0.399749}
+ 226  GTR+F+G4       0.0731  GTR{0.0001,6.53431,0.0001,0.0001,2.61739}+F{0.160759,0.31754,0.204841,0.31686}+G4{0.0200232}
+ 227  GTR+F+G4       0.2721  GTR{1.0815,8.53859,1.47483,0.130791,1.97198}+F{0.177079,0.362989,0.215472,0.24446}+G4{0.0200264}
+ 228  GTR+F+G4       1.0843  GTR{0.460859,2.31117,0.236271,1.05593,2.77842}+F{0.366583,0.190168,0.159952,0.283296}+G4{1.01699}
+ 229  GTR+F+G4       0.1520  GTR{5.93833,17.5902,1.04012,0.81785,13.1141}+F{0.225855,0.194492,0.148983,0.430671}+G4{0.0200215}
+ 230  GTR+F+G4       0.5533  GTR{100,3.64819,3.57682,0.0001,0.0001}+F{0.329795,0.147081,0.215694,0.30743}+G4{0.109328}
+ 231  GTR+F+G4       1.0187  GTR{0.883124,5.33978,0.499479,1.67069,4.42828}+F{0.375057,0.194803,0.152518,0.277622}+G4{0.808065}
+ 232  GTR+F+G4       0.2028  GTR{0.334374,2.15625,0.0535012,1.27271,0.763095}+F{0.416729,0.100245,0.155926,0.327099}+G4{0.439112}
+ 233  GTR+F+G4       0.9231  GTR{0.652324,4.95283,0.483267,1.07181,2.57559}+F{0.301014,0.182851,0.178688,0.337448}+G4{0.488605}
+ 234  GTR+F+G4       0.3142  GTR{0.354594,5.22756,0.406947,2.06055,4.12373}+F{0.323414,0.170142,0.185022,0.321422}+G4{0.178563}
+ 235  GTR+F+G4       0.4068  GTR{2.20803,3.33369,0.576863,0.707444,3.80631}+F{0.374388,0.111774,0.172936,0.340902}+G4{0.537771}
+ 236  GTR+F+G4       0.6217  GTR{0.362964,2.35575,0.282707,1.25512,2.58916}+F{0.352338,0.190654,0.154472,0.302536}+G4{0.584906}
+ 237  GTR+F+G4       0.2183  GTR{0.0001,10.7432,0.0001,0.0001,0.0001}+F{0.522013,0.0899598,0.0627189,0.325308}+G4{0.0200386}
+ 238  GTR+F+G4       2.2300  GTR{0.0001,3.64971,0.213452,0.944927,32.4466}+F{0.307133,0.210027,0.252254,0.230587}+G4{0.150938}
+ 239  GTR+F+G4       1.0339  GTR{2.64134,7.41733,1.25946,4.11968,14.5718}+F{0.51014,0.171113,0.151704,0.167043}+G4{0.792109}
+ 240  GTR+F+G4       0.3228  GTR{1.31778,7.07872,0.650092,4.3448,5.12185}+F{0.322386,0.197737,0.157183,0.322693}+G4{0.276798}
+ 241  GTR+F+G4       0.0900  GTR{0.0001,1.37916,0.0001,3.71544,2.4234}+F{0.40121,0.127039,0.113964,0.357788}+G4{998.444}
+ 242  GTR+F+G4       0.3523  GTR{0.736928,2.53948,0.201947,1.26578,5.91249}+F{0.285039,0.220056,0.234412,0.260493}+G4{0.0755991}
+ 243  GTR+F+G4       0.1613  GTR{0.954749,2.49868,0.404253,2.02156,4.49042}+F{0.301669,0.167736,0.171975,0.35862}+G4{0.0200365}
+ 244  GTR+F+G4       0.8691  GTR{0.190451,4.00975,0.0936489,0.442059,0.811615}+F{0.316212,0.168749,0.147463,0.367577}+G4{0.44129}
+ 245  GTR+F+G4       0.2994  GTR{0.753493,0.491845,0.449307,1.79259,1.59246}+F{0.381408,0.180684,0.114943,0.322965}+G4{0.378987}
+ 246  GTR+F+G4       1.7607  GTR{0.417599,1.23982,0.187021,1.09363,3.77888}+F{0.338851,0.151581,0.242102,0.267466}+G4{2.11068}
+ 247  GTR+F+G4       1.2956  GTR{0.948586,5.0094,0.406303,2.54348,4.25534}+F{0.337342,0.220363,0.13593,0.306365}+G4{1.34647}
+ 248  GTR+F+G4       0.9533  GTR{3.03645,18.6847,0.453786,2.96273,2.23902}+F{0.25181,0.168722,0.117131,0.462338}+G4{0.417705}
+ 249  GTR+F+G4       0.0428  GTR{0.280267,15.8817,0.320969,3.06077,6.8288}+F{0.32538,0.135317,0.185123,0.35418}+G4{0.0200292}
+ 250  GTR+F+G4       0.1021  GTR{0.513591,1.09702,0.0888848,1.50327,2.58435}+F{0.382696,0.154813,0.135979,0.326512}+G4{0.0200282}
+ 251  GTR+F+G4       0.0560  GTR{1.64857,3.74031,0.0679778,0.0001,0.0001}+F{0.361225,0.163379,0.178019,0.297377}+G4{0.0200213}
+ 252  GTR+F+G4       0.1538  GTR{0.467013,1.50485,0.10587,1.16727,3.60893}+F{0.337137,0.213282,0.181171,0.268409}+G4{0.153283}
+ 253  GTR+F+G4       0.3817  GTR{0.943159,4.68621,0.238598,1.20821,2.88674}+F{0.290575,0.17881,0.163302,0.367313}+G4{0.293726}
+ 254  GTR+F+G4       0.4387  GTR{1.65353,5.97372,1.14721,5.26641,8.69478}+F{0.435433,0.136342,0.143805,0.28442}+G4{0.264585}
+ 255  GTR+F+G4       0.7571  GTR{0.575257,5.15175,0.593753,2.30028,4.05695}+F{0.312928,0.162868,0.141582,0.382622}+G4{0.366184}
+ 256  GTR+F+G4       0.4458  GTR{0.704749,3.94444,0.206479,1.95374,4.11859}+F{0.347554,0.166542,0.160913,0.324991}+G4{0.413726}
+ 257  GTR+F+G4       0.7622  GTR{0.438973,0.316925,0.0397673,0.636517,0.625981}+F{0.438128,0.101522,0.138402,0.321947}+G4{0.310742}
+ 258  GTR+F+G4       0.2591  GTR{0.964933,2.75985,0.458045,0.0001,4.01756}+F{0.296881,0.192005,0.16748,0.343633}+G4{0.0200301}
+ 259  GTR+F+G4       0.1726  GTR{0.103468,6.86959,0.244787,3.06291,5.29208}+F{0.374299,0.152575,0.13638,0.336746}+G4{0.0200299}
+ 260  GTR+F+G4       1.1715  GTR{1.57961,4.42944,1.02188,2.37597,4.57017}+F{0.341569,0.151282,0.221322,0.285827}+G4{1.02572}
+ 261  GTR+F+G4       0.4809  GTR{0.673373,5.13767,0.376526,1.64614,2.53968}+F{0.356036,0.152329,0.139,0.352636}+G4{0.302858}
+ 262  GTR+F+G4       0.5934  GTR{1.01249,2.58708,0.296839,1.20713,3.39538}+F{0.412491,0.117516,0.144678,0.325315}+G4{0.538837}
+ 263  GTR+F+G4       6.3306  GTR{0.250688,0.574673,0.0001,7.22745,3.44241}+F{0.257929,0.219659,0.0660555,0.456356}+G4{0.125}
+ 264  GTR+F+G4       0.8680  GTR{1.00575,2.53309,0.0001,3.03822,2.54756}+F{0.305314,0.112953,0.169126,0.412607}+G4{0.482683}
+ 265  GTR+F+G4       0.2979  GTR{1.37194,4.61032,0.266712,0.893774,3.15917}+F{0.223194,0.232735,0.20769,0.336381}+G4{1.30848}
+ 266  GTR+F+G4       0.3455  GTR{0.543261,7.15872,0.570264,4.88942,4.8094}+F{0.321892,0.144134,0.153992,0.379982}+G4{0.295842}
+ 267  GTR+F+G4       0.3370  GTR{0.0716381,3.44487,0.44891,1.32833,3.07601}+F{0.292044,0.224539,0.177882,0.305535}+G4{0.672797}
+ 268  GTR+F+G4       1.5384  GTR{2.16377,5.03759,1.04415,7.32589,10.7698}+F{0.319272,0.100361,0.185981,0.394386}+G4{1.22781}
+ 269  GTR+F+G4       0.5561  GTR{1.79535,7.54224,0.651774,1.21703,5.43429}+F{0.223245,0.241482,0.184821,0.350452}+G4{0.669068}
+ 270  GTR+F+G4       1.2203  GTR{0.743609,4.19539,0.442804,2.42476,3.71356}+F{0.302867,0.143487,0.176211,0.377436}+G4{0.816607}
+ 271  GTR+F+G4       1.5785  GTR{100,75.6574,3.01893,3.65798,69.1413}+F{0.403056,0.146469,0.162692,0.287784}+G4{0.569493}
+ 272  GTR+F+G4       0.8901  GTR{0.229067,1.00337,0.0138988,0.0001,11.4349}+F{0.385345,0.147383,0.114166,0.353105}+G4{0.0757717}
+ 273  GTR+F+G4       0.1496  GTR{0.0231485,0.655291,0.165885,0.302916,0.794134}+F{0.423346,0.148571,0.159788,0.268294}+G4{0.0200244}
+ 274  GTR+F+G4       3.1887  GTR{0.0001,0.125727,0.396773,35.5334,3.23829}+F{0.286838,0.00716728,0.179581,0.526413}+G4{0.225378}
+ 275  GTR+F+G4       0.7291  GTR{1.02287,4.35932,0.866921,3.63607,7.33008}+F{0.307306,0.188354,0.169061,0.335279}+G4{0.776882}
+ 276  GTR+F+G4       0.2909  GTR{0.0958922,1.05852,0.0001,0.0004623,0.193965}+F{0.370098,0.189689,0.157931,0.282282}+G4{0.0200218}
+ 277  GTR+F+G4       0.3439  GTR{1.55857,3.68116,0.327519,1.35855,5.25522}+F{0.358235,0.153154,0.182926,0.305684}+G4{5.4399}
+ 278  GTR+F+G4       0.5682  GTR{0.656614,3.07926,0.456157,1.53026,1.76123}+F{0.382535,0.146585,0.163862,0.307018}+G4{2.2197}
+ 279  GTR+F+G4       1.3379  GTR{0.679774,2.51299,0.572363,0.770215,1.77821}+F{0.389128,0.118439,0.0881699,0.404263}+G4{0.572252}
+ 280  GTR+F+G4       0.1138  GTR{0.284876,2.60891,0.918349,0.577058,5.21566}+F{0.208662,0.236506,0.259926,0.294907}+G4{3.09921}
+ 281  GTR+F+G4       0.3452  GTR{2.12682,6.38605,1.01196,6.64687,13.0559}+F{0.379166,0.153754,0.149053,0.318027}+G4{0.215487}
+ 282  GTR+F+G4       0.4323  GTR{1.85694,3.65265,0.177468,2.17536,4.975}+F{0.38171,0.159999,0.149978,0.308313}+G4{0.0200388}
+ 283  GTR+F+G4       0.2293  GTR{10.5733,28.5385,1.36715,16.8489,33.8412}+F{0.284863,0.28183,0.220537,0.212769}+G4{0.0980391}
+ 284  GTR+F+G4       1.1530  GTR{1.3402,4.94383,0.325464,3.76329,8.63659}+F{0.344743,0.164424,0.146593,0.34424}+G4{0.480075}
+ 285  GTR+F+G4       0.5885  GTR{0.875863,8.71982,1.03621,2.20696,6.01085}+F{0.295045,0.204211,0.18382,0.316923}+G4{0.405648}
+ 286  GTR+F+G4       0.1244  GTR{1.46528,8.08642,1.52939,10.3117,17.2382}+F{0.283107,0.213783,0.200352,0.302758}+G4{0.352292}
+ 287  GTR+F+G4       1.2583  GTR{0.782444,6.21635,0.39206,1.06629,4.58151}+F{0.303631,0.164778,0.188602,0.342988}+G4{0.458327}
+ 288  GTR+F+G4       0.0858  GTR{1.87904,11.3513,0.40256,1.58955,22.7392}+F{0.406493,0.170764,0.168491,0.254252}+G4{0.020023}
+ 289  GTR+F+G4       0.0790  GTR{1.07724,8.08023,1.86454,3.17322,11.8058}+F{0.29958,0.208256,0.186371,0.305793}+G4{0.0200222}
+ 290  GTR+F+G4       0.7474  GTR{0.360203,5.54045,0.162298,1.37748,8.90453}+F{0.241036,0.30496,0.242754,0.21125}+G4{0.154441}
+ 291  GTR+F+G4       0.2531  GTR{1.61753,20.6194,0.598406,1.12677,8.50387}+F{0.280931,0.23662,0.180105,0.302344}+G4{0.0200311}
+ 292  GTR+F+G4       0.7311  GTR{0.844116,3.70509,0.148942,2.93954,1.93385}+F{0.330073,0.18058,0.146881,0.342465}+G4{0.216961}
+ 293  GTR+F+G4       3.0509  GTR{0.288805,5.09681,0.0511796,1.3422,0.979777}+F{0.463988,0.106384,0.191117,0.238511}+G4{0.487588}
+ 294  GTR+F+G4       0.1397  GTR{0.174449,2.80726,0.420039,1.30389,2.21591}+F{0.317338,0.203026,0.191422,0.288215}+G4{0.0200351}
+ 295  GTR+F+G4       1.5547  GTR{1.04508,2.03761,0.0001,1.41396,6.60425}+F{0.398233,0.163727,0.184315,0.253725}+G4{0.296739}
+ 296  GTR+F+G4       0.2698  GTR{1.38231,4.98387,0.232433,4.44965,4.61532}+F{0.329912,0.155756,0.178843,0.33549}+G4{0.218825}
+ 297  GTR+F+G4       0.9381  GTR{1.12542,4.22865,0.278508,2.6783,3.71215}+F{0.329745,0.166497,0.137896,0.365862}+G4{0.628191}
+ 298  GTR+F+G4       0.1896  GTR{0.380197,3.19543,0.396894,1.49249,1.54086}+F{0.36731,0.147666,0.109803,0.37522}+G4{0.141739}
+ 299  GTR+F+G4       1.7260  GTR{0.538738,2.14318,0.00894254,0.758265,15.3938}+F{0.271046,0.198253,0.215638,0.315064}+G4{0.117603}
+ 300  GTR+F+G4       1.0187  GTR{0.4223,0.875762,0.298078,0.792646,2.14613}+F{0.293971,0.140182,0.135899,0.429947}+G4{0.350332}
+ 301  GTR+F+G4       0.4333  GTR{1.08739,6.11467,0.777115,2.22394,23.0469}+F{0.282361,0.20145,0.210971,0.305218}+G4{0.0200303}
+ 302  GTR+F+G4       1.9496  GTR{0.431485,3.10076,0.293291,3.03702,2.78948}+F{0.403466,0.222828,0.11146,0.262247}+G4{2.51678}
+ 303  GTR+F+G4       0.1666  GTR{0.922514,10.481,1.30659,9.95627,16.273}+F{0.343348,0.147885,0.170743,0.338024}+G4{0.246036}
+ 304  GTR+F+G4       1.6462  GTR{0.0001,100,2.3194,11.917,0.0001}+F{0.385241,0.0787992,0.11132,0.42464}+G4{0.184034}
+ 305  GTR+F+G4       0.2206  GTR{0.997666,3.46273,0.286587,0.967473,4.03023}+F{0.360922,0.176596,0.163647,0.298836}+G4{0.339496}
+ 306  GTR+F+G4       1.5695  GTR{0.76285,3.46409,0.379858,1.03053,3.32714}+F{0.349732,0.168206,0.156494,0.325569}+G4{0.718083}
+ 307  GTR+F+G4       1.1803  GTR{14.1439,18.2143,0.560942,11.7404,100}+F{0.297134,0.207706,0.177897,0.317262}+G4{0.156055}
+ 308  GTR+F+G4       0.2100  GTR{0.601447,3.07207,0.285857,0.718045,2.75178}+F{0.210107,0.238242,0.271322,0.280329}+G4{0.616667}
+ 309  GTR+F+G4       4.6281  GTR{0.597845,0.530958,0.125441,0.221787,4.13091}+F{0.155341,0.0864346,0.370412,0.387813}+G4{0.720034}
+ 310  GTR+F+G4       3.2181  GTR{1.74057,12.7436,0.0001,7.15429,5.71519}+F{0.398643,0.163888,0.125067,0.312402}+G4{0.535246}
+ 311  GTR+F+G4       1.1911  GTR{1.86632,7.88907,0.30421,1.9091,6.23819}+F{0.216511,0.297807,0.204079,0.281604}+G4{0.444378}
+ 312  GTR+F+G4       0.4414  GTR{0.450514,6.44509,0.266634,1.98734,2.48933}+F{0.37014,0.197119,0.137893,0.294847}+G4{0.210326}
+ 313  GTR+F+G4       0.6371  GTR{0.842069,14.8826,0.713406,4.45034,6.65132}+F{0.328037,0.250424,0.159709,0.261829}+G4{0.110952}
+ 314  GTR+F+G4       0.0427  GTR{0.738517,6.14791,1.665,6.87526,9.25744}+F{0.339904,0.17471,0.198565,0.286821}+G4{0.0200222}
+ 315  GTR+F+G4       0.1989  GTR{1.92173,3.21263,0.0992783,0.367793,2.96351}+F{0.324825,0.167318,0.191698,0.316159}+G4{0.0200242}
+ 316  GTR+F+G4       0.6208  GTR{0.472853,3.4794,0.445032,0.362323,3.6233}+F{0.263459,0.247292,0.206561,0.282687}+G4{0.147322}
+ 317  GTR+F+G4       2.6350  GTR{2.1846,2.34222,0.418524,2.91102,5.26825}+F{0.212637,0.284731,0.251114,0.251519}+G4{0.386035}
+ 318  GTR+F+G4       0.9988  GTR{0.185441,7.5092,0.0961138,0.331685,0.460468}+F{0.359988,0.219257,0.158797,0.261959}+G4{0.123286}
+ 319  GTR+F+G4       0.2029  GTR{0.898335,3.54167,0.684931,5.7779,5.50749}+F{0.389512,0.177178,0.150426,0.282884}+G4{0.190191}
+ 320  GTR+F+G4       0.1644  GTR{4.9459,6.63502,0.0001,5.31492,9.9096}+F{0.20498,0.24942,0.219485,0.326114}+G4{0.178658}
+ 321  GTR+F+G4       0.1977  GTR{31.6267,100,10.4148,9.45946,90.3499}+F{0.399544,0.0970478,0.120525,0.382883}+G4{0.0200326}
+ 322  GTR+F+G4       0.3177  GTR{0.769339,2.93326,0.248161,1.14966,4.35702}+F{0.359455,0.153764,0.152269,0.334511}+G4{0.609092}
+ 323  GTR+F+G4       0.7960  GTR{1.84914,2.9254,0.0971548,0.934142,2.05634}+F{0.385785,0.197819,0.119929,0.296467}+G4{0.226717}
+ 324  GTR+F+G4       0.6982  GTR{0.680283,4.06143,0.335148,2.07331,2.61203}+F{0.352731,0.171531,0.173167,0.302571}+G4{0.677627}
+ 325  GTR+F+G4       2.0171  GTR{0.296574,2.65912,0.247591,1.14698,3.08685}+F{0.338832,0.130028,0.105657,0.425483}+G4{1.25425}
+ 326  GTR+F+G4       1.7186  GTR{0.478866,0.731015,0.0001,0.0001,50.7725}+F{0.258927,0.240348,0.196996,0.303729}+G4{0.0200367}
+ 327  GTR+F+G4       1.0100  GTR{0.518708,2.66658,0.488706,2.12009,3.89358}+F{0.400277,0.169055,0.16836,0.262308}+G4{1.97606}
+ 328  GTR+F+G4       0.5749  GTR{0.165486,3.11676,0.233222,0.0739839,1.20919}+F{0.211902,0.432509,0.134689,0.2209}+G4{0.740979}
+ 329  GTR+F+G4       0.2724  GTR{2.63241,8.02481,0.933555,3.98482,11.3014}+F{0.335607,0.261731,0.154519,0.248143}+G4{0.1923}
+ 330  GTR+F+G4       0.5748  GTR{2.86139,8.55893,1.21844,6.91378,9.93567}+F{0.332384,0.157744,0.168428,0.341444}+G4{0.858451}
+ 331  GTR+F+G4       1.3338  GTR{0.964433,3.04824,0.192066,1.02248,4.57727}+F{0.393153,0.142787,0.147992,0.316068}+G4{0.189986}
+ 332  GTR+F+G4       0.0236  GTR{5.32719,11.7278,0.0001,0.0001,9.81065}+F{0.406878,0.0822141,0.123572,0.387336}+G4{0.201814}
+ 333  GTR+F+G4       1.0953  GTR{0.536372,3.82403,0.254832,1.47013,2.17596}+F{0.321666,0.162313,0.135008,0.381012}+G4{0.367413}
+ 334  GTR+F+G4       4.5520  GTR{0.310305,1.59704,0.0956457,0.906203,0.969504}+F{0.171516,0.100273,0.254344,0.473867}+G4{0.631678}
+ 335  GTR+F+G4       0.4459  GTR{1.39928,8.78681,0.622793,0.350744,2.03612}+F{0.237133,0.180515,0.168325,0.414027}+G4{0.19348}
+ 336  GTR+F+G4       0.8451  GTR{22.2371,88.9101,0.0001,35.2956,47.5129}+F{0.267887,0.279131,0.133646,0.319335}+G4{0.657982}
+ 337  GTR+F+G4       0.5694  GTR{0.659533,2.95074,0.182579,0.974394,2.28993}+F{0.291921,0.281269,0.210533,0.216278}+G4{0.227336}
+ 338  GTR+F+G4       0.6254  GTR{5.30338,6.4291,0.502565,0.593561,3.52263}+F{0.329244,0.177141,0.165163,0.328451}+G4{0.139}
+ 339  GTR+F+G4       1.5854  GTR{1.16363,3.14088,0.134102,1.61527,4.27373}+F{0.38353,0.155155,0.138884,0.322431}+G4{0.303719}
+ 340  GTR+F+G4       0.2015  GTR{0.0781076,5.86846,0.304772,0.732969,4.50182}+F{0.254212,0.212502,0.229965,0.303321}+G4{0.0200209}
+ 341  GTR+F+G4       0.1122  GTR{0.438483,0.687024,0.117155,0.25607,2.47774}+F{0.277695,0.2232,0.2322,0.266905}+G4{0.0200247}
+ 342  GTR+F+G4       1.3086  GTR{3.02373,4.68362,0.0982915,4.133,3.07712}+F{0.439451,0.112384,0.18763,0.260534}+G4{0.755531}
+ 343  GTR+F+G4       0.0959  GTR{0.143672,0.827602,0.796322,3.37392,4.12279}+F{0.260908,0.221516,0.188574,0.329003}+G4{0.0200279}
+ 344  GTR+F+G4       0.5023  GTR{0.411495,1.86215,0.143062,0.321135,1.15717}+F{0.269703,0.171135,0.173942,0.385219}+G4{0.239092}
+ 345  GTR+F+G4       0.9414  GTR{0.789693,8.17135,0.543341,0.0673027,3.05833}+F{0.247548,0.333784,0.137301,0.281366}+G4{0.225176}
+ 346  GTR+F+G4       0.0968  GTR{1.42534,3.00298,0.228811,1.07226,2.32318}+F{0.250658,0.205392,0.18722,0.356731}+G4{0.0200254}
+ 347  GTR+F+G4       0.9935  GTR{0.581576,3.20045,0.433668,1.05753,2.08914}+F{0.236359,0.201646,0.146628,0.415366}+G4{1.01557}
+ 348  GTR+F+G4       1.5290  GTR{0.856966,1.93349,0.26059,1.15922,1.93597}+F{0.374468,0.0933671,0.133628,0.398537}+G4{0.733018}
+ 349  GTR+F+G4       0.5364  GTR{0.311435,6.24704,0.54466,2.60229,5.26741}+F{0.296928,0.18739,0.200244,0.315438}+G4{0.320983}
+ 350  GTR+F+G4       2.0122  GTR{1.34944,4.80353,0.911356,2.94784,6.2716}+F{0.316221,0.186965,0.181598,0.315215}+G4{0.550791}
+ 351  GTR+F+G4       0.1599  GTR{1.16855,3.41808,1.01809,1.07349,2.93935}+F{0.311132,0.187156,0.183975,0.317737}+G4{0.0200275}
+ 352  GTR+F+G4       0.3245  GTR{1.31347,4.71191,0.342844,2.25115,5.48363}+F{0.262379,0.158998,0.244961,0.333662}+G4{0.130238}
+ 353  GTR+F+G4       2.5275  GTR{1.42371,9.20548,0.869272,3.24919,6.50208}+F{0.296939,0.136388,0.139533,0.42714}+G4{0.597755}
+ 354  GTR+F+G4       0.8965  GTR{1.23306,6.73146,0.689865,1.51724,4.63842}+F{0.288647,0.148922,0.129929,0.432502}+G4{0.583464}
+ 355  GTR+F+G4       0.3500  GTR{0.737593,5.55929,0.319448,2.30673,7.35992}+F{0.336513,0.155075,0.166639,0.341773}+G4{0.020039}
+ 356  GTR+F+G4       0.7593  GTR{4.41491,7.11772,0.711375,5.24842,7.12159}+F{0.264445,0.13873,0.179695,0.41713}+G4{0.48903}
+ 357  GTR+F+G4       0.7198  GTR{13.0481,30.2521,2.26628,27.8744,39.3676}+F{0.377393,0.199716,0.159025,0.263865}+G4{0.893127}
+ 358  GTR+F+G4       0.0606  GTR{6.38914,13.855,39.2558,28.4739,100}+F{0.306616,0.206508,0.259761,0.227115}+G4{0.020025}
+ 359  GTR+F+G4       0.3717  GTR{3.78516,5.274,0.613254,3.62248,9.32727}+F{0.346607,0.195634,0.135278,0.322481}+G4{0.179717}
+ 360  GTR+F+G4       1.6256  GTR{0.430762,2.50399,0.0982698,3.27408,4.20946}+F{0.268081,0.234242,0.218889,0.278788}+G4{0.276505}
+ 361  GTR+F+G4       0.0344  GTR{1.40988,0.374165,1.8422,0.0001,2.52499}+F{0.444437,0.0997757,0.124323,0.331464}+G4{0.211818}
+ 362  GTR+F+G4       1.0674  GTR{0.256787,5.41159,0.497546,0.35578,6.12256}+F{0.262256,0.268923,0.148131,0.320691}+G4{0.266479}
+ 363  GTR+F+G4       0.0662  GTR{14.3912,61.2848,6.26069,0.0001,99.8968}+F{0.385921,0.137118,0.140828,0.336133}+G4{0.0200303}
+ 364  GTR+F+G4       0.1147  GTR{48.5646,62.7677,8.07959,86.876,100}+F{0.340644,0.188092,0.181665,0.289599}+G4{0.0717038}
+ 365  GTR+F+G4       1.8540  GTR{0.939518,3.54911,0.238486,2.10838,4.41676}+F{0.372472,0.137672,0.159348,0.330507}+G4{0.726462}
+ 366  GTR+F+G4       0.6398  GTR{2.56719,9.40327,1.16037,8.02106,6.4031}+F{0.410751,0.155745,0.127803,0.305701}+G4{0.293062}
+ 367  GTR+F+G4       1.2241  GTR{1.51652,2.83356,0.403793,1.65666,5.11871}+F{0.311305,0.159628,0.220933,0.308134}+G4{0.310902}
+ 368  GTR+F+G4       0.4427  GTR{6.89446,4.91507,1.34001,0.275004,1.7402}+F{0.332926,0.181231,0.163801,0.322042}+G4{0.364154}
+ 369  GTR+F+G4       0.6724  GTR{1.89531,5.58158,0.0470506,0.0001,1.43797}+F{0.338184,0.15964,0.0846216,0.417554}+G4{0.539934}
+ 370  GTR+F+G4       1.6957  GTR{1.38138,10.1458,0.355358,0.552899,3.1035}+F{0.266917,0.215311,0.264525,0.253247}+G4{0.241503}
+ 371  GTR+F+G4       0.4276  GTR{0.116784,2.91202,0.0866463,3.40235,2.00609}+F{0.317878,0.151875,0.147216,0.383031}+G4{0.222689}
+ 372  GTR+F+G4       0.6928  GTR{45.0554,17.0774,0.0001,26.4757,100}+F{0.304181,0.191991,0.150766,0.353062}+G4{0.109515}
+ 373  GTR+F+G4       0.1327  GTR{8.60994,100,12.4765,63.3337,52.2036}+F{0.344775,0.176924,0.12638,0.351921}+G4{0.45592}
+ 374  GTR+F+G4       0.6357  GTR{1.36614,6.67444,0.0839182,4.30445,8.2044}+F{0.374686,0.122531,0.192304,0.310479}+G4{0.368845}
+ 375  GTR+F+G4       0.2284  GTR{0.623209,2.25142,0.453723,1.30342,1.39411}+F{0.304254,0.196814,0.164406,0.334526}+G4{1.22609}
+ 376  GTR+F+G4       0.2274  GTR{0.168691,1.70286,0.176611,0.475491,1.27546}+F{0.319449,0.194676,0.21903,0.266845}+G4{0.0200293}
+ 377  GTR+F+G4       0.1664  GTR{1.95089,7.76658,0.393487,3.43213,6.5121}+F{0.362146,0.158048,0.174854,0.304951}+G4{0.141971}
+ 378  GTR+F+G4       0.9398  GTR{1.11347,1.1306,0.0654443,2.32064,1.94771}+F{0.270244,0.185635,0.23823,0.305891}+G4{0.334781}
+ 379  GTR+F+G4       0.6535  GTR{0.233039,1.04219,0.211763,1.15554,0.968556}+F{0.400698,0.0994517,0.142544,0.357307}+G4{0.490738}
+ 380  GTR+F+G4       0.0324  GTR{0.0001,39.8125,10.9601,0.0001,100}+F{0.320288,0.140469,0.182058,0.357185}+G4{0.0200295}
+ 381  GTR+F+G4       0.2041  GTR{0.317348,0.908657,0.0476247,1.02944,0.720969}+F{0.311416,0.268103,0.159517,0.260964}+G4{0.052906}
+ 382  GTR+F+G4       0.1332  GTR{7.71897,17.5929,1.59248,16.5192,14.2071}+F{0.316548,0.187915,0.246248,0.249289}+G4{0.316578}
+ 383  GTR+F+G4       1.1230  GTR{0.804614,18.5557,2.49075,2.26946,12.2799}+F{0.21306,0.264782,0.221948,0.30021}+G4{0.38191}
+ 384  GTR+F+G4       0.4579  GTR{87.1065,100,2.2735,81.6734,88.3943}+F{0.378187,0.145678,0.163504,0.312632}+G4{17.2886}
+ 385  GTR+F+G4       0.2109  GTR{0.592806,8.0902,0.153921,4.92097,2.22839}+F{0.309524,0.157218,0.158679,0.37458}+G4{0.300133}
+ 386  GTR+F+G4       1.2267  GTR{0.62774,3.95845,0.148331,2.5928,4.71549}+F{0.342954,0.177918,0.194115,0.285013}+G4{0.187044}
+ 387  GTR+F+G4       1.5868  GTR{0.91061,4.59176,0.347001,0.761251,3.90061}+F{0.269451,0.258559,0.181232,0.290758}+G4{0.832619}
+ 388  GTR+F+G4       0.3084  GTR{1.10106,18.4075,0.589854,9.76734,19.167}+F{0.203147,0.202287,0.12956,0.465006}+G4{0.0200213}
+ 389  GTR+F+G4       1.3857  GTR{0.336714,4.50415,0.0459806,7.22997,3.29806}+F{0.336665,0.224734,0.203435,0.235166}+G4{0.197486}
+ 390  GTR+F+G4       0.3915  GTR{0.285456,0.312556,0.0001,0.478847,0.843033}+F{0.472652,0.248338,0.161936,0.117073}+G4{998.424}
+ 391  GTR+F+G4       0.1205  GTR{0.0001,3.14518,0.0187588,0.891298,2.60233}+F{0.319632,0.0867092,0.113194,0.480464}+G4{0.26441}
+ 392  GTR+F+G4       0.1298  GTR{15.9564,33.4982,5.50931,3.41533,33.0798}+F{0.304699,0.169119,0.169719,0.356464}+G4{0.0200354}
+ 393  GTR+F+G4       0.5570  GTR{2.42323,4.19847,0.380342,0.628529,6.49991}+F{0.411353,0.0953648,0.100238,0.393044}+G4{0.413314}
+ 394  GTR+F+G4       6.3309  GTR{0.124964,1.8036,0.0173841,0.878687,0.677631}+F{0.375665,0.129593,0.0484108,0.446331}+G4{0.210811}
+ 395  GTR+F+G4       1.1122  GTR{2.25716,4.2109,0.93506,2.76816,4.12458}+F{0.422336,0.0874316,0.117929,0.372304}+G4{0.805707}
+ 396  GTR+F+G4       2.2252  GTR{0.209859,1.06353,0.0675131,0.882589,0.210009}+F{0.393082,0.0812021,0.0881328,0.437584}+G4{0.421818}
+ 397  GTR+F+G4       1.4326  GTR{0.471806,3.11213,0.225755,1.37649,1.515}+F{0.238362,0.19636,0.144208,0.421071}+G4{1.36176}
+ 398  GTR+F+G4       0.0781  GTR{0.0863741,3.18116,0.535491,1.48586,3.96719}+F{0.285688,0.213403,0.152993,0.347916}+G4{4.37667}
+ 399  GTR+F+G4       0.0377  GTR{5.22951,100,8.50057,8.60485,0.0001}+F{0.26471,0.220499,0.243583,0.271209}+G4{0.020026}
+ 400  GTR+F+G4       0.1152  GTR{0.517441,6.16306,0.0885085,0.0001,2.49406}+F{0.323135,0.120441,0.168858,0.387566}+G4{0.0200281}
+ 401  GTR+F+G4       0.2422  GTR{0.744444,6.40217,0.440925,2.73355,7.25631}+F{0.308301,0.194525,0.175256,0.321919}+G4{0.0200341}
+ 402  GTR+F+G4       0.2370  GTR{9.01005,63.2011,13.6484,13.8106,51.0977}+F{0.2551,0.259401,0.239327,0.246172}+G4{2.84336}
+ 403  GTR+F+G4       0.1734  GTR{0.577861,8.80393,2.98499,0.618636,0.955745}+F{0.315471,0.284306,0.145333,0.254889}+G4{0.0200272}
+ 404  GTR+F+G4       0.2858  GTR{0.486758,1.3732,0.231742,0.210965,0.967057}+F{0.432987,0.143577,0.136696,0.286741}+G4{0.149985}
+ 405  GTR+F+G4       1.8577  GTR{1.45215,5.18162,0.214372,1.49488,3.14317}+F{0.264475,0.252706,0.270833,0.211986}+G4{0.359388}
+ 406  GTR+F+G4       0.2069  GTR{0.719864,40.0115,3.45813,5.1561,29.8467}+F{0.308736,0.165334,0.17575,0.350179}+G4{0.0200232}
+ 407  GTR+F+G4       0.6797  GTR{0.600542,3.30722,0.443347,1.33165,4.65084}+F{0.357869,0.176985,0.169837,0.29531}+G4{0.381899}
+ 408  GTR+F+G4       0.3464  GTR{0.7682,1.85942,0.104369,2.17765,2.18293}+F{0.366309,0.131246,0.114359,0.388085}+G4{0.540294}
+ 409  GTR+F+G4       0.4584  GTR{4.29699,100,3.36128,92.7465,67.0724}+F{0.28291,0.176401,0.146037,0.394652}+G4{0.208411}
+ 410  GTR+F+G4       0.0798  GTR{2.12631,12.0516,2.00094,0.0001,6.78395}+F{0.248859,0.206389,0.150188,0.394564}+G4{0.0200258}
+ 411  GTR+F+G4       0.2569  GTR{3.96805,8.2734,0.359952,2.39721,12.8296}+F{0.422878,0.106854,0.155228,0.31504}+G4{0.0200339}
+ 412  GTR+F+G4       0.0145  GTR{0.0001,0.0001,0.0001,7.17275,73.4851}+F{0.284825,0.227372,0.235363,0.25244}+G4{998.448}
+ 413  GTR+F+G4       0.0648  GTR{0.0865207,0.677711,0.0927155,0.0001,0.257489}+F{0.37329,0.211223,0.163033,0.252454}+G4{0.0200389}
+ 414  GTR+F+G4       0.5386  GTR{1.28851,4.60159,0.991346,4.6241,6.24623}+F{0.304669,0.206577,0.151589,0.337165}+G4{5.09617}
+ 415  GTR+F+G4       0.0331  GTR{10.0292,99.8847,6.23086,0.0001,36.8904}+F{0.288585,0.217183,0.164864,0.329367}+G4{0.02004}
+ 416  GTR+F+G4       0.0156  GTR{5.10893,2.6653,0.0001,7.89304,35.7969}+F{0.390856,0.122693,0.122721,0.36373}+G4{0.0200226}
+ 417  GTR+F+G4       0.3199  GTR{0.0001,1.14529,0.287172,1.222,3.94512}+F{0.333703,0.138281,0.182867,0.345149}+G4{0.260189}
+ 418  GTR+F+G4       0.1105  GTR{0.0001,3.50287,0.105469,0.662265,1.2029}+F{0.329629,0.211692,0.283796,0.174883}+G4{0.0200259}
+ 419  GTR+F+G4       0.0232  GTR{0.0001,0.0001,0.0001,0.0001,3.78038}+F{0.242837,0.257832,0.200969,0.298362}+G4{0.0200236}
+ 420  GTR+F+G4       1.4450  GTR{20.2958,25.2079,1.5136,100,30.2171}+F{0.345969,0.0825825,0.185739,0.38571}+G4{0.163742}
+ 421  GTR+F+G4       24.1964  GTR{0.0001,7.87106,0.0001,0.0001,0.0601858}+F{0.404853,0.0672817,0.0959434,0.431922}+G4{0.0848328}
+ 422  GTR+F+G4       0.0455  GTR{16.911,30.4867,5.76394,0.0001,0.0001}+F{0.350935,0.240738,0.189038,0.219289}+G4{0.104037}
+ 423  GTR+F+G4       0.9307  GTR{0.994805,3.9975,0.101085,1.31808,4.73441}+F{0.369869,0.182746,0.116718,0.330667}+G4{0.759139}
+ 424  GTR+F+G4       0.1455  GTR{0.595355,2.96528,0.453863,1.34287,5.03597}+F{0.330333,0.121114,0.192696,0.355858}+G4{0.0200302}
+ 425  GTR+F+G4       0.0113  GTR{0.3178,1.07813,0.202788,0.0001,0.399654}+F{0.284596,0.196529,0.215903,0.302972}+G4{0.0200242}
+ 426  GTR+F+G4       0.3304  GTR{5.61973,40.3986,0.642912,2.9058,32.8348}+F{0.331342,0.204927,0.18083,0.2829}+G4{0.020024}
+ 427  GTR+F+G4       1.1279  GTR{8.80775,0.265627,1.675,0.0001,3.93665}+F{0.374741,0.103499,0.140947,0.380813}+G4{0.406745}
+ 428  GTR+F+G4       0.9372  GTR{0.385604,7.90053,0.0238525,3.67451,4.21869}+F{0.353559,0.16674,0.140688,0.339013}+G4{0.146221}
+ 429  GTR+F+G4       0.0902  GTR{1.62428,8.62449,0.0001,1.0503,1.61526}+F{0.308677,0.18843,0.169666,0.333227}+G4{0.0200232}
+ 430  GTR+F+G4       0.9795  GTR{0.83619,1.90908,0.137859,1.38935,2.21075}+F{0.438518,0.150487,0.102084,0.308912}+G4{1.21107}
+ 431  GTR+F+G4       1.7084  GTR{1.08908,3.38654,0.213599,2.85368,5.8947}+F{0.356547,0.135397,0.128815,0.379241}+G4{0.669471}
+ 432  GTR+F+G4       0.4086  GTR{0.543246,2.62292,0.0850175,0.638911,1.54174}+F{0.407568,0.183389,0.148542,0.260502}+G4{0.0546137}
+ 433  GTR+F+G4       0.4117  GTR{2.08849,2.21827,0.140631,1.38228,5.88931}+F{0.242659,0.198578,0.2259,0.332864}+G4{0.531925}
+ 434  GTR+F+G4       0.2857  GTR{1.18296,5.27003,0.221224,1.97046,5.30784}+F{0.361646,0.137563,0.104093,0.396699}+G4{0.15454}
+ 435  GTR+F+G4       0.6612  GTR{3.00828,19.0863,0.564508,2.60555,6.59583}+F{0.236806,0.286149,0.256229,0.220816}+G4{0.0200384}
+ 436  GTR+F+G4       0.4618  GTR{0.991071,2.66944,0.0916638,1.36226,2.67065}+F{0.278913,0.210347,0.205308,0.305432}+G4{0.118695}
+ 437  GTR+F+G4       0.3265  GTR{1.36123,5.14417,2.48108,1.57494,8.76906}+F{0.399864,0.142357,0.28844,0.169339}+G4{7.91308}
+ 438  GTR+F+G4       1.7437  GTR{0.322395,2.75806,0.278089,1.03689,3.0706}+F{0.291556,0.205095,0.190464,0.312885}+G4{0.3751}
+ 439  GTR+F+G4       0.6468  GTR{0.798433,16.1903,0.51923,2.19955,4.39926}+F{0.248404,0.197082,0.135312,0.419202}+G4{0.568943}
+ 440  GTR+F+G4       0.9243  GTR{0.553722,4.60065,0.459082,2.53904,9.65288}+F{0.284707,0.155767,0.232034,0.327492}+G4{0.225055}
+ 441  GTR+F+G4       3.4235  GTR{0.308995,3.14254,0.0260997,2.19606,2.19252}+F{0.34429,0.168434,0.152388,0.334889}+G4{0.281625}
+ 442  GTR+F+G4       0.5498  GTR{2.29869,41.8252,1.23948,34.4147,16.4654}+F{0.404562,0.134587,0.105168,0.355683}+G4{0.112202}
+ 443  GTR+F+G4       0.1198  GTR{5.72135,5.82795,0.688524,9.15505,26.7242}+F{0.299849,0.194275,0.162005,0.34387}+G4{0.0200292}
+ 444  GTR+F+G4       8.0274  GTR{12.5244,0.49821,0.0001,14.5814,36.0053}+F{0.13423,0.0233809,0.215036,0.627353}+G4{0.427603}
+ 445  GTR+F+G4       1.2918  GTR{0.592135,1.64927,0.056902,1.02179,0.319228}+F{0.362018,0.174016,0.084192,0.379774}+G4{1.616}
+ 446  GTR+F+G4       0.6901  GTR{0.444354,5.14641,2.28659,0.0001,5.82988}+F{0.393557,0.105927,0.111708,0.388808}+G4{998.453}
+ 447  GTR+F+G4       0.2588  GTR{0.618983,3.691,0.362129,1.87534,1.71911}+F{0.348236,0.146819,0.175842,0.329103}+G4{0.129115}
+ 448  GTR+F+G4       0.0382  GTR{0.205906,2.40477,0.13837,0.14292,2.67114}+F{0.299969,0.19753,0.214436,0.288065}+G4{0.0200309}
+ 449  GTR+F+G4       0.4317  GTR{1.67568,2.02525,1.03723,0.027111,11.1618}+F{0.199121,0.299196,0.19061,0.311074}+G4{0.0200253}
+ 450  GTR+F+G4       0.8078  GTR{0.676642,3.29591,0.252473,1.4406,3.28233}+F{0.306677,0.179685,0.121324,0.392314}+G4{1.10495}
+ 451  GTR+F+G4       0.4318  GTR{23.3692,100,0.0001,0.0001,71.4834}+F{0.132927,0.368009,0.125435,0.373629}+G4{0.0855264}
+ 452  GTR+F+G4       0.2482  GTR{0.176276,16.0096,3.0011,5.45674,9.38104}+F{0.269951,0.187126,0.209896,0.333026}+G4{0.0867574}
+ 453  GTR+F+G4       0.2735  GTR{0.890434,6.42308,0.889424,0.492675,8.26751}+F{0.333195,0.158871,0.147157,0.360778}+G4{0.137016}
+ 454  GTR+F+G4       0.0698  GTR{16.2511,12.8626,6.89023,3.32083,22.4582}+F{0.277948,0.22879,0.223047,0.270215}+G4{0.0200243}
+ 455  GTR+F+G4       0.0644  GTR{0.0729149,2.10813,0.89003,0.210585,3.28819}+F{0.348927,0.216679,0.249708,0.184686}+G4{1.81579}
+ 456  GTR+F+G4       0.2439  GTR{0.0516647,0.496029,0.0911894,0.139,0.712911}+F{0.331475,0.166537,0.150729,0.351259}+G4{0.0200253}
+ 457  GTR+F+G4       0.4123  GTR{8.09659,100,7.74055,36.0909,28.4029}+F{0.310801,0.117216,0.246962,0.325022}+G4{0.0950485}
+ 458  GTR+F+G4       0.0173  GTR{1.49672,8.52209,0.0001,6.27905,0.0001}+F{0.389143,0.123571,0.141655,0.345631}+G4{0.0200245}
+ 459  GTR+F+G4       0.0068  GTR{70.3193,84.5577,0.0001,0.0001,0.0001}+F{0.288669,0.184719,0.192504,0.334108}+G4{998.448}
+ 460  GTR+F+G4       0.0963  GTR{0.751246,2.71596,0.199363,0.0666454,1.82192}+F{0.330935,0.181566,0.171591,0.315908}+G4{0.0200228}
+ 461  GTR+F+G4       0.4313  GTR{5.98579,29.8606,0.564546,5.63914,33.1382}+F{0.247383,0.298696,0.246234,0.207686}+G4{0.392872}
+ 462  GTR+F+G4       0.3219  GTR{0.361797,7.90407,0.370771,0.0001,13.2965}+F{0.273662,0.146452,0.201135,0.378752}+G4{0.020037}
+ 463  GTR+F+G4       0.2761  GTR{1.03397,9.12314,2.11381,1.16233,9.53748}+F{0.278943,0.261859,0.171303,0.287895}+G4{0.204007}
+ 464  GTR+F+G4       0.6468  GTR{0.866606,2.12084,0.789711,2.25179,6.12025}+F{0.300051,0.146039,0.19514,0.35877}+G4{0.0953771}
+ 465  GTR+F+G4       0.0808  GTR{1.91422,0.0001,0.805951,0.951834,1.68619}+F{0.240808,0.239279,0.239118,0.280795}+G4{0.0200208}
+ 466  GTR+F+G4       0.0907  GTR{0.446461,1.75916,0.269581,0.599964,4.10256}+F{0.28505,0.155954,0.317581,0.241415}+G4{0.0200246}
+ 467  GTR+F+G4       0.0207  GTR{1.65823,0.280046,0.434995,0.81636,2.51882}+F{0.346933,0.117405,0.235698,0.299964}+G4{998.448}
+ 468  GTR+F+G4       0.4440  GTR{17.2461,44.2542,8.27783,25.1599,49.3807}+F{0.28883,0.251034,0.203836,0.256299}+G4{1.53175}
+ 469  GTR+F+G4       0.1730  GTR{0.58003,5.87438,0.470052,1.80478,4.72088}+F{0.390866,0.130086,0.21356,0.265489}+G4{0.0200299}
+ 470  GTR+F+G4       0.8009  GTR{1.45543,2.90582,0.426809,1.11442,1.67471}+F{0.325459,0.162876,0.14201,0.369655}+G4{0.139868}
+ 471  GTR+F+G4       0.0255  GTR{100,0.0001,0.0001,0.0001,68.5663}+F{0.238902,0.201887,0.210014,0.349197}+G4{998.448}
+ 472  GTR+F+G4       0.9314  GTR{17.0659,100,0.875102,0.0001,7.84065}+F{0.450865,0.202855,0.104352,0.241928}+G4{0.162712}
+ 473  GTR+F+G4       0.0172  GTR{0.107541,0.197399,0.132364,0.0001,0.180912}+F{0.464144,0.169374,0.0915218,0.27496}+G4{998.448}
+ 474  GTR+F+G4       0.0219  GTR{0.0001,0.0001,0.0001,0.0001,8.47543}+F{0.333364,0.217613,0.157704,0.291319}+G4{0.0200208}
+ 475  GTR+F+G4       16.5679  GTR{0.0001,54.0511,1.6169,1.48777,100}+F{0.211128,0.30907,0.179878,0.299924}+G4{0.0574739}
+ 476  GTR+F+G4       0.1437  GTR{0.324465,1.29674,0.471195,1.0612,1.01687}+F{0.326502,0.151217,0.162976,0.359304}+G4{13.3548}
+ 477  GTR+F+G4       0.4364  GTR{2.08484,0.501432,0.304536,0.800381,4.07612}+F{0.318535,0.163234,0.159067,0.359163}+G4{0.0200347}
+ 478  GTR+F+G4       0.2800  GTR{0.0001,98.131,0.0001,5.13467,98.8677}+F{0.281336,0.213333,0.259272,0.24606}+G4{0.0200243}
+ 479  GTR+F+G4       0.0205  GTR{16.3402,36.6863,0.0001,17.6812,100}+F{0.295009,0.167253,0.203177,0.334561}+G4{0.0200227}
+ 480  GTR+F+G4       0.1457  GTR{0.42057,0.15215,0.0659257,0.171245,0.247474}+F{0.309974,0.148845,0.265153,0.276028}+G4{0.020039}
+ 481  GTR+F+G4       2.0208  GTR{0.874024,4.64637,1.74604,0.604105,8.07568}+F{0.291301,0.219274,0.356743,0.132682}+G4{0.444345}
+ 482  GTR+F+G4       1.3606  GTR{0.0001,1.64551,0.0001,1.92836,0.433294}+F{0.305741,0.155786,0.193364,0.345109}+G4{0.151486}
+ 483  GTR+F+G4       0.5588  GTR{0.413261,9.11609,0.365708,0.591626,1.19443}+F{0.307828,0.191702,0.248825,0.251646}+G4{0.306328}
+ 484  GTR+F+G4       0.9853  GTR{0.646128,11.3194,1.16558,1.49146,10.0622}+F{0.279483,0.171587,0.295166,0.253764}+G4{0.841167}
+ 485  GTR+F+G4       0.8830  GTR{0.503279,2.05339,0.378956,2.62936,2.12159}+F{0.254892,0.233693,0.116281,0.395134}+G4{1.36808}
+ 486  GTR+F+G4       0.0218  GTR{0.0001,100,0.0001,0.0001,58.7324}+F{0.227288,0.181698,0.242512,0.348502}+G4{998.448}
+ 487  GTR+F+G4       0.2026  GTR{62.4212,100,2.73616,37.4944,63.9894}+F{0.313395,0.115962,0.222732,0.347911}+G4{0.896531}
+ 488  GTR+F+G4       0.6267  GTR{8.73839,6.40813,0.0001,0.0001,14.3023}+F{0.146298,0.456082,0.14592,0.2517}+G4{0.121309}
+ 489  GTR+F+G4       2.4688  GTR{0.0001,13.7651,0.0001,4.3592,8.49526}+F{0.177641,0.0546297,0.125542,0.642188}+G4{1.10525}
+ 490  GTR+F+G4       0.5654  GTR{0.0001,18.4942,1.12044,0.0001,16.483}+F{0.246384,0.206409,0.193343,0.353865}+G4{0.127934}
+ 491  GTR+F+G4       0.0500  GTR{1.30697,40.7139,5.21209,13.3366,24.8512}+F{0.283553,0.175123,0.225213,0.316111}+G4{0.0200237}
+ 492  GTR+F+G4       0.2904  GTR{0.0001,20.3394,0.0001,2.32717,14.3874}+F{0.372445,0.179361,0.0904932,0.357701}+G4{0.0200325}
+ 493  GTR+F+G4       0.7708  GTR{6.56896,75.2197,2.74773,5.90344,37.5552}+F{0.268969,0.156602,0.169546,0.404883}+G4{0.0200296}
+ 494  GTR+F+G4       1.1282  GTR{0.851289,5.10308,0.274146,2.48279,1.2515}+F{0.252647,0.224555,0.106354,0.416444}+G4{0.158321}
+ 495  GTR+F+G4       0.4406  GTR{1.73429,4.15076,0.721516,0.15047,3.00978}+F{0.280637,0.217426,0.223235,0.278701}+G4{0.222689}
+ 496  GTR+F+G4       2.6235  GTR{0.0277191,1.13583,0.0001,0.0001,25.4495}+F{0.369202,0.143215,0.187088,0.300495}+G4{0.0200384}
+ 497  GTR+F+G4       0.8702  GTR{2.10664,33.0182,1.31571,2.34387,14.8879}+F{0.295977,0.204112,0.220358,0.279553}+G4{0.170537}
+ 498  GTR+F+G4       3.8448  GTR{20.1526,48.7023,5.17695,0.0001,100}+F{0.690432,0.0851096,0.067306,0.157152}+G4{0.0999408}
+ 499  GTR+F+G4       0.9865  GTR{0.628312,4.2821,0.532761,2.61346,2.61719}+F{0.388952,0.188297,0.131108,0.291643}+G4{0.523505}
+ 500  GTR+F+G4       0.0386  GTR{0.0001,1.60805,0.0001,8.31352,2.92138}+F{0.285739,0.241599,0.181855,0.290807}+G4{998.448}
+ 501  GTR+F+G4       0.3387  GTR{0.0001,9.90984,2.64628,0.0001,6.9275}+F{0.0882022,0.498854,0.0681565,0.344788}+G4{0.256528}
+ 502  GTR+F+G4       0.1998  GTR{14.8404,59.9264,2.87717,49.8169,100}+F{0.273751,0.234588,0.162939,0.328722}+G4{0.02003}
+ 503  GTR+F+G4       0.0416  GTR{14.8209,0.815908,0.0001,0.0001,1.1469}+F{0.286338,0.255612,0.251175,0.206875}+G4{0.0200388}
+ 504  GTR+F+G4       0.7807  GTR{3.18767,11.8419,1.06729,3.5774,13.2242}+F{0.353424,0.179132,0.205529,0.261915}+G4{0.203164}
+ 505  GTR+F+G4       0.0200  GTR{4.05029,100,9.09221,24.5333,15.8811}+F{0.253885,0.301179,0.177167,0.267768}+G4{0.0200281}
+ 506  GTR+F+G4       1.2341  GTR{1.55793,2.76415,0.643651,1.20468,2.03347}+F{0.277676,0.126635,0.114197,0.481492}+G4{0.789649}
+ 507  GTR+F+G4       0.3474  GTR{0.735516,4.8411,0.818097,2.72258,5.84278}+F{0.373596,0.178688,0.174151,0.273565}+G4{0.510139}
+ 508  GTR+F+G4       0.0384  GTR{2.53605,1.279,0.257931,0.0001,3.26928}+F{0.194644,0.274996,0.154293,0.376068}+G4{0.0200391}
+ 509  GTR+F+G4       3.5555  GTR{0.0001,2.51954,0.403574,2.81891,100}+F{0.114643,0.10435,0.198019,0.582989}+G4{0.125048}
+ 510  GTR+F+G4       0.3605  GTR{0.640464,2.12317,0.104032,0.640391,0.864203}+F{0.398115,0.134623,0.201383,0.265879}+G4{0.238354}
+ 511  GTR+F+G4       0.2240  GTR{0.967152,6.25122,0.982908,2.03659,5.33743}+F{0.38725,0.157501,0.262468,0.19278}+G4{0.144262}
+ 512  GTR+F+G4       1.2082  GTR{0.0001,22.1212,0.0001,0.0001,0.0001}+F{0.221311,0.262926,0.269861,0.245902}+G4{0.0200369}
+ 513  GTR+F+G4       0.0666  GTR{0.523749,4.15977,0.0525078,0.368386,1.51714}+F{0.272039,0.251541,0.195829,0.280591}+G4{0.0200217}
+ 514  GTR+F+G4       0.0946  GTR{8.99997,5.90511,2.01039,7.21047,8.10356}+F{0.380448,0.131071,0.128136,0.360345}+G4{0.261055}
+ 515  GTR+F+G4       0.2886  GTR{0.58435,4.97133,0.640423,0.850347,1.62362}+F{0.25467,0.237844,0.162156,0.34533}+G4{0.757459}
+ 516  GTR+F+G4       1.4507  GTR{0.0001,22.4659,0.527471,0.0001,2.37528}+F{0.274438,0.164663,0.142185,0.418714}+G4{0.161366}
+ 517  GTR+F+G4       0.0825  GTR{0.0001,0.0001,2.56108,14.209,47.3731}+F{0.324096,0.186191,0.130953,0.358761}+G4{0.0200278}
+ 518  GTR+F+G4       1.7689  GTR{0.754237,6.94083,0.317593,1.99219,3.10837}+F{0.194499,0.205291,0.148909,0.4513}+G4{0.535037}
+ 519  GTR+F+G4       0.5906  GTR{0.0662194,2.05744,2.00743,0.432516,2.09123}+F{0.356582,0.150731,0.105245,0.387442}+G4{0.0200377}
+ 520  GTR+F+G4       0.8617  GTR{3.27492,4.32118,0.326188,6.33124,9.10066}+F{0.342398,0.138202,0.151637,0.367763}+G4{1.09634}
+ 521  GTR+F+G4       1.7493  GTR{1.74414,1.82351,0.156023,1.44925,3.15193}+F{0.337608,0.217984,0.129918,0.31449}+G4{0.588933}
+ 522  GTR+F+G4       0.3555  GTR{4.53513,5.41081,0.0129458,6.88411,21.2858}+F{0.329904,0.127509,0.158318,0.384269}+G4{0.100758}
+ 523  GTR+F+G4       0.4247  GTR{0.2496,0.776998,0.0219014,0.685055,1.3403}+F{0.274584,0.216417,0.218563,0.290437}+G4{0.0200219}
+ 524  GTR+F+G4       1.0346  GTR{0.817874,5.78481,2.36551,2.69202,100}+F{0.211675,0.242215,0.234505,0.311605}+G4{0.0949309}
+ 525  GTR+F+G4       0.2901  GTR{0.642206,3.57583,0.404672,0.587923,1.91562}+F{0.307665,0.254439,0.207039,0.230858}+G4{0.142463}
+ 526  GTR+F+G4       1.2181  GTR{0.465306,12.043,0.0001,1.28602,0.662936}+F{0.281157,0.186865,0.15387,0.378108}+G4{0.1096}
+ 527  GTR+F+G4       0.0187  GTR{2.06556,0.0001,1.52897,1.46971,4.57954}+F{0.36081,0.196926,0.17153,0.270733}+G4{998.448}
+ 528  GTR+F+G4       0.2349  GTR{1.59284,3.58577,1.21456,0.407881,5.16164}+F{0.364913,0.221536,0.173418,0.240133}+G4{6.42646}
+ 529  GTR+F+G4       0.8980  GTR{1.91418,7.70965,0.965064,6.90405,10.1868}+F{0.266646,0.11593,0.171494,0.445931}+G4{1.06444}
+ 530  GTR+F+G4       2.2914  GTR{0.939413,7.56541,0.4621,1.55898,6.4204}+F{0.332405,0.157913,0.125069,0.384613}+G4{0.606933}
+ 531  GTR+F+G4       0.6153  GTR{0.302922,0.629299,0.341391,0.77389,7.63272}+F{0.396325,0.147091,0.127297,0.329287}+G4{0.143261}
+ 532  GTR+F+G4       0.4229  GTR{0.736228,16.1318,1.10959,2.77395,9.56165}+F{0.253503,0.224032,0.196403,0.326062}+G4{0.172385}
+ 533  GTR+F+G4       0.5353  GTR{0.267961,4.59131,0.0446099,5.15967,0.557802}+F{0.369266,0.156378,0.200697,0.27366}+G4{0.0606285}
+ 534  GTR+F+G4       1.6978  GTR{1.07013,2.69155,0.864039,2.09447,7.50133}+F{0.593957,0.0782225,0.253883,0.0739381}+G4{1.32024}
+ 535  GTR+F+G4       0.3507  GTR{0.0001,9.80527,9.56722,2.2119,4.2581}+F{0.118229,0.273111,0.0947126,0.513948}+G4{0.198822}
+ 536  GTR+F+G4       2.0730  GTR{1.17753,5.95864,0.36153,0.953314,4.40805}+F{0.22915,0.168767,0.239915,0.362168}+G4{0.637461}
+ 537  GTR+F+G4       0.9286  GTR{2.20246,6.69406,1.83541,0.0001,3.05803}+F{0.590497,0.125919,0.146487,0.137097}+G4{0.850419}
+ 538  GTR+F+G4       0.2058  GTR{0.428118,6.04614,0.473041,1.70818,4.6726}+F{0.308389,0.144879,0.216963,0.32977}+G4{0.121735}
+ 539  GTR+F+G4       0.9840  GTR{50.6205,71.4699,39.2937,29.4284,24.5861}+F{0.0615997,0.227912,0.13003,0.580458}+G4{2.77159}
+ 540  GTR+F+G4       1.2909  GTR{6.19132,3.51037,1.20568,3.56109,0.783356}+F{0.0422701,0.236741,0.0389027,0.682087}+G4{1.18261}
+ 541  GTR+F+G4       0.2658  GTR{0.126637,0.130686,0.0233969,0.605136,0.0001}+F{0.345779,0.159287,0.0637899,0.431144}+G4{0.0200374}
+ 542  GTR+F+G4       0.5149  GTR{0.122428,1.46828,0.385956,1.03002,2.29611}+F{0.395171,0.139353,0.161215,0.304261}+G4{0.29789}
+ 543  GTR+F+G4       0.6186  GTR{0.263596,2.53694,0.13819,0.176816,0.883632}+F{0.318565,0.240155,0.156822,0.284458}+G4{8.47643}
+ 544  GTR+F+G4       0.9478  GTR{0.415022,8.2683,0.433135,1.1396,2.86883}+F{0.205869,0.327372,0.140521,0.326238}+G4{0.561523}
+ 545  GTR+F+G4       1.2629  GTR{0.757339,1.62442,0.0112327,0.181084,5.07417}+F{0.293492,0.165833,0.384856,0.15582}+G4{998.868}
+ 546  GTR+F+G4       2.0359  GTR{1.88988,1.58291,0.212445,2.14922,2.23856}+F{0.507525,0.0859881,0.140555,0.265933}+G4{0.580244}
+ 547  GTR+F+G4       0.7952  GTR{0.0566293,0.184723,0.0300147,0.667524,0.792526}+F{0.339068,0.131243,0.136328,0.393361}+G4{0.0809425}
+ 548  GTR+F+G4       0.8862  GTR{1.98057,5.50039,0.0308737,1.24207,6.39814}+F{0.196737,0.206893,0.142646,0.453725}+G4{0.393808}
+ 549  GTR+F+G4       2.1333  GTR{1.25066,10.5809,0.592823,0.0001,12.613}+F{0.333463,0.130933,0.112437,0.423168}+G4{0.336948}
+ 550  GTR+F+G4       0.4296  GTR{1.80033,11.164,0.765504,7.22091,14.8755}+F{0.284493,0.244488,0.188807,0.282212}+G4{0.020024}
+ 551  GTR+F+G4       23.5569  GTR{0.0001,0.0001,0.0001,1.50213,8.3902}+F{0.0557912,0.0713798,0.0713798,0.801449}+G4{998.447}
+ 552  GTR+F+G4       0.7104  GTR{3.84797,3.53254,1.25562,2.31927,8.47856}+F{0.291563,0.170596,0.384615,0.153226}+G4{9.28389}
+ 553  GTR+F+G4       0.6073  GTR{3.32023,9.0987,0.0001,3.84828,9.10717}+F{0.27841,0.185118,0.204397,0.332074}+G4{0.146448}
+ 554  GTR+F+G4       1.1825  GTR{0.508688,1.83035,0.356023,1.42115,1.71176}+F{0.34904,0.0905761,0.21274,0.347644}+G4{0.390318}
+ 555  GTR+F+G4       1.3529  GTR{1.04524,2.82806,0.902916,0.661889,7.86438}+F{0.272043,0.200748,0.155352,0.371856}+G4{0.361918}
+ 556  GTR+F+G4       0.9898  GTR{1.02484,1.27179,0.111715,1.74211,2.60891}+F{0.317577,0.220792,0.136753,0.324879}+G4{0.219254}
+ 557  GTR+F+G4       1.7854  GTR{0.447825,4.66089,0.403694,1.90315,5.79956}+F{0.336004,0.177327,0.202148,0.284521}+G4{0.759129}
+ 558  GTR+F+G4       0.3462  GTR{1.88618,4.49736,9.57385,1.35419,1.02069}+F{0.365336,0.150851,0.222224,0.261589}+G4{0.0200291}
+ 559  GTR+F+G4       0.9843  GTR{0.114808,1.78658,0.0001,0.499007,0.491209}+F{0.279407,0.252106,0.163807,0.30468}+G4{0.150796}
+ 560  GTR+F+G4       1.3333  GTR{0.392576,3.52734,1.78326,2.64514,1.35405}+F{0.466589,0.126259,0.151111,0.25604}+G4{0.54119}
+ 561  GTR+F+G4       2.8357  GTR{0.0001,100,0.0001,0.0001,0.11284}+F{0.162619,0.320046,0.188857,0.328479}+G4{0.0200361}
+ 562  GTR+F+G4       0.1662  GTR{3.78966,17.0733,0.0001,3.72041,99.7345}+F{0.430235,0.120196,0.229528,0.220041}+G4{0.369959}
+ 563  GTR+F+G4       0.3772  GTR{0.411505,2.02674,0.931996,0.180394,0.814811}+F{0.381228,0.159348,0.141564,0.317861}+G4{0.0200344}
+ 564  GTR+F+G4       1.8646  GTR{0.134345,4.90012,0.149604,0.713905,5.54486}+F{0.31506,0.211405,0.243541,0.229994}+G4{0.333649}
+ 565  GTR+F+G4       2.3697  GTR{0.0001,4.58297,1.40357,0.0001,10.6334}+F{0.618227,0.0476199,0.170556,0.163597}+G4{393.993}
+ 566  GTR+F+G4       19.1744  GTR{0.0001,9.36417,21.6692,3.0867,21.2047}+F{0.285609,0.111519,0.219426,0.383445}+G4{0.225074}
+ 567  GTR+F+G4       1.1988  GTR{0.419548,1.66264,0.0448723,1.83852,5.52572}+F{0.568943,0.0629925,0.186926,0.181138}+G4{0.305757}
+ 568  GTR+F+G4       1.6027  GTR{0.130024,0.764716,0.0377769,0.421877,0.832586}+F{0.311429,0.148249,0.146354,0.393967}+G4{0.184171}
+ 569  GTR+F+G4       2.8280  GTR{2.61792,7.86198,0.0001,0.0001,13.4936}+F{0.212551,0.332389,0.163563,0.291498}+G4{0.161429}
+ 570  GTR+F+G4       0.5894  GTR{0.0462854,0.0496337,0.00830457,0.162944,0.0508577}+F{0.510493,0.10808,0.0949633,0.286464}+G4{0.0200206}
+ 571  GTR+F+G4       1.4072  GTR{11.7141,12.25,0.0001,1.38282,7.20589}+F{0.240449,0.325272,0.221521,0.212759}+G4{0.213361}
+ 572  GTR+F+G4       2.3681  GTR{1.09331,3.54019,0.215627,2.25211,2.19653}+F{0.337877,0.177739,0.19258,0.291803}+G4{0.154115}
+ 573  GTR+F+G4       4.8045  GTR{100,2.81652,0.60755,0.0001,0.0001}+F{0.474185,0.141855,0.140852,0.243108}+G4{0.02004}
+ 574  GTR+F+G4       1.5325  GTR{6.94821,15.6192,0.0001,2.67308,0.0001}+F{0.540759,0.0346622,0.0988054,0.325774}+G4{0.225705}
+ 575  GTR+F+G4       0.4054  GTR{0.0001,0.326441,0.0001,0.802882,4.18422}+F{0.431121,0.0663175,0.0622186,0.440343}+G4{0.365369}
+ 576  GTR+F+G4       1.7033  GTR{0.0001,2.57064,0.0001,12.1052,0.216523}+F{0.279869,0.227639,0.17519,0.317301}+G4{0.0964395}
+ 577  GTR+F+G4       7.0699  GTR{2.68445,100,0.0001,0.0001,15.3279}+F{0.261601,0.217888,0.332885,0.187626}+G4{0.0772781}
+ 578  GTR+F+G4       0.9067  GTR{1.16336,0.150422,0.0001,0.0001,1.15468}+F{0.733632,0.098602,0.0439306,0.123835}+G4{4.30707}
+ 579  GTR+F+G4       2.3318  GTR{5.93254,4.19959,0.0001,6.36648,10.8449}+F{0.333624,0.115514,0.143923,0.406939}+G4{0.667837}
+ 580  GTR+F+G4       1.1424  GTR{0.860769,4.85928,0.484172,7.79223,3.60816}+F{0.278491,0.123514,0.257357,0.340638}+G4{0.31362}
+ 581  GTR+F+G4       0.5296  GTR{2.0841,2.3646,0.564887,3.65821,11.2794}+F{0.349919,0.193864,0.219375,0.236842}+G4{0.577429}
+ 582  GTR+F+G4       1.2935  GTR{0.0001,0.795667,0.101733,0.983625,3.29148}+F{0.394324,0.190371,0.236707,0.178598}+G4{0.153345}
+ 583  GTR+F+G4       0.8612  GTR{2.59373,1.92002,0.0001,1.52368,8.81683}+F{0.308153,0.103673,0.19901,0.389164}+G4{0.141309}
+ 584  GTR+F+G4       1.1459  GTR{0.0001,48.1484,0.32217,2.38515,1.2145}+F{0.367795,0.193999,0.166482,0.271724}+G4{0.168117}
+ 585  GTR+F+G4       0.7717  GTR{0.0001,13.8884,0.0001,0.0001,0.0001}+F{0.578113,0.136069,0.0914332,0.194385}+G4{0.0995623}
+ 586  GTR+F+G4       1.4553  GTR{0.0563303,1.63331,0.146347,0.782572,5.48766}+F{0.227095,0.227546,0.233253,0.312106}+G4{0.0713196}
+ 587  GTR+F+G4       0.6280  GTR{17.5282,0.0001,0.0001,0.0001,0.0001}+F{0.231423,0.37845,0.186306,0.203822}+G4{0.0200348}
+ 588  GTR+F+G4       7.8953  GTR{0.0001,100,0.0001,30.7912,36.2212}+F{0.119747,0.110231,0.510703,0.259318}+G4{0.116128}
+ 589  GTR+F+G4       4.0107  GTR{5.30075,96.8137,0.0001,0.0001,53.4836}+F{0.300812,0.153632,0.261309,0.284246}+G4{0.0200263}
+ 590  GTR+F+G4       0.7595  GTR{4.50289,3.80983,0.0001,4.4502,5.35539}+F{0.176187,0.169769,0.343389,0.310655}+G4{0.39362}
+ 591  GTR+F+G4       1.1504  GTR{1.76083,3.54684,0.091467,1.35462,19.6629}+F{0.302849,0.236215,0.16575,0.295186}+G4{0.182094}
+ 592  GTR+F+G4       1.1009  GTR{54.7878,11.6407,0.0001,11.9497,2.55164}+F{0.378711,0.167511,0.137099,0.316679}+G4{0.0200369}
+ 593  GTR+F+G4       0.1571  GTR{100,17.7585,8.63952,0.0001,7.09031}+F{0.351268,0.115077,0.198913,0.334743}+G4{0.0200293}
+ 594  GTR+F+G4       5.5832  GTR{0.229042,0.223668,0.211134,0.0001,100}+F{0.32,0.212258,0.259355,0.208387}+G4{0.0580222}
+ 595  GTR+F+G4       0.7133  GTR{0.439728,0.0001,0.0001,0.0001,6.14235}+F{0.27514,0.143371,0.10176,0.479729}+G4{0.100001}
+ 596  GTR+F+G4       0.9062  GTR{0.0001,99.9994,5.76245,100,10.7143}+F{0.281105,0.173092,0.0336329,0.51217}+G4{0.779665}
+ 597  GTR+F+G4       105.3653  GTR{0.0001,1.0382,0.0001,4.19943,3.87256}+F{0.405827,0.164274,0.177365,0.252534}+G4{0.124305}
+ 598  GTR+F+G4       0.9218  GTR{0.0001,1.19093,0.0001,100,34.6883}+F{0.383814,0.0899936,0.264271,0.261921}+G4{0.0743819}
+ 599  GTR+F+G4       0.4656  GTR{13.7086,0.0001,0.975907,0.0001,0.0001}+F{0.260837,0.122945,0.201046,0.415172}+G4{0.0200385}
+ 600  GTR+F+G4       0.7579  GTR{2.45888,14.0294,0.0001,2.24527,0.0001}+F{0.416201,0.104749,0.0488829,0.430167}+G4{0.115775}
+ 601  GTR+F+G4       0.7020  GTR{16.865,2.71069,0.0001,0.0001,0.0001}+F{0.160501,0.447769,0.145267,0.246464}+G4{0.0931384}
+ 602  GTR+F+G4       116.4215  GTR{100,0.0001,0.0001,0.0001,6.1736}+F{0.342667,0.274,0.075,0.308333}+G4{0.0337961}
+ 603  GTR+F+G4       2.3598  GTR{6.49996,0.173202,0.0001,0.372976,8.22588}+F{0.171845,0.211501,0.309979,0.306675}+G4{0.119435}
+ 604  GTR+F+G4       2.9466  GTR{13.5996,99.4418,0.0001,16.8411,12.5902}+F{0.134775,0.263922,0.257405,0.343898}+G4{0.111875}
+ 605  GTR+F+G4       1.5557  GTR{1.6997,2.62564,0.0001,0.0001,0.936809}+F{0.319601,0.178738,0.165449,0.336212}+G4{0.129177}
+ 606  GTR+F+G4       2.0245  GTR{0.249191,5.34401,0.0001,2.5281,1.85642}+F{0.278828,0.221656,0.132506,0.36701}+G4{0.382076}
+ 607  GTR+F+G4       3.3881  GTR{2.86177,7.12747,0.0001,0.0001,3.72078}+F{0.181428,0.322912,0.304684,0.190976}+G4{0.185098}
+ 608  GTR+F+G4       0.4248  GTR{0.0491771,0.559368,0.387113,0.0001,0.511634}+F{0.294998,0.196641,0.219919,0.288441}+G4{0.0200225}
+ 609  GTR+F+G4       0.8130  GTR{0.174999,1.10479,0.0965258,1.24431,2.52223}+F{0.289064,0.248521,0.217291,0.245124}+G4{0.0843377}
+ 610  GTR+F+G4       3.3472  GTR{0.526485,1.37185,0.0659354,0.325509,2.79487}+F{0.251994,0.141212,0.130577,0.476218}+G4{0.462368}
+ 611  GTR+F+G4       2.2505  GTR{0.901616,3.31535,0.0708696,1.11185,1.24137}+F{0.348262,0.148938,0.0857814,0.417018}+G4{0.61969}
+ 612  GTR+F+G4       2.6427  GTR{0.328198,4.46773,0.0001,0.375597,16.2259}+F{0.21875,0.329392,0.285473,0.166385}+G4{0.127444}
+ 613  GTR+F+G4       1.3329  GTR{1.74466,0.136274,0.0001,4.67993,3.46954}+F{0.383456,0.100812,0.258133,0.257599}+G4{0.0200238}
+ 614  GTR+F+G4       2.3299  GTR{100,100,7.9351,0.000150117,10.9711}+F{0.16035,0.351312,0.235423,0.252915}+G4{0.10746}
+ 615  GTR+F+G4       0.8900  GTR{0.0001,6.6637,0.104564,0.0001,2.25107}+F{0.195058,0.258517,0.190382,0.356043}+G4{0.248283}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -1517154.6227 (s.e. 2551.8602)
+Unconstrained log-likelihood (without tree): -2688926.8035
+Number of free parameters (#branches + #model parameters): 43072
+Akaike information criterion (AIC) score: 3120453.2455
+Corrected Akaike information criterion (AICc) score: 3127927.2269
+Bayesian information criterion (BIC) score: 3602792.7226
+
+Total tree length (sum of branch lengths): 0.5287
+Sum of internal branch lengths: 0.0401 (7.5859% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'zanclostomus_javanicus' is drawn at root
+NOTE: Branch lengths are weighted average over all partitions
+      (weighted by the number of sites in the partitions)
+Numbers in parentheses are  standard bootstrap support (%)
+
++------------zanclostomus_javanicus
+|
+|                               +-----------pitta_guajana
+|                          +----| (100)
+|                          |    +----------------------vidua_macroura
+|                       +--| (100)
+|                       |  +------------psittacula_alexandri
+|                    +--| (99)
+|                    |  +------------------micrastur_semitorquatus
+|                 +--| (35)
+|                 |  |                 +-----------------gallus_gallus
+|                 |  |              +--| (41)
+|                 |  |              |  +------------------ardeotis_kori
+|                 |  |           +--| (14)
+|                 |  |           |  |  +----------opisthocomus_hoazin
+|                 |  |           |  +--| (33)
+|                 |  |           |     +------tauraco_erythrolophus
+|                 |  |        +--| (3)
+|                 |  |        |  |  +----phegornis_mitchelli
+|                 |  |        |  +--| (69)
+|                 |  |        |     +-----psophia_crepitans
+|                 |  |     +--| (69)
+|                 |  |     |  |        +--------nyctibius_grandis
+|                 |  |     |  |     +--| (82)
+|                 |  |     |  |     |  +------------------------------------------colibri_coruscans
+|                 |  |     |  |  +--| (25)
+|                 |  |     |  |  |  |  +------phaethon_rubicauda
+|                 |  |     |  |  |  +--| (96)
+|                 |  |     |  |  |     +---------eurypyga_helias
+|                 |  |     |  +--| (1)
+|                 |  |     |     |     +--phoenicopterus_chilensis
+|                 |  |     |     |  +--| (100)
+|                 |  |     |     |  |  +----podiceps_auritus
+|                 |  |     |     +--| (58)
+|                 |  |     |        |  +---------treron_vernans
+|                 |  |     |        +--| (69)
+|                 |  |     |           +----------pterocles
+|                 |  |  +--| (100)
+|                 |  |  |  |        +------phalacrocorax_carbo
+|                 |  |  |  |     +--| (100)
+|                 |  |  |  |     |  |  +---scopus_umbretta
+|                 |  |  |  |     |  +--| (100)
+|                 |  |  |  |     |     +---balaeniceps_rex
+|                 |  |  |  |  +--| (100)
+|                 |  |  |  |  |  |  +-----eudyptula_minor
+|                 |  |  |  |  |  +--| (100)
+|                 |  |  |  |  |     +----oceanites_oceanicus
+|                 |  |  |  +--| (100)
+|                 |  |  |     +----gavia_immer
+|                 |  +--| (77)
+|                 |     |  +-----gampsonyx_swainsonii
+|                 |     +--| (99)
+|                 |        +---cathartes_aura
+|              +--| (100)
+|              |  |  +----------------urocolius_indicus
+|              |  +--| (73)
+|              |     +-----tyto_alba
+|           +--| (99)
+|           |  +-----------trogon_personata
+|        +--| (97)
+|        |  +----------------------------momotus_momota
++--------| (100)
+|        +-----------------------------rhinopomastus_cyanomelas
+|
++-------------megalaima_virens
+
+Tree in newick format:
+
+(zanclostomus_javanicus:0.0163508127,((((((((pitta_guajana:0.0155120696,vidua_macroura:0.0278309910)100:0.00646662,psittacula_alexandri:0.0160460876)100:0.00118014,micrastur_semitorquatus:0.0230018909)99:0.00064357,((((((gallus_gallus:0.0224938396,ardeotis_kori:0.0229004502)41:0.00078752,(opisthocomus_hoazin:0.0134667587,tauraco_erythrolophus:0.0088263536)33:0.00093445)14:0.00032532,(phegornis_mitchelli:0.0065322347,psophia_crepitans:0.0077023912)69:0.00062481)3:0.00020580,(((nyctibius_grandis:0.0109097003,colibri_coruscans:0.0527166392)82:0.00112400,(phaethon_rubicauda:0.0091214305,eurypyga_helias:0.0120635302)96:0.00068993)25:0.00123855,((phoenicopterus_chilensis:0.0038568946,podiceps_auritus:0.0063074112)100:0.00187084,(treron_vernans:0.0124404397,pterocles:0.0135137304)69:0.00114247)58:0.00041977)1:0.00015342)69:0.00124481,(((phalacrocorax_carbo:0.0089207723,(scopus_umbretta:0.0057667002,balaeniceps_rex:0.0048968250)100:0.00172044)100:0.00052000,(eudyptula_minor:0.0076721099,oceanites_oceanicus:0.0064255526)100:0.00036490)100:0.00029396,gavia_immer:0.0069293050)100:0.00032923)100:0.00040730,(gampsonyx_swainsonii:0.0076147271,cathartes_aura:0.0053673783)99:0.00057086)77:0.00021474)35:0.00024128,(urocolius_indicus:0.0209536420,tyto_alba:0.0083448421)73:0.00148436)100:0.00073811,trogon_personata:0.0151308352)99:0.00096159,momotus_momota:0.0358132207)97:0.00189769,rhinopomastus_cyanomelas:0.0362597272)100:0.01131167,megalaima_virens:0.0169254064);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 100 bootstrap trees
+Robinson-Foulds distance between ML tree and consensus tree: -1
+
+Branches with bootstrap support >0.00000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++**ardeotis_kori
+|
++**gallus_gallus
+|
+|     +**tauraco_erythrolophus
+|  +**| (33)
+|  |  +**opisthocomus_hoazin
++**| (41)
+   |        +**eurypyga_helias
+   |     +**| (96)
+   |     |  +**phaethon_rubicauda
+   |  +**| (25)
+   |  |  |  +**colibri_coruscans
+   |  |  +**| (82)
+   |  |     +**nyctibius_grandis
+   +**| (14)
+      |        +**phegornis_mitchelli
+      |     +**| (69)
+      |     |  +**psophia_crepitans
+      |  +**| (18)
+      |  |  |     +**phoenicopterus_chilensis
+      |  |  |  +**| (100)
+      |  |  |  |  +**podiceps_auritus
+      |  |  +**| (58)
+      |  |     |  +**pterocles
+      |  |     +**| (69)
+      |  |        +**treron_vernans
+      +**| (14)
+         |     +**gavia_immer
+         |  +**| (100)
+         |  |  |        +**balaeniceps_rex
+         |  |  |     +**| (100)
+         |  |  |     |  +**scopus_umbretta
+         |  |  |  +**| (100)
+         |  |  |  |  +**phalacrocorax_carbo
+         |  |  +**| (100)
+         |  |     |  +**eudyptula_minor
+         |  |     +**| (100)
+         |  |        +**oceanites_oceanicus
+         +**| (69)
+            |     +**cathartes_aura
+            |  +**| (99)
+            |  |  +**gampsonyx_swainsonii
+            +**| (100)
+               |                 +**megalaima_virens
+               |              +**| (100)
+               |              |  +**zanclostomus_javanicus
+               |           +**| (97)
+               |           |  +**rhinopomastus_cyanomelas
+               |        +**| (99)
+               |        |  +**momotus_momota
+               |     +**| (100)
+               |     |  +**trogon_personata
+               |  +**| (35)
+               |  |  |  +**urocolius_indicus
+               |  |  +**| (73)
+               |  |     +**tyto_alba
+               +**| (77)
+                  |        +**pitta_guajana
+                  |     +**| (100)
+                  |     |  +**vidua_macroura
+                  |  +**| (100)
+                  |  |  +**psittacula_alexandri
+                  +**| (99)
+                     +**micrastur_semitorquatus
+
+
+Consensus tree in newick format: 
+
+(ardeotis_kori:-1.0000000000,gallus_gallus:-1.0000000000,((tauraco_erythrolophus:-1.0000000000,opisthocomus_hoazin:-1.0000000000)33:-1.0000000000,(((eurypyga_helias:-1.0000000000,phaethon_rubicauda:-1.0000000000)96:-1.0000000000,(colibri_coruscans:-1.0000000000,nyctibius_grandis:-1.0000000000)82:-1.0000000000)25:-1.0000000000,(((phegornis_mitchelli:-1.0000000000,psophia_crepitans:-1.0000000000)69:-1.0000000000,((phoenicopterus_chilensis:-1.0000000000,podiceps_auritus:-1.0000000000)100:-1.0000000000,(pterocles:-1.0000000000,treron_vernans:-1.0000000000)69:-1.0000000000)58:-1.0000000000)18:-1.0000000000,((gavia_immer:-1.0000000000,(((balaeniceps_rex:-1.0000000000,scopus_umbretta:-1.0000000000)100:-1.0000000000,phalacrocorax_carbo:-1.0000000000)100:-1.0000000000,(eudyptula_minor:-1.0000000000,oceanites_oceanicus:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((cathartes_aura:-1.0000000000,gampsonyx_swainsonii:-1.0000000000)99:-1.0000000000,((((((megalaima_virens:-1.0000000000,zanclostomus_javanicus:-1.0000000000)100:-1.0000000000,rhinopomastus_cyanomelas:-1.0000000000)97:-1.0000000000,momotus_momota:-1.0000000000)99:-1.0000000000,trogon_personata:-1.0000000000)100:-1.0000000000,(urocolius_indicus:-1.0000000000,tyto_alba:-1.0000000000)73:-1.0000000000)35:-1.0000000000,(((pitta_guajana:-1.0000000000,vidua_macroura:-1.0000000000)100:-1.0000000000,psittacula_alexandri:-1.0000000000)100:-1.0000000000,micrastur_semitorquatus:-1.0000000000)99:-1.0000000000)77:-1.0000000000)100:-1.0000000000)69:-1.0000000000)14:-1.0000000000)14:-1.0000000000)41:-1.0000000000);
+
+TIME STAMP
+----------
+
+Date and time: Wed Apr 19 04:46:20 2017
+Total CPU time used: 5421.656 seconds (1h:30m:21s)
+Total wall-clock time used: 369.9798481 seconds (0h:6m:9s)
+

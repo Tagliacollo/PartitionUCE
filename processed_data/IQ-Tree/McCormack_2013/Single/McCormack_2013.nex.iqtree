@@ -1,0 +1,222 @@
+IQ-TREE 1.5.4 built Apr  2 2017
+
+Partition file name: McCormack_2013.nex
+Input file name: McCormack_2013.phy
+Type of analysis: ModelFinder + tree reconstruction + non-parametric bootstrap (100 replicates)
+Random seed number: 204926
+
+REFERENCES
+----------
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, in press.
+
+To cite IQ-TREE please use:
+
+Lam-Tung Nguyen, Heiko A. Schmidt, Arndt von Haeseler, and Bui Quang Minh
+(2015) IQ-TREE: A fast and effective stochastic algorithm for estimating
+maximum likelihood phylogenies. Mol Biol Evol, 32:268-274.
+http://dx.doi.org/10.1093/molbev/msu300
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst Biol, 65:997-1008.
+http://dx.doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 33 taxa with 1 partitions and 539526 total sites (0% missing data)
+
+  ID  Name     Type  #Seqs  #Sites  #Patterns  #Const_Sites
+   1  Subset1  DNA      33  539526  126572      84%
+
+SUBSTITUTION PROCESS
+--------------------
+
+Full partition model with separate branch lengths and models between partitions
+
+  ID  Model         TreeLen  Parameters
+   1  GTR+F+G4       0.3734  GTR{0.966869,4.19771,0.425174,1.59849,4.07251}+F{0.313428,0.189624,0.17978,0.317167}+G4{0.136392}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -1595920.9814 (s.e. 2808.1573)
+Unconstrained log-likelihood (without tree): -5213982.8954
+Number of free parameters (#branches + #model parameters): 72
+Akaike information criterion (AIC) score: 3191985.9629
+Corrected Akaike information criterion (AICc) score: 3191985.9824
+Bayesian information criterion (BIC) score: 3192792.2510
+
+Total tree length (sum of branch lengths): 0.3734
+Sum of internal branch lengths: 0.0264 (7.0677% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'zanclostomus_javanicus' is drawn at root
+NOTE: Branch lengths are weighted average over all partitions
+      (weighted by the number of sites in the partitions)
+Numbers in parentheses are  standard bootstrap support (%)
+
++-----------------zanclostomus_javanicus
+|
+|                                          +--------------------pitta_guajana
+|                                    +-----| (100)
+|                                    |     +---------------------------vidua_macroura
+|                                 +--| (100)
+|                                 |  +-------------------psittacula_alexandri
+|                              +--| (100)
+|                              |  +-------micrastur_semitorquatus
+|                           +--| (56)
+|                           |  +----------------------urocolius_indicus
+|                        +--| (18)
+|                        |  |              +----------------------------gallus_gallus
+|                        |  |           +--| (31)
+|                        |  |           |  +--------psophia_crepitans
+|                        |  |        +--| (10)
+|                        |  |        |  +-------phegornis_mitchelli
+|                        |  |     +--| (10)
+|                        |  |     |  |     +----phoenicopterus_chilensis
+|                        |  |     |  |  +--| (100)
+|                        |  |     |  |  |  +-------podiceps_auritus
+|                        |  |     |  +--| (56)
+|                        |  |     |     |  +----------------treron_vernans
+|                        |  |     |     +--| (74)
+|                        |  |     |        +-----------------pterocles
+|                        |  |  +--| (52)
+|                        |  |  |  |        +-------------nyctibius_grandis
+|                        |  |  |  |     +--| (94)
+|                        |  |  |  |     |  +----------------------colibri_coruscans
+|                        |  |  |  |  +--| (32)
+|                        |  |  |  |  |  |  +-----------phaethon_rubicauda
+|                        |  |  |  |  |  +--| (86)
+|                        |  |  |  |  |     +--------------eurypyga_helias
+|                        |  |  |  +--| (8)
+|                        |  |  |     |     +---------------ardeotis_kori
+|                        |  |  |     |  +--| (58)
+|                        |  |  |     |  |  +-----------tauraco_erythrolophus
+|                        |  |  |     +--| (16)
+|                        |  |  |        +---------------opisthocomus_hoazin
+|                        |  +--| (100)
+|                        |     |        +---------phalacrocorax_carbo
+|                        |     |     +--| (100)
+|                        |     |     |  |  +-----scopus_umbretta
+|                        |     |     |  +--| (100)
+|                        |     |     |     +----balaeniceps_rex
+|                        |     |  +--| (100)
+|                        |     |  |  |  +--------eudyptula_minor
+|                        |     |  |  +--| (100)
+|                        |     |  |     +-------oceanites_oceanicus
+|                        |     +--| (100)
+|                        |        +--------gavia_immer
+|                     +--| (39)
+|                     |  |  +---------gampsonyx_swainsonii
+|                     |  +--| (100)
+|                     |     +------cathartes_aura
+|                  +--| (100)
+|                  |  +---------tyto_alba
+|               +--| (100)
+|               |  +-------------trogon_personata
+|            +--| (94)
+|            |  +-----------------momotus_momota
++------------| (100)
+|            +---------------------------------------------rhinopomastus_cyanomelas
+|
++-------------------megalaima_virens
+
+Tree in newick format:
+
+(zanclostomus_javanicus:0.0129055666,((((((((((pitta_guajana:0.0146074033,vidua_macroura:0.0191387486)100:0.00465748,psittacula_alexandri:0.0139911113)100:0.00064852,micrastur_semitorquatus:0.0058048095)100:0.00034000,urocolius_indicus:0.0161720065)56:0.00026499,(((((gallus_gallus:0.0198007732,psophia_crepitans:0.0067103138)31:0.00041561,phegornis_mitchelli:0.0059363593)10:0.00013501,((phoenicopterus_chilensis:0.0035185991,podiceps_auritus:0.0058358047)100:0.00152781,(treron_vernans:0.0116114372,pterocles:0.0128762825)74:0.00048235)56:0.00024608)10:0.00009816,(((nyctibius_grandis:0.0096690502,colibri_coruscans:0.0157150795)94:0.00067892,(phaethon_rubicauda:0.0084865758,eurypyga_helias:0.0108011319)86:0.00044337)32:0.00012879,((ardeotis_kori:0.0114658416,tauraco_erythrolophus:0.0084604217)58:0.00035359,opisthocomus_hoazin:0.0114863981)16:0.00017931)8:0.00011045)52:0.00012504,(((phalacrocorax_carbo:0.0073951488,(scopus_umbretta:0.0046476430,balaeniceps_rex:0.0040452864)100:0.00159258)100:0.00042015,(eudyptula_minor:0.0064600313,oceanites_oceanicus:0.0060531461)100:0.00021319)100:0.00023671,gavia_immer:0.0064884139)100:0.00027223)100:0.00039461)18:0.00009394,(gampsonyx_swainsonii:0.0071678772,cathartes_aura:0.0047946023)100:0.00033542)39:0.00018277,tyto_alba:0.0074123690)100:0.00068364,trogon_personata:0.0098628014)100:0.00062668,momotus_momota:0.0122812017)94:0.00100520,rhinopomastus_cyanomelas:0.0313944815)100:0.00949876,megalaima_virens:0.0140212704);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 100 bootstrap trees
+Robinson-Foulds distance between ML tree and consensus tree: -1
+
+Branches with bootstrap support >0.00000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++**ardeotis_kori
+|
++**tauraco_erythrolophus
+|
+|  +**opisthocomus_hoazin
++**| (58)
+   |        +**colibri_coruscans
+   |     +**| (94)
+   |     |  +**nyctibius_grandis
+   |  +**| (32)
+   |  |  |  +**eurypyga_helias
+   |  |  +**| (86)
+   |  |     +**phaethon_rubicauda
+   +**| (16)
+      |        +**gallus_gallus
+      |     +**| (10)
+      |     |  |  +**phegornis_mitchelli
+      |     |  +**| (48)
+      |     |     +**psophia_crepitans
+      |  +**| (10)
+      |  |  |     +**treron_vernans
+      |  |  |  +**| (74)
+      |  |  |  |  +**pterocles
+      |  |  +**| (56)
+      |  |     |  +**phoenicopterus_chilensis
+      |  |     +**| (100)
+      |  |        +**podiceps_auritus
+      +**| (8)
+         |        +**cathartes_aura
+         |     +**| (100)
+         |     |  +**gampsonyx_swainsonii
+         |  +**| (100)
+         |  |  |              +**vidua_macroura
+         |  |  |           +**| (100)
+         |  |  |           |  +**pitta_guajana
+         |  |  |        +**| (100)
+         |  |  |        |  +**psittacula_alexandri
+         |  |  |     +**| (100)
+         |  |  |     |  +**micrastur_semitorquatus
+         |  |  |  +**| (56)
+         |  |  |  |  +**urocolius_indicus
+         |  |  +**| (30)
+         |  |     |     +**trogon_personata
+         |  |     |  +**| (100)
+         |  |     |  |  |  +**momotus_momota
+         |  |     |  |  +**| (100)
+         |  |     |  |     |     +**zanclostomus_javanicus
+         |  |     |  |     |  +**| (100)
+         |  |     |  |     |  |  +**megalaima_virens
+         |  |     |  |     +**| (94)
+         |  |     |  |        +**rhinopomastus_cyanomelas
+         |  |     +**| (39)
+         |  |        +**tyto_alba
+         +**| (52)
+            |        +**eudyptula_minor
+            |     +**| (100)
+            |     |  +**oceanites_oceanicus
+            |  +**| (100)
+            |  |  |  +**phalacrocorax_carbo
+            |  |  +**| (100)
+            |  |     |  +**balaeniceps_rex
+            |  |     +**| (100)
+            |  |        +**scopus_umbretta
+            +**| (100)
+               +**gavia_immer
+
+
+Consensus tree in newick format: 
+
+(ardeotis_kori:-1.0000000000,tauraco_erythrolophus:-1.0000000000,(opisthocomus_hoazin:-1.0000000000,(((colibri_coruscans:-1.0000000000,nyctibius_grandis:-1.0000000000)94:-1.0000000000,(eurypyga_helias:-1.0000000000,phaethon_rubicauda:-1.0000000000)86:-1.0000000000)32:-1.0000000000,(((gallus_gallus:-1.0000000000,(phegornis_mitchelli:-1.0000000000,psophia_crepitans:-1.0000000000)48:-1.0000000000)10:-1.0000000000,((treron_vernans:-1.0000000000,pterocles:-1.0000000000)74:-1.0000000000,(phoenicopterus_chilensis:-1.0000000000,podiceps_auritus:-1.0000000000)100:-1.0000000000)56:-1.0000000000)10:-1.0000000000,(((cathartes_aura:-1.0000000000,gampsonyx_swainsonii:-1.0000000000)100:-1.0000000000,(((((vidua_macroura:-1.0000000000,pitta_guajana:-1.0000000000)100:-1.0000000000,psittacula_alexandri:-1.0000000000)100:-1.0000000000,micrastur_semitorquatus:-1.0000000000)100:-1.0000000000,urocolius_indicus:-1.0000000000)56:-1.0000000000,((trogon_personata:-1.0000000000,(momotus_momota:-1.0000000000,((zanclostomus_javanicus:-1.0000000000,megalaima_virens:-1.0000000000)100:-1.0000000000,rhinopomastus_cyanomelas:-1.0000000000)94:-1.0000000000)100:-1.0000000000)100:-1.0000000000,tyto_alba:-1.0000000000)39:-1.0000000000)30:-1.0000000000)100:-1.0000000000,(((eudyptula_minor:-1.0000000000,oceanites_oceanicus:-1.0000000000)100:-1.0000000000,(phalacrocorax_carbo:-1.0000000000,(balaeniceps_rex:-1.0000000000,scopus_umbretta:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000,gavia_immer:-1.0000000000)100:-1.0000000000)52:-1.0000000000)8:-1.0000000000)16:-1.0000000000)58:-1.0000000000);
+
+TIME STAMP
+----------
+
+Date and time: Tue Apr 18 10:53:37 2017
+Total CPU time used: 9813.604 seconds (2h:43m:33s)
+Total wall-clock time used: 514.573972 seconds (0h:8m:34s)
+

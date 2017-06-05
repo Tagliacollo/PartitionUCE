@@ -1,6 +1,7 @@
 
-for analysis in $(find -name "commandline.sh"); do
+for analysis in $(find $PWD -name "commandline.sh"); do
 
-	sh analysis
+    cd $(dirname $analysis)
+    sh $analysis
 
 done

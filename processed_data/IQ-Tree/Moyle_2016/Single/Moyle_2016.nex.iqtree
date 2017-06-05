@@ -1,0 +1,514 @@
+IQ-TREE 1.5.4 built Apr  2 2017
+
+Partition file name: Moyle_2016.nex
+Input file name: Moyle_2016.phy
+Type of analysis: ModelFinder + tree reconstruction + non-parametric bootstrap (100 replicates)
+Random seed number: 240978
+
+REFERENCES
+----------
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, in press.
+
+To cite IQ-TREE please use:
+
+Lam-Tung Nguyen, Heiko A. Schmidt, Arndt von Haeseler, and Bui Quang Minh
+(2015) IQ-TREE: A fast and effective stochastic algorithm for estimating
+maximum likelihood phylogenies. Mol Biol Evol, 32:268-274.
+http://dx.doi.org/10.1093/molbev/msu300
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst Biol, 65:997-1008.
+http://dx.doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 106 taxa with 1 partitions and 375172 total sites (0% missing data)
+
+  ID  Name     Type  #Seqs  #Sites  #Patterns  #Const_Sites
+   1  Subset1  DNA     106  375172  162303      63%
+
+SUBSTITUTION PROCESS
+--------------------
+
+Full partition model with separate branch lengths and models between partitions
+
+  ID  Model         TreeLen  Parameters
+   1  GTR+F+G4       1.5879  GTR{0.978272,4.5738,0.665237,1.63941,4.4638}+F{0.296858,0.201653,0.198094,0.303395}+G4{0.280609}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -3002436.4325 (s.e. 6830.8964)
+Unconstrained log-likelihood (without tree): -3234918.0703
+Number of free parameters (#branches + #model parameters): 218
+Akaike information criterion (AIC) score: 6005308.8650
+Corrected Akaike information criterion (AICc) score: 6005309.1197
+Bayesian information criterion (BIC) score: 6007670.9255
+
+Total tree length (sum of branch lengths): 1.5879
+Sum of internal branch lengths: 0.2107 (13.2690% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'abroscopus_albogularis_ku_28164' is drawn at root
+NOTE: Branch lengths are weighted average over all partitions
+      (weighted by the number of sites in the partitions)
+Numbers in parentheses are  standard bootstrap support (%)
+
++------abroscopus_albogularis_ku_28164
+|
+|                                                                          +-----timeliopsis_fulvigula_12152
+|                                                                       +--| (40)
+|                                                                       |  +-----acanthorhynchus_tenuirostris_ku_10667
+|                                                                 +-----| (100)
+|                                                                 |     |  +---foulehaio_carunculatus_ku_26344
+|                                                                 |     +--| (100)
+|                                                                 |        +----meliphaga_montana_ku_12276
+|                                                              +--| (100)
+|                                                              |  +-----------pardalotus_striatus_ku_8886
+|                                                           +--| (100)
+|                                                           |  +-----------------malurus_alboscapulatus_ku_16459
+|                                                        +--| (100)
+|                                                        |  |           +------ailuroedus_buccoides_ku_12226
+|                                                        |  |     +-----| (100)
+|                                                        |  |     |     +-----ptilonorhynchus_violaceus_ku_10756
+|                                                        |  |  +--| (100)
+|                                                        |  |  |  |      +---------climacteris_melanurus_ku_8858
+|                                                        |  |  |  +------| (100)
+|                                                        |  |  |         +--------cormobates_leucophaea_uwbm_57452
+|                                                        |  +--| (100)
+|                                                        |     |           +--------------------furnarius_rufus_ku_11920
+|                                                        |     |  +--------| (100)
+|                                                        |     |  |        +-----------------------------hydrornis_cyanea_ku_31228
+|                                                        |     +--| (100)
+|                                                        |        +------------menura_novaehollandiae_uwbm_76638
+|                                                     +--| (100)
+|                                                     |  |  +------------orthonyx_temminckii_uwbm_76694
+|                                                     |  +--| (100)
+|                                                     |     +----------------pomatostomus_superciliosus_ku_8792
+|                                                  +--| (100)
+|                                                  |  |                          +---------aegithina_lafresnayei_ku_23213
+|                                                  |  |                       +--| (100)
+|                                                  |  |                       |  +---------prionops_plumatus_ku_26690
+|                                                  |  |                    +--| (100)
+|                                                  |  |                    |  +-------rhagologus_leucostigma_ku_18382
+|                                                  |  |                 +--| (97)
+|                                                  |  |                 |  +----------artamus_cinereus_ku_6183
+|                                                  |  |              +--| (100)
+|                                                  |  |              |  +--------machaerirhynchus_nigripectus_ku_4734
+|                                                  |  |           +--| (50)
+|                                                  |  |           |  |     +---------eulacestoma_nigropectus_ku_16397
+|                                                  |  |           |  |  +--| (45)
+|                                                  |  |           |  |  |  +-------psophodes_occidentalis_ku_6204
+|                                                  |  |           |  +--| (100)
+|                                                  |  |           |     |     +--------falcunculus_frontatus_uwbm_57627
+|                                                  |  |           |     |  +--| (100)
+|                                                  |  |           |     |  |  +-------oreoica_gutturalis_ku_8884
+|                                                  |  |           |     +--| (61)
+|                                                  |  |           |        |     +----------oreocharis_arfaki_ku_16440
+|                                                  |  |           |        |  +--| (99)
+|                                                  |  |           |        |  |  |  +--------pteruthius_flaviscapis_ku_17806
+|                                                  |  |           |        |  |  +--| (100)
+|                                                  |  |           |        |  |     +----------vireo_solitarius_ku_25186
+|                                                  |  |           |        +--| (42)
+|                                                  |  |           |           |  +--------oriolus_chinensis_ku_10450
+|                                                  |  |           |           +--| (100)
+|                                                  |  |           |              +-------pachycephala_vitiensis_ku_19410
+|                                                  |  |        +--| (79)
+|                                                  |  |        |  |        +-------corvus_corax_ku_30042
+|                                                  |  |        |  |     +--| (100)
+|                                                  |  |        |  |     |  +----------lanius_excubitor_ku_28984
+|                                                  |  |        |  |  +--| (100)
+|                                                  |  |        |  |  |  |     +-------monarcha_takatsukasae_ku_22596
+|                                                  |  |        |  |  |  |  +--| (47)
+|                                                  |  |        |  |  |  |  |  +-------struthidea_cinerea_ku_10728
+|                                                  |  |        |  |  |  +--| (74)
+|                                                  |  |        |  |  |     +-----paradisaea_minor_ku_16148
+|                                                  |  |        |  +--| (100)
+|                                                  |  |        |     |  +------lamprolia_victoriae_ku_24329
+|                                                  |  |        |     +--| (100)
+|                                                  |  |        |        +---------rhipidura_javanica_ku_17717
+|                                                  |  |     +--| (70)
+|                                                  |  |     |  +---------daphoenositta_chrysoptera_ku_23086
+|                                                  |  |  +--| (100)
+|                                                  |  |  |  |     +-----coracina_tenuirostris_ku_23644
+|                                                  |  |  |  |  +--| (100)
+|                                                  |  |  |  |  |  +------pericrocotus_divaricatus_ku_10261
+|                                                  |  |  |  +--| (72)
+|                                                  |  |  |     +----mohoua_albicilla_ypm_96717
+|                                                  |  +--| (100)
+|                                                  |     |   +-------cinclosoma_punctatum_uwbm_57790
+|                                                  |     +---| (100)
+|                                                  |         +------ptilorrhoa_leucosticta_ku_16514
+|                                               +--| (90)
+|                                               |  |        +--cnemophilus_loriae_ku_16529
+|                                               |  +--------| (100)
+|                                               |           +--loboparadisea_sericea_ku_18403
+|                                            +--| (100)
+|                                            |  |  +-------melanocharis_versteri_ku_18286
+|                                            |  +--| (100)
+|                                            |     |  +-----oedistoma_iliolophus_ku_16163
+|                                            |     +--| (100)
+|                                            |        +-----toxorhamphus_novaeguineae_ku_12252
+|                                         +--| (67)
+|                                         |  |        +---------eopsaltria_griseogularis_ku_8850
+|                                         |  |     +--| (100)
+|                                         |  |     |  +--------microeca_papuana_ku_18304
+|                                         |  |  +--| (100)
+|                                         |  |  |  +---------------petroica_multicolor_ku_24355
+|                                         |  +--| (44)
+|                                         |     +----------philesturnus_carunculatus_ku_14862
+|                                      +--| (100)
+|                                      |  |   +-----------chaetops_aurantius_uwbm_52974
+|                                      |  +---| (100)
+|                                      |      +----------picathartes_gymnocephalus_amnh_dot2030
+|                                   +--| (100)
+|                                   |  |             +----------bombycilla_garrulus_ku_21744
+|                                   |  |        +----| (100)
+|                                   |  |        |    +--------dulus_dominicus_ku_6414
+|                                   |  |     +--| (59)
+|                                   |  |     |  +-----------------regulus_regulus_ku_6778
+|                                   |  |  +--| (100)
+|                                   |  |  |  |        +-----------certhia_americana_ku_30065
+|                                   |  |  |  |     +--| (100)
+|                                   |  |  |  |     |  +------------troglodytes_troglodytes_ku_6774
+|                                   |  |  |  |  +--| (100)
+|                                   |  |  |  |  |  +--------------sitta_europaea_ku_30442
+|                                   |  |  |  +--| (69)
+|                                   |  |  |     |  +--------------cinclus_pallasii_ku_11246
+|                                   |  |  |     +--| (100)
+|                                   |  |  |        |  +-----------muscicapa_striata_ku_26606
+|                                   |  |  |        +--| (100)
+|                                   |  |  |           +---------sturnus_vulgaris_ku_3510
+|                                   |  +--| (100)
+|                                   |     |           +----------chloropsis_sonnerati_ku_24451
+|                                   |     |        +--| (79)
+|                                   |     |        |  +------------irena_puella_ku_24448
+|                                   |     |     +--| (100)
+|                                   |     |     |  |           +----------estrilda_melpoda_ku_19721
+|                                   |     |     |  |        +--| (100)
+|                                   |     |     |  |        |  +-------vidua_regia_ku_26698
+|                                   |     |     |  |     +--| (100)
+|                                   |     |     |  |     |  +-----ploceus_cucullatus_ku_20062
+|                                   |     |     |  |  +--| (100)
+|                                   |     |     |  |  |  |        +---------fringilla_montifringilla_ku_4293
+|                                   |     |     |  |  |  |     +--| (100)
+|                                   |     |     |  |  |  |     |  +---------motacilla_alba_ku_10218
+|                                   |     |     |  |  |  |  +--| (100)
+|                                   |     |     |  |  |  |  |  +---------passer_domesticus_ku_28860
+|                                   |     |     |  |  |  +--| (100)
+|                                   |     |     |  |  |     +--------prunella_fulvescens_ku_28764
+|                                   |     |     |  +--| (100)
+|                                   |     |     |     +----------peucedramus_taeniatus_ku_9399
+|                                   |     |  +--| (100)
+|                                   |     |  |  +----------leptocoma_sperata_ku_20350
+|                                   |     +--| (100)
+|                                   |        |  +----------modulatrix_stictigula_fmnh_356751
+|                                   |        +--| (100)
+|                                   |           +--------promerops_gurneyi_uwbm_70395
+|                                +--| (100)
+|                                |  |     +-----------------chelidorhynx_hypoxanthus_ku_28022
+|                                |  |  +--| (100)
+|                                |  |  |  +------------culicicapa_ceylonensis_ku_9948
+|                                |  +--| (100)
+|                                |     +--------------hyliota_flavigaster_fmnh_439359
+|                             +--| (100)
+|                             |  |  +----------parus_major_ku_11167
+|                             |  +--| (100)
+|                             |     +---------------remiz_coronatus_ku_28817
+|                          +--| (72)
+|                          |  |  +-------------eremophila_alpestris_ku_28950
+|                          |  +--| (100)
+|                          |     +----------panurus_biarmicus_ku_28797
+|                       +--| (100)
+|                       |  +-----------nicator_chloris_ku_29190
+|                    +--| (100)
+|                    |  |  +--------macrosphenus_flavicans_ku_29199
+|                    |  +--| (100)
+|                    |     +----------sylvietta_virens_ku_29174
+|                 +--| (55)
+|                 |  |     +----------acrocephalus_orientalis_ku_28793
+|                 |  |  +--| (69)
+|                 |  |  |  |     +-----------donacobius_atricapilla_ku_1037
+|                 |  |  |  |  +--| (95)
+|                 |  |  |  |  |  +--------oxylabes_madagascariensis_fmnh_352915
+|                 |  |  |  +--| (100)
+|                 |  |  |     +-----------locustella_lanceolata_ku_4248
+|                 |  +--| (27)
+|                 |     +--------------pnoepyga_pusilla_ku_15250
+|              +--| (71)
+|              |  |          +-----cisticola_anonymus_ku_29165
+|              |  |  +-------| (100)
+|              |  |  |       +----orthotomus_castaneiceps_ku_25615
+|              |  +--| (40)
+|              |     |        +----hirundo_rustica_ku_28789
+|              |     +--------| (100)
+|              |              +----progne_subis_ku_6623
+|           +--| (100)
+|           |  |     +-------bleda_syndactylus_ku_29008
+|           |  |  +--| (100)
+|           |  |  |  +--------pycnonotus_jocosus_ku_23591
+|           |  +--| (100)
+|           |     |  +----------sylvia_nana_ku_28718
+|           |     +--| (100)
+|           |        +---------timalia_pileata_ku_23375
+|        +--| (100)
+|        |  |   +-----phylloscopus_trochilus_ku_15495
+|        |  +---| (100)
+|        |      +-----seicercus_montis_ku_17754
+|     +--| (99)
+|     |  +---------hylia_prasina_ku_29144
+|  +--| (100)
+|  |  |    +----aegithalos_concinnus_ku_28044
+|  |  +----| (100)
+|  |       +------psaltriparus_minimus_ku_22642
++--| (100)
+|  +----------erythrocercus_mccallii_ku_8688
+|
++-----tesia_cyaniventer_ku_27982
+
+Tree in newick format:
+
+(abroscopus_albogularis_ku_28164:0.0097852885,((((((((((((((((((((((((timeliopsis_fulvigula_12152:0.0086399811,acanthorhynchus_tenuirostris_ku_10667:0.0086092965)40:0.00035905,(foulehaio_carunculatus_ku_26344:0.0061219260,meliphaga_montana_ku_12276:0.0062690229)100:0.00161951)100:0.00805334,pardalotus_striatus_ku_8886:0.0154602100)100:0.00209668,malurus_alboscapulatus_ku_16459:0.0233692719)100:0.00254460,(((ailuroedus_buccoides_ku_12226:0.0095183570,ptilonorhynchus_violaceus_ku_10756:0.0077001052)100:0.00772130,(climacteris_melanurus_ku_8858:0.0127200302,cormobates_leucophaea_uwbm_57452:0.0114421427)100:0.00914838)100:0.00218346,((furnarius_rufus_ku_11920:0.0267272990,hydrornis_cyanea_ku_31228:0.0381773569)100:0.01151540,menura_novaehollandiae_uwbm_76638:0.0167798888)100:0.00175050)100:0.00399136)100:0.00174808,(orthonyx_temminckii_uwbm_76694:0.0170485756,pomatostomus_superciliosus_ku_8792:0.0216621220)100:0.00072440)100:0.00069576,(((((((((aegithina_lafresnayei_ku_23213:0.0125208338,prionops_plumatus_ku_26690:0.0127948950)100:0.00083200,rhagologus_leucostigma_ku_18382:0.0103926140)100:0.00036608,artamus_cinereus_ku_6183:0.0144044030)97:0.00031455,machaerirhynchus_nigripectus_ku_4734:0.0113208683)100:0.00265238,((eulacestoma_nigropectus_ku_16397:0.0125288369,psophodes_occidentalis_ku_6204:0.0111886309)45:0.00036619,((falcunculus_frontatus_uwbm_57627:0.0121294367,oreoica_gutturalis_ku_8884:0.0108197178)100:0.00128231,((oreocharis_arfaki_ku_16440:0.0145555925,(pteruthius_flaviscapis_ku_17806:0.0114470441,vireo_solitarius_ku_25186:0.0138356490)100:0.00263630)99:0.00047494,(oriolus_chinensis_ku_10450:0.0118899102,pachycephala_vitiensis_ku_19410:0.0099504811)100:0.00057195)42:0.00016067)61:0.00019492)100:0.00025544)50:0.00016994,(((corvus_corax_ku_30042:0.0100290264,lanius_excubitor_ku_28984:0.0148520376)100:0.00154681,((monarcha_takatsukasae_ku_22596:0.0110124906,struthidea_cinerea_ku_10728:0.0103512812)47:0.00022614,paradisaea_minor_ku_16148:0.0081738822)74:0.00015057)100:0.00055234,(lamprolia_victoriae_ku_24329:0.0097700161,rhipidura_javanica_ku_17717:0.0131951963)100:0.00211697)100:0.00243019)79:0.00015970,daphoenositta_chrysoptera_ku_23086:0.0135576928)70:0.00016339,((coracina_tenuirostris_ku_23644:0.0085643175,pericrocotus_divaricatus_ku_10261:0.0093634057)100:0.00249725,mohoua_albicilla_ypm_96717:0.0074359070)72:0.00021883)100:0.00102973,(cinclosoma_punctatum_uwbm_57790:0.0101333660,ptilorrhoa_leucosticta_ku_16514:0.0088530904)100:0.00503826)100:0.00143759)100:0.00111423,(cnemophilus_loriae_ku_16529:0.0028250781,loboparadisea_sericea_ku_18403:0.0035239372)100:0.01186126)90:0.00033971,(melanocharis_versteri_ku_18286:0.0106849399,(oedistoma_iliolophus_ku_16163:0.0076281383,toxorhamphus_novaeguineae_ku_12252:0.0079974589)100:0.00077983)100:0.00340804)100:0.00061686,(((eopsaltria_griseogularis_ku_8850:0.0130333769,microeca_papuana_ku_18304:0.0116774284)100:0.00267856,petroica_multicolor_ku_24355:0.0199904297)100:0.00163192,philesturnus_carunculatus_ku_14862:0.0140898839)44:0.00037361)67:0.00036923,(chaetops_aurantius_uwbm_52974:0.0156905339,picathartes_gymnocephalus_amnh_dot2030:0.0145788693)100:0.00617263)100:0.00261650,((((bombycilla_garrulus_ku_21744:0.0145658990,dulus_dominicus_ku_6414:0.0113018046)100:0.00691376,regulus_regulus_ku_6778:0.0228586627)59:0.00047785,(((certhia_americana_ku_30065:0.0160171316,troglodytes_troglodytes_ku_6774:0.0173276450)100:0.00142639,sitta_europaea_ku_30442:0.0189414885)100:0.00194556,(cinclus_pallasii_ku_11246:0.0187218295,(muscicapa_striata_ku_26606:0.0157487402,sturnus_vulgaris_ku_3510:0.0131083060)100:0.00073183)100:0.00417646)69:0.00032151)100:0.00020005,((((chloropsis_sonnerati_ku_24451:0.0142763861,irena_puella_ku_24448:0.0162619791)79:0.00055100,((((estrilda_melpoda_ku_19721:0.0141674779,vidua_regia_ku_26698:0.0101024613)100:0.00225385,ploceus_cucullatus_ku_20062:0.0082899237)100:0.00164574,(((fringilla_montifringilla_ku_4293:0.0130537520,motacilla_alba_ku_10218:0.0125554691)100:0.00107946,passer_domesticus_ku_28860:0.0129327544)100:0.00105802,prunella_fulvescens_ku_28764:0.0123175716)100:0.00068900)100:0.00074078,peucedramus_taeniatus_ku_9399:0.0138040918)100:0.00122233)100:0.00098502,leptocoma_sperata_ku_20350:0.0141327942)100:0.00092133,(modulatrix_stictigula_fmnh_356751:0.0137392935,promerops_gurneyi_uwbm_70395:0.0123387067)100:0.00119641)100:0.00134134)100:0.00030951)100:0.00031668,((chelidorhynx_hypoxanthus_ku_28022:0.0234319615,culicicapa_ceylonensis_ku_9948:0.0173108014)100:0.00355699,hyliota_flavigaster_fmnh_439359:0.0191388554)100:0.00035696)100:0.00043215,(parus_major_ku_11167:0.0143598258,remiz_coronatus_ku_28817:0.0210232274)100:0.00331465)100:0.00191329,(eremophila_alpestris_ku_28950:0.0182832962,panurus_biarmicus_ku_28797:0.0148640191)100:0.00177172)72:0.00022585,nicator_chloris_ku_29190:0.0152111347)100:0.00077516,(macrosphenus_flavicans_ku_29199:0.0115425001,sylvietta_virens_ku_29174:0.0143842286)100:0.00186573)100:0.00061015,((acrocephalus_orientalis_ku_28793:0.0147355072,((donacobius_atricapilla_ku_1037:0.0161315546,oxylabes_madagascariensis_fmnh_352915:0.0120944715)95:0.00056470,locustella_lanceolata_ku_4248:0.0151534313)100:0.00169846)69:0.00027763,pnoepyga_pusilla_ku_15250:0.0187186176)27:0.00013958)55:0.00020587,((cisticola_anonymus_ku_29165:0.0086576619,orthotomus_castaneiceps_ku_25615:0.0073333374)100:0.01047587,(hirundo_rustica_ku_28789:0.0065177341,progne_subis_ku_6623:0.0068124341)100:0.01237022)40:0.00037024)71:0.00020856,((bleda_syndactylus_ku_29008:0.0102764629,pycnonotus_jocosus_ku_23591:0.0121311369)100:0.00358460,(sylvia_nana_ku_28718:0.0142303742,timalia_pileata_ku_23375:0.0128599133)100:0.00203019)100:0.00050003)100:0.00135893,(phylloscopus_trochilus_ku_15495:0.0084422944,seicercus_montis_ku_17754:0.0075615088)100:0.00499097)100:0.00045060,hylia_prasina_ku_29144:0.0136357761)99:0.00034909,(aegithalos_concinnus_ku_28044:0.0073681509,psaltriparus_minimus_ku_22642:0.0092231346)100:0.00699907)100:0.00096248,erythrocercus_mccallii_ku_8688:0.0144211792)100:0.00387773,tesia_cyaniventer_ku_27982:0.0079808250);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 100 bootstrap trees
+Robinson-Foulds distance between ML tree and consensus tree: -1
+
+Branches with bootstrap support >0.00000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++**abroscopus_albogularis_ku_28164
+|
++**tesia_cyaniventer_ku_27982
+|
+|  +**erythrocercus_mccallii_ku_8688
++**| (100)
+   |     +**aegithalos_concinnus_ku_28044
+   |  +**| (100)
+   |  |  +**psaltriparus_minimus_ku_22642
+   +**| (100)
+      |  +**hylia_prasina_ku_29144
+      +**| (99)
+         |     +**phylloscopus_trochilus_ku_15495
+         |  +**| (100)
+         |  |  +**seicercus_montis_ku_17754
+         +**| (100)
+            |        +**bleda_syndactylus_ku_29008
+            |     +**| (100)
+            |     |  +**pycnonotus_jocosus_ku_23591
+            |  +**| (100)
+            |  |  |  +**timalia_pileata_ku_23375
+            |  |  +**| (100)
+            |  |     +**sylvia_nana_ku_28718
+            +**| (100)
+               |     +**hirundo_rustica_ku_28789
+               |  +**| (100)
+               |  |  +**progne_subis_ku_6623
+               +**| (71)
+                  |     +**cisticola_anonymus_ku_29165
+                  |  +**| (100)
+                  |  |  +**orthotomus_castaneiceps_ku_25615
+                  +**| (41)
+                     |        +**acrocephalus_orientalis_ku_28793
+                     |     +**| (69)
+                     |     |  |     +**donacobius_atricapilla_ku_1037
+                     |     |  |  +**| (95)
+                     |     |  |  |  +**oxylabes_madagascariensis_fmnh_352915
+                     |     |  +**| (100)
+                     |     |     +**locustella_lanceolata_ku_4248
+                     |  +**| (27)
+                     |  |  +**pnoepyga_pusilla_ku_15250
+                     +**| (55)
+                        |     +**macrosphenus_flavicans_ku_29199
+                        |  +**| (100)
+                        |  |  +**sylvietta_virens_ku_29174
+                        +**| (100)
+                           |  +**nicator_chloris_ku_29190
+                           +**| (100)
+                              |     +**eremophila_alpestris_ku_28950
+                              |  +**| (100)
+                              |  |  +**panurus_biarmicus_ku_28797
+                              +**| (72)
+                                 |     +**remiz_coronatus_ku_28817
+                                 |  +**| (100)
+                                 |  |  +**parus_major_ku_11167
+                                 +**| (100)
+                                    |     +**hyliota_flavigaster_fmnh_439359
+                                    |  +**| (100)
+                                    |  |  |  +**chelidorhynx_hypoxanthus_ku_28022
+                                    |  |  +**| (100)
+                                    |  |     +**culicicapa_ceylonensis_ku_9948
+                                    +**| (100)
+                                       |                 +**certhia_americana_ku_30065
+                                       |              +**| (100)
+                                       |              |  +**troglodytes_troglodytes_ku_6774
+                                       |           +**| (100)
+                                       |           |  +**sitta_europaea_ku_30442
+                                       |        +**| (69)
+                                       |        |  |  +**cinclus_pallasii_ku_11246
+                                       |        |  +**| (100)
+                                       |        |     |  +**muscicapa_striata_ku_26606
+                                       |        |     +**| (100)
+                                       |        |        +**sturnus_vulgaris_ku_3510
+                                       |     +**| (100)
+                                       |     |  |     +**bombycilla_garrulus_ku_21744
+                                       |     |  |  +**| (100)
+                                       |     |  |  |  +**dulus_dominicus_ku_6414
+                                       |     |  +**| (59)
+                                       |     |     +**regulus_regulus_ku_6778
+                                       |  +**| (100)
+                                       |  |  |     +**leptocoma_sperata_ku_20350
+                                       |  |  |  +**| (100)
+                                       |  |  |  |  |           +**prunella_fulvescens_ku_28764
+                                       |  |  |  |  |        +**| (100)
+                                       |  |  |  |  |        |  |     +**fringilla_montifringilla_ku_4293
+                                       |  |  |  |  |        |  |  +**| (100)
+                                       |  |  |  |  |        |  |  |  +**motacilla_alba_ku_10218
+                                       |  |  |  |  |        |  +**| (100)
+                                       |  |  |  |  |        |     +**passer_domesticus_ku_28860
+                                       |  |  |  |  |     +**| (100)
+                                       |  |  |  |  |     |  |  +**ploceus_cucullatus_ku_20062
+                                       |  |  |  |  |     |  +**| (100)
+                                       |  |  |  |  |     |     |  +**estrilda_melpoda_ku_19721
+                                       |  |  |  |  |     |     +**| (100)
+                                       |  |  |  |  |     |        +**vidua_regia_ku_26698
+                                       |  |  |  |  |  +**| (100)
+                                       |  |  |  |  |  |  +**peucedramus_taeniatus_ku_9399
+                                       |  |  |  |  +**| (100)
+                                       |  |  |  |     |  +**chloropsis_sonnerati_ku_24451
+                                       |  |  |  |     +**| (79)
+                                       |  |  |  |        +**irena_puella_ku_24448
+                                       |  |  +**| (100)
+                                       |  |     |  +**modulatrix_stictigula_fmnh_356751
+                                       |  |     +**| (100)
+                                       |  |        +**promerops_gurneyi_uwbm_70395
+                                       +**| (100)
+                                          |           +**eopsaltria_griseogularis_ku_8850
+                                          |        +**| (100)
+                                          |        |  +**microeca_papuana_ku_18304
+                                          |     +**| (100)
+                                          |     |  +**petroica_multicolor_ku_24355
+                                          |  +**| (67)
+                                          |  |  |  +**philesturnus_carunculatus_ku_14862
+                                          |  |  +**| (52)
+                                          |  |     |        +**toxorhamphus_novaeguineae_ku_12252
+                                          |  |     |     +**| (100)
+                                          |  |     |     |  +**oedistoma_iliolophus_ku_16163
+                                          |  |     |  +**| (100)
+                                          |  |     |  |  +**melanocharis_versteri_ku_18286
+                                          |  |     +**| (100)
+                                          |  |        |     +**cnemophilus_loriae_ku_16529
+                                          |  |        |  +**| (100)
+                                          |  |        |  |  +**loboparadisea_sericea_ku_18403
+                                          |  |        +**| (90)
+                                          |  |           |        +**orthonyx_temminckii_uwbm_76694
+                                          |  |           |     +**| (100)
+                                          |  |           |     |  +**pomatostomus_superciliosus_ku_8792
+                                          |  |           |  +**| (100)
+                                          |  |           |  |  |           +**ailuroedus_buccoides_ku_12226
+                                          |  |           |  |  |        +**| (100)
+                                          |  |           |  |  |        |  +**ptilonorhynchus_violaceus_ku_10756
+                                          |  |           |  |  |     +**| (100)
+                                          |  |           |  |  |     |  |  +**climacteris_melanurus_ku_8858
+                                          |  |           |  |  |     |  +**| (100)
+                                          |  |           |  |  |     |     +**cormobates_leucophaea_uwbm_57452
+                                          |  |           |  |  |  +**| (100)
+                                          |  |           |  |  |  |  |     +**furnarius_rufus_ku_11920
+                                          |  |           |  |  |  |  |  +**| (100)
+                                          |  |           |  |  |  |  |  |  +**hydrornis_cyanea_ku_31228
+                                          |  |           |  |  |  |  +**| (100)
+                                          |  |           |  |  |  |     +**menura_novaehollandiae_uwbm_76638
+                                          |  |           |  |  +**| (100)
+                                          |  |           |  |     |           +**acanthorhynchus_tenuirostris_ku_10667
+                                          |  |           |  |     |        +**| (40)
+                                          |  |           |  |     |        |  +**timeliopsis_fulvigula_12152
+                                          |  |           |  |     |     +**| (100)
+                                          |  |           |  |     |     |  |  +**foulehaio_carunculatus_ku_26344
+                                          |  |           |  |     |     |  +**| (100)
+                                          |  |           |  |     |     |     +**meliphaga_montana_ku_12276
+                                          |  |           |  |     |  +**| (100)
+                                          |  |           |  |     |  |  +**pardalotus_striatus_ku_8886
+                                          |  |           |  |     +**| (100)
+                                          |  |           |  |        +**malurus_alboscapulatus_ku_16459
+                                          |  |           +**| (100)
+                                          |  |              |                    +**artamus_cinereus_ku_6183
+                                          |  |              |                 +**| (97)
+                                          |  |              |                 |  |     +**aegithina_lafresnayei_ku_23213
+                                          |  |              |                 |  |  +**| (100)
+                                          |  |              |                 |  |  |  +**prionops_plumatus_ku_26690
+                                          |  |              |                 |  +**| (100)
+                                          |  |              |                 |     +**rhagologus_leucostigma_ku_18382
+                                          |  |              |              +**| (100)
+                                          |  |              |              |  +**machaerirhynchus_nigripectus_ku_4734
+                                          |  |              |           +**| (50)
+                                          |  |              |           |  |           +**oreocharis_arfaki_ku_16440
+                                          |  |              |           |  |        +**| (99)
+                                          |  |              |           |  |        |  |  +**vireo_solitarius_ku_25186
+                                          |  |              |           |  |        |  +**| (100)
+                                          |  |              |           |  |        |     +**pteruthius_flaviscapis_ku_17806
+                                          |  |              |           |  |     +**| (42)
+                                          |  |              |           |  |     |  |  +**oriolus_chinensis_ku_10450
+                                          |  |              |           |  |     |  +**| (100)
+                                          |  |              |           |  |     |     +**pachycephala_vitiensis_ku_19410
+                                          |  |              |           |  |  +**| (61)
+                                          |  |              |           |  |  |  |  +**falcunculus_frontatus_uwbm_57627
+                                          |  |              |           |  |  |  +**| (100)
+                                          |  |              |           |  |  |     +**oreoica_gutturalis_ku_8884
+                                          |  |              |           |  +**| (100)
+                                          |  |              |           |     |  +**eulacestoma_nigropectus_ku_16397
+                                          |  |              |           |     +**| (45)
+                                          |  |              |           |        +**psophodes_occidentalis_ku_6204
+                                          |  |              |        +**| (79)
+                                          |  |              |        |  |     +**lamprolia_victoriae_ku_24329
+                                          |  |              |        |  |  +**| (100)
+                                          |  |              |        |  |  |  +**rhipidura_javanica_ku_17717
+                                          |  |              |        |  +**| (100)
+                                          |  |              |        |     |     +**corvus_corax_ku_30042
+                                          |  |              |        |     |  +**| (100)
+                                          |  |              |        |     |  |  +**lanius_excubitor_ku_28984
+                                          |  |              |        |     +**| (100)
+                                          |  |              |        |        |  +**struthidea_cinerea_ku_10728
+                                          |  |              |        |        +**| (74)
+                                          |  |              |        |           |  +**monarcha_takatsukasae_ku_22596
+                                          |  |              |        |           +**| (48)
+                                          |  |              |        |              +**paradisaea_minor_ku_16148
+                                          |  |              |     +**| (70)
+                                          |  |              |     |  +**daphoenositta_chrysoptera_ku_23086
+                                          |  |              |  +**| (100)
+                                          |  |              |  |  |     +**coracina_tenuirostris_ku_23644
+                                          |  |              |  |  |  +**| (100)
+                                          |  |              |  |  |  |  +**pericrocotus_divaricatus_ku_10261
+                                          |  |              |  |  +**| (72)
+                                          |  |              |  |     +**mohoua_albicilla_ypm_96717
+                                          |  |              +**| (100)
+                                          |  |                 |  +**cinclosoma_punctatum_uwbm_57790
+                                          |  |                 +**| (100)
+                                          |  |                    +**ptilorrhoa_leucosticta_ku_16514
+                                          +**| (100)
+                                             |  +**chaetops_aurantius_uwbm_52974
+                                             +**| (100)
+                                                +**picathartes_gymnocephalus_amnh_dot2030
+
+
+Consensus tree in newick format: 
+
+(abroscopus_albogularis_ku_28164:-1.0000000000,tesia_cyaniventer_ku_27982:-1.0000000000,(erythrocercus_mccallii_ku_8688:-1.0000000000,((aegithalos_concinnus_ku_28044:-1.0000000000,psaltriparus_minimus_ku_22642:-1.0000000000)100:-1.0000000000,(hylia_prasina_ku_29144:-1.0000000000,((phylloscopus_trochilus_ku_15495:-1.0000000000,seicercus_montis_ku_17754:-1.0000000000)100:-1.0000000000,(((bleda_syndactylus_ku_29008:-1.0000000000,pycnonotus_jocosus_ku_23591:-1.0000000000)100:-1.0000000000,(timalia_pileata_ku_23375:-1.0000000000,sylvia_nana_ku_28718:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((hirundo_rustica_ku_28789:-1.0000000000,progne_subis_ku_6623:-1.0000000000)100:-1.0000000000,((cisticola_anonymus_ku_29165:-1.0000000000,orthotomus_castaneiceps_ku_25615:-1.0000000000)100:-1.0000000000,(((acrocephalus_orientalis_ku_28793:-1.0000000000,((donacobius_atricapilla_ku_1037:-1.0000000000,oxylabes_madagascariensis_fmnh_352915:-1.0000000000)95:-1.0000000000,locustella_lanceolata_ku_4248:-1.0000000000)100:-1.0000000000)69:-1.0000000000,pnoepyga_pusilla_ku_15250:-1.0000000000)27:-1.0000000000,((macrosphenus_flavicans_ku_29199:-1.0000000000,sylvietta_virens_ku_29174:-1.0000000000)100:-1.0000000000,(nicator_chloris_ku_29190:-1.0000000000,((eremophila_alpestris_ku_28950:-1.0000000000,panurus_biarmicus_ku_28797:-1.0000000000)100:-1.0000000000,((remiz_coronatus_ku_28817:-1.0000000000,parus_major_ku_11167:-1.0000000000)100:-1.0000000000,((hyliota_flavigaster_fmnh_439359:-1.0000000000,(chelidorhynx_hypoxanthus_ku_28022:-1.0000000000,culicicapa_ceylonensis_ku_9948:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((((((certhia_americana_ku_30065:-1.0000000000,troglodytes_troglodytes_ku_6774:-1.0000000000)100:-1.0000000000,sitta_europaea_ku_30442:-1.0000000000)100:-1.0000000000,(cinclus_pallasii_ku_11246:-1.0000000000,(muscicapa_striata_ku_26606:-1.0000000000,sturnus_vulgaris_ku_3510:-1.0000000000)100:-1.0000000000)100:-1.0000000000)69:-1.0000000000,((bombycilla_garrulus_ku_21744:-1.0000000000,dulus_dominicus_ku_6414:-1.0000000000)100:-1.0000000000,regulus_regulus_ku_6778:-1.0000000000)59:-1.0000000000)100:-1.0000000000,((leptocoma_sperata_ku_20350:-1.0000000000,((((prunella_fulvescens_ku_28764:-1.0000000000,((fringilla_montifringilla_ku_4293:-1.0000000000,motacilla_alba_ku_10218:-1.0000000000)100:-1.0000000000,passer_domesticus_ku_28860:-1.0000000000)100:-1.0000000000)100:-1.0000000000,(ploceus_cucullatus_ku_20062:-1.0000000000,(estrilda_melpoda_ku_19721:-1.0000000000,vidua_regia_ku_26698:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000,peucedramus_taeniatus_ku_9399:-1.0000000000)100:-1.0000000000,(chloropsis_sonnerati_ku_24451:-1.0000000000,irena_puella_ku_24448:-1.0000000000)79:-1.0000000000)100:-1.0000000000)100:-1.0000000000,(modulatrix_stictigula_fmnh_356751:-1.0000000000,promerops_gurneyi_uwbm_70395:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((((eopsaltria_griseogularis_ku_8850:-1.0000000000,microeca_papuana_ku_18304:-1.0000000000)100:-1.0000000000,petroica_multicolor_ku_24355:-1.0000000000)100:-1.0000000000,(philesturnus_carunculatus_ku_14862:-1.0000000000,(((toxorhamphus_novaeguineae_ku_12252:-1.0000000000,oedistoma_iliolophus_ku_16163:-1.0000000000)100:-1.0000000000,melanocharis_versteri_ku_18286:-1.0000000000)100:-1.0000000000,((cnemophilus_loriae_ku_16529:-1.0000000000,loboparadisea_sericea_ku_18403:-1.0000000000)100:-1.0000000000,(((orthonyx_temminckii_uwbm_76694:-1.0000000000,pomatostomus_superciliosus_ku_8792:-1.0000000000)100:-1.0000000000,((((ailuroedus_buccoides_ku_12226:-1.0000000000,ptilonorhynchus_violaceus_ku_10756:-1.0000000000)100:-1.0000000000,(climacteris_melanurus_ku_8858:-1.0000000000,cormobates_leucophaea_uwbm_57452:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((furnarius_rufus_ku_11920:-1.0000000000,hydrornis_cyanea_ku_31228:-1.0000000000)100:-1.0000000000,menura_novaehollandiae_uwbm_76638:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((((acanthorhynchus_tenuirostris_ku_10667:-1.0000000000,timeliopsis_fulvigula_12152:-1.0000000000)40:-1.0000000000,(foulehaio_carunculatus_ku_26344:-1.0000000000,meliphaga_montana_ku_12276:-1.0000000000)100:-1.0000000000)100:-1.0000000000,pardalotus_striatus_ku_8886:-1.0000000000)100:-1.0000000000,malurus_alboscapulatus_ku_16459:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000,(((((((artamus_cinereus_ku_6183:-1.0000000000,((aegithina_lafresnayei_ku_23213:-1.0000000000,prionops_plumatus_ku_26690:-1.0000000000)100:-1.0000000000,rhagologus_leucostigma_ku_18382:-1.0000000000)100:-1.0000000000)97:-1.0000000000,machaerirhynchus_nigripectus_ku_4734:-1.0000000000)100:-1.0000000000,((((oreocharis_arfaki_ku_16440:-1.0000000000,(vireo_solitarius_ku_25186:-1.0000000000,pteruthius_flaviscapis_ku_17806:-1.0000000000)100:-1.0000000000)99:-1.0000000000,(oriolus_chinensis_ku_10450:-1.0000000000,pachycephala_vitiensis_ku_19410:-1.0000000000)100:-1.0000000000)42:-1.0000000000,(falcunculus_frontatus_uwbm_57627:-1.0000000000,oreoica_gutturalis_ku_8884:-1.0000000000)100:-1.0000000000)61:-1.0000000000,(eulacestoma_nigropectus_ku_16397:-1.0000000000,psophodes_occidentalis_ku_6204:-1.0000000000)45:-1.0000000000)100:-1.0000000000)50:-1.0000000000,((lamprolia_victoriae_ku_24329:-1.0000000000,rhipidura_javanica_ku_17717:-1.0000000000)100:-1.0000000000,((corvus_corax_ku_30042:-1.0000000000,lanius_excubitor_ku_28984:-1.0000000000)100:-1.0000000000,(struthidea_cinerea_ku_10728:-1.0000000000,(monarcha_takatsukasae_ku_22596:-1.0000000000,paradisaea_minor_ku_16148:-1.0000000000)48:-1.0000000000)74:-1.0000000000)100:-1.0000000000)100:-1.0000000000)79:-1.0000000000,daphoenositta_chrysoptera_ku_23086:-1.0000000000)70:-1.0000000000,((coracina_tenuirostris_ku_23644:-1.0000000000,pericrocotus_divaricatus_ku_10261:-1.0000000000)100:-1.0000000000,mohoua_albicilla_ypm_96717:-1.0000000000)72:-1.0000000000)100:-1.0000000000,(cinclosoma_punctatum_uwbm_57790:-1.0000000000,ptilorrhoa_leucosticta_ku_16514:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)90:-1.0000000000)100:-1.0000000000)52:-1.0000000000)67:-1.0000000000,(chaetops_aurantius_uwbm_52974:-1.0000000000,picathartes_gymnocephalus_amnh_dot2030:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)72:-1.0000000000)100:-1.0000000000)100:-1.0000000000)55:-1.0000000000)41:-1.0000000000)71:-1.0000000000)100:-1.0000000000)100:-1.0000000000)99:-1.0000000000)100:-1.0000000000)100:-1.0000000000);
+
+TIME STAMP
+----------
+
+Date and time: Sun May 14 01:37:24 2017
+Total CPU time used: 32794.984 seconds (9h:6m:34s)
+Total wall-clock time used: 1774.85472 seconds (0h:29m:34s)
+

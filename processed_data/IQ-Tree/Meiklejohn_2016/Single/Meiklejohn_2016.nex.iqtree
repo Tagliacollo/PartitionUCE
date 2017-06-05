@@ -1,0 +1,162 @@
+IQ-TREE 1.5.4 built Apr  2 2017
+
+Partition file name: Meiklejohn_2016.nex
+Input file name: Meiklejohn_2016.phy
+Type of analysis: ModelFinder + tree reconstruction + non-parametric bootstrap (100 replicates)
+Random seed number: 679300
+
+REFERENCES
+----------
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, in press.
+
+To cite IQ-TREE please use:
+
+Lam-Tung Nguyen, Heiko A. Schmidt, Arndt von Haeseler, and Bui Quang Minh
+(2015) IQ-TREE: A fast and effective stochastic algorithm for estimating
+maximum likelihood phylogenies. Mol Biol Evol, 32:268-274.
+http://dx.doi.org/10.1093/molbev/msu300
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst Biol, 65:997-1008.
+http://dx.doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 18 taxa with 1 partitions and 599627 total sites (0% missing data)
+
+  ID  Name     Type  #Seqs  #Sites  #Patterns  #Const_Sites
+   1  Subset1  DNA      18  599627   41038      93%
+
+SUBSTITUTION PROCESS
+--------------------
+
+Full partition model with separate branch lengths and models between partitions
+
+  ID  Model         TreeLen  Parameters
+   1  GTR+F+G4       0.0985  GTR{0.924605,6.06403,0.744562,1.40638,5.85382}+F{0.284339,0.213951,0.211643,0.290067}+G4{0.0200262}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -1169543.2515 (s.e. 1585.1355)
+Unconstrained log-likelihood (without tree): -3252132.0028
+Number of free parameters (#branches + #model parameters): 42
+Akaike information criterion (AIC) score: 2339170.5030
+Corrected Akaike information criterion (AICc) score: 2339170.5091
+Bayesian information criterion (BIC) score: 2339645.2737
+
+Total tree length (sum of branch lengths): 0.0985
+Sum of internal branch lengths: 0.0117 (11.8983% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'cyrtonyx_montezumae' is drawn at root
+NOTE: Branch lengths are weighted average over all partitions
+      (weighted by the number of sites in the partitions)
+Numbers in parentheses are  standard bootstrap support (%)
+
++-----------------------------------------------------------cyrtonyx_montezumae
+|
+|           +-------------------------alectoris_rufa
+|        +--| (100)
+|        |  +-------------------------galgal4
+|     +--| (100)
+|     |  +-----------------------pavo_cristatus
++-----| (100)
+|     |                                   +------catreus_wallichi
+|     |                                +--| (100)
+|     |                                |  +-----crossoptilon_crossoptilon
+|     |                             +--| (100)
+|     |                             |  |     +----lophura_inornata
+|     |                             |  |  +--| (100)
+|     |                             |  |  |  +--lophura_nycthemera
+|     |                             |  +--| (100)
+|     |                             |     +-----lophura_swinhoii
+|     |                          +--| (55)
+|     |                          |  +------phasianus_colchicus
+|     |                       +--| (68)
+|     |                       |  +-------chrysolophus_pictus
+|     |                 +-----| (100)
+|     |                 |     |  +------syrmaticus_ellioti
+|     |                 |     +--| (100)
+|     |                 |        +------syrmaticus_reevesii
+|     |              +--| (100)
+|     |              |  +-------------------perdix
+|     |           +--| (100)
+|     |           |  +---------------------melgal2
+|     +-----------| (100)
+|                 |  +-----------lophophorus_impejanus
+|                 +--| (100)
+|                    +----------------tragopan_blythii
+|
++-------------------------------------rollulus_rouloul
+
+Tree in newick format:
+
+(cyrtonyx_montezumae:0.0169004964,(((alectoris_rufa:0.0074181653,galgal4:0.0074319875)100:0.00048184,pavo_cristatus:0.0068402039)100:0.00045322,((((((((catreus_wallichi:0.0022067839,crossoptilon_crossoptilon:0.0017534673)100:0.00027247,((lophura_inornata:0.0015907044,lophura_nycthemera:0.0011201549)100:0.00020267,lophura_swinhoii:0.0018026474)100:0.00027812)100:0.00024404,phasianus_colchicus:0.0022206248)55:0.00010346,chrysolophus_pictus:0.0023528372)68:0.00012640,(syrmaticus_ellioti:0.0020043580,syrmaticus_reevesii:0.0019994570)100:0.00056923)100:0.00182744,perdix:0.0057885668)100:0.00083007,melgal2:0.0062783137)100:0.00057794,(lophophorus_impejanus:0.0034225088,tragopan_blythii:0.0048142949)100:0.00042937)100:0.00345771)100:0.00186455,rollulus_rouloul:0.0108252687);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 100 bootstrap trees
+Robinson-Foulds distance between ML tree and consensus tree: -1
+
+Branches with bootstrap support >0.00000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++**alectoris_rufa
+|
++**galgal4
+|
+|  +**pavo_cristatus
++**| (100)
+   |     +**rollulus_rouloul
+   |  +**| (100)
+   |  |  +**cyrtonyx_montezumae
+   +**| (100)
+      |     +**lophophorus_impejanus
+      |  +**| (100)
+      |  |  +**tragopan_blythii
+      +**| (100)
+         |  +**melgal2
+         +**| (100)
+            |  +**perdix
+            +**| (100)
+               |              +**catreus_wallichi
+               |           +**| (100)
+               |           |  +**crossoptilon_crossoptilon
+               |        +**| (100)
+               |        |  |     +**lophura_inornata
+               |        |  |  +**| (100)
+               |        |  |  |  +**lophura_nycthemera
+               |        |  +**| (100)
+               |        |     +**lophura_swinhoii
+               |     +**| (55)
+               |     |  +**phasianus_colchicus
+               |  +**| (68)
+               |  |  +**chrysolophus_pictus
+               +**| (100)
+                  |  +**syrmaticus_ellioti
+                  +**| (100)
+                     +**syrmaticus_reevesii
+
+
+Consensus tree in newick format: 
+
+(alectoris_rufa:-1.0000000000,galgal4:-1.0000000000,(pavo_cristatus:-1.0000000000,((rollulus_rouloul:-1.0000000000,cyrtonyx_montezumae:-1.0000000000)100:-1.0000000000,((lophophorus_impejanus:-1.0000000000,tragopan_blythii:-1.0000000000)100:-1.0000000000,(melgal2:-1.0000000000,(perdix:-1.0000000000,(((((catreus_wallichi:-1.0000000000,crossoptilon_crossoptilon:-1.0000000000)100:-1.0000000000,((lophura_inornata:-1.0000000000,lophura_nycthemera:-1.0000000000)100:-1.0000000000,lophura_swinhoii:-1.0000000000)100:-1.0000000000)100:-1.0000000000,phasianus_colchicus:-1.0000000000)55:-1.0000000000,chrysolophus_pictus:-1.0000000000)68:-1.0000000000,(syrmaticus_ellioti:-1.0000000000,syrmaticus_reevesii:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000);
+
+TIME STAMP
+----------
+
+Date and time: Tue May 23 19:49:03 2017
+Total CPU time used: 883.988 seconds (0h:14m:43s)
+Total wall-clock time used: 46.3406949 seconds (0h:0m:46s)
+

@@ -1,0 +1,310 @@
+IQ-TREE 1.5.4 built Apr  2 2017
+
+Partition file name: Harrington_2016.nex
+Input file name: Harrington_2016.phy
+Type of analysis: ModelFinder + tree reconstruction + non-parametric bootstrap (100 replicates)
+Random seed number: 550337
+
+REFERENCES
+----------
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, in press.
+
+To cite IQ-TREE please use:
+
+Lam-Tung Nguyen, Heiko A. Schmidt, Arndt von Haeseler, and Bui Quang Minh
+(2015) IQ-TREE: A fast and effective stochastic algorithm for estimating
+maximum likelihood phylogenies. Mol Biol Evol, 32:268-274.
+http://dx.doi.org/10.1093/molbev/msu300
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst Biol, 65:997-1008.
+http://dx.doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 55 taxa with 1 partitions and 235232 total sites (0% missing data)
+
+  ID  Name     Type  #Seqs  #Sites  #Patterns  #Const_Sites
+   1  Subset1  DNA      55  235232  110989      53%
+
+SUBSTITUTION PROCESS
+--------------------
+
+Full partition model with separate branch lengths and models between partitions
+
+  ID  Model         TreeLen  Parameters
+   1  GTR+F+G4       2.4463  GTR{0.980994,3.49453,0.748663,1.73379,3.54527}+F{0.278221,0.2231,0.222906,0.275773}+G4{0.331188}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -1914086.6193 (s.e. 4417.1620)
+Unconstrained log-likelihood (without tree): -2365897.4955
+Number of free parameters (#branches + #model parameters): 116
+Akaike information criterion (AIC) score: 3828405.2386
+Corrected Akaike information criterion (AICc) score: 3828405.3540
+Bayesian information criterion (BIC) score: 3829607.9646
+
+Total tree length (sum of branch lengths): 2.4463
+Sum of internal branch lengths: 0.4192 (17.1375% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'eleutheronema_tetradactylum' is drawn at root
+NOTE: Branch lengths are weighted average over all partitions
+      (weighted by the number of sites in the partitions)
+Numbers in parentheses are  standard bootstrap support (%)
+
++--eleutheronema_tetradactylum
+|
+|              +--sphyranea_sphyranea
+|           +--| (100)
+|           |  +--sphyraena_putnamae
+|        +--| (66)
+|        |  |               +---------------lampris_guttatus
+|        |  |            +--| (100)
+|        |  |            |  |  +----------------------ceratoscopelus_warmingii
+|        |  |            |  +--| (100)
+|        |  |            |     +----------------------------------------------gadus_morhua
+|        |  |        +---| (100)
+|        |  |        |   +---myripristis_violacea
+|        |  |     +--| (100)
+|        |  |     |  |  +--kurtus_gulliveri
+|        |  |     |  +--| (100)
+|        |  |     |     +--apogon_lateralis
+|        |  |  +--| (100)
+|        |  |  |  |  +--scomber_scombrus
+|        |  |  |  +--| (100)
+|        |  |  |     |  +---------pseudupeneus_maculatus
+|        |  |  |     +--| (100)
+|        |  |  |        +-------------------------------------------syngnathus_fuscus
+|        |  +--| (100)
+|        |     +---acanthurus_bahianus
+|     +--| (100)
+|     |  |  +--centropomus_medius
+|     |  +--| (100)
+|     |     +--lates_calcarifer
+|  +--| (83)
+|  |  |                    +--chloroscombrus_orqueta
+|  |  |                 +--| (100)
+|  |  |                 |  +--alepes_kleinii
+|  |  |              +--| (100)
+|  |  |              |  |  +--megalaspis_cordyla
+|  |  |              |  +--| (100)
+|  |  |              |     +--caranx_melampygus
+|  |  |           +--| (100)
+|  |  |           |  +--alectis_indicus
+|  |  |        +--| (100)
+|  |  |        |  |  +--decapterus_maruadsi
+|  |  |        |  +--| (100)
+|  |  |        |     +--trachurus_trachurus
+|  |  |     +--| (100)
+|  |  |     |  +--seriola_zonata
+|  |  |  +--| (100)
+|  |  |  |  |     +--scomberoides_commersonnianus
+|  |  |  |  |  +--| (100)
+|  |  |  |  |  |  |  +--trachinotus_blochii
+|  |  |  |  |  |  +--| (100)
+|  |  |  |  |  |     +--trachinotus_ovatus
+|  |  |  |  +--| (96)
+|  |  |  |     |     +--rachycentron_canadum
+|  |  |  |     |  +--| (100)
+|  |  |  |     |  |  +--coryphaena_hippurus
+|  |  |  |     +--| (100)
+|  |  |  |        +---echeneis_cf_naucratoides
+|  |  +--| (95)
+|  |     |     +--toxotes_jaculatrix
+|  |     |  +--| (100)
+|  |     |  |  +--leptobrama_muelleri
+|  |     +--| (100)
+|  |        |     +--xiphius_gladius
+|  |        |  +--| (100)
+|  |        |  |  |  +--tetrapturus_angustirostris
+|  |        |  |  +--| (100)
+|  |        |  |     +--istiophorus_platypterus
+|  |        +--| (100)
+|  |           +--mene_maculatus
++--| (100)
+|  |        +--citharoides_macrolepis
+|  |     +--| (100)
+|  |     |  +-----citharus_linguata
+|  |  +--| (100)
+|  |  |  |              +--mancopsetta_milfordi
+|  |  |  |        +-----| (100)
+|  |  |  |        |     +--mancopsetta_maculata
+|  |  |  |     +--| (100)
+|  |  |  |     |  |   +-----gymnachirus_melas
+|  |  |  |     |  +---| (100)
+|  |  |  |     |      +--trinectes_maculatus
+|  |  |  |  +--| (100)
+|  |  |  |  |  |  +-------------samariscus_xenicus
+|  |  |  |  |  +--| (100)
+|  |  |  |  |     |     +-------------------symphurus_plagiusa
+|  |  |  |  |     |  +--| (100)
+|  |  |  |  |     |  |  +-----parachirus_xenicus
+|  |  |  |  |     +--| (100)
+|  |  |  |  |        +---poecilopsetta_plinthus
+|  |  |  +--| (100)
+|  |  |     |  +----scophthalmus_rhombus
+|  |  |     +--| (100)
+|  |  |        |        +--paralichthys_albigutta
+|  |  |        |     +--| (100)
+|  |  |        |     |  +--hippoglossina_oblonga
+|  |  |        |  +--| (100)
+|  |  |        |  |  +--hypopsetta_guttulata
+|  |  |        +--| (100)
+|  |  |           |     +---cyclopsetta_fimbriata
+|  |  |           |  +--| (100)
+|  |  |           |  |  +---------etropus_cyclosquamus
+|  |  |           +--| (100)
+|  |  |              |       +------bothus_pantherinus
+|  |  |              +-------| (100)
+|  |  |                      +------crossorhombus_kobensis
+|  +--| (100)
+|     +----psettodes_eneumeri
+|
++--polydactylus_sexfilis
+
+Tree in newick format:
+
+(eleutheronema_tetradactylum:0.0049414700,(((((sphyranea_sphyranea:0.0108472797,sphyraena_putnamae:0.0124920401)100:0.00825025,(((((lampris_guttatus:0.1133603788,(ceratoscopelus_warmingii:0.1556758158,gadus_morhua:0.3187782356)100:0.00892582)100:0.01232039,myripristis_violacea:0.0321972084)100:0.02755692,(kurtus_gulliveri:0.0253482415,apogon_lateralis:0.0221908702)100:0.01588251)100:0.00144646,(scomber_scombrus:0.0242709549,(pseudupeneus_maculatus:0.0681985748,syngnathus_fuscus:0.2967612647)100:0.01174840)100:0.00416024)100:0.00183192,acanthurus_bahianus:0.0333261670)100:0.00647495)66:0.00030215,(centropomus_medius:0.0151788751,lates_calcarifer:0.0140305257)100:0.00091607)100:0.00063428,(((((((chloroscombrus_orqueta:0.0059113271,alepes_kleinii:0.0060770460)100:0.00095415,(megalaspis_cordyla:0.0029638770,caranx_melampygus:0.0018755791)100:0.00257042)100:0.00090365,alectis_indicus:0.0084212520)100:0.00058244,(decapterus_maruadsi:0.0046711192,trachurus_trachurus:0.0030697202)100:0.00359599)100:0.00839242,seriola_zonata:0.0070562640)100:0.00101143,((scomberoides_commersonnianus:0.0116674255,(trachinotus_blochii:0.0017591820,trachinotus_ovatus:0.0016058858)100:0.00640808)100:0.00241833,((rachycentron_canadum:0.0051467443,coryphaena_hippurus:0.0141173795)100:0.00374787,echeneis_cf_naucratoides:0.0280703551)100:0.00505241)96:0.00041064)100:0.00618299,((toxotes_jaculatrix:0.0113548032,leptobrama_muelleri:0.0129043745)100:0.00244796,((xiphius_gladius:0.0153961226,(tetrapturus_angustirostris:0.0020660779,istiophorus_platypterus:0.0016043822)100:0.02151426)100:0.00483162,mene_maculatus:0.0209340757)100:0.00117120)100:0.00039632)95:0.00033512)83:0.00050599,(((citharoides_macrolepis:0.0046776569,citharus_linguata:0.0414798899)100:0.01716624,((((mancopsetta_milfordi:0.0010899216,mancopsetta_maculata:0.0008524819)100:0.04036066,(gymnachirus_melas:0.0411677088,trinectes_maculatus:0.0164278633)100:0.03154643)100:0.00301137,(samariscus_xenicus:0.0944764679,((symphurus_plagiusa:0.1394642644,parachirus_xenicus:0.0452831020)100:0.00444774,poecilopsetta_plinthus:0.0272947631)100:0.00448476)100:0.00239539)100:0.00253225,(scophthalmus_rhombus:0.0357110041,(((paralichthys_albigutta:0.0053853065,hippoglossina_oblonga:0.0064603888)100:0.00456531,hypopsetta_guttulata:0.0130816880)100:0.01014572,((cyclopsetta_fimbriata:0.0332305368,etropus_cyclosquamus:0.0677858454)100:0.01351051,(bothus_pantherinus:0.0524328249,crossorhombus_kobensis:0.0467482932)100:0.05646652)100:0.01174966)100:0.00693507)100:0.00353244)100:0.00398474)100:0.00514311,psettodes_eneumeri:0.0341341204)100:0.00151775)100:0.02185314,polydactylus_sexfilis:0.0055949571);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 100 bootstrap trees
+Robinson-Foulds distance between ML tree and consensus tree: -1
+
+Branches with bootstrap support >0.00000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++**acanthurus_bahianus
+|
+|              +**ceratoscopelus_warmingii
+|           +**| (100)
+|           |  +**gadus_morhua
+|        +**| (100)
+|        |  +**lampris_guttatus
+|     +**| (100)
+|     |  +**myripristis_violacea
+|  +**| (100)
+|  |  |  +**apogon_lateralis
+|  |  +**| (100)
+|  |     +**kurtus_gulliveri
++**| (100)
+|  |     +**pseudupeneus_maculatus
+|  |  +**| (100)
+|  |  |  +**syngnathus_fuscus
+|  +**| (100)
+|     +**scomber_scombrus
+|
+|     +**sphyraena_putnamae
+|  +**| (100)
+|  |  +**sphyranea_sphyranea
++**| (100)
+   |     +**centropomus_medius
+   |  +**| (100)
+   |  |  +**lates_calcarifer
+   +**| (66)
+      |                 +**alectis_indicus
+      |              +**| (100)
+      |              |  |     +**caranx_melampygus
+      |              |  |  +**| (100)
+      |              |  |  |  +**megalaspis_cordyla
+      |              |  +**| (100)
+      |              |     |  +**alepes_kleinii
+      |              |     +**| (100)
+      |              |        +**chloroscombrus_orqueta
+      |           +**| (100)
+      |           |  |  +**decapterus_maruadsi
+      |           |  +**| (100)
+      |           |     +**trachurus_trachurus
+      |        +**| (100)
+      |        |  +**seriola_zonata
+      |     +**| (100)
+      |     |  |     +**echeneis_cf_naucratoides
+      |     |  |  +**| (100)
+      |     |  |  |  |  +**coryphaena_hippurus
+      |     |  |  |  +**| (100)
+      |     |  |  |     +**rachycentron_canadum
+      |     |  +**| (96)
+      |     |     |  +**scomberoides_commersonnianus
+      |     |     +**| (100)
+      |     |        |  +**trachinotus_blochii
+      |     |        +**| (100)
+      |     |           +**trachinotus_ovatus
+      |  +**| (95)
+      |  |  |     +**leptobrama_muelleri
+      |  |  |  +**| (100)
+      |  |  |  |  +**toxotes_jaculatrix
+      |  |  +**| (100)
+      |  |     |     +**xiphius_gladius
+      |  |     |  +**| (100)
+      |  |     |  |  |  +**istiophorus_platypterus
+      |  |     |  |  +**| (100)
+      |  |     |  |     +**tetrapturus_angustirostris
+      |  |     +**| (100)
+      |  |        +**mene_maculatus
+      +**| (100)
+         |     +**eleutheronema_tetradactylum
+         |  +**| (100)
+         |  |  +**polydactylus_sexfilis
+         +**| (83)
+            |  +**psettodes_eneumeri
+            +**| (100)
+               |     +**citharoides_macrolepis
+               |  +**| (100)
+               |  |  +**citharus_linguata
+               +**| (100)
+                  |              +**parachirus_xenicus
+                  |           +**| (100)
+                  |           |  +**symphurus_plagiusa
+                  |        +**| (100)
+                  |        |  +**poecilopsetta_plinthus
+                  |     +**| (100)
+                  |     |  +**samariscus_xenicus
+                  |  +**| (100)
+                  |  |  |     +**mancopsetta_maculata
+                  |  |  |  +**| (100)
+                  |  |  |  |  +**mancopsetta_milfordi
+                  |  |  +**| (100)
+                  |  |     |  +**trinectes_maculatus
+                  |  |     +**| (100)
+                  |  |        +**gymnachirus_melas
+                  +**| (100)
+                     |           +**bothus_pantherinus
+                     |        +**| (100)
+                     |        |  +**crossorhombus_kobensis
+                     |     +**| (100)
+                     |     |  |  +**cyclopsetta_fimbriata
+                     |     |  +**| (100)
+                     |     |     +**etropus_cyclosquamus
+                     |  +**| (100)
+                     |  |  |     +**hippoglossina_oblonga
+                     |  |  |  +**| (100)
+                     |  |  |  |  +**paralichthys_albigutta
+                     |  |  +**| (100)
+                     |  |     +**hypopsetta_guttulata
+                     +**| (100)
+                        +**scophthalmus_rhombus
+
+
+Consensus tree in newick format: 
+
+(acanthurus_bahianus:-1.0000000000,(((((ceratoscopelus_warmingii:-1.0000000000,gadus_morhua:-1.0000000000)100:-1.0000000000,lampris_guttatus:-1.0000000000)100:-1.0000000000,myripristis_violacea:-1.0000000000)100:-1.0000000000,(apogon_lateralis:-1.0000000000,kurtus_gulliveri:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((pseudupeneus_maculatus:-1.0000000000,syngnathus_fuscus:-1.0000000000)100:-1.0000000000,scomber_scombrus:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((sphyraena_putnamae:-1.0000000000,sphyranea_sphyranea:-1.0000000000)100:-1.0000000000,((centropomus_medius:-1.0000000000,lates_calcarifer:-1.0000000000)100:-1.0000000000,((((((alectis_indicus:-1.0000000000,((caranx_melampygus:-1.0000000000,megalaspis_cordyla:-1.0000000000)100:-1.0000000000,(alepes_kleinii:-1.0000000000,chloroscombrus_orqueta:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000,(decapterus_maruadsi:-1.0000000000,trachurus_trachurus:-1.0000000000)100:-1.0000000000)100:-1.0000000000,seriola_zonata:-1.0000000000)100:-1.0000000000,((echeneis_cf_naucratoides:-1.0000000000,(coryphaena_hippurus:-1.0000000000,rachycentron_canadum:-1.0000000000)100:-1.0000000000)100:-1.0000000000,(scomberoides_commersonnianus:-1.0000000000,(trachinotus_blochii:-1.0000000000,trachinotus_ovatus:-1.0000000000)100:-1.0000000000)100:-1.0000000000)96:-1.0000000000)100:-1.0000000000,((leptobrama_muelleri:-1.0000000000,toxotes_jaculatrix:-1.0000000000)100:-1.0000000000,((xiphius_gladius:-1.0000000000,(istiophorus_platypterus:-1.0000000000,tetrapturus_angustirostris:-1.0000000000)100:-1.0000000000)100:-1.0000000000,mene_maculatus:-1.0000000000)100:-1.0000000000)100:-1.0000000000)95:-1.0000000000,((eleutheronema_tetradactylum:-1.0000000000,polydactylus_sexfilis:-1.0000000000)100:-1.0000000000,(psettodes_eneumeri:-1.0000000000,((citharoides_macrolepis:-1.0000000000,citharus_linguata:-1.0000000000)100:-1.0000000000,(((((parachirus_xenicus:-1.0000000000,symphurus_plagiusa:-1.0000000000)100:-1.0000000000,poecilopsetta_plinthus:-1.0000000000)100:-1.0000000000,samariscus_xenicus:-1.0000000000)100:-1.0000000000,((mancopsetta_maculata:-1.0000000000,mancopsetta_milfordi:-1.0000000000)100:-1.0000000000,(trinectes_maculatus:-1.0000000000,gymnachirus_melas:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((((bothus_pantherinus:-1.0000000000,crossorhombus_kobensis:-1.0000000000)100:-1.0000000000,(cyclopsetta_fimbriata:-1.0000000000,etropus_cyclosquamus:-1.0000000000)100:-1.0000000000)100:-1.0000000000,((hippoglossina_oblonga:-1.0000000000,paralichthys_albigutta:-1.0000000000)100:-1.0000000000,hypopsetta_guttulata:-1.0000000000)100:-1.0000000000)100:-1.0000000000,scophthalmus_rhombus:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)100:-1.0000000000)83:-1.0000000000)100:-1.0000000000)66:-1.0000000000)100:-1.0000000000);
+
+TIME STAMP
+----------
+
+Date and time: Sat Apr 15 02:46:21 2017
+Total CPU time used: 8244.236 seconds (2h:17m:24s)
+Total wall-clock time used: 442.5696731 seconds (0h:7m:22s)
+
