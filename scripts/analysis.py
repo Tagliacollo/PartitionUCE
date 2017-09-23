@@ -5,11 +5,11 @@ import os
 from time import asctime
 
 
-datasets = ['https://raw.githubusercontent.com/Tagliacollo/PartitionUCE/master/raw_data/Crawford_2012.nex',
-			'https://raw.githubusercontent.com/Tagliacollo/PartitionUCE/master/raw_data/Harrington_2016.nex',
-			'https://raw.githubusercontent.com/Tagliacollo/PartitionUCE/master/raw_data/McCormack_2013.nex',
-			'https://raw.githubusercontent.com/Tagliacollo/PartitionUCE/master/raw_data/Meiklejohn_2016.nex',
-			'https://raw.githubusercontent.com/Tagliacollo/PartitionUCE/master/raw_data/Moyle_2016.nex']
+datasets = ['/Volumes/VATagliacollo/GitHub/PartitionUCE/raw_data/example_dataset.nex']
+			#'Tagliacollo/PartitionUCE/raw_data/Harrington_2016.nex',
+			#'Tagliacollo/PartitionUCE/raw_data/McCormack_2013.nex',
+			#'Tagliacollo/PartitionUCE/raw_data/Meiklejohn_2016.nex',
+			#'Tagliacollo/PartitionUCE/raw_data/Moyle_2016.nex']
 
 for dataset_path in datasets:
 
@@ -25,7 +25,5 @@ for dataset_path in datasets:
 	print(asctime())
 	process_dataset_metrics(dataset_path, ['entropy', 'gc', 'multi'], minimum_window_size = 50, outfilename = '%s.csv' % (name))
 	print(asctime())
-	process_dataset_site_position(dataset_path, minimum_window_size = 5, outfilename = name)
-	print(asctime())
-
+	process_dataset_site_position(dataset_path, minimum_window_size = 50, outfilename = name)
 

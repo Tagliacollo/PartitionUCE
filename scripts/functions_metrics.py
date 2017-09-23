@@ -7,7 +7,6 @@ import os, subprocess
 from math import factorial
 import itertools
 from tqdm import tqdm
-from functions_full_multi import *
 
 
 def process_dataset_metrics(dataset_path, metrics, minimum_window_size, outfilename):
@@ -281,9 +280,6 @@ def sse(metric):
     return (sse)
 
 
-
-
-
 def sitewise_gc(aln):
     '''
     Input: 
@@ -301,6 +297,36 @@ def sitewise_gc(aln):
     gc = np.array(gc)
 
     return (gc)
+
+def sitewise_multi_count(counts, factorials, Ns):
+    '''
+    Input: 
+        counts: counts of A,C,G,T, in 4xN matrix, where N is number of sites
+        factorials: products of the factorials of the counts (i.e. 1xN array)
+        Ns: factorials of the sums of the counts (i.e. 1xN array)
+    Output: 
+        1D numpy array with multinomial values for each site
+    '''
+
+    n_sites = counts.shape[1]
+
+    background_base_counts = counts.sum(axis = 1)
+    background_base_freqs = background_base_counts/sum(background_base_counts)
+
+    multinomial_likelihoods = np.zeros(counts.shape[1])
+
+    for i in range(n_sites):
+
+        K = factorials[i]
+        N = Ns[i]
+        counts_i = counts[:,i]
+        J = np.product(background_base_freqs**counts_i)
+        
+        L = (N/K)*J
+
+        multinomial_likelihoods[i] = L
+
+    return (multinomial_likelihoods)  
 
 def sitewise_multi(uce_aln):
     '''
