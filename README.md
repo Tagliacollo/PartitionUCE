@@ -29,29 +29,31 @@ The output of both methods is a PartitionFinder configuration file (.cfg) to be 
 
 Python 3.6.x or higher
 
-> Required Python modules: 
+Required Python modules: 
 
-> - [Bio](https://pypi.python.org/pypi/biopython)
-> - [collections](https://docs.python.org/3/library/collections.html)
-> - [io](https://docs.python.org/3/library/io.html)
-> - [itertools](https://docs.python.org/3/library/itertools.html) 
-> - [math](https://docs.python.org/3/library/math.html) 
-> - [numpy](https://pypi.python.org/pypi/numpy)
-> - [os](https://docs.python.org/3/library/os.html)
-> - [pathlib2](https://pypi.python.org/pypi/pathlib2/)
-> - [subprocess](https://docs.python.org/3/library/subprocess.html)
-> - [time](https://docs.python.org/3/library/time.html) 
-> - [tqdm](https://pypi.python.org/pypi/tqdm)
+* [Bio](https://pypi.python.org/pypi/biopython)
+* [collections](https://docs.python.org/3/library/collections.html)
+* [io](https://docs.python.org/3/library/io.html)
+* [itertools](https://docs.python.org/3/library/itertools.html) 
+* [math](https://docs.python.org/3/library/math.html) 
+* [numpy](https://pypi.python.org/pypi/numpy)
+* [os](https://docs.python.org/3/library/os.html)
+* [pathlib2](https://pypi.python.org/pypi/pathlib2/)
+* [subprocess](https://docs.python.org/3/library/subprocess.html)
+* [time](https://docs.python.org/3/library/time.html) 
+* [tqdm](https://pypi.python.org/pypi/tqdm)
 
 
 ## How to run the two new partitioning methods?
 
-1- Open Terminal (on most Macs, this is found in Applications/Utilities)
-2- Type “python“ followed by a space (remember, it needs to be python 3.6.x or higher)
-3- Drag and drop the `py_script/analysis.py` file onto the command prompt.
-4- Type another space
-5- Drag and drop the `example/example_dataset.nex` folder onto the command prompt
-6- Hit Enter/Return to run
+1. Open Terminal (on most Macs, this is found in Applications/Utilities)
 
+2. Type “python“ followed by a space (remember, it needs to be python 3.6.x or higher)
 
+3. Drag and drop the `py_script/analysis.py` file onto the command prompt.
 
+4. Type another space
+
+5. Drag and drop the `example/example_dataset.nex` folder onto the command prompt
+
+6. Hit Enter/Return to run
