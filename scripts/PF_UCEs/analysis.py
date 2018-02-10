@@ -5,7 +5,8 @@ import os
 from time import asctime
 
 
-datasets = ['/Volumes/VATagliacollo/GitHub/PartitionUCE/raw_data/example_dataset.nex']
+datasets = ['/Volumes/VATagliacollo/GitHub/PartitionUCE/raw_data/Branstetter_2017.nex', 
+			'/Volumes/VATagliacollo/GitHub/PartitionUCE/raw_data/Prebus_2017.nex']
 			#'Tagliacollo/PartitionUCE/raw_data/Harrington_2016.nex',
 			#'Tagliacollo/PartitionUCE/raw_data/McCormack_2013.nex',
 			#'Tagliacollo/PartitionUCE/raw_data/Meiklejohn_2016.nex',
